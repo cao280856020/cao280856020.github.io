@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caoyongjun.com">
-  <title>CaoYongjun&#39;s Blog</title>
+  <title>砖头人项目:3.Tomcat配置篇 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="caoyongjun的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CaoYongjun's Blog">
-<meta property="og:url" content="http://caoyongjun.com/index.html">
+  <meta name="description" content="1.解压 1tar -zxvf apache-tomcat-7.0.22.tar.gz">
+<meta name="keywords" content="技术,项目总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="砖头人项目:3.Tomcat配置篇">
+<meta property="og:url" content="http://caoyongjun.com/2017/04/13/brickman-tomcat/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="caoyongjun的博客">
+<meta property="og:description" content="1.解压 1tar -zxvf apache-tomcat-7.0.22.tar.gz">
+<meta property="og:updated_time" content="2017-04-13T10:24:22.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CaoYongjun's Blog">
-<meta name="twitter:description" content="caoyongjun的博客">
+<meta name="twitter:title" content="砖头人项目:3.Tomcat配置篇">
+<meta name="twitter:description" content="1.解压 1tar -zxvf apache-tomcat-7.0.22.tar.gz">
   
   
     <link rel="icon" href="/favicon.png">
@@ -156,221 +158,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-brickman-maven_git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-brickman-tomcat" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/17/brickman-maven_git/">砖头人项目:6.MAVEN&amp;GIT项目发布管理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/17/brickman-maven_git/" class="archive-article-date">
-  	<time datetime="2017-04-17T06:53:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.maven安装</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#wget</span> http:<span class="comment">//repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo</span></div><div class="line"></div><div class="line"><span class="selector-id">#yum</span> -y install apache-maven</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/17/brickman-maven_git/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/17/brickman-maven_git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-brickman-appbanner" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/16/brickman-appbanner/">砖头人项目:5.app中banner图片信息获取显示方法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/16/brickman-appbanner/" class="archive-article-date">
-  	<time datetime="2017-04-16T09:53:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>tomcat启动时一次性获取所有数据库中banner信息初始化到map中，因为常年不变所以每次前端请求时直接从静态map中直接返回对应的banner信息，当真的有banner信息修改时，通过admin方式调用更新map中的相应banner信息即可。主要还是避免每次都去连接宝贵的数据库资源。</p>
-        
-          <a class="article-more-a" href="/2017/04/16/brickman-appbanner/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/16/brickman-appbanner/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-brickman-qq_login" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/14/brickman-qq_login/">砖头人项目:4.qq登陆授权</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/14/brickman-qq_login/" class="archive-article-date">
-  	<time datetime="2017-04-14T08:49:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.引入第三方提供的jar包pom.xml，systemPath为存放路径</p>
-        
-          <a class="article-more-a" href="/2017/04/14/brickman-qq_login/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/14/brickman-qq_login/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-brickman-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/brickman-tomcat/">砖头人项目:3.Tomcat配置篇</a>
+    <h1 class="article-title" itemprop="name">
+      砖头人项目:3.Tomcat配置篇
     </h1>
   
 
@@ -385,11 +180,43 @@ var _hmt = _hmt || [];
       
         <p>1.解压</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">apache-tomcat-7</span><span class="selector-class">.0</span><span class="selector-class">.22</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/13/brickman-tomcat/#more">more >></a>
-        
+<a id="more"></a>
+<p>2.在%TOMCAT_HOME/conf 下创建一个专门用于砖头人使用的配置文件server-brickman.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">'1.0'</span> encoding=<span class="string">'utf-8'</span><span class="meta">?&gt;</span></span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">"xxxx"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>&gt;</span></div><div class="line"></div><div class="line">  ....省略</div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">"Catalina"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"xxxx"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> </span></div><div class="line">               <span class="attr">URIEncoding</span>=<span class="string">"UTF-8"</span>            #对所有<span class="attr">get</span>方式请求进行统一的重新编码解码</div><div class="line">               <span class="attr">useBodyEncodingForURI</span>=<span class="string">"true"</span>   #根据响应该请求的页面的<span class="attr">request.setCharacterEncoding</span>参数对数据进行的重新编码，不同的页面可以有不同的重新编码的编码</div><div class="line">               <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span>     #当访客网络连接后，服务器等待第一行<span class="attr">Request</span>头出现的时间。单位是毫秒</div><div class="line">               <span class="attr">redirectPort</span>=<span class="string">"xxxx"</span>           #当用户访问非<span class="attr">https</span>的资源而该资源又需要<span class="attr">https</span>方式访问时，<span class="attr">tomcat</span>会自动重定向到<span class="attr">https</span>端口，一般<span class="attr">https</span>使用 <span class="attr">TCP</span> <span class="attr">443</span>端口</div><div class="line">               <span class="attr">maxHttpHeaderSize</span>=<span class="string">"8192"</span>      #注设置最大的<span class="attr">head</span>大小</div><div class="line">               /&gt;</div><div class="line">   </div><div class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"xxxx"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> </span></div><div class="line">               <span class="attr">redirectPort</span>=<span class="string">"xxxx"</span> </div><div class="line">               <span class="attr">URIEncoding</span>=<span class="string">"UTF-8"</span>            </div><div class="line">               <span class="attr">useBodyEncodingForURI</span>=<span class="string">"true"</span>/&gt; </div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>&gt;</span></div><div class="line"></div><div class="line">     ....省略</div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span>    #对应虚拟主机,也可以直接填写服务器的 <span class="attr">ip</span> </span></div><div class="line">            <span class="attr">unpackWARs</span>=<span class="string">"false"</span>  #设置是否自动展开 <span class="attr">war</span> 压缩包再运行 <span class="attr">Web</span> 应用程序，默认值是 <span class="attr">true</span>。    </div><div class="line">            <span class="attr">autoDeploy</span>=<span class="string">"false"</span>  #是否允许自动部署,默认值是 <span class="attr">true</span>,即表示 <span class="attr">Tomcat</span> 会自动检测 <span class="attr">appBase</span> 目录下面的文件变化从而自动应用到正在运行的 <span class="attr">Web</span> 应用程序。</div><div class="line">            &gt;  </div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> </span></div><div class="line">               <span class="attr">directory</span>=<span class="string">"/xxx.../logs"</span></div><div class="line">               <span class="attr">prefix</span>=<span class="string">"brickman_access_log."</span> <span class="attr">suffix</span>=<span class="string">".txt"</span></div><div class="line">               <span class="attr">pattern</span>=<span class="string">"combined"</span> /&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">Context</span> <span class="attr">docBase</span>=<span class="string">"/xxx.../brickman/web"</span> #指定绝对路径一直到<span class="attr">web</span>目录下</span></div><div class="line">                 <span class="attr">path</span>=<span class="string">""</span> </div><div class="line">                 <span class="attr">reloadable</span>=<span class="string">"false"</span>    #如果是<span class="attr">true</span>那么每当相关文件改变时，<span class="attr">Tomcat</span>会停止<span class="attr">web</span> <span class="attr">app</span>并释放内存</div><div class="line">                 <span class="attr">allowLinking</span>=<span class="string">"true"</span>   #因为官网的页面是另一个由<span class="attr">nginx</span>管理的静态页面项目，所以使用了软连接指定</div><div class="line">                 /&gt;</div><div class="line">      <span class="tag">&lt;/<span class="name">Host</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Engine</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>3.配置cronolog来管理tomcat产生的日志切割</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、下载（最新版本） </div><div class="line">    <span class="meta">#wget http:<span class="comment">//cronolog.org/download/cronolog-1.6.2.tar.gz </span></span></div><div class="line"><span class="number">2</span>、解压缩 </div><div class="line">    <span class="meta">#tar zxvf cronolog-1.6.2.tar.gz </span></div><div class="line"><span class="number">3</span>、进入cronolog安装文件所在目录 </div><div class="line">    <span class="meta">#cd cronolog-1.6.2 </span></div><div class="line"><span class="number">4</span>、运行安装 </div><div class="line">    <span class="meta">#./configure </span></div><div class="line">    <span class="meta">#make </span></div><div class="line">    <span class="meta">#make install </span></div><div class="line"><span class="number">5</span>、查看cronolog安装后所在目录（验证安装是否成功） </div><div class="line">    <span class="meta">#which cronolog </span></div><div class="line">一般情况下显示为：<span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/sbin/</span>cronolog </div><div class="line"></div><div class="line"><span class="number">6</span>、要想分割tomcat的catalina.out，需作如下工作：修改%TOMCAT_HOME%/bin目录下的catalina.sh文件中的</div><div class="line">org.apache.catalina.startup.Bootstrap “$@” start \&gt;&gt; “$CATALINA_BASE”<span class="meta-keyword">/logs/</span>catalina.out <span class="number">2</span>&gt;<span class="variable">&amp;1</span> &amp;</div><div class="line">替换为</div><div class="line">org.apache.catalina.startup.Bootstrap <span class="string">"$@"</span> start \ </div><div class="line">|<span class="meta-keyword">/usr/</span>local<span class="meta-keyword">/sbin/</span>cronolog <span class="string">"$CATALINA_BASE"</span><span class="meta-keyword">/logs/</span>catalina.%Y-%m-%d.out &gt;&gt; <span class="meta-keyword">/dev/</span>null <span class="number">2</span>&gt;<span class="variable">&amp;1</span> &amp;</div></pre></td></tr></table></figure>
+<p>4.启动操作</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%TOMCAT_HOME%/bin/startup.sh -config %TOMCAT_HOME%/conf/server-brickman.xml</div></pre></td></tr></table></figure>
+<p>如果此时此刻，你也在北漂、上漂、广漂、深漂，那这里就是你的新家：<a href="http://www.brickman.cn/" target="_blank" rel="external">www.brickman.cn</a>。<br>欢迎加入砖头人大家庭，现邀请你体验为你定制开发的“砖头人app”。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://oo83wep0f.bkt.clouddn.com/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -413,85 +240,83 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/13/brickman-tomcat/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://caoyongjun.com/2017/04/13/brickman-tomcat/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
-
-
-
   
-    <article id="post-js-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2017/04/12/js-正则表达式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/12/js-正则表达式/">技术:js正则表达式</a>
-    </h1>
-  
-
+          技术:js正则表达式
         
-        <a href="/2017/04/12/js-正则表达式/" class="archive-article-date">
-  	<time datetime="2017-04-12T10:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">date</span>=<span class="string">"2017-04-01"</span>;</div><div class="line"><span class="built_in">var</span> reg=<span class="regexp">/\-/g</span>;    <span class="comment">//正则表达式，-为需要被换的内容,g为全局的</span></div><div class="line"><span class="built_in">date</span>.replace(reg,<span class="string">""</span>);</div></pre></td></tr></table></figure>
-<p>结果输出内容为 “20170401”</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/12/js-正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/14/brickman-qq_login/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">砖头人项目:4.qq登陆授权</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -499,11 +324,16 @@ var _hmt = _hmt || [];
 
 
   
+      <div class="duoshuo">
+<section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
+</section>
+</div>
+
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
+
+
 
 
           </div>
@@ -525,8 +355,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

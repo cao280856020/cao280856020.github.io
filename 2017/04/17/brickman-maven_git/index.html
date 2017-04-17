@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caoyongjun.com">
-  <title>CaoYongjun&#39;s Blog</title>
+  <title>砖头人项目:6.MAVEN&amp;GIT项目发布管理 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="caoyongjun的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CaoYongjun's Blog">
-<meta property="og:url" content="http://caoyongjun.com/index.html">
+  <meta name="description" content="1.maven安装 123#wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo#yum -y install apache-maven">
+<meta name="keywords" content="技术,项目总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="砖头人项目:6.MAVEN&GIT项目发布管理">
+<meta property="og:url" content="http://caoyongjun.com/2017/04/17/brickman-maven_git/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="caoyongjun的博客">
+<meta property="og:description" content="1.maven安装 123#wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo#yum -y install apache-maven">
+<meta property="og:updated_time" content="2017-04-17T06:56:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CaoYongjun's Blog">
-<meta name="twitter:description" content="caoyongjun的博客">
+<meta name="twitter:title" content="砖头人项目:6.MAVEN&GIT项目发布管理">
+<meta name="twitter:description" content="1.maven安装 123#wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo#yum -y install apache-maven">
   
   
     <link rel="icon" href="/favicon.png">
@@ -156,16 +158,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-brickman-maven_git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-brickman-maven_git" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/17/brickman-maven_git/">砖头人项目:6.MAVEN&amp;GIT项目发布管理</a>
+    <h1 class="article-title" itemprop="name">
+      砖头人项目:6.MAVEN&amp;GIT项目发布管理
     </h1>
   
 
@@ -180,79 +180,42 @@ var _hmt = _hmt || [];
       
         <p>1.maven安装</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#wget</span> http:<span class="comment">//repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo</span></div><div class="line"></div><div class="line"><span class="selector-id">#yum</span> -y install apache-maven</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/17/brickman-maven_git/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<a id="more"></a>
+<p>2.项目采用的是整体代码下载到服务器然后maven编译成class文件，tomcat加载class文件。由于是app接口，但是里面也包含了许多的长期固定不变的jar和一些静态H5页面js|html|css|jpg等信息，要把常修改的和静态不常更新的东西分离  为了动静分离</p>
+<p>build_brickman.sh 内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line">cur_date=$(date +%Y%m%d%H%M%S)</div><div class="line">folder_name=<span class="string">"xxx_"</span><span class="variable">$cur_date</span></div><div class="line">project_path=/root/projectGit</div><div class="line">env=<span class="string">"dev"</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$project_path</span></div><div class="line"></div><div class="line">git <span class="built_in">clone</span> git@git.oschina.net:xxxx/xxxx.git <span class="variable">$folder_name</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$folder_name</span></div><div class="line"></div><div class="line">mvn -P <span class="variable">$env</span> clean compile war:inplace</div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$project_path</span></div><div class="line"></div><div class="line">rm -rf brickman</div><div class="line"></div><div class="line">ln <span class="_">-s</span> <span class="variable">$folder_name</span> brickman</div><div class="line"></div><div class="line">ln <span class="_">-s</span> /data/img/real/html/brickman.html <span class="variable">$folder_name</span>/web/brickman.html </div><div class="line"></div><div class="line">ln <span class="_">-s</span> /data/img/real/html/brickmanshare.html <span class="variable">$folder_name</span>/web/brickmanshare.html</div></pre></td></tr></table></figure>
+<p>build_static_brickman.sh 内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line">cur_date=$(date +%Y%m%d%H%M%S)</div><div class="line">folder_name=<span class="string">"html_"</span><span class="variable">$cur_date</span></div><div class="line">static_path=/root/staticFilesGit</div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$static_path</span></div><div class="line"></div><div class="line">git <span class="built_in">clone</span> git@git.oschina.net:xxx/xxx.git <span class="variable">$folder_name</span></div><div class="line"></div><div class="line">mv <span class="variable">$folder_name</span>/web/* <span class="variable">$folder_name</span>/</div><div class="line"></div><div class="line">rm -rf <span class="variable">$folder_name</span>/web</div><div class="line"></div><div class="line">rm -rf html</div><div class="line"></div><div class="line">ln <span class="_">-s</span> <span class="variable">$static_path</span>/<span class="variable">$folder_name</span> <span class="variable">$static_path</span>/html</div></pre></td></tr></table></figure>
+<p>如果此时此刻，你也在北漂、上漂、广漂、深漂，那这里就是你的新家：<a href="http://www.brickman.cn/" target="_blank" rel="external">www.brickman.cn</a>。<br>欢迎加入砖头人大家庭，现邀请你体验为你定制开发的“砖头人app”。</p>
 
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/17/brickman-maven_git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-brickman-appbanner" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/16/brickman-appbanner/">砖头人项目:5.app中banner图片信息获取显示方法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/16/brickman-appbanner/" class="archive-article-date">
-  	<time datetime="2017-04-16T09:53:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>tomcat启动时一次性获取所有数据库中banner信息初始化到map中，因为常年不变所以每次前端请求时直接从静态map中直接返回对应的banner信息，当真的有banner信息修改时，通过admin方式调用更新map中的相应banner信息即可。主要还是避免每次都去连接宝贵的数据库资源。</p>
-        
-          <a class="article-more-a" href="/2017/04/16/brickman-appbanner/#more">more >></a>
-        
-      
-
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://oo83wep0f.bkt.clouddn.com/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -276,18 +239,78 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/16/brickman-appbanner/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://caoyongjun.com/2017/04/17/brickman-maven_git/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/16/brickman-appbanner/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          砖头人项目:5.app中banner图片信息获取显示方法
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
 
 
@@ -295,215 +318,16 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-brickman-qq_login" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/14/brickman-qq_login/">砖头人项目:4.qq登陆授权</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/14/brickman-qq_login/" class="archive-article-date">
-  	<time datetime="2017-04-14T08:49:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.引入第三方提供的jar包pom.xml，systemPath为存放路径</p>
-        
-          <a class="article-more-a" href="/2017/04/14/brickman-qq_login/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/14/brickman-qq_login/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
+      <div class="duoshuo">
+<section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
+</section>
+</div>
 
   
-    <article id="post-brickman-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/brickman-tomcat/">砖头人项目:3.Tomcat配置篇</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/13/brickman-tomcat/" class="archive-article-date">
-  	<time datetime="2017-04-13T08:54:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.解压</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">apache-tomcat-7</span><span class="selector-class">.0</span><span class="selector-class">.22</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/13/brickman-tomcat/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/13/brickman-tomcat/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
 
 
-
-
-
-
-
-
-  
-    <article id="post-js-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/12/js-正则表达式/">技术:js正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/12/js-正则表达式/" class="archive-article-date">
-  	<time datetime="2017-04-12T10:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">date</span>=<span class="string">"2017-04-01"</span>;</div><div class="line"><span class="built_in">var</span> reg=<span class="regexp">/\-/g</span>;    <span class="comment">//正则表达式，-为需要被换的内容,g为全局的</span></div><div class="line"><span class="built_in">date</span>.replace(reg,<span class="string">""</span>);</div></pre></td></tr></table></figure>
-<p>结果输出内容为 “20170401”</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/12/js-正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -525,8 +349,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

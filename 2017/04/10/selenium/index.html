@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caoyongjun.com">
-  <title>CaoYongjun&#39;s Blog</title>
+  <title>软件测试神一样的超级好用的selenium 原创java util | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="caoyongjun的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CaoYongjun's Blog">
-<meta property="og:url" content="http://caoyongjun.com/index.html">
+  <meta name="description" content="以下是自己封装的seleniumJava工具类">
+<meta name="keywords" content="技术,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件测试神一样的超级好用的selenium 原创java util">
+<meta property="og:url" content="http://caoyongjun.com/2017/04/10/selenium/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="caoyongjun的博客">
+<meta property="og:description" content="以下是自己封装的seleniumJava工具类">
+<meta property="og:updated_time" content="2017-04-13T10:24:22.971Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CaoYongjun's Blog">
-<meta name="twitter:description" content="caoyongjun的博客">
+<meta name="twitter:title" content="软件测试神一样的超级好用的selenium 原创java util">
+<meta name="twitter:description" content="以下是自己封装的seleniumJava工具类">
   
   
     <link rel="icon" href="/favicon.png">
@@ -156,35 +158,57 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-brickman-maven_git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-selenium" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/17/brickman-maven_git/">砖头人项目:6.MAVEN&amp;GIT项目发布管理</a>
+    <h1 class="article-title" itemprop="name">
+      软件测试神一样的超级好用的selenium 原创java util
     </h1>
   
 
         
-        <a href="/2017/04/17/brickman-maven_git/" class="archive-article-date">
-  	<time datetime="2017-04-17T06:53:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-17</time>
+        <a href="/2017/04/10/selenium/" class="archive-article-date">
+  	<time datetime="2017-04-10T11:37:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.maven安装</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#wget</span> http:<span class="comment">//repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo</span></div><div class="line"></div><div class="line"><span class="selector-id">#yum</span> -y install apache-maven</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/17/brickman-maven_git/#more">more >></a>
-        
+        <h2 id="以下是自己封装的seleniumJava工具类"><a href="#以下是自己封装的seleniumJava工具类" class="headerlink" title="以下是自己封装的seleniumJava工具类"></a>以下是自己封装的seleniumJava工具类</h2><a id="more"></a>
+<h2 id="可以自行拷贝用到项目中"><a href="#可以自行拷贝用到项目中" class="headerlink" title="可以自行拷贝用到项目中"></a>可以自行拷贝用到项目中</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.awt.AWTException;</div><div class="line"><span class="keyword">import</span> java.awt.Robot;</div><div class="line"><span class="keyword">import</span> java.awt.event.KeyEvent;</div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> org.openqa.selenium.JavascriptExecutor;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.TakesScreenshot;</div><div class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.By;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.OutputType;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.WebElement;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.firefox.FirefoxDriver;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.htmlunit.HtmlUnitDriver;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.ie.InternetExplorerDriver;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.interactions.Actions;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.support.ui.ExpectedCondition;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.support.ui.WebDriverWait;</div><div class="line"></div><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">SeleniumUtil</span> </span>&#123;</div><div class="line">	private <span class="keyword">static</span> WebDriver webDriver;</div><div class="line">	private <span class="keyword">static</span> WebElement webElement;</div><div class="line">	private <span class="keyword">static</span> Robot robot;</div><div class="line">	private <span class="keyword">static</span> By byelement;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">/*javascript*/</span></div><div class="line">	public <span class="keyword">void</span> Script ( <span class="built_in">String</span> script , WebElement element ) &#123;</div><div class="line">		JavascriptExecutor js=(JavascriptExecutor)webDriver;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> ( element==<span class="literal">null</span> ) &#123;</div><div class="line">			js.executeScript(script);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			js.executeScript(script, element);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/*javascript 返回数据*/</span></div><div class="line">	public <span class="built_in">String</span> ScriptString ( <span class="built_in">String</span> script ) &#123;</div><div class="line">		JavascriptExecutor js=(JavascriptExecutor)webDriver;</div><div class="line"></div><div class="line">		<span class="built_in">String</span> s=(<span class="built_in">String</span>) js.executeScript(script);</div><div class="line">		<span class="keyword">return</span> s;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	  * 初始化</div><div class="line">	  * @param select      </div><div class="line">	  * 1:Firefox</div><div class="line">	  * 2:IE</div><div class="line">	  * 3:Chrome</div><div class="line">	  * 4:后台执行</div><div class="line">	  * @param browserpath</div><div class="line">	  * 选择本地浏览路径</div><div class="line">	  */</div><div class="line">	public <span class="keyword">void</span> Init ( int switchbrowser , <span class="built_in">String</span> browserpath ) &#123;</div><div class="line">		<span class="keyword">switch</span> ( switchbrowser ) &#123;</div><div class="line">			<span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">				System.setProperty ( <span class="string">"webdriver.firefox.bin"</span> , browserpath );</div><div class="line">				webDriver = <span class="keyword">new</span> FirefoxDriver();</div><div class="line">				webDriver.manage().window().maximize();</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">				System.setProperty(<span class="string">"webdriver.ie.driver"</span>, browserpath);</div><div class="line">				webDriver = <span class="keyword">new</span> InternetExplorerDriver();</div><div class="line">				webDriver.manage().window().maximize();</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">				System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, browserpath);</div><div class="line">				webDriver = <span class="keyword">new</span> ChromeDriver();</div><div class="line">				webDriver.manage().window().maximize();</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">				webDriver = <span class="keyword">new</span> HtmlUnitDriver();</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//复制</span></div><div class="line">	protected <span class="keyword">void</span> CopyKeys() &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			robot = <span class="keyword">new</span> Robot();</div><div class="line">			robot.keyPress(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyPress(KeyEvent.VK_C);</div><div class="line">			robot.keyRelease(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyRelease(KeyEvent.VK_C);</div><div class="line">		&#125; <span class="keyword">catch</span> (AWTException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="comment">//粘贴</span></div><div class="line">	protected <span class="keyword">void</span> PasteKeys() &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			robot = <span class="keyword">new</span> Robot();</div><div class="line">			robot.keyPress(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyPress(KeyEvent.VK_V);</div><div class="line">			robot.keyRelease(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyRelease(KeyEvent.VK_V);</div><div class="line">		&#125; <span class="keyword">catch</span> (AWTException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	  * 拖拽</div><div class="line">	  * @param by     要多拽的元素</div><div class="line">	  * @param target 目的地</div><div class="line">	  */</div><div class="line">	protected <span class="keyword">void</span> DragAndDrop (  By by , By target ) &#123;</div><div class="line">		(<span class="keyword">new</span> Actions(webDriver)).dragAndDrop(webDriver.findElement(by), webDriver.findElement(target)).perform();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//传入值</span></div><div class="line">	protected <span class="keyword">void</span> SendKeys(By by, <span class="built_in">String</span> value)&#123;</div><div class="line">		      webDriver.findElement(by).sendKeys(value);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	  * 截图</div><div class="line">	  * @param outpath 导出截图后的路径 文件名是以当前时间</div><div class="line">	  */</div><div class="line">	public <span class="keyword">void</span> GetScreen ( <span class="built_in">String</span> outpath ) &#123;</div><div class="line">		File screenShotFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			FileUtils.copyFile(screenShotFile, <span class="keyword">new</span> File ( outpath + <span class="string">"/"</span> + getSysTime() + <span class="string">".jpg"</span> ) );</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**获取元素</span></div><div class="line">	  * @param by   </div><div class="line">	  * @param second  查找需要时间</div><div class="line">	  */</div><div class="line">	public <span class="keyword">void</span> Wait( final By by , int second ) &#123;</div><div class="line">		WebDriverWait wait = <span class="keyword">new</span> WebDriverWait(webDriver,second);</div><div class="line">		wait.until(<span class="keyword">new</span> ExpectedCondition&lt;WebElement&gt;()&#123;</div><div class="line">				       </div><div class="line">				       public WebElement apply(WebDriver d) &#123;</div><div class="line">					                  <span class="keyword">return</span> d.findElement(by);</div><div class="line">									           &#125;</div><div class="line">											           &#125;);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//打开浏览器</span></div><div class="line">	public <span class="keyword">void</span> Start ( <span class="built_in">String</span> url ) &#123;</div><div class="line">		webDriver.get( url );</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//结束</span></div><div class="line">	public <span class="keyword">void</span> Stop () &#123;</div><div class="line">		webDriver.quit();</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//获取当前时间</span></div><div class="line">	public <span class="keyword">static</span> <span class="built_in">String</span> getSysTime()&#123;</div><div class="line">		SimpleDateFormat filename = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMdd_HHmmss"</span>);</div><div class="line">		<span class="keyword">return</span> filename.format(<span class="keyword">new</span> <span class="built_in">Date</span>());</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 睡眠</span></div><div class="line">	public <span class="keyword">void</span> Sleep(int millis) &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			Thread.sleep(millis);</div><div class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public <span class="keyword">static</span> WebDriver getWebDriver() &#123;</div><div class="line">		<span class="keyword">return</span> webDriver;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public <span class="keyword">static</span> <span class="keyword">void</span> setWebDriver(WebDriver webDriver) &#123;</div><div class="line">		SeleniumUtil.webDriver = webDriver;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public <span class="keyword">static</span> WebElement getWebElement() &#123;</div><div class="line">		<span class="keyword">return</span> webElement;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public <span class="keyword">static</span> <span class="keyword">void</span> setWebElement(WebElement webElement) &#123;</div><div class="line">		SeleniumUtil.webElement = webElement;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public <span class="keyword">static</span> By getByelement() &#123;</div><div class="line">		<span class="keyword">return</span> byelement;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	public <span class="keyword">static</span> <span class="keyword">void</span> setByelement(By byelement) &#123;</div><div class="line">		SeleniumUtil.byelement = byelement;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://oo83wep0f.bkt.clouddn.com/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -199,7 +223,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -208,18 +232,74 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/17/brickman-maven_git/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://caoyongjun.com/2017/04/10/selenium/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/11/brickman-architecture/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">砖头人项目:1.架构设计实现篇</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -227,283 +307,16 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-brickman-appbanner" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/16/brickman-appbanner/">砖头人项目:5.app中banner图片信息获取显示方法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/16/brickman-appbanner/" class="archive-article-date">
-  	<time datetime="2017-04-16T09:53:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>tomcat启动时一次性获取所有数据库中banner信息初始化到map中，因为常年不变所以每次前端请求时直接从静态map中直接返回对应的banner信息，当真的有banner信息修改时，通过admin方式调用更新map中的相应banner信息即可。主要还是避免每次都去连接宝贵的数据库资源。</p>
-        
-          <a class="article-more-a" href="/2017/04/16/brickman-appbanner/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/16/brickman-appbanner/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
+      <div class="duoshuo">
+<section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
+</section>
+</div>
 
   
-    <article id="post-brickman-qq_login" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/14/brickman-qq_login/">砖头人项目:4.qq登陆授权</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/14/brickman-qq_login/" class="archive-article-date">
-  	<time datetime="2017-04-14T08:49:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.引入第三方提供的jar包pom.xml，systemPath为存放路径</p>
-        
-          <a class="article-more-a" href="/2017/04/14/brickman-qq_login/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/14/brickman-qq_login/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
 
 
-
-
-
-
-
-
-  
-    <article id="post-brickman-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/brickman-tomcat/">砖头人项目:3.Tomcat配置篇</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/13/brickman-tomcat/" class="archive-article-date">
-  	<time datetime="2017-04-13T08:54:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.解压</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">apache-tomcat-7</span><span class="selector-class">.0</span><span class="selector-class">.22</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/13/brickman-tomcat/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/13/brickman-tomcat/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-js-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/12/js-正则表达式/">技术:js正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/12/js-正则表达式/" class="archive-article-date">
-  	<time datetime="2017-04-12T10:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">date</span>=<span class="string">"2017-04-01"</span>;</div><div class="line"><span class="built_in">var</span> reg=<span class="regexp">/\-/g</span>;    <span class="comment">//正则表达式，-为需要被换的内容,g为全局的</span></div><div class="line"><span class="built_in">date</span>.replace(reg,<span class="string">""</span>);</div></pre></td></tr></table></figure>
-<p>结果输出内容为 “20170401”</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/12/js-正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -525,8 +338,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

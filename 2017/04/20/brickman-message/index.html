@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caoyongjun.com">
-  <title>工作经验:针对大批量不同数据生成相同的sql | CaoYongjun&#39;s Blog</title>
+  <title>砖头人项目:7.消息通知功能实现 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应">
-<meta name="keywords" content="技术,经验">
+  <meta name="description" content="1.产品需求 从需求中提取了以下几点要完成">
+<meta name="keywords" content="技术,项目总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工作经验:针对大批量不同数据生成相同的sql">
-<meta property="og:url" content="http://caoyongjun.com/2017/04/19/work-experience/index.html">
+<meta property="og:title" content="砖头人项目:7.消息通知功能实现">
+<meta property="og:url" content="http://caoyongjun.com/2017/04/20/brickman-message/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应">
-<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%E7%BB%8F%E9%AA%8Cexcel.png">
-<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5Dexcel2.png">
-<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5D%E6%AD%A3%E5%88%99.png">
-<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5D%E6%AD%A3%E5%88%992.png">
-<meta property="og:updated_time" content="2017-04-18T17:35:35.718Z">
+<meta property="og:description" content="1.产品需求 从需求中提取了以下几点要完成">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF1.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF2.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF3.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF4.png">
+<meta property="og:updated_time" content="2017-04-20T07:51:01.477Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工作经验:针对大批量不同数据生成相同的sql">
-<meta name="twitter:description" content="2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应">
-<meta name="twitter:image" content="http://oo83wep0f.bkt.clouddn.com/%E7%BB%8F%E9%AA%8Cexcel.png">
+<meta name="twitter:title" content="砖头人项目:7.消息通知功能实现">
+<meta name="twitter:description" content="1.产品需求 从需求中提取了以下几点要完成">
+<meta name="twitter:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF1.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -163,37 +163,49 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-work-experience" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-brickman-message" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      工作经验:针对大批量不同数据生成相同的sql
+      砖头人项目:7.消息通知功能实现
     </h1>
   
 
         
-        <a href="/2017/04/19/work-experience/" class="archive-article-date">
-  	<time datetime="2017-04-18T16:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
+        <a href="/2017/04/20/brickman-message/" class="archive-article-date">
+  	<time datetime="2017-04-20T07:27:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。<br>由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。<br>后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应大多的表和其他如update,delete语句),<br>后来问了下当年带我的师傅龙哥教我用他的方法二excel的方式大致像下面图</p>
+        <h2 id="1-产品需求"><a href="#1-产品需求" class="headerlink" title="1.产品需求"></a>1.产品需求</h2><p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF1.png" alt="&quot;砖头人项目 消息1&quot;"></p>
+<p>从需求中提取了以下几点要完成</p>
 <a id="more"></a>
-<p><img src="http://oo83wep0f.bkt.clouddn.com/%E7%BB%8F%E9%AA%8Cexcel.png" alt="&quot;经验excel&quot;"></p>
-<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5Dexcel2.png" alt="&quot;经验excel2&quot;"></p>
-<p>方法二图中红色为我要读取并生成的不同的数据,黑色是我固定的要生成的insert语句,”…”是省略。<br>在excel中把这些语句复制粘贴到文本中由于每个excel格中间会有\t的就是如下的图,可以在文本中替换一下。(现在想想只能是一个打60分勉强及格因为数据量大时会很卡)。</p>
-<p>后来又遇到这种需求,庆幸当时的同事老赵教了我一招正则表达式替换,后来举一反三用到了后续的工作,以下是方法三</p>
-<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5D%E6%AD%A3%E5%88%99.png" alt="&quot;经验正则&quot;"></p>
-<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5D%E6%AD%A3%E5%88%992.png" alt="&quot;经验正则2&quot;"></p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">(.+)</span>\t<span class="comment">(.+)</span>\t<span class="comment">(.+)</span>\t<span class="comment">(.+)</span>\t<span class="comment">(.+)</span>\t<span class="comment">(.+)</span></div></pre></td></tr></table></figure>
-<p>注:每一个”(.+)”对应$i”i这里是1开始的不是0开始,如果是$0的话就是匹配整个内容”按照\t去匹配的数据<br>如果看不懂正则语法推荐这个博文<a href="http://deerchao.net/tutorials/regex/regex-1.htm" target="_blank" rel="external">入门30分钟正则表达式</a></p>
-<p>(推荐使用EmEditor编辑器几万条数据都不会很卡这个方法我打99分,因为我相信还有其他方法更好地满足需求,这个截图是在线的正则工具<a href="http://tool.chinaz.com/regex/" target="_blank" rel="external">http://tool.chinaz.com/regex/</a>)</p>
+<p>1.添加订阅动作<br>用户 发布，评论，送花，拍砖 会插入到 订阅表(为了订阅到后期有人评论时收到提醒)<br>2.评论内容动作时<br>用户每次对事件评论后产生信息并插入到消息表(为了订阅者获取某个事件的最后一个消息)<br>3.产生消息提醒<br>每次用户登陆或者其他操作时会触发产生消息队列，每次订阅表中获取订阅的事件最后产生的评论信息，放入消息表里<br>4.更新消息已读<br>每次点击进入详情时更新全部的消息提醒</p>
+<h2 id="2-设计实现"><a href="#2-设计实现" class="headerlink" title="2.设计实现"></a>2.设计实现</h2><p>1.uml功能时序图<br>以下图是产生订阅事件信息及提醒信息时序图</p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF2.png" alt="&quot;砖头人项目 消息2&quot;"></p>
+<p>以下图是用户触发从提醒表提取未读消息，放入未读表中，以及更改已读消息状态的时序图</p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF3.png" alt="&quot;砖头人项目 消息3&quot;"></p>
+<p>3.数据库设计</p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5D%E6%B6%88%E6%81%AF4.png" alt="&quot;砖头人项目 消息4&quot;"></p>
+<p>主要字段解释 （ 红色部分为以后拓展功能时用到的这次不会用到的字段 ）</p>
+<p>subscription=订阅表:{content_id:“事件Id”,user_id:”用户id”}<br>notify=消息表:{sender_id:”对事件评论的用户id”,content_id:”事件Id“}<br>user_notify=用户未读消息队列:{content_id:“事件Id”,user_id:”用户id”,read_yn:”读取状态”}</p>
+<h2 id="3-重要代码实现部分"><a href="#3-重要代码实现部分" class="headerlink" title="3.重要代码实现部分"></a>3.重要代码实现部分</h2><p>1.利用aop的after  每次拍砖，献花，评论后执行 后续的订阅，和生成评论消息动作，</p>
+<p>此次使用aop 其实就是为了怕用户在做完主要动作后还要等待后续的动作会影响用户体验</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 通知 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> =<span class="string">"xmlHandler"</span> <span class="attr">class</span>=<span class="string">"com.brickman.aop.XMLAdvice"</span>/&gt;</span></div><div class="line">	</div><div class="line"><span class="comment">&lt;!-- aop 配置 消息--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>  </div><div class="line">   <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">id</span>=<span class="string">"aspectService"</span> <span class="attr">ref</span>=<span class="string">"xmlHandler"</span>&gt;</span></div><div class="line">        	</div><div class="line">    <span class="comment">&lt;!-- aop 监听拍砖，献花，评论后 执行 后续插入订阅表和生成评论--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">"remindPoint"</span> <span class="attr">expression</span>=<span class="string">"execution(* com.brickman.bo.*.insertRecord(..)) || execution(* com.brickman.bo.*.addComment(..))"</span>/&gt;</span>  </div><div class="line">            										</div><div class="line">     <span class="tag">&lt;<span class="name">aop:after</span> <span class="attr">method</span>=<span class="string">"doAfterInsertRemind"</span>  <span class="attr">pointcut-ref</span>=<span class="string">"remindPoint"</span>/&gt;</span>  </div><div class="line">              </div><div class="line">   <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>2.每次如果订阅表里已经有了之前事件Id那么就更新订阅表的订阅时间</p>
+<p>3.用户在登陆或者其他操作时触发生产未读消息队列</p>
+<p>重点是找到notify中生成消息时间大于订阅表中的更新时间，并获取最大的notifyId相关数据</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">SELECT MAX(<span class="selector-tag">b</span>.notify_id) AS notify_id,<span class="selector-tag">b</span><span class="selector-class">.content_id</span> AS content_id</div><div class="line">FROM brick_subscription <span class="selector-tag">a</span>,brick_notify <span class="selector-tag">b</span></div><div class="line">WHERE <span class="selector-tag">a</span>.content_id=<span class="selector-tag">b</span><span class="selector-class">.content_id</span></div><div class="line">    AND <span class="selector-tag">a</span><span class="selector-class">.user_id</span> = #&#123;userId&#125;</div><div class="line">    AND <span class="selector-tag">b</span><span class="selector-class">.sender_id</span> &lt;![CDATA[&lt;&gt;]]&gt; #&#123;userId&#125;</div><div class="line">    AND <span class="selector-tag">a</span><span class="selector-class">.update_time</span> &lt;![CDATA[&lt;]]&gt; <span class="selector-tag">b</span><span class="selector-class">.created_time</span></div><div class="line">GROUP BY <span class="selector-tag">b</span>.content_id</div></pre></td></tr></table></figure>
+<p>4.插入用户提醒队列表时 主要还要判断是否已经有过该事件如果有就不插入，为了避免两次mysql连接直接一次性写在一个sql中</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">INSERT INTO brick_user_notify ( user_id, content_id, notify_id ) </div><div class="line">  SELECT #&#123;<span class="ruby">userId&#125;</span>,#&#123;<span class="ruby">contentId&#125;</span>,#&#123;<span class="ruby">notifyId&#125;</span></div><div class="line">  FROM DUAL</div><div class="line">  WHERE NOT EXISTS (</div><div class="line">    SELECT 1</div><div class="line">    FROM brick_user_notify</div><div class="line">    WHERE content_id=#&#123;<span class="ruby">contentId&#125;</span> AND user_id=#&#123;<span class="ruby">userId&#125;</span> AND notify_id=#&#123;<span class="ruby">notifyId&#125;</span></div><div class="line">  )</div></pre></td></tr></table></figure>
+<p>点击进入用户未读消息的事件后，会更新某个事件的所有未读消息为已读</p>
+<p>如果此时此刻，你也在北漂、上漂、广漂、深漂，那这里就是你的新家：<a href="http://www.brickman.cn/" target="_blank" rel="external">www.brickman.cn</a>。<br>欢迎加入砖头人大家庭，现邀请你体验为你定制开发的“砖头人app”。</p>
 
       
 
@@ -237,7 +249,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
         		</li>
       		
 		</ul>
@@ -293,7 +305,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://caoyongjun.com/2017/04/19/work-experience/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://caoyongjun.com/2017/04/20/brickman-message/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -307,20 +319,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/04/18/windows-cmd/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/19/work-experience/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Windows:cmd杀某个端口进程
+          工作经验:针对大批量不同数据生成相同的sql
         
       </div>
     </a>
   
-  
-    <a href="/2017/04/20/brickman-message/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">砖头人项目:7.消息通知功能实现</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

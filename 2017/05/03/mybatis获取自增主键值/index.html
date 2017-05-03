@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caoyongjun.com">
-  <title>技术:js正则表达式 | CaoYongjun&#39;s Blog</title>
+  <title>mybatis获取自增主键值 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123var date=&quot;2017-04-01&quot;;var reg=/\-/g;    //正则表达式，-为需要被换的内容,g为全局的date.replace(reg,&quot;&quot;); 结果输出内容为 “20170401”">
-<meta name="keywords" content="技术,js">
+  <meta name="description" content="1.xml文件，返回的主键必须是自增的主键123&amp;lt;insert id=&quot;insertResourceLock&quot; parameterType=&quot;lockOutDTO&quot; keyProperty=&quot;lockNo&quot; useGeneratedKeys=&quot;true&quot;&amp;gt;     insert into table_name (a,b,c...) values(#&amp;#123;a&amp;#125;,#&amp;#12">
+<meta name="keywords" content="技术,mybatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="技术:js正则表达式">
-<meta property="og:url" content="http://caoyongjun.com/2017/04/12/js-正则表达式/index.html">
+<meta property="og:title" content="mybatis获取自增主键值">
+<meta property="og:url" content="http://caoyongjun.com/2017/05/03/mybatis获取自增主键值/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="123var date=&quot;2017-04-01&quot;;var reg=/\-/g;    //正则表达式，-为需要被换的内容,g为全局的date.replace(reg,&quot;&quot;); 结果输出内容为 “20170401”">
-<meta property="og:updated_time" content="2017-04-13T10:24:22.966Z">
+<meta property="og:description" content="1.xml文件，返回的主键必须是自增的主键123&amp;lt;insert id=&quot;insertResourceLock&quot; parameterType=&quot;lockOutDTO&quot; keyProperty=&quot;lockNo&quot; useGeneratedKeys=&quot;true&quot;&amp;gt;     insert into table_name (a,b,c...) values(#&amp;#123;a&amp;#125;,#&amp;#12">
+<meta property="og:updated_time" content="2017-05-03T10:50:33.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术:js正则表达式">
-<meta name="twitter:description" content="123var date=&quot;2017-04-01&quot;;var reg=/\-/g;    //正则表达式，-为需要被换的内容,g为全局的date.replace(reg,&quot;&quot;); 结果输出内容为 “20170401”">
+<meta name="twitter:title" content="mybatis获取自增主键值">
+<meta name="twitter:description" content="1.xml文件，返回的主键必须是自增的主键123&amp;lt;insert id=&quot;insertResourceLock&quot; parameterType=&quot;lockOutDTO&quot; keyProperty=&quot;lockNo&quot; useGeneratedKeys=&quot;true&quot;&amp;gt;     insert into table_name (a,b,c...) values(#&amp;#123;a&amp;#125;,#&amp;#12">
   
   
     <link rel="icon" href="/favicon.png">
@@ -158,28 +158,29 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js-正则表达式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mybatis获取自增主键值" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      技术:js正则表达式
+      mybatis获取自增主键值
     </h1>
   
 
         
-        <a href="/2017/04/12/js-正则表达式/" class="archive-article-date">
-  	<time datetime="2017-04-12T10:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
+        <a href="/2017/05/03/mybatis获取自增主键值/" class="archive-article-date">
+  	<time datetime="2017-05-03T10:42:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">date</span>=<span class="string">"2017-04-01"</span>;</div><div class="line"><span class="built_in">var</span> reg=<span class="regexp">/\-/g</span>;    <span class="comment">//正则表达式，-为需要被换的内容,g为全局的</span></div><div class="line"><span class="built_in">date</span>.replace(reg,<span class="string">""</span>);</div></pre></td></tr></table></figure>
-<p>结果输出内容为 “20170401”</p>
+        <h2 id="1-xml文件，返回的主键必须是自增的主键"><a href="#1-xml文件，返回的主键必须是自增的主键" class="headerlink" title="1.xml文件，返回的主键必须是自增的主键"></a>1.xml文件，返回的主键必须是自增的主键</h2><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;insert id=<span class="string">"insertResourceLock"</span> parameterType=<span class="string">"lockOutDTO"</span> keyProperty=<span class="string">"lockNo"</span> useGeneratedKeys=<span class="string">"true"</span>&gt;</div><div class="line">     insert into table_name (a,b,c...) values(#&#123;a&#125;,#&#123;b&#125;,#&#123;c&#125;...);</div><div class="line">&lt;/insert&gt;</div></pre></td></tr></table></figure>
+<h2 id="2-dao方法和调用方法"><a href="#2-dao方法和调用方法" class="headerlink" title="2.dao方法和调用方法"></a>2.dao方法和调用方法</h2><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertResourceLock</span><span class="params">(LockOutDTO lockOutDTO)</span> <span class="keyword">throws</span> Exception</span>;</div><div class="line"></div><div class="line">lockOutDao.insertResourceLock(lockOutDTO);</div></pre></td></tr></table></figure>
+<h2 id="3-调用后获取主键，主键是被映射到传入insert中的类中"><a href="#3-调用后获取主键，主键是被映射到传入insert中的类中" class="headerlink" title="3.调用后获取主键，主键是被映射到传入insert中的类中"></a>3.调用后获取主键，主键是被映射到传入insert中的类中</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">lockOutDTO</span><span class="selector-class">.getLockNo</span>()</div></pre></td></tr></table></figure>
 
       
 
@@ -223,7 +224,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
         		</li>
       		
 		</ul>
@@ -279,7 +280,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://caoyongjun.com/2017/04/12/js-正则表达式/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://caoyongjun.com/2017/05/03/mybatis获取自增主键值/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,20 +294,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/04/12/brickman-nginx/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/30/mysql数据库之间同步字段/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          砖头人项目:2.Nginx配置篇
+          mysql数据库之间同步字段
         
       </div>
     </a>
   
-  
-    <a href="/2017/04/13/brickman-tomcat/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">砖头人项目:3.Tomcat配置篇</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

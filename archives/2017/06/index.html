@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>砖头人项目:5.app中banner图片信息获取显示方法 | CaoYongjun&#39;s Blog</title>
+  <title>Archives: 2017/6 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tomcat启动时一次性获取所有数据库中banner信息初始化到map中，因为常年不变所以每次前端请求时直接从静态map中直接返回对应的banner信息，当真的有banner信息修改时，通过admin方式调用更新map中的相应banner信息即可。主要还是避免每次都去连接宝贵的数据库资源。">
-<meta name="keywords" content="技术,项目总结">
-<meta property="og:type" content="article">
-<meta property="og:title" content="砖头人项目:5.app中banner图片信息获取显示方法">
-<meta property="og:url" content="http://www.caoyongjun.com/2017/04/16/brickman-appbanner/index.html">
+  <meta name="description" content="caoyongjun的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CaoYongjun's Blog">
+<meta property="og:url" content="http://www.caoyongjun.com/archives/2017/06/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="tomcat启动时一次性获取所有数据库中banner信息初始化到map中，因为常年不变所以每次前端请求时直接从静态map中直接返回对应的banner信息，当真的有banner信息修改时，通过admin方式调用更新map中的相应banner信息即可。主要还是避免每次都去连接宝贵的数据库资源。">
-<meta property="og:updated_time" content="2017-04-16T09:55:26.000Z">
+<meta property="og:description" content="caoyongjun的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="砖头人项目:5.app中banner图片信息获取显示方法">
-<meta name="twitter:description" content="tomcat启动时一次性获取所有数据库中banner信息初始化到map中，因为常年不变所以每次前端请求时直接从静态map中直接返回对应的banner信息，当真的有banner信息修改时，通过admin方式调用更新map中的相应banner信息即可。主要还是避免每次都去连接宝贵的数据库资源。">
+<meta name="twitter:title" content="CaoYongjun's Blog">
+<meta name="twitter:description" content="caoyongjun的博客">
   
   
     <link rel="icon" href="/favicon.png">
@@ -166,183 +164,64 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-brickman-appbanner" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      砖头人项目:5.app中banner图片信息获取显示方法
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/06/06/理财-选择纯债基金/" class="archive-article-date">
+  	<time datetime="2017-06-06T07:30:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-06</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/06/06/理财-选择纯债基金/">理财-选择纯债基金</a>
     </h1>
   
 
-        
-        <a href="/2017/04/16/brickman-appbanner/" class="archive-article-date">
-  	<time datetime="2017-04-16T09:53:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>tomcat启动时一次性获取所有数据库中banner信息初始化到map中，因为常年不变所以每次前端请求时直接从静态map中直接返回对应的banner信息，当真的有banner信息修改时，通过admin方式调用更新map中的相应banner信息即可。主要还是避免每次都去连接宝贵的数据库资源。</p>
-<a id="more"></a>
-<p>1.application-service.xml   加载到这个文件时会触发init-method=”init“方法</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;bean <span class="built_in">id</span>=<span class="string">"commonDAO"</span> <span class="built_in">class</span>=<span class="string">"com.brickman.dao.impl.CommonDAOImpl"</span>/&gt;</div><div class="line">&lt;bean <span class="built_in">id</span> =<span class="string">"contextUtil"</span> <span class="built_in">class</span>=<span class="string">"com.brickman.utils.ContextUtil"</span> init-method=<span class="string">"init"</span>&gt;</div><div class="line">	&lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"commonDAO"</span> <span class="keyword">ref</span>=<span class="string">"commonDAO"</span>/&gt;</div><div class="line">	&lt;<span class="keyword">property</span> <span class="built_in">name</span>=<span class="string">"advertisementDAO"</span> <span class="keyword">ref</span>=<span class="string">"advertisementDAO"</span>/&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
-<p>2.初始化 连接数据库信息并存储到一个map中</p>
-<figure class="highlight zephir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#所有的banner信息放入这个map</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, <span class="keyword">List</span>&lt;BrickAdvertisement&gt;&gt; brickAdvertisementMapList = <span class="keyword">new</span> HashMap&lt;String, <span class="keyword">List</span>&lt;BrickAdvertisement&gt;&gt;();</div><div class="line">...省略</div><div class="line"><span class="comment">#init的方法内容</span></div><div class="line"><span class="keyword">List</span>&lt;BrickAdvertisement&gt; brickAdvertisementList01 = <span class="keyword">new</span> ArrayList&lt;BrickAdvertisement&gt;();<span class="comment">//启动页广告</span></div><div class="line"><span class="keyword">List</span>&lt;BrickAdvertisement&gt; brickAdvertisementList02 = <span class="keyword">new</span> ArrayList&lt;BrickAdvertisement&gt;();<span class="comment">//首页广告</span></div><div class="line"><span class="keyword">List</span>&lt;BrickAdvertisement&gt; brickAdvertisementList03 = <span class="keyword">new</span> ArrayList&lt;BrickAdvertisement&gt;();<span class="comment">//中间相机页广告</span></div><div class="line"><span class="keyword">List</span>&lt;BrickAdvertisement&gt; brickAdvertisementList04 = <span class="keyword">new</span> ArrayList&lt;BrickAdvertisement&gt;();<span class="comment">//中间公益页广告</span></div><div class="line">	</div><div class="line"><span class="keyword">List</span>&lt;BrickAdvertisement&gt; <span class="keyword">list</span> = advertisementDAO.listAdvertisementByType(<span class="keyword">null</span>);</div><div class="line">	</div><div class="line"><span class="keyword">if</span> (<span class="keyword">list</span> != <span class="keyword">null</span> &amp;&amp; <span class="keyword">list</span>.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">list</span>.size(); i++) &#123;</div><div class="line">		BrickAdvertisement advertisement = <span class="keyword">list</span>.get(i);</div><div class="line">		<span class="comment">//设置他们对应的为止</span></div><div class="line">		<span class="keyword">switch</span> (advertisement.getAdvertisementType()) &#123;</div><div class="line">			<span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">			  brickAdvertisementList01.add(advertisement);</div><div class="line">			  <span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">			  brickAdvertisementList02.add(advertisement);</div><div class="line">			  <span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">			  brickAdvertisementList03.add(advertisement);</div><div class="line">			  <span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">			  brickAdvertisementList04.add(advertisement);</div><div class="line">			  <span class="keyword">break</span>;</div><div class="line">			<span class="keyword">default</span>:</div><div class="line">			  <span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">brickAdvertisementMapList.put(<span class="string">"1"</span>, brickAdvertisementList01);</div><div class="line">brickAdvertisementMapList.put(<span class="string">"2"</span>, brickAdvertisementList02);</div><div class="line">brickAdvertisementMapList.put(<span class="string">"3"</span>, brickAdvertisementList03);</div><div class="line">brickAdvertisementMapList.put(<span class="string">"4"</span>, brickAdvertisementList04);</div></pre></td></tr></table></figure>
-<p>3.前端获取某个banner类型图片</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">List</span>&lt;BrickAdvertisement&gt; <span class="keyword">list</span>=ContextUtil.getBrickAdvertisementMapList().<span class="built_in">get</span>(advertisementType);</div></pre></td></tr></table></figure>
-<p>4.后台admin修改了banner信息，触发更新信息</p>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">List</span>&lt;BrickAdvertisement&gt; <span class="built_in">list</span> = advertisementBO.listAdvertisementByType(paramMap);</div><div class="line"><span class="keyword">if</span>(<span class="built_in">list</span> !=<span class="built_in">null</span> &amp;&amp; <span class="built_in">list</span>.size()&gt;<span class="number">0</span>)&#123;</div><div class="line">	ContextUtil.getInstance().getBrickAdvertisementMapList().put(advertisementType, <span class="built_in">list</span>);<span class="comment">//重新设置</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果此时此刻，你也在北漂、上漂、广漂、深漂，那这里就是你的新家：<a href="http://www.brickman.cn/" target="_blank" rel="external">www.brickman.cn</a>。<br>欢迎加入砖头人大家庭，现邀请你体验为你定制开发的“砖头人app”。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://oo83wep0f.bkt.clouddn.com/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">理财</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基金</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/04/16/brickman-appbanner/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/04/14/brickman-qq_login/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          砖头人项目:4.qq登陆授权
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/04/17/brickman-maven_git/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">砖头人项目:6.MAVEN&amp;GIT项目发布管理</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-      <div class="duoshuo">
-<section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
-</section>
-</div>
-
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -365,8 +244,8 @@ var bp = document.createElement('script');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

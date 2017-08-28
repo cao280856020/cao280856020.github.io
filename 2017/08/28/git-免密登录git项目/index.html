@@ -6,24 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>工作经验:针对大批量不同数据生成相同的sql | CaoYongjun&#39;s Blog</title>
+  <title>Git:免密登录git项目 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应">
-<meta name="keywords" content="技术,经验">
+  <meta name="description" content="场景,码云中一台服务器上的git公钥,不能满足给多个git项目的公钥设置,会出现以下信息">
+<meta name="keywords" content="技术,Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工作经验:针对大批量不同数据生成相同的sql">
-<meta property="og:url" content="http://www.caoyongjun.com/2017/04/19/work-experience/index.html">
+<meta property="og:title" content="Git:免密登录git项目">
+<meta property="og:url" content="http://www.caoyongjun.com/2017/08/28/git-免密登录git项目/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应">
-<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%E7%BB%8F%E9%AA%8Cexcel.png">
-<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5Dexcel2.png">
-<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5D%E6%AD%A3%E5%88%99.png">
-<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5D%E6%AD%A3%E5%88%992.png">
-<meta property="og:updated_time" content="2017-04-18T17:35:35.718Z">
+<meta property="og:description" content="场景,码云中一台服务器上的git公钥,不能满足给多个git项目的公钥设置,会出现以下信息">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/git-%E7%A0%81%E4%BA%91%E5%85%AC%E9%92%A5.png">
+<meta property="og:updated_time" content="2017-08-28T11:12:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工作经验:针对大批量不同数据生成相同的sql">
-<meta name="twitter:description" content="2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应">
-<meta name="twitter:image" content="http://oo83wep0f.bkt.clouddn.com/%E7%BB%8F%E9%AA%8Cexcel.png">
+<meta name="twitter:title" content="Git:免密登录git项目">
+<meta name="twitter:description" content="场景,码云中一台服务器上的git公钥,不能满足给多个git项目的公钥设置,会出现以下信息">
+<meta name="twitter:image" content="http://oo83wep0f.bkt.clouddn.com/git-%E7%A0%81%E4%BA%91%E5%85%AC%E9%92%A5.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -171,37 +168,33 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-work-experience" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-git-免密登录git项目" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      工作经验:针对大批量不同数据生成相同的sql
+      Git:免密登录git项目
     </h1>
   
 
         
-        <a href="/2017/04/19/work-experience/" class="archive-article-date">
-  	<time datetime="2017-04-18T16:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
+        <a href="/2017/08/28/git-免密登录git项目/" class="archive-article-date">
+  	<time datetime="2017-08-28T11:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。<br>由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。<br>后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应大多的表和其他如update,delete语句),<br>后来问了下当年带我的师傅龙哥教我用他的方法二excel的方式大致像下面图</p>
+        <p>场景,码云中一台服务器上的git公钥,不能满足给多个git项目的公钥设置,会出现以下信息</p>
 <a id="more"></a>
-<p><img src="http://oo83wep0f.bkt.clouddn.com/%E7%BB%8F%E9%AA%8Cexcel.png" alt="&quot;经验excel&quot;"></p>
-<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5Dexcel2.png" alt="&quot;经验excel2&quot;"></p>
-<p>方法二图中红色为我要读取并生成的不同的数据,黑色是我固定的要生成的insert语句,”…”是省略。<br>在excel中把这些语句复制粘贴到文本中由于每个excel格中间会有\t的就是如下的图,可以在文本中替换一下。(现在想想只能是一个打60分勉强及格因为数据量大时会很卡)。</p>
-<p>后来又遇到这种需求,庆幸当时的同事老赵教了我一招正则表达式替换,后来举一反三用到了后续的工作,以下是方法三</p>
-<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5D%E6%AD%A3%E5%88%99.png" alt="&quot;经验正则&quot;"></p>
-<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5D%E6%AD%A3%E5%88%992.png" alt="&quot;经验正则2&quot;"></p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">(.+)</span>\t<span class="comment">(.+)</span>\t<span class="comment">(.+)</span>\t<span class="comment">(.+)</span>\t<span class="comment">(.+)</span>\t<span class="comment">(.+)</span></div></pre></td></tr></table></figure>
-<p>注:每一个”(.+)”对应$i”i这里是1开始的不是0开始,如果是$0的话就是匹配整个内容”按照\t去匹配的数据<br>如果看不懂正则语法推荐这个博文<a href="http://deerchao.net/tutorials/regex/regex-1.htm" target="_blank" rel="external">入门30分钟正则表达式</a></p>
-<p>(推荐使用EmEditor编辑器几万条数据都不会很卡这个方法我打99分,因为我相信还有其他方法更好地满足需求,这个截图是在线的正则工具<a href="http://tool.chinaz.com/regex/" target="_blank" rel="external">http://tool.chinaz.com/regex/</a>)</p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/git-%E7%A0%81%E4%BA%91%E5%85%AC%E9%92%A5.png" alt="标记-清扫"></p>
+<p>所以找了一下git clone时直接提交密码和用户名<br>格式是<br><code><br>git clone <a href="https://$1:$2@$3" target="_blank" rel="external">https://$1:$2@$3</a><br></code></p>
+<p>$1=用户名<br>$2=密码<br>$3=git路径</p>
+<p>我的用户名是280856xxx@qq.com 但是得把@转为%40 280856xxx%40qq.com 不然会认为是git的路径<br>密码是 mimaxx</p>
+<p>带入参数的话就是以下<br><code><br>git clone <a href="https://280856xxx%40qq.com:mimaxx@www.xxx.git" target="_blank" rel="external">https://280856xxx%40qq.com:mimaxx@www.xxx.git</a><br></code></p>
 
       
 
@@ -245,7 +238,7 @@ var bp = document.createElement('script');
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
         		</li>
       		
 		</ul>
@@ -301,7 +294,7 @@ var bp = document.createElement('script');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/04/19/work-experience/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/08/28/git-免密登录git项目/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -315,20 +308,15 @@ var bp = document.createElement('script');
   
 <nav id="article-nav">
   
-    <a href="/2017/04/18/windows-cmd/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/10/java-垃圾回收机制/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Windows:cmd杀某个端口进程
+          Java:垃圾回收机制
         
       </div>
     </a>
   
-  
-    <a href="/2017/04/20/brickman-message/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">砖头人项目:7.消息通知功能实现</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

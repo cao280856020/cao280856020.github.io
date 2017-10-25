@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>砖头人项目:6.MAVEN&amp;GIT项目发布管理 | CaoYongjun&#39;s Blog</title>
+  <title>win10解决MySql Error Code 2006–MySQL服务器已离线错误 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.maven安装 123#wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo#yum -y install apache-maven">
-<meta name="keywords" content="技术,项目总结">
+  <meta name="description" content="本地mysql在导入外部sql文件的时候爆出了MySql Error Code:2006–MySQL服务器已离线错误的错误信息查到解决方案是在my.ini文件的[mysqld]下面添加max_allowed_packet=500M 实在找不到实际执行的my.ini时请参考以下图就能找到了">
+<meta name="keywords" content="经验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="砖头人项目:6.MAVEN&GIT项目发布管理">
-<meta property="og:url" content="http://www.caoyongjun.com/2017/04/17/brickman-maven_git/index.html">
+<meta property="og:title" content="win10解决MySql Error Code 2006–MySQL服务器已离线错误">
+<meta property="og:url" content="http://www.caoyongjun.com/2017/10/25/win10解决MySql Error Code 2006–MySQL服务器已离线错误/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="1.maven安装 123#wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo#yum -y install apache-maven">
-<meta property="og:updated_time" content="2017-04-17T06:56:46.000Z">
+<meta property="og:description" content="本地mysql在导入外部sql文件的时候爆出了MySql Error Code:2006–MySQL服务器已离线错误的错误信息查到解决方案是在my.ini文件的[mysqld]下面添加max_allowed_packet=500M 实在找不到实际执行的my.ini时请参考以下图就能找到了">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5Dwin10%E6%9F%A5%E6%89%BEmysql%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png">
+<meta property="og:updated_time" content="2017-10-25T08:24:56.219Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="砖头人项目:6.MAVEN&GIT项目发布管理">
-<meta name="twitter:description" content="1.maven安装 123#wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo#yum -y install apache-maven">
+<meta name="twitter:title" content="win10解决MySql Error Code 2006–MySQL服务器已离线错误">
+<meta name="twitter:description" content="本地mysql在导入外部sql文件的时候爆出了MySql Error Code:2006–MySQL服务器已离线错误的错误信息查到解决方案是在my.ini文件的[mysqld]下面添加max_allowed_packet=500M 实在找不到实际执行的my.ini时请参考以下图就能找到了">
+<meta name="twitter:image" content="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5Dwin10%E6%9F%A5%E6%89%BEmysql%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -166,35 +168,29 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-brickman-maven_git" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-win10解决MySql Error Code 2006–MySQL服务器已离线错误" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      砖头人项目:6.MAVEN&amp;GIT项目发布管理
+      win10解决MySql Error Code 2006–MySQL服务器已离线错误
     </h1>
   
 
         
-        <a href="/2017/04/17/brickman-maven_git/" class="archive-article-date">
-  	<time datetime="2017-04-17T06:53:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-17</time>
+        <a href="/2017/10/25/win10解决MySql Error Code 2006–MySQL服务器已离线错误/" class="archive-article-date">
+  	<time datetime="2017-10-25T08:06:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.maven安装</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#wget</span> http:<span class="comment">//repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo</span></div><div class="line"></div><div class="line"><span class="selector-id">#yum</span> -y install apache-maven</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>2.项目采用的是整体代码下载到服务器然后maven编译成class文件，tomcat加载class文件。由于是app接口，但是里面也包含了许多的长期固定不变的jar和一些静态H5页面js|html|css|jpg等信息，要把常修改的和静态不常更新的东西分离  为了动静分离</p>
-<p>build_brickman.sh 内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line">cur_date=$(date +%Y%m%d%H%M%S)</div><div class="line">folder_name=<span class="string">"xxx_"</span><span class="variable">$cur_date</span></div><div class="line">project_path=/root/projectGit</div><div class="line">env=<span class="string">"dev"</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$project_path</span></div><div class="line"></div><div class="line">git <span class="built_in">clone</span> git@git.oschina.net:xxxx/xxxx.git <span class="variable">$folder_name</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$folder_name</span></div><div class="line"></div><div class="line">mvn -P <span class="variable">$env</span> clean compile war:inplace</div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$project_path</span></div><div class="line"></div><div class="line">rm -rf brickman</div><div class="line"></div><div class="line">ln <span class="_">-s</span> <span class="variable">$folder_name</span> brickman</div><div class="line"></div><div class="line">ln <span class="_">-s</span> /data/img/real/html/brickman.html <span class="variable">$folder_name</span>/web/brickman.html </div><div class="line"></div><div class="line">ln <span class="_">-s</span> /data/img/real/html/brickmanshare.html <span class="variable">$folder_name</span>/web/brickmanshare.html</div></pre></td></tr></table></figure>
-<p>build_static_brickman.sh 内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line">cur_date=$(date +%Y%m%d%H%M%S)</div><div class="line">folder_name=<span class="string">"html_"</span><span class="variable">$cur_date</span></div><div class="line">static_path=/root/staticFilesGit</div><div class="line"></div><div class="line"><span class="built_in">cd</span> <span class="variable">$static_path</span></div><div class="line"></div><div class="line">git <span class="built_in">clone</span> git@git.oschina.net:xxx/xxx.git <span class="variable">$folder_name</span></div><div class="line"></div><div class="line">mv <span class="variable">$folder_name</span>/web/* <span class="variable">$folder_name</span>/</div><div class="line"></div><div class="line">rm -rf <span class="variable">$folder_name</span>/web</div><div class="line"></div><div class="line">rm -rf html</div><div class="line"></div><div class="line">ln <span class="_">-s</span> <span class="variable">$static_path</span>/<span class="variable">$folder_name</span> <span class="variable">$static_path</span>/html</div></pre></td></tr></table></figure>
-<p>如果此时此刻，你也在北漂、上漂、广漂、深漂，那这里就是你的新家：<a href="http://www.brickman.cn/" target="_blank" rel="external">www.brickman.cn</a>。<br>欢迎加入砖头人大家庭，现邀请你体验为你定制开发的“砖头人app”。</p>
+        <p>本地mysql在导入外部sql文件的时候爆出了MySql Error Code:2006–MySQL服务器已离线错误的错误信息<br><br>查到解决方案是在my.ini文件的[mysqld]下面添加max_allowed_packet=500M</p>
+<p>实在找不到实际执行的my.ini时请参考以下图就能找到了<br><a id="more"></a></p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/%5B%E7%BB%8F%E9%AA%8C%5Dwin10%E6%9F%A5%E6%89%BEmysql%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="&quot;经验 查找win10的mysql.ini&quot;"></p>
 
       
 
@@ -234,11 +230,7 @@ var bp = document.createElement('script');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
         		</li>
       		
 		</ul>
@@ -294,7 +286,7 @@ var bp = document.createElement('script');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/04/17/brickman-maven_git/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/10/25/win10解决MySql Error Code 2006–MySQL服务器已离线错误/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,20 +300,15 @@ var bp = document.createElement('script');
   
 <nav id="article-nav">
   
-    <a href="/2017/04/16/brickman-appbanner/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/28/git-免密登录git项目/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          砖头人项目:5.app中banner图片信息获取显示方法
+          Git:免密登录git项目
         
       </div>
     </a>
   
-  
-    <a href="/2017/04/18/windows-cmd/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Windows:cmd杀某个端口进程</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

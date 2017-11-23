@@ -6,17 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>Tag: java | CaoYongjun&#39;s Blog</title>
+  <title>性能测试:JMeter手把手配置 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="caoyongjun的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CaoYongjun's Blog">
-<meta property="og:url" content="http://www.caoyongjun.com/tags/java/index.html">
+  <meta name="description" content="为了测试接口的tps能力，使用了ApacheJMeter工具帮助我们模拟并发场景去压力测试 以下是JMeter的配置方法">
+<meta name="keywords" content="技术,JMeter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能测试:JMeter手把手配置">
+<meta property="og:url" content="http://www.caoyongjun.com/2017/11/23/jmeter压测配置/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="caoyongjun的博客">
+<meta property="og:description" content="为了测试接口的tps能力，使用了ApacheJMeter工具帮助我们模拟并发场景去压力测试 以下是JMeter的配置方法">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewTreeResult.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DeditThreads.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DcsvData.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewCSV.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5Deditcsv.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewHttp.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DeditHttp.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewTreeResult.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DresultTreeInfo.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewAssert.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DeditAssert.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewJuheResult.png">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DjuheResultInfo.png">
+<meta property="og:updated_time" content="2017-11-23T07:58:41.375Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CaoYongjun's Blog">
-<meta name="twitter:description" content="caoyongjun的博客">
+<meta name="twitter:title" content="性能测试:JMeter手把手配置">
+<meta name="twitter:description" content="为了测试接口的tps能力，使用了ApacheJMeter工具帮助我们模拟并发场景去压力测试 以下是JMeter的配置方法">
+<meta name="twitter:image" content="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewTreeResult.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -164,36 +180,77 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jmeter压测配置" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/10/selenium/" class="archive-article-date">
-  	<time datetime="2017-04-10T11:37:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/10/selenium/">软件测试神一样的超级好用的selenium 原创java util</a>
+    <h1 class="article-title" itemprop="name">
+      性能测试:JMeter手把手配置
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/11/23/jmeter压测配置/" class="archive-article-date">
+  	<time datetime="2017-11-23T07:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为了测试接口的tps能力，使用了ApacheJMeter工具帮助我们模拟并发场景去压力测试</p>
+<p>以下是JMeter的配置方法<br><a id="more"></a></p>
+<h2 id="1-新建线程组"><a href="#1-新建线程组" class="headerlink" title="1.新建线程组"></a>1.新建线程组</h2><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewTreeResult.png" alt="newThreads"></p>
+<h4 id="1-1-设定线程数量等信息"><a href="#1-1-设定线程数量等信息" class="headerlink" title="1.1.设定线程数量等信息"></a>1.1.设定线程数量等信息</h4><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DeditThreads.png" alt="editThreads"></p>
+<h2 id="2-添加用于并发的数据请求csv"><a href="#2-添加用于并发的数据请求csv" class="headerlink" title="2.添加用于并发的数据请求csv"></a>2.添加用于并发的数据请求csv</h2><h4 id="2-1-csv的数据文件"><a href="#2-1-csv的数据文件" class="headerlink" title="2.1.csv的数据文件"></a>2.1.csv的数据文件</h4><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DcsvData.png" alt="csvData"></p>
+<h4 id="2-2-新建csv配置"><a href="#2-2-新建csv配置" class="headerlink" title="2.2.新建csv配置"></a>2.2.新建csv配置</h4><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewCSV.png" alt="newCsvData"></p>
+<h4 id="2-3-配置cvs"><a href="#2-3-配置cvs" class="headerlink" title="2.3.配置cvs"></a>2.3.配置cvs</h4><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5Deditcsv.png" alt="editCsvData"></p>
+<h2 id="3-添加http请求"><a href="#3-添加http请求" class="headerlink" title="3.添加http请求"></a>3.添加http请求</h2><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewHttp.png" alt="newHttp"></p>
+<h4 id="3-1-设定http请求参数"><a href="#3-1-设定http请求参数" class="headerlink" title="3.1.设定http请求参数"></a>3.1.设定http请求参数</h4><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DeditHttp.png" alt="editHttp"></p>
+<h2 id="4-察看树结果"><a href="#4-察看树结果" class="headerlink" title="4.察看树结果"></a>4.察看树结果</h2><p>主要用于查看http请求信息对应的http返回结果</p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewTreeResult.png" alt="newTreeInfo"></p>
+<h4 id="4-1-请求结果集-绿色代表成功，红色代表失败-响应数据"><a href="#4-1-请求结果集-绿色代表成功，红色代表失败-响应数据" class="headerlink" title="4.1.请求结果集 绿色代表成功，红色代表失败 响应数据"></a>4.1.请求结果集 绿色代表成功，红色代表失败 响应数据</h4><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DresultTreeInfo.png" alt="resultTreeInfo"></p>
+<h2 id="5-添加断言"><a href="#5-添加断言" class="headerlink" title="5.添加断言"></a>5.添加断言</h2><p>主要为了区分http请求失败与否用</p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewAssert.png" alt="newAssert"></p>
+<h4 id="5-1-写入判断依据-只要包含code等于200都算成功"><a href="#5-1-写入判断依据-只要包含code等于200都算成功" class="headerlink" title="5.1.写入判断依据  只要包含code等于200都算成功"></a>5.1.写入判断依据  只要包含code等于200都算成功</h4><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DeditAssert.png" alt="editAssert"></p>
+<h2 id="6-添加聚合报告"><a href="#6-添加聚合报告" class="headerlink" title="6.添加聚合报告"></a>6.添加聚合报告</h2><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DnewJuheResult.png" alt="newJuhe"></p>
+<h4 id="6-1-聚合报告分析"><a href="#6-1-聚合报告分析" class="headerlink" title="6.1.聚合报告分析"></a>6.1.聚合报告分析</h4><p><img src="http://oo83wep0f.bkt.clouddn.com/%5BJMeter%5DjuheResultInfo.png" alt="JuheInfo"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://oo83wep0f.bkt.clouddn.com/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,25 +260,104 @@ var bp = document.createElement('script');
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JMeter</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/11/23/jmeter压测配置/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/25/win10解决MySql Error Code 2006–MySQL服务器已离线错误/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          win10解决MySql Error Code 2006–MySQL服务器已离线错误
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+      <div class="duoshuo">
+<section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
+</section>
+</div>
+
   
 
-    
+
 
 
           </div>
@@ -244,9 +380,9 @@ var bp = document.createElement('script');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

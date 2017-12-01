@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>技术:js正则表达式 | CaoYongjun&#39;s Blog</title>
+  <title>设计模式:原型模式 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="123var date=&quot;2017-04-01&quot;;var reg=/\-/g;    //正则表达式，-为需要被换的内容,g为全局的date.replace(reg,&quot;&quot;); 结果输出内容为 “20170401”">
-<meta name="keywords" content="技术,js">
+  <meta name="description" content="作为一个创建型模式,它的做用是复制一个已经实例化好的类，object类的clone方法是一个native本地方法，可直接操作内存中的二进制流，特别是复制大对象时，性能差别非常明显。clone时不会触发构造函数。 优点创建复杂或耗时的实例时比构造创建速度快 缺点实现Cloneable接口或Serializable接口 使用场景1、资源优化场景。2、类初始化需要消化非常多的资源，这个资源包括数据、硬件">
+<meta name="keywords" content="技术,设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="技术:js正则表达式">
-<meta property="og:url" content="http://www.caoyongjun.com/2017/04/12/js-正则表达式/index.html">
+<meta property="og:title" content="设计模式:原型模式">
+<meta property="og:url" content="http://www.caoyongjun.com/2017/12/01/java-design-prototype/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="123var date=&quot;2017-04-01&quot;;var reg=/\-/g;    //正则表达式，-为需要被换的内容,g为全局的date.replace(reg,&quot;&quot;); 结果输出内容为 “20170401”">
-<meta property="og:updated_time" content="2017-04-13T10:24:22.966Z">
+<meta property="og:description" content="作为一个创建型模式,它的做用是复制一个已经实例化好的类，object类的clone方法是一个native本地方法，可直接操作内存中的二进制流，特别是复制大对象时，性能差别非常明显。clone时不会触发构造函数。 优点创建复杂或耗时的实例时比构造创建速度快 缺点实现Cloneable接口或Serializable接口 使用场景1、资源优化场景。2、类初始化需要消化非常多的资源，这个资源包括数据、硬件">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/clonecopy.jpg">
+<meta property="og:image" content="http://oo83wep0f.bkt.clouddn.com/cloneexample.jpg">
+<meta property="og:updated_time" content="2017-12-01T10:32:45.024Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="技术:js正则表达式">
-<meta name="twitter:description" content="123var date=&quot;2017-04-01&quot;;var reg=/\-/g;    //正则表达式，-为需要被换的内容,g为全局的date.replace(reg,&quot;&quot;); 结果输出内容为 “20170401”">
+<meta name="twitter:title" content="设计模式:原型模式">
+<meta name="twitter:description" content="作为一个创建型模式,它的做用是复制一个已经实例化好的类，object类的clone方法是一个native本地方法，可直接操作内存中的二进制流，特别是复制大对象时，性能差别非常明显。clone时不会触发构造函数。 优点创建复杂或耗时的实例时比构造创建速度快 缺点实现Cloneable接口或Serializable接口 使用场景1、资源优化场景。2、类初始化需要消化非常多的资源，这个资源包括数据、硬件">
+<meta name="twitter:image" content="http://oo83wep0f.bkt.clouddn.com/clonecopy.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -166,28 +169,48 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js-正则表达式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-java-design-prototype" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      技术:js正则表达式
+      设计模式:原型模式
     </h1>
   
 
         
-        <a href="/2017/04/12/js-正则表达式/" class="archive-article-date">
-  	<time datetime="2017-04-12T10:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
+        <a href="/2017/12/01/java-design-prototype/" class="archive-article-date">
+  	<time datetime="2017-12-01T10:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">date</span>=<span class="string">"2017-04-01"</span>;</div><div class="line"><span class="built_in">var</span> reg=<span class="regexp">/\-/g</span>;    <span class="comment">//正则表达式，-为需要被换的内容,g为全局的</span></div><div class="line"><span class="built_in">date</span>.replace(reg,<span class="string">""</span>);</div></pre></td></tr></table></figure>
-<p>结果输出内容为 “20170401”</p>
+        <p>作为一个创建型模式,它的做用是复制一个已经实例化好的类，object类的clone方法是一个native本地方法，可直接操作内存中的二进制流，特别是复制大对象时，性能差别非常明显。clone时不会触发构造函数。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>创建复杂或耗时的实例时比构造创建速度快</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>实现Cloneable接口或Serializable接口</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h6 id="1、资源优化场景。"><a href="#1、资源优化场景。" class="headerlink" title="1、资源优化场景。"></a>1、资源优化场景。</h6><h6 id="2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。"><a href="#2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。" class="headerlink" title="2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。"></a>2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。</h6><h6 id="3、性能和安全要求的场景。"><a href="#3、性能和安全要求的场景。" class="headerlink" title="3、性能和安全要求的场景。"></a>3、性能和安全要求的场景。</h6><h6 id="4、通过-new-产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。"><a href="#4、通过-new-产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。" class="headerlink" title="4、通过 new 产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。"></a>4、通过 new 产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。</h6><h6 id="5、一个对象多个修改者的场景。"><a href="#5、一个对象多个修改者的场景。" class="headerlink" title="5、一个对象多个修改者的场景。"></a>5、一个对象多个修改者的场景。</h6><h6 id="6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。"><a href="#6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。" class="headerlink" title="6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。"></a>6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。</h6><h6 id="7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过-clone的方法创建一个对象，然后由工厂方法提供给调用者。"><a href="#7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过-clone的方法创建一个对象，然后由工厂方法提供给调用者。" class="headerlink" title="7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过 clone的方法创建一个对象，然后由工厂方法提供给调用者。"></a>7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过 clone的方法创建一个对象，然后由工厂方法提供给调用者。</h6><a id="more"></a>
+<p>实现Cloneable接口会有两种拷贝方式它们的区别为下面图</p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/clonecopy.jpg" alt="&quot;浅复制深复制&quot;"></p>
+<p>现实生活中的例子</p>
+<p><img src="http://oo83wep0f.bkt.clouddn.com/cloneexample.jpg" alt="&quot;现实生活浅复制深复制&quot;"></p>
+<h2 id="如何实现浅拷贝"><a href="#如何实现浅拷贝" class="headerlink" title="如何实现浅拷贝"></a>如何实现浅拷贝</h2><p>实现Clone接口，覆盖Clone方法</p>
+<p>Prototype.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Prototype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">        <span class="keyword">private</span> String name;</div><div class="line">        <span class="keyword">private</span> Book book;</div><div class="line">        <span class="function"><span class="keyword">public</span> Prototype <span class="title">clone</span><span class="params">()</span></span>&#123;</div><div class="line">                Prototype p=<span class="keyword">null</span>;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                        p = (Prototype) <span class="keyword">super</span>.clone();</div><div class="line">                        <span class="keyword">return</span> p;</div><div class="line">                &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//...省略setter和getter方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Test.java<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">                Book b=<span class="keyword">new</span> Book();</div><div class="line">                b.setBookName(<span class="string">"数学"</span>);</div><div class="line"></div><div class="line">                Prototype pro = <span class="keyword">new</span> Prototype();</div><div class="line">                pro.setBook(b);</div><div class="line">                Prototype pro1 =  pro.clone();<span class="comment">//复制一个</span></div><div class="line">                b.setBookName(<span class="string">"语文"</span>);<span class="comment">//更改bookname</span></div><div class="line"></div><div class="line">                System.out.<span class="built_in">println</span>(pro.getBook()==pro1.getBook());</div><div class="line">                System.out.<span class="built_in">println</span>(<span class="string">"original object:"</span> + pro.getBook().getBookName());</div><div class="line">                System.out.<span class="built_in">println</span>(<span class="string">"cloned object:"</span> + pro1.getBook().getBookName());</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>输出结果<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span></div><div class="line">original <span class="class"><span class="keyword">object</span></span>:语文</div><div class="line">cloned <span class="class"><span class="keyword">object</span></span>:语文</div></pre></td></tr></table></figure></p>
+<h2 id="如何实现深拷贝"><a href="#如何实现深拷贝" class="headerlink" title="如何实现深拷贝"></a>如何实现深拷贝</h2><p>由于浅拷贝默认只是把包含的对象引用复制了一份，所以也要把包含的对象也实现cloneable接口然后在原型clone方法里调用包含的对象clone方法</p>
+<p>Prototype.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Prototype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">        <span class="keyword">private</span> String name;</div><div class="line">        <span class="keyword">private</span> Book book;</div><div class="line">        <span class="function"><span class="keyword">public</span> Prototype <span class="title">clone</span><span class="params">()</span></span>&#123;</div><div class="line">                Prototype p=<span class="keyword">null</span>;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                        p = (Prototype) <span class="keyword">super</span>.clone();</div><div class="line">                        p.book = <span class="keyword">this</span>.book.clone();</div><div class="line">                        <span class="keyword">return</span> p;</div><div class="line">                &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//...省略setter和getter方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Book.java<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Cloneable</span></span></span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">String</span> bookName;</div><div class="line"></div><div class="line">        <span class="keyword">public</span> Book clone()&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                        <span class="keyword">return</span> (Book) <span class="keyword">super</span>.clone();</div><div class="line">                &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//...省略setter和getter方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Test.java<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">                Book b=<span class="keyword">new</span> Book();</div><div class="line">                b.setBookName(<span class="string">"数学"</span>);</div><div class="line"></div><div class="line">                Prototype pro = <span class="keyword">new</span> Prototype();</div><div class="line">                pro.setBook(b);</div><div class="line">                Prototype pro1 =  pro.clone();<span class="comment">//复制一个</span></div><div class="line">                b.setBookName(<span class="string">"语文"</span>);<span class="comment">//更改bookname</span></div><div class="line"></div><div class="line">                System.out.<span class="built_in">println</span>(pro.getBook()==pro1.getBook());</div><div class="line">                System.out.<span class="built_in">println</span>(<span class="string">"original object:"</span> + pro.getBook().getBookName());</div><div class="line">                System.out.<span class="built_in">println</span>(<span class="string">"cloned object:"</span> + pro1.getBook().getBookName());</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>输出结果<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="literal">false</span></div><div class="line">original <span class="class"><span class="keyword">object</span></span>:语文</div><div class="line">cloned <span class="class"><span class="keyword">object</span></span>:数学</div></pre></td></tr></table></figure></p>
+<h2 id="利用序列化串行方式复制实例"><a href="#利用序列化串行方式复制实例" class="headerlink" title="利用序列化串行方式复制实例"></a>利用序列化串行方式复制实例</h2><p>原始类要实现serializable，包含的类也要实现serializable</p>
+<p>NewPrototype.java<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewPrototype</span> <span class="keyword"><span class="keyword">implements</span> <span class="type">Serializable</span></span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> int id;</div><div class="line">        <span class="keyword">private</span> Book book;</div><div class="line">        <span class="keyword">public</span> NewPrototype deepClone()&#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                        ByteArrayOutputStream bo = <span class="keyword">new</span> <span class="type">ByteArrayOutputStream</span>();</div><div class="line">                        ObjectOutputStream oo = <span class="keyword">new</span> <span class="type">ObjectOutputStream</span>(bo);</div><div class="line">                        oo.writeObject(<span class="built_in">this</span>);</div><div class="line"></div><div class="line">                        ByteArrayInputStream bi = <span class="keyword">new</span> <span class="type">ByteArrayInputStream</span>(bo.toByteArray());</div><div class="line">                        ObjectInputStream oi = <span class="keyword">new</span> <span class="type">ObjectInputStream</span>(bi);</div><div class="line">                        <span class="keyword">return</span> (NewPrototype) oi.readObject();</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                        <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//...省略setter和getter方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Book.java<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span></div><div class="line">//...省略其他</div></pre></td></tr></table></figure></p>
+<p>Test.java<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">                Book book = <span class="keyword">new</span> Book();</div><div class="line">                book.setBookName(<span class="string">"语文"</span>);</div><div class="line">                NewPrototype original = <span class="keyword">new</span> NewPrototype();</div><div class="line">                original.setBook(book);</div><div class="line">                <span class="comment">//深度拷贝</span></div><div class="line">                NewPrototype deepClone = original.deepClone();</div><div class="line">                deepClone.getBook().setBookName(<span class="string">"数学"</span>);</div><div class="line">                System.out.<span class="built_in">println</span>(<span class="string">"original name:"</span> + original.getBook().getBookName());</div><div class="line">                System.out.<span class="built_in">println</span>(<span class="string">"cloned name:"</span> + deepClone.getBook().getBookName());</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">original <span class="built_in">name</span>:语文</div><div class="line">cloned <span class="built_in">name</span>:数学</div></pre></td></tr></table></figure></p>
 
       
 
@@ -231,7 +254,7 @@ var bp = document.createElement('script');
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
@@ -287,7 +310,7 @@ var bp = document.createElement('script');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/04/12/js-正则表达式/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/12/01/java-design-prototype/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,20 +324,15 @@ var bp = document.createElement('script');
   
 <nav id="article-nav">
   
-    <a href="/2017/04/12/brickman-nginx/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/11/23/jmeter压测配置/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          砖头人项目:2.Nginx配置篇
+          性能测试:JMeter手把手配置
         
       </div>
     </a>
   
-  
-    <a href="/2017/04/13/brickman-tomcat/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">砖头人项目:3.Tomcat配置篇</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

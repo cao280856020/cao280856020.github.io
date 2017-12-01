@@ -166,6 +166,77 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java-design-prototype" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/01/java-design-prototype/">设计模式:原型模式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/01/java-design-prototype/" class="archive-article-date">
+  	<time datetime="2017-12-01T10:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作为一个创建型模式,它的做用是复制一个已经实例化好的类，object类的clone方法是一个native本地方法，可直接操作内存中的二进制流，特别是复制大对象时，性能差别非常明显。clone时不会触发构造函数。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>创建复杂或耗时的实例时比构造创建速度快</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>实现Cloneable接口或Serializable接口</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h6 id="1、资源优化场景。"><a href="#1、资源优化场景。" class="headerlink" title="1、资源优化场景。"></a>1、资源优化场景。</h6><h6 id="2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。"><a href="#2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。" class="headerlink" title="2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。"></a>2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。</h6><h6 id="3、性能和安全要求的场景。"><a href="#3、性能和安全要求的场景。" class="headerlink" title="3、性能和安全要求的场景。"></a>3、性能和安全要求的场景。</h6><h6 id="4、通过-new-产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。"><a href="#4、通过-new-产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。" class="headerlink" title="4、通过 new 产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。"></a>4、通过 new 产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。</h6><h6 id="5、一个对象多个修改者的场景。"><a href="#5、一个对象多个修改者的场景。" class="headerlink" title="5、一个对象多个修改者的场景。"></a>5、一个对象多个修改者的场景。</h6><h6 id="6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。"><a href="#6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。" class="headerlink" title="6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。"></a>6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。</h6><h6 id="7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过-clone的方法创建一个对象，然后由工厂方法提供给调用者。"><a href="#7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过-clone的方法创建一个对象，然后由工厂方法提供给调用者。" class="headerlink" title="7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过 clone的方法创建一个对象，然后由工厂方法提供给调用者。"></a>7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过 clone的方法创建一个对象，然后由工厂方法提供给调用者。</h6>
+        
+          <a class="article-more-a" href="/2017/12/01/java-design-prototype/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/01/java-design-prototype/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-jmeter压测配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -440,74 +511,6 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-理财-选择纯债基金" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/06/理财-选择纯债基金/">理财-选择纯债基金</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/06/理财-选择纯债基金/" class="archive-article-date">
-  	<time datetime="2017-06-06T07:30:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>资产配置多样化,就好比多个篮子分散放鸡蛋一样,纯债型基金虽然收益相对其他类型基金低,但确实最为稳健收益的产品,以下是听”力哥说理财”课后总结的一些选择纯债基金的方法让我们一步步操作选择最为稳健的基金吧！</p>
-        
-          <a class="article-more-a" href="/2017/06/06/理财-选择纯债基金/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">理财</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基金</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/06/理财-选择纯债基金/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -610,6 +613,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">

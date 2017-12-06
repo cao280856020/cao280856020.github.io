@@ -166,6 +166,79 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-java-selenium-project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/06/java-selenium-project/">Selenium:自动化迁移wiki数据</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/06/java-selenium-project/" class="archive-article-date">
+  	<time datetime="2017-12-06T11:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="原由"><a href="#原由" class="headerlink" title="原由"></a>原由</h2><p>原本一直在使用第三方的在线接口文档维护着接口。<br>最近新建立了公司内部的wiki百科为了安全性要在一周内迁移所有的showdoc文档到gitlab上。<br>目前showdoc有将近100个文档说明，如果组内10个人一人拷贝10个也花不了太长时间，但是作为程序员还得用程序员的方式去解决重复性的活。<br>还好刚毕业时有过类似的经历，那时也是因为wiki迁移不光有文字还有各种图片各种zip文档，大约3G不能丢失。<br>此次迁移幸好本身的showdoc是markdown编辑的gitlab也无缝支持markdown保存，所以花了一下午的时间专门写了整个流程的selenium+java的操作。</p>
+<p>来看一下如何去做这一套迁移工作</p>
+        
+          <a class="article-more-a" href="/2017/12/06/java-selenium-project/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Selenium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/06/java-selenium-project/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-java-design-prototype" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -439,81 +512,9 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-java-垃圾回收机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/10/java-垃圾回收机制/">Java:垃圾回收机制</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/10/java-垃圾回收机制/" class="archive-article-date">
-  	<time datetime="2017-08-10T03:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java垃圾回收采用“自适应”技术,在“标记-清扫”和“停止-复制”中来回切换,期间虚拟机会一直监视。</p>
-<p>来回切换点</p>
-<p>如果所有对象都很稳定,垃圾回收期效率降低的话会被切换为—“标记-清扫”</p>
-<p>如果出现很多碎片的话就会切换为—“停止-复制”</p>
-<p>以下是原理<br>
-        
-          <a class="article-more-a" href="/2017/08/10/java-垃圾回收机制/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/10/java-垃圾回收机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -617,6 +618,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Selenium</a>
               </li>
              
               <li class="article-tag-list-item">

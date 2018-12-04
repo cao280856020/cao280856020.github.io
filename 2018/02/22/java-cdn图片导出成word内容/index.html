@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://www.caoyongjun.com">
+  <title>java:cdn图片导出成word内容 | CaoYongjun&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="项目需求把聊天记录中的文字和存放在cdn中的图片导出成word内容，使用到了mht(今日主要的坑在于cdn外链图片如何放入到word中)百度中的mht的定义1MHTML文件又称为聚合HTML文档、Web档案或单一文件网页。单个文件网页可将网站的所有元素（包括文本和图形）都保存到单个文件中。这种封装使您可将整个网站发布为单个内嵌MIME （MIME：通过 Internet 连接传递多媒体资源的一列标">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java:cdn图片导出成word内容">
+<meta property="og:url" content="http://www.caoyongjun.com/2018/02/22/java-cdn图片导出成word内容/index.html">
+<meta property="og:site_name" content="CaoYongjun's Blog">
+<meta property="og:description" content="项目需求把聊天记录中的文字和存放在cdn中的图片导出成word内容，使用到了mht(今日主要的坑在于cdn外链图片如何放入到word中)百度中的mht的定义1MHTML文件又称为聚合HTML文档、Web档案或单一文件网页。单个文件网页可将网站的所有元素（包括文本和图形）都保存到单个文件中。这种封装使您可将整个网站发布为单个内嵌MIME （MIME：通过 Internet 连接传递多媒体资源的一列标">
+<meta property="og:image" content="http://blog.manxue.vip/java%E5%AF%BC%E5%87%BAword%E6%95%88%E6%9E%9C.png">
+<meta property="og:updated_time" content="2018-11-19T03:40:42.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java:cdn图片导出成word内容">
+<meta name="twitter:description" content="项目需求把聊天记录中的文字和存放在cdn中的图片导出成word内容，使用到了mht(今日主要的坑在于cdn外链图片如何放入到word中)百度中的mht的定义1MHTML文件又称为聚合HTML文档、Web档案或单一文件网页。单个文件网页可将网站的所有元素（包括文本和图形）都保存到单个文件中。这种封装使您可将整个网站发布为单个内嵌MIME （MIME：通过 Internet 连接传递多媒体资源的一列标">
+<meta name="twitter:image" content="http://blog.manxue.vip/java%E5%AF%BC%E5%87%BAword%E6%95%88%E6%9E%9C.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.05aabf.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?df0e3d34ff9d2ffb3a832baa428996e9";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+
+var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+
+
+})();
+
+</script>
+
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #4682B4"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
+		</hgroup>
+		
+		<p class="header-subtitle">Java程序员</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/技术">技术</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/cao280856020" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/155110387" title="douban"><i class="icon-douban"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4682B4"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
+			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Java程序员<i class="icon icon-quo-right"></i></p>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cao280856020" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/155110387" title="douban"><i class="icon-douban"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/技术">技术</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-java-cdn图片导出成word内容" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java:cdn图片导出成word内容
+    </h1>
+  
+
+        
+        <a href="/2018/02/22/java-cdn图片导出成word内容/" class="archive-article-date">
+  	<time datetime="2018-02-22T09:11:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="项目需求把聊天记录中的文字和存放在cdn中的图片导出成word内容，使用到了mht-今日主要的坑在于cdn外链图片如何放入到word中"><a href="#项目需求把聊天记录中的文字和存放在cdn中的图片导出成word内容，使用到了mht-今日主要的坑在于cdn外链图片如何放入到word中" class="headerlink" title="项目需求把聊天记录中的文字和存放在cdn中的图片导出成word内容，使用到了mht(今日主要的坑在于cdn外链图片如何放入到word中)"></a>项目需求把聊天记录中的文字和存放在cdn中的图片导出成word内容，使用到了mht(今日主要的坑在于cdn外链图片如何放入到word中)</h2><p>百度中的mht的定义<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">MHTML</span>文件又称为聚合<span class="selector-tag">HTML</span>文档、<span class="selector-tag">Web</span>档案或单一文件网页。单个文件网页可将网站的所有元素（包括文本和图形）都保存到单个文件中。这种封装使您可将整个网站发布为单个内嵌<span class="selector-tag">MIME</span> （<span class="selector-tag">MIME</span>：通过 <span class="selector-tag">Internet</span> 连接传递多媒体资源的一列标准。<span class="selector-tag">MIME</span>类型通知程序对象所包含的内容（如图形、声音或视频)的聚合<span class="selector-tag">HTML</span>文档(<span class="selector-tag">MHTML</span>)文件，或将整个网站作为一个电子邮件或附件发送。<span class="selector-tag">Internet</span> <span class="selector-tag">Explorer</span> 4<span class="selector-class">.0</span>及更高版本支持此格式。</div></pre></td></tr></table></figure></p>
+<p>由于每个聊天记录的图片都是放入到了oss中所以为了要放入word里面避免无外网情况下查看到图片所以每次在导出时先去判断是否已经下载过该图如果下载了那就只取，并把图片使用base64加密到mht中，具体的实现看以下部分</p>
+<a id="more"></a>
+<h3 id="用到的一些知识补充"><a href="#用到的一些知识补充" class="headerlink" title="用到的一些知识补充"></a>用到的一些知识补充</h3><p>1.Content-Location<br>首部字段表示的是报文主体返回资源对应的URI(统一资源标识符Uniform Resource Identifier)<br>当返回的页面内容与实际请求的对象不同时，首部字段Content-Location内会写明URI<br>代码中file:///C:/9FD15EF4/file8676.htm</p>
+<p>2.Content-Transfer-Encoding<br>规定了传输报文主体时采用的编码方式<br>代码中Content-Transfer-Encoding: quoted-printable</p>
+<p>3.Content-Type<br>multipart/related=内嵌资源<br>boundary=使用字符串来划分多部分对象集合指明的各类实体。在boundary字符串指定的各个实体的起始行之前插入“–”标记（例如：——=_NextPart_01CFAA79.4B969C00），而在多部分对象集合对应的字符串的最后插入“–”（例如：——=_NextPart_01CFAA79.4B969C00–）作为结束</p>
+<p>4.MIME（Multipurpose Internet Mail Extensions多用途因特网邮件扩展）机制<br>mime允许处理文本，图片，视频等不同类型的数据。而在mime扩展中会使用一种称为多部分对象集合的方法，来容纳多分不同类型的数据。</p>
+<h3 id="实际代码"><a href="#实际代码" class="headerlink" title="实际代码"></a>实际代码</h3><p>1.pom.xml   为了导出模板使用freemarker<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.23<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>2.mhtword.ftl 模板中的内容</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">MIME-Version</span>: 1.0</div><div class="line"><span class="attribute">Content-Type</span>: multipart/related; boundary="----=_NextPart_01CFAA79.4B969C00"</div><div class="line"></div><div class="line"><span class="dts">此文档为“单个文件网页”，也称为“Web 档案”文件。如果您看到此消息，但是您的浏览器或编辑器不支持“Web 档案”文件。请下载支持“Web 档案”的浏览器，如 Microsoft Internet Explorer。</span></div><div class="line"></div><div class="line">------=_NextPart_01CFAA79<span class="number">.4</span>B969C00</div><div class="line">Content-Location: file:<span class="comment">///C:/9FD15EF4/file8676.htm</span></div><div class="line">Content-Transfer-Encoding: quoted-printable</div><div class="line">Content-Type: text/html; charset=<span class="string">"utf-8"</span></div><div class="line"></div><div class="line"><span class="params">&lt;html xmlns:v=<span class="number">3</span>D"urn:schemas-microsoft-com:vml"</span></div><div class="line">xmlns:o=<span class="number">3</span>D"urn:schemas-microsoft-com:office:office"</div><div class="line">xmlns:w=<span class="number">3</span>D"urn:schemas-microsoft-com:office:word"</div><div class="line">xmlns=<span class="number">3</span>D"http://www.w3.org/TR/REC-html40"&gt;</div><div class="line"></div><div class="line"><span class="params">&lt;head&gt;</span></div><div class="line"><span class="params">&lt;meta http-equiv=<span class="number">3</span>DContent-Type content=<span class="number">3</span>D"text/html; charset=<span class="number">3</span>Dutf<span class="number">-8</span>"&gt;</span></div><div class="line"><span class="params">&lt;meta name=<span class="number">3</span>DProgId content=<span class="number">3</span>DWord.Document&gt;</span></div><div class="line"><span class="params">&lt;meta name=<span class="number">3</span>DGenerator content=<span class="number">3</span>D"Microsoft Word <span class="number">11</span>"&gt;</span></div><div class="line"><span class="params">&lt;meta name=<span class="number">3</span>DOriginator content=<span class="number">3</span>D"Microsoft Word <span class="number">11</span>"&gt;</span></div><div class="line"><span class="params">&lt;link rel=<span class="number">3</span>DFile-List href=<span class="number">3</span>D"file8676.files/filelist.xml"&gt;</span></div><div class="line"><span class="params">&lt;link rel=<span class="number">3</span>DEdit-Time-Data href=<span class="number">3</span>D"file8676.files/editdata.mso"&gt;</span></div><div class="line"><span class="params">&lt;!--[if !mso]&gt;</span></div><div class="line"><span class="params">&lt;style&gt;</span></div><div class="line">v\:* &#123;behavior:url(<span class="meta">#default#VML);&#125;</span></div><div class="line">o\:* &#123;behavior:url(<span class="meta">#default#VML);&#125;</span></div><div class="line">w\:* &#123;behavior:url(<span class="meta">#default#VML);&#125;</span></div><div class="line">.<span class="class">shape </span>&#123;behavior:url(<span class="meta">#default#VML);&#125;</span></div><div class="line"><span class="params">&lt;/style&gt;</span></div><div class="line"><span class="params">&lt;![endif]--&gt;</span></div><div class="line"><span class="params">&lt;title&gt;</span>$&#123;title&#125;<span class="params">&lt;/title&gt;</span></div><div class="line"><span class="params">&lt;!--[if gte mso <span class="number">9</span>]&gt;</span><span class="params">&lt;xml&gt;</span></div><div class="line"> <span class="params">&lt;o:DocumentProperties&gt;</span></div><div class="line">  <span class="params">&lt;o:Author&gt;</span>User<span class="params">&lt;/o:Author&gt;</span></div><div class="line">  <span class="params">&lt;o:LastAuthor&gt;</span>User<span class="params">&lt;/o:LastAuthor&gt;</span></div><div class="line">  <span class="params">&lt;o:Revision&gt;</span><span class="number">3</span><span class="params">&lt;/o:Revision&gt;</span></div><div class="line">  <span class="params">&lt;o:TotalTime&gt;</span><span class="number">1</span><span class="params">&lt;/o:TotalTime&gt;</span></div><div class="line">  <span class="params">&lt;o:Created&gt;</span><span class="number">2014</span><span class="number">-07</span><span class="number">-28</span>T07:<span class="number">16</span>:<span class="number">00</span>Z<span class="params">&lt;/o:Created&gt;</span></div><div class="line">  <span class="params">&lt;o:LastSaved&gt;</span><span class="number">2014</span><span class="number">-07</span><span class="number">-28</span>T07:<span class="number">33</span>:<span class="number">00</span>Z<span class="params">&lt;/o:LastSaved&gt;</span></div><div class="line">  <span class="params">&lt;o:Pages&gt;</span><span class="number">1</span><span class="params">&lt;/o:Pages&gt;</span></div><div class="line">  <span class="params">&lt;o:Words&gt;</span><span class="number">11</span><span class="params">&lt;/o:Words&gt;</span></div><div class="line">  <span class="params">&lt;o:Characters&gt;</span><span class="number">63</span><span class="params">&lt;/o:Characters&gt;</span></div><div class="line">  <span class="params">&lt;o:Company&gt;</span>&amp;<span class="meta">#24494;&amp;#36719;&amp;#20013;&amp;#22269;&lt;/o:Company&gt;</span></div><div class="line">  <span class="params">&lt;o:Lines&gt;</span><span class="number">1</span><span class="params">&lt;/o:Lines&gt;</span></div><div class="line">  <span class="params">&lt;o:Paragraphs&gt;</span><span class="number">1</span><span class="params">&lt;/o:Paragraphs&gt;</span></div><div class="line">  <span class="params">&lt;o:CharactersWithSpaces&gt;</span><span class="number">73</span><span class="params">&lt;/o:CharactersWithSpaces&gt;</span></div><div class="line">  <span class="params">&lt;o:Version&gt;</span><span class="number">11.9999</span><span class="params">&lt;/o:Version&gt;</span></div><div class="line"> <span class="params">&lt;/o:DocumentProperties&gt;</span></div><div class="line"><span class="params">&lt;/xml&gt;</span><span class="params">&lt;![endif]--&gt;</span><span class="params">&lt;!--[if gte mso <span class="number">9</span>]&gt;</span><span class="params">&lt;xml&gt;</span></div><div class="line"> <span class="params">&lt;w:WordDocument&gt;</span></div><div class="line">  <span class="params">&lt;w:SpellingState&gt;</span>Clean<span class="params">&lt;/w:SpellingState&gt;</span></div><div class="line">  <span class="params">&lt;w:GrammarState&gt;</span>Clean<span class="params">&lt;/w:GrammarState&gt;</span></div><div class="line">  <span class="params">&lt;w:PunctuationKerning/&gt;</span></div><div class="line">  <span class="params">&lt;w:DrawingGridVerticalSpacing&gt;</span><span class="number">7.8</span> &amp;<span class="meta">#30917;&lt;/w:DrawingGridVerticalSpacing&gt;</span></div><div class="line">  <span class="params">&lt;w:DisplayHorizontalDrawingGridEvery&gt;</span><span class="number">0</span><span class="params">&lt;/w:DisplayHorizontalDrawingGridEve=</span></div><div class="line">ry&gt;</div><div class="line">  <span class="params">&lt;w:DisplayVerticalDrawingGridEvery&gt;</span><span class="number">2</span><span class="params">&lt;/w:DisplayVerticalDrawingGridEvery&gt;</span></div><div class="line">  <span class="params">&lt;w:ValidateAgainstSchemas/&gt;</span></div><div class="line">  <span class="params">&lt;w:SaveIfXMLInvalid&gt;</span>false<span class="params">&lt;/w:SaveIfXMLInvalid&gt;</span></div><div class="line">  <span class="params">&lt;w:IgnoreMixedContent&gt;</span>false<span class="params">&lt;/w:IgnoreMixedContent&gt;</span></div><div class="line">  <span class="params">&lt;w:AlwaysShowPlaceholderText&gt;</span>false<span class="params">&lt;/w:AlwaysShowPlaceholderText&gt;</span></div><div class="line">  <span class="params">&lt;w:Compatibility&gt;</span></div><div class="line">   <span class="params">&lt;w:SpaceForUL/&gt;</span></div><div class="line">   <span class="params">&lt;w:BalanceSingleByteDoubleByteWidth/&gt;</span></div><div class="line">   <span class="params">&lt;w:DoNotLeaveBackslashAlone/&gt;</span></div><div class="line">   <span class="params">&lt;w:ULTrailSpace/&gt;</span></div><div class="line">   <span class="params">&lt;w:DoNotExpandShiftReturn/&gt;</span></div><div class="line">   <span class="params">&lt;w:AdjustLineHeightInTable/&gt;</span></div><div class="line">   <span class="params">&lt;w:BreakWrappedTables/&gt;</span></div><div class="line">   <span class="params">&lt;w:SnapToGridInCell/&gt;</span></div><div class="line">   <span class="params">&lt;w:WrapTextWithPunct/&gt;</span></div><div class="line">   <span class="params">&lt;w:UseAsianBreakRules/&gt;</span></div><div class="line">   <span class="params">&lt;w:DontGrowAutofit/&gt;</span></div><div class="line">   <span class="params">&lt;w:UseFELayout/&gt;</span></div><div class="line">  <span class="params">&lt;/w:Compatibility&gt;</span></div><div class="line">  <span class="params">&lt;w:BrowserLevel&gt;</span>MicrosoftInternetExplorer4<span class="params">&lt;/w:BrowserLevel&gt;</span></div><div class="line"> <span class="params">&lt;/w:WordDocument&gt;</span></div><div class="line"><span class="params">&lt;/xml&gt;</span><span class="params">&lt;![endif]--&gt;</span><span class="params">&lt;!--[if gte mso <span class="number">9</span>]&gt;</span><span class="params">&lt;xml&gt;</span></div><div class="line"> <span class="params">&lt;w:LatentStyles DefLockedState=<span class="number">3</span>D"false" LatentStyleCount=<span class="number">3</span>D"<span class="number">156</span>"&gt;</span></div><div class="line"> <span class="params">&lt;/w:LatentStyles&gt;</span></div><div class="line"><span class="params">&lt;/xml&gt;</span><span class="params">&lt;![endif]--&gt;</span></div><div class="line"><span class="params">&lt;style&gt;</span></div><div class="line"><span class="params">&lt;!--</span></div><div class="line"> /* Font Definitions */</div><div class="line"> @font-face</div><div class="line">    &#123;font-family:SimSun;</div><div class="line">    panose<span class="number">-1</span>:<span class="number">2</span> <span class="number">1</span> <span class="number">6</span> <span class="number">0</span> <span class="number">3</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>;</div><div class="line">    mso-font-alt:SimSun;</div><div class="line">    mso-font-charset:<span class="number">134</span>;</div><div class="line">    mso-generic-font-family:auto;</div><div class="line">    mso-font-pitch:variable;</div><div class="line">    mso-font-signature:<span class="number">3</span> <span class="number">135135232</span> <span class="number">16</span> <span class="number">0</span> <span class="number">262145</span> <span class="number">0</span>;&#125;</div><div class="line">@font-face</div><div class="line">    &#123;font-family:SimSun;</div><div class="line">    panose<span class="number">-1</span>:<span class="number">2</span> <span class="number">1</span> <span class="number">6</span> <span class="number">0</span> <span class="number">3</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>;</div><div class="line">    mso-font-charset:<span class="number">134</span>;</div><div class="line">    mso-generic-font-family:auto;</div><div class="line">    mso-font-pitch:variable;</div><div class="line">    mso-font-signature:<span class="number">3</span> <span class="number">135135232</span> <span class="number">16</span> <span class="number">0</span> <span class="number">262145</span> <span class="number">0</span>;&#125;</div><div class="line"> /* Style Definitions */</div><div class="line"> p.MsoNormal, li.MsoNormal, div.MsoNormal</div><div class="line">    &#123;mso-style-parent:"";</div><div class="line">    margin:<span class="number">0</span>cm;</div><div class="line">    margin-bottom:<span class="number">.0001</span>pt;</div><div class="line">    text-align:justify;</div><div class="line">    text-justify:inter-ideograph;</div><div class="line">    mso-pagination:none;</div><div class="line">    font-size:<span class="number">10.5</span>pt;</div><div class="line">    mso-bidi-font-size:<span class="number">10.0</span>pt;</div><div class="line">    font-family:"Times New Roman";</div><div class="line">    mso-fareast-font-family:SimSun;</div><div class="line">    mso-font-kerning:<span class="number">1.0</span>pt;&#125;</div><div class="line">span.GramE</div><div class="line">    &#123;mso-style-name:"";</div><div class="line">    mso-gram-e:yes;&#125;</div><div class="line"> /* Page Definitions */</div><div class="line"> @page</div><div class="line">    &#123;mso-page-border-surround-header:no;</div><div class="line">    mso-page-border-surround-footer:no;&#125;</div><div class="line">@page Section1</div><div class="line">    &#123;size:<span class="number">595.3</span>pt <span class="number">841.9</span>pt;</div><div class="line">    margin:<span class="number">72.0</span>pt <span class="number">90.0</span>pt <span class="number">72.0</span>pt <span class="number">90.0</span>pt;</div><div class="line">    mso-header-margin:<span class="number">42.55</span>pt;</div><div class="line">    mso-footer-margin:<span class="number">49.6</span>pt;</div><div class="line">    mso-paper-source:<span class="number">0</span>;</div><div class="line">    layout-grid:<span class="number">15.6</span>pt;&#125;</div><div class="line">div.Section1</div><div class="line">    &#123;page:Section1;&#125;</div><div class="line">--&gt;</div><div class="line"><span class="params">&lt;/style&gt;</span></div><div class="line"><span class="params">&lt;!--[if gte mso <span class="number">10</span>]&gt;</span></div><div class="line"><span class="params">&lt;style&gt;</span></div><div class="line"> <span class="comment">/* Style Definitions */</span></div><div class="line"> table.MsoNormalTable</div><div class="line">    &#123;mso-style-name:\<span class="number">666</span>E\<span class="number">901</span>A\<span class="number">8868</span>\<span class="number">683</span>C;</div><div class="line">    mso-tstyle-rowband-size:<span class="number">0</span>;</div><div class="line">    mso-tstyle-colband-size:<span class="number">0</span>;</div><div class="line">    mso-style-noshow:yes;</div><div class="line">    mso-style-parent:<span class="string">""</span>;</div><div class="line">    mso-padding-alt:<span class="number">0</span>cm <span class="number">5.4</span>pt <span class="number">0</span>cm <span class="number">5.4</span>pt;</div><div class="line">    mso-para-margin:<span class="number">0</span>cm;</div><div class="line">    mso-para-margin-bottom:<span class="number">.0001</span>pt;</div><div class="line">    mso-pagination:widow-orphan;</div><div class="line">    font-size:<span class="number">10.0</span>pt;</div><div class="line">    font-family:<span class="string">"Times New Roman"</span>;</div><div class="line">    mso-fareast-font-family:<span class="string">"Times New Roman"</span>;</div><div class="line">    mso-ansi-language:<span class="meta">#0400;</span></div><div class="line">    mso-fareast-language:<span class="meta">#0400;</span></div><div class="line">    mso-bidi-language:<span class="meta">#0400;&#125;</span></div><div class="line"><span class="params">&lt;/style&gt;</span></div><div class="line"><span class="params">&lt;![endif]--&gt;</span><span class="params">&lt;!--[if gte mso <span class="number">9</span>]&gt;</span><span class="params">&lt;xml&gt;</span></div><div class="line"> <span class="params">&lt;o:shapedefaults v:ext=<span class="number">3</span>D"edit" spidmax=<span class="number">3</span>D"<span class="number">2050</span>"/&gt;</span></div><div class="line"><span class="params">&lt;/xml&gt;</span><span class="params">&lt;![endif]--&gt;</span><span class="params">&lt;!--[if gte mso <span class="number">9</span>]&gt;</span><span class="params">&lt;xml&gt;</span></div><div class="line"> <span class="params">&lt;o:shapelayout v:ext=<span class="number">3</span>D"edit"&gt;</span></div><div class="line">  <span class="params">&lt;o:idmap v:ext=<span class="number">3</span>D"edit" data=<span class="number">3</span>D"<span class="number">1</span>"/&gt;</span></div><div class="line"> <span class="params">&lt;/o:shapelayout&gt;</span><span class="params">&lt;/xml&gt;</span><span class="params">&lt;![endif]--&gt;</span></div><div class="line"><span class="params">&lt;/head&gt;</span></div><div class="line"></div><div class="line"><span class="params">&lt;body lang=<span class="number">3</span>DZH-CN style=<span class="number">3</span>D'tab-interval:<span class="number">21.0</span>pt;text-justify-trim:punctuati=</span></div><div class="line">on'&gt;</div><div class="line"></div><div class="line"><span class="params">&lt;div class=<span class="number">3</span>DSection1 style=<span class="number">3</span>D'layout-grid:<span class="number">15.6</span>pt'&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="params">&lt;p class=<span class="number">3</span>DMsoNormal align=<span class="number">3</span>Dleft style=<span class="number">3</span>D'text-align:left;mso-outline-level:<span class="number">1</span>'&gt;</span></div><div class="line">    <span class="params">&lt;span style=<span class="number">3</span>D'font-size:<span class="number">12.0</span>pt;font-family:宋体;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'&gt;</span></div><div class="line">        $&#123;content&#125;</div><div class="line">    <span class="params">&lt;/span&gt;</span></div><div class="line">    <span class="params">&lt;span lang=EN-US style=<span class="number">3</span>D'font-size:<span class="number">12.0</span>pt;font-family:宋体'&gt;</span></div><div class="line">        <span class="params">&lt;o:p&gt;</span><span class="params">&lt;/o:p&gt;</span></div><div class="line">    <span class="params">&lt;/span&gt;</span></div><div class="line"><span class="params">&lt;/p&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="params">&lt;/div&gt;</span></div><div class="line"></div><div class="line"><span class="params">&lt;/body&gt;</span></div><div class="line"></div><div class="line"><span class="params">&lt;/html&gt;</span></div><div class="line"></div><div class="line"><span class="params">&lt;#list imageList as imageMap&gt;</span></div><div class="line">------=_NextPart_01CFAA79<span class="number">.4</span>B969C00</div><div class="line">Content-Location: file:<span class="comment">///C:/9FD15EF4/file8676.files/$&#123;imageMap["imageName"]&#125;</span></div><div class="line">Content-Transfer-Encoding: base64</div><div class="line">Content-Type: image/$&#123;imageMap[<span class="string">"imageType"</span>]&#125;</div><div class="line"></div><div class="line">$&#123;imageMap[<span class="string">"imageBase"</span>]&#125;</div><div class="line"><span class="params">&lt;/#list&gt;</span></div><div class="line"></div><div class="line">------=_NextPart_01CFAA79<span class="number">.4</span>B969C00</div><div class="line">Content-Location: file:<span class="comment">///C:/9FD15EF4/file8676.files/filelist.xml</span></div><div class="line">Content-Transfer-Encoding: quoted-printable</div><div class="line">Content-Type: text/xml; charset=<span class="string">"utf-8"</span></div><div class="line"></div><div class="line"><span class="params">&lt;xml xmlns:o=<span class="number">3</span>D"urn:schemas-microsoft-com:office:office"&gt;</span></div><div class="line"><span class="params">&lt;o:MainFile HRef=<span class="number">3</span>D"../file8676.htm"/&gt;</span></div><div class="line"><span class="params">&lt;#list imageList as imageMap&gt;</span></div><div class="line"><span class="params">&lt;o:File HRef=<span class="number">3</span>D"$&#123;imageMap["imageName"]&#125;"/&gt;</span></div><div class="line"><span class="params">&lt;/#list&gt;</span></div><div class="line"> <span class="params">&lt;o:File HRef=<span class="number">3</span>D"filelist.xml"/&gt;</span></div><div class="line"><span class="params">&lt;/xml&gt;</span></div><div class="line">------=_NextPart_01CFAA79<span class="number">.4</span>B969C00--</div></pre></td></tr></table></figure>
+<p>3.具体实现类<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div></pre></td><td class="code"><pre><div class="line">package com.shanyuan.political.party.platform.controller.admin.meeting;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.awt.image.BufferedImage;</div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.FileInputStream;</div><div class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.InputStream;</div><div class="line"><span class="keyword">import</span> java.io.PrintWriter;</div><div class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</div><div class="line"><span class="keyword">import</span> java.io.Writer;</div><div class="line"><span class="keyword">import</span> java.net.URL;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.<span class="built_in">List</span>;</div><div class="line"><span class="keyword">import</span> java.util.<span class="built_in">Map</span>;</div><div class="line"><span class="keyword">import</span> java.util.regex.Matcher;</div><div class="line"><span class="keyword">import</span> java.util.regex.<span class="built_in">Pattern</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.imageio.ImageIO;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.<span class="keyword">factory</span>.annotation.Autowired;</div><div class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.CrossOrigin;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.shanyuan.political.party.platform.common.util.Md5Util;</div><div class="line"><span class="keyword">import</span> com.shanyuan.political.party.platform.facade.meeting.MeetingFacade;</div><div class="line"></div><div class="line"><span class="keyword">import</span> freemarker.template.Configuration;</div><div class="line"><span class="keyword">import</span> freemarker.template.Template;</div><div class="line"><span class="keyword">import</span> freemarker.template.TemplateException;</div><div class="line"><span class="keyword">import</span> sun.misc.BASE64Encoder;</div><div class="line"></div><div class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"restriction"</span>)</div><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="meta">@CrossOrigin</span></div><div class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/admin-meeting"</span>)</div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">AdminMeetingController</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="meta">@Autowired</span></div><div class="line">	private MeetingFacade meetingFacade;</div><div class="line"></div><div class="line">	public <span class="keyword">void</span> createDoc(<span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; dataMap,Writer out) &#123;</div><div class="line">        <span class="comment">//设置模本装置方法和路径,FreeMarker支持多种模板装载方法。可以重servlet，classpath，数据库装载，</span></div><div class="line">    	<span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</div><div class="line">		Configuration configuration = <span class="keyword">new</span> Configuration();</div><div class="line">        configuration.setDefaultEncoding(<span class="string">"utf-8"</span>);</div><div class="line">    	configuration.setClassForTemplateLoading(<span class="keyword">this</span>.getClass(), <span class="string">"/"</span>);</div><div class="line">        Template t=<span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">//放在resources/template 目录下面</span></div><div class="line">            t = configuration.getTemplate(<span class="string">"template/mhtword.ftl"</span>, <span class="string">"UTF-8"</span>);</div><div class="line">            t.process(dataMap, out);</div><div class="line">        &#125; <span class="keyword">catch</span> (TemplateException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/*</span></div><div class="line">     * &lt;img/&gt;</div><div class="line">     * &lt;img/&gt; ==&gt;</div><div class="line">     * &lt;v:shape style=3D'width:352.5pt;height:318.75pt'&gt;</div><div class="line">            &lt;v:imagedata src=3D"file8676.files/image002.jpg" o:title=3D"logo"/&gt;</div><div class="line">        &lt;/v:shape&gt;</div><div class="line">     */</div><div class="line">    public <span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; exImageToD(HttpServletRequest request,<span class="built_in">String</span> content) throws FileNotFoundException, IOException &#123;</div><div class="line">    	<span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; map=<span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt;();</div><div class="line">    	<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; imgList=<span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    	</div><div class="line">    	<span class="built_in">String</span> regex = <span class="string">"&lt;img[^&gt;]+src\\s*=\\s*['\"]([^'\"]+)['\"][^&gt;]*&gt;"</span>;</div><div class="line">        content = content.replaceAll(<span class="string">"(style=)"</span>,<span class="string">"$13D"</span>);</div><div class="line">        <span class="built_in">Pattern</span> pattern = <span class="built_in">Pattern</span>.compile(regex);</div><div class="line">        Matcher matcher = pattern.matcher(content);</div><div class="line">        <span class="built_in">String</span> src = <span class="string">""</span>;</div><div class="line">        <span class="built_in">String</span> srcPath=request.getSession().getServletContext().getRealPath(<span class="string">"/"</span>);</div><div class="line">        <span class="keyword">while</span> (matcher.find())&#123;</div><div class="line">        	<span class="keyword">try</span>&#123;</div><div class="line">        		src = matcher.group(<span class="number">1</span>);</div><div class="line">        		<span class="keyword">if</span>(src.indexOf(<span class="string">"http"</span>)==<span class="number">0</span>)&#123;</div><div class="line">        			<span class="comment">//新的图片名称 他的路径是  https://xxxxx.jpg  ==&gt; md5()+".png"</span></div><div class="line">        			<span class="built_in">String</span> newSrc=Md5Util.getMD5Lower(src)+<span class="string">".png"</span>;</div><div class="line">        			<span class="comment">//存放到某个位置</span></div><div class="line">        			<span class="built_in">String</span> srcRealPathFile = srcPath + newSrc;</div><div class="line">        			File newFile=<span class="keyword">new</span> File(srcRealPathFile);</div><div class="line">        			<span class="comment">//不存在时才去网络下载到指定文件夹下</span></div><div class="line">        			<span class="keyword">if</span>(!newFile.exists())&#123;</div><div class="line">        				FileUtils.copyURLToFile(<span class="keyword">new</span> URL(src), newFile);</div><div class="line">        			&#125;</div><div class="line">        			<span class="comment">//把图片内容修改为mhtm可读的标签形式</span></div><div class="line">    				content = content.replaceFirst(regex, appendShap(newSrc));</div><div class="line">        			imgList.add(newSrc);<span class="comment">//记录图片路径</span></div><div class="line">        		&#125;</div><div class="line">        	&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">        		e.printStackTrace();</div><div class="line">        	&#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        map.put(<span class="string">"content"</span>, content);</div><div class="line">        map.put(<span class="string">"imgList"</span>, imgList);</div><div class="line">        <span class="keyword">return</span> map;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//获得图片的base64码</span></div><div class="line">    public <span class="built_in">String</span> getImageBase(HttpServletRequest request,<span class="built_in">String</span> src) &#123;</div><div class="line">        File file = <span class="keyword">new</span> File(request.getSession().getServletContext().getRealPath(<span class="string">"/"</span>)+src.replace(request.getContextPath(), <span class="string">""</span>));</div><div class="line">        <span class="keyword">if</span>(!file.exists()) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">        InputStream <span class="keyword">in</span> = <span class="keyword">null</span>;</div><div class="line">        byte[] data = <span class="keyword">null</span>;  </div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">in</span> = <span class="keyword">new</span> FileInputStream(file);</div><div class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e1) &#123;</div><div class="line">            e1.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span> &#123;  </div><div class="line">            data = <span class="keyword">new</span> byte[<span class="keyword">in</span>.available()];  </div><div class="line">            <span class="keyword">in</span>.read(data);  </div><div class="line">            <span class="keyword">in</span>.close();  </div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;  </div><div class="line">          e.printStackTrace();  </div><div class="line">        &#125; </div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BASE64Encoder().encode(data);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    private <span class="built_in">String</span> appendShap(<span class="built_in">String</span> str)&#123;</div><div class="line">        <span class="built_in">String</span> shape = <span class="string">"&lt;v:shape type=3D\"#_x0000_t75\" style=3D'width:"</span> + <span class="number">100</span> + <span class="string">";height:"</span> + <span class="number">100</span> + <span class="string">"'&gt;"</span></div><div class="line">                + <span class="string">"&lt;v:imagedata src=3D\"file8676.files/"</span> + str + <span class="string">" \"o:title=3D"</span> + str + <span class="string">"\"/&gt;"</span></div><div class="line">                + <span class="string">"&lt;/v:shape&gt;"</span>;</div><div class="line">        <span class="keyword">return</span> shape;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//这里面要注意的一个问题是type=3D\"#_x0000_t75\ 这是一定要加上的不然在2003中能看到图片，到了2007中就看不到了action</span></div><div class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/download-meeting-summary"</span>)</div><div class="line">    public <span class="keyword">void</span> exportBlog(<span class="meta">@RequestParam</span>(value=<span class="string">"meetingid"</span>,required=<span class="keyword">true</span>) Integer meetingId,HttpServletResponse response, HttpServletRequest request) throws UnsupportedEncodingException &#123;</div><div class="line">        response.addHeader(<span class="string">"Content-Disposition"</span>,<span class="string">"attachment;filename="</span>+ <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"组织生活"</span>.getBytes(<span class="string">"GBK"</span>), <span class="string">"iso-8859-1"</span>) + <span class="string">".doc"</span>);</div><div class="line">        response.setContentType(<span class="string">"application/x-download"</span>);<span class="comment">// 设置为下载application/x-download</span></div><div class="line">        response.setCharacterEncoding(<span class="string">"utf-8"</span>);</div><div class="line">        PrintWriter output = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">        	</div><div class="line">        	<span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; dataMap = <span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt;();<span class="comment">//填充的数据</span></div><div class="line">        	</div><div class="line">            output = response.getWriter();</div><div class="line">            </div><div class="line">            <span class="built_in">String</span> content=meetingFacade.getSummary(meetingId);</div><div class="line">            </div><div class="line">            <span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">Object</span>&gt; setMap=exImageToD(request,content);</div><div class="line">            dataMap.put(<span class="string">"content"</span>, setMap.<span class="keyword">get</span>(<span class="string">"content"</span>));</div><div class="line">            dataMap.put(<span class="string">"title"</span>, <span class="string">"组织生活"</span>);</div><div class="line">            <span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt; srcs = (<span class="built_in">List</span>&lt;<span class="built_in">String</span>&gt;) setMap.<span class="keyword">get</span>(<span class="string">"imgList"</span>);</div><div class="line">            <span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt; imageMap = <span class="keyword">null</span>;</div><div class="line">            <span class="built_in">List</span>&lt;<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;<span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">String</span>&gt;&gt;();</div><div class="line">            <span class="built_in">String</span>[] sp = <span class="keyword">null</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="built_in">String</span> src : srcs)&#123;</div><div class="line">                sp = src.split(<span class="string">"/"</span>);</div><div class="line">                imageMap = <span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;();</div><div class="line">                imageMap.put(<span class="string">"imageName"</span>, sp[sp.length<span class="number">-1</span>]);</div><div class="line">                imageMap.put(<span class="string">"imageType"</span>, sp[sp.length<span class="number">-1</span>].split(<span class="string">"\\."</span>)[<span class="number">1</span>]);</div><div class="line">                imageMap.put(<span class="string">"imageBase"</span>, getImageBase(request,src));</div><div class="line">                list.add(imageMap);</div><div class="line">            &#125;</div><div class="line">            dataMap.put(<span class="string">"imageList"</span>, list);</div><div class="line">            createDoc(dataMap,output);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            output.flush();</div><div class="line">            output.close();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="输出word内容"><a href="#输出word内容" class="headerlink" title="输出word内容"></a>输出word内容</h3><p><img src="http://blog.manxue.vip/java%E5%AF%BC%E5%87%BAword%E6%95%88%E6%9E%9C.png" alt="&quot;java-cdnword&quot;"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2018/02/22/java-cdn图片导出成word内容/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/02/03/sql集合思想的一个例子/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          sql集合思想的一个例子
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/23/spring-事务管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring:spring事务管理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+      <div class="duoshuo">
+<section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
+</section>
+</div>
+
+  
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Cao Yong jun
+    	</div>
+    	<div style="width:300px;margin:0 auto; padding:20px 0;">
+			<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=13108202000504" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">冀公网安备 13108202000504号</p></a>
+		</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true,
+		showTags: true
+	}
+</script>
+
+<script>!function(t){function n(r){if(e[r])return e[r].exports;var o=e[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var e={};return n.m=t,n.c=e,n.p="./",n(0)}([function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function o(t,n){var e=/\/|index.html/g;return t.replace(e,"")===n.replace(e,"")}function i(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,e=0,r=t.length;e<r;e++){var i=t[e];o(n,i.getAttribute("href"))&&(0,d.default)(i,"active")}}function u(t){for(var n=t.offsetLeft,e=t.offsetParent;null!==e;)n+=e.offsetLeft,e=e.offsetParent;return n}function f(t){for(var n=t.offsetTop,e=t.offsetParent;null!==e;)n+=e.offsetTop,e=e.offsetParent;return n}function c(t,n,e,r,o){var i=u(t),c=f(t)-n;if(c-e<=o){var a=t.$newDom;a||(a=t.cloneNode(!0),(0,h.default)(t,a),t.$newDom=a,a.style.position="fixed",a.style.top=(e||c)+"px",a.style.left=i+"px",a.style.zIndex=r||2,a.style.width="100%",a.style.color="#fff"),a.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var s=t.$newDom;s&&(s.style.visibility="hidden")}}function a(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");c(t,document.body.scrollTop,-63,2,0),c(n,document.body.scrollTop,1,3,0)}function s(){document.querySelector("#container").addEventListener("scroll",function(t){a()}),window.addEventListener("scroll",function(t){a()}),a()}function l(){x.default.versions.mobile&&window.screen.width<800&&(i(),s())}var p=e(71),d=r(p),v=e(72),y=(r(v),e(84)),h=r(y),b=e(69),x=r(b),g=e(75),m=r(g),w=e(70);l(),(0,w.addLoadEvent)(function(){m.default.init()}),t.exports={}},function(t,n){var e=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=e)},function(t,n){var e={}.hasOwnProperty;t.exports=function(t,n){return e.call(t,n)}},function(t,n,e){var r=e(49),o=e(15);t.exports=function(t){return r(o(t))}},function(t,n,e){t.exports=!e(8)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,e){var r=e(6),o=e(12);t.exports=e(4)?function(t,n,e){return r.f(t,n,o(1,e))}:function(t,n,e){return t[n]=e,t}},function(t,n,e){var r=e(10),o=e(30),i=e(24),u=Object.defineProperty;n.f=e(4)?Object.defineProperty:function(t,n,e){if(r(t),n=i(n,!0),r(e),o)try{return u(t,n,e)}catch(t){}if("get"in e||"set"in e)throw TypeError("Accessors not supported!");return"value"in e&&(t[n]=e.value),t}},function(t,n,e){var r=e(22)("wks"),o=e(13),i=e(1).Symbol,u="function"==typeof i,f=t.exports=function(t){return r[t]||(r[t]=u&&i[t]||(u?i:o)("Symbol."+t))};f.store=r},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n,e){var r=e(35),o=e(16);t.exports=Object.keys||function(t){return r(t,o)}},function(t,n,e){var r=e(11);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var e=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++e+r).toString(36))}},function(t,n){var e=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=e)},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){t.exports=!0},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,e){var r=e(6).f,o=e(2),i=e(7)("toStringTag");t.exports=function(t,n,e){t&&!o(t=e?t:t.prototype,i)&&r(t,i,{configurable:!0,value:n})}},function(t,n,e){var r=e(22)("keys"),o=e(13);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,n,e){var r=e(1),o="__core-js_shared__",i=r[o]||(r[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n){var e=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:e)(t)}},function(t,n,e){var r=e(11);t.exports=function(t,n){if(!r(t))return t;var e,o;if(n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;if("function"==typeof(e=t.valueOf)&&!r(o=e.call(t)))return o;if(!n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n,e){var r=e(1),o=e(14),i=e(18),u=e(26),f=e(6).f;t.exports=function(t){var n=o.Symbol||(o.Symbol=i?{}:r.Symbol||{});"_"==t.charAt(0)||t in n||f(n,t,{value:u.f(t)})}},function(t,n,e){n.f=e(7)},function(t,n,e){var r=e(1),o=e(14),i=e(46),u=e(5),f="prototype",c=function(t,n,e){var a,s,l,p=t&c.F,d=t&c.G,v=t&c.S,y=t&c.P,h=t&c.B,b=t&c.W,x=d?o:o[n]||(o[n]={}),g=x[f],m=d?r:v?r[n]:(r[n]||{})[f];d&&(e=n);for(a in e)s=!p&&m&&void 0!==m[a],s&&a in x||(l=s?m[a]:e[a],x[a]=d&&"function"!=typeof m[a]?e[a]:h&&s?i(l,r):b&&m[a]==l?function(t){var n=function(n,e,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(n);case 2:return new t(n,e)}return new t(n,e,r)}return t.apply(this,arguments)};return n[f]=t[f],n}(l):y&&"function"==typeof l?i(Function.call,l):l,y&&((x.virtual||(x.virtual={}))[a]=l,t&c.R&&g&&!g[a]&&u(g,a,l)))};c.F=1,c.G=2,c.S=4,c.P=8,c.B=16,c.W=32,c.U=64,c.R=128,t.exports=c},function(t,n){var e={}.toString;t.exports=function(t){return e.call(t).slice(8,-1)}},function(t,n,e){var r=e(11),o=e(1).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,e){t.exports=!e(4)&&!e(8)(function(){return 7!=Object.defineProperty(e(29)("div"),"a",{get:function(){return 7}}).a})},function(t,n,e){"use strict";var r=e(18),o=e(27),i=e(36),u=e(5),f=e(2),c=e(17),a=e(51),s=e(20),l=e(58),p=e(7)("iterator"),d=!([].keys&&"next"in[].keys()),v="@@iterator",y="keys",h="values",b=function(){return this};t.exports=function(t,n,e,x,g,m,w){a(e,n,x);var O,S,_,j=function(t){if(!d&&t in A)return A[t];switch(t){case y:return function(){return new e(this,t)};case h:return function(){return new e(this,t)}}return function(){return new e(this,t)}},P=n+" Iterator",E=g==h,M=!1,A=t.prototype,T=A[p]||A[v]||g&&A[g],L=T||j(g),N=g?E?j("entries"):L:void 0,C="Array"==n?A.entries||T:T;if(C&&(_=l(C.call(new t)),_!==Object.prototype&&(s(_,P,!0),r||f(_,p)||u(_,p,b))),E&&T&&T.name!==h&&(M=!0,L=function(){return T.call(this)}),r&&!w||!d&&!M&&A[p]||u(A,p,L),c[n]=L,c[P]=b,g)if(O={values:E?L:j(h),keys:m?L:j(y),entries:N},w)for(S in O)S in A||i(A,S,O[S]);else o(o.P+o.F*(d||M),n,O);return O}},function(t,n,e){var r=e(10),o=e(55),i=e(16),u=e(21)("IE_PROTO"),f=function(){},c="prototype",a=function(){var t,n=e(29)("iframe"),r=i.length,o="<",u=">";for(n.style.display="none",e(48).appendChild(n),n.src="javascript:",t=n.contentWindow.document,t.open(),t.write(o+"script"+u+"document.F=Object"+o+"/script"+u),t.close(),a=t.F;r--;)delete a[c][i[r]];return a()};t.exports=Object.create||function(t,n){var e;return null!==t?(f[c]=r(t),e=new f,f[c]=null,e[u]=t):e=a(),void 0===n?e:o(e,n)}},function(t,n,e){var r=e(35),o=e(16).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,e){var r=e(2),o=e(3),i=e(45)(!1),u=e(21)("IE_PROTO");t.exports=function(t,n){var e,f=o(t),c=0,a=[];for(e in f)e!=u&&r(f,e)&&a.push(e);for(;n.length>c;)r(f,e=n[c++])&&(~i(a,e)||a.push(e));return a}},function(t,n,e){t.exports=e(5)},function(t,n,e){var r=e(15);t.exports=function(t){return Object(r(t))}},function(t,n,e){t.exports={default:e(41),__esModule:!0}},function(t,n,e){t.exports={default:e(42),__esModule:!0}},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var o=e(39),i=r(o),u=e(38),f=r(u),c="function"==typeof f.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":typeof t};n.default="function"==typeof f.default&&"symbol"===c(i.default)?function(t){return"undefined"==typeof t?"undefined":c(t)}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":"undefined"==typeof t?"undefined":c(t)}},function(t,n,e){e(65),e(63),e(66),e(67),t.exports=e(14).Symbol},function(t,n,e){e(64),e(68),t.exports=e(26).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,e){var r=e(3),o=e(61),i=e(60);t.exports=function(t){return function(n,e,u){var f,c=r(n),a=o(c.length),s=i(u,a);if(t&&e!=e){for(;a>s;)if(f=c[s++],f!=f)return!0}else for(;a>s;s++)if((t||s in c)&&c[s]===e)return t||s||0;return!t&&-1}}},function(t,n,e){var r=e(43);t.exports=function(t,n,e){if(r(t),void 0===n)return t;switch(e){case 1:return function(e){return t.call(n,e)};case 2:return function(e,r){return t.call(n,e,r)};case 3:return function(e,r,o){return t.call(n,e,r,o)}}return function(){return t.apply(n,arguments)}}},function(t,n,e){var r=e(9),o=e(34),i=e(19);t.exports=function(t){var n=r(t),e=o.f;if(e)for(var u,f=e(t),c=i.f,a=0;f.length>a;)c.call(t,u=f[a++])&&n.push(u);return n}},function(t,n,e){t.exports=e(1).document&&document.documentElement},function(t,n,e){var r=e(28);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,n,e){var r=e(28);t.exports=Array.isArray||function(t){return"Array"==r(t)}},function(t,n,e){"use strict";var r=e(32),o=e(12),i=e(20),u={};e(5)(u,e(7)("iterator"),function(){return this}),t.exports=function(t,n,e){t.prototype=r(u,{next:o(1,e)}),i(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,e){var r=e(9),o=e(3);t.exports=function(t,n){for(var e,i=o(t),u=r(i),f=u.length,c=0;f>c;)if(i[e=u[c++]]===n)return e}},function(t,n,e){var r=e(13)("meta"),o=e(11),i=e(2),u=e(6).f,f=0,c=Object.isExtensible||function(){return!0},a=!e(8)(function(){return c(Object.preventExtensions({}))}),s=function(t){u(t,r,{value:{i:"O"+ ++f,w:{}}})},l=function(t,n){if(!o(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!i(t,r)){if(!c(t))return"F";if(!n)return"E";s(t)}return t[r].i},p=function(t,n){if(!i(t,r)){if(!c(t))return!0;if(!n)return!1;s(t)}return t[r].w},d=function(t){return a&&v.NEED&&c(t)&&!i(t,r)&&s(t),t},v=t.exports={KEY:r,NEED:!1,fastKey:l,getWeak:p,onFreeze:d}},function(t,n,e){var r=e(6),o=e(10),i=e(9);t.exports=e(4)?Object.defineProperties:function(t,n){o(t);for(var e,u=i(n),f=u.length,c=0;f>c;)r.f(t,e=u[c++],n[e]);return t}},function(t,n,e){var r=e(19),o=e(12),i=e(3),u=e(24),f=e(2),c=e(30),a=Object.getOwnPropertyDescriptor;n.f=e(4)?a:function(t,n){if(t=i(t),n=u(n,!0),c)try{return a(t,n)}catch(t){}if(f(t,n))return o(!r.f.call(t,n),t[n])}},function(t,n,e){var r=e(3),o=e(33).f,i={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],f=function(t){try{return o(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==i.call(t)?f(t):o(r(t))}},function(t,n,e){var r=e(2),o=e(37),i=e(21)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=o(t),r(t,i)?t[i]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,e){var r=e(23),o=e(15);t.exports=function(t){return function(n,e){var i,u,f=String(o(n)),c=r(e),a=f.length;return c<0||c>=a?t?"":void 0:(i=f.charCodeAt(c),i<55296||i>56319||c+1===a||(u=f.charCodeAt(c+1))<56320||u>57343?t?f.charAt(c):i:t?f.slice(c,c+2):(i-55296<<10)+(u-56320)+65536)}}},function(t,n,e){var r=e(23),o=Math.max,i=Math.min;t.exports=function(t,n){return t=r(t),t<0?o(t+n,0):i(t,n)}},function(t,n,e){var r=e(23),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,n,e){"use strict";var r=e(44),o=e(52),i=e(17),u=e(3);t.exports=e(31)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,e=this._i++;return!t||e>=t.length?(this._t=void 0,o(1)):"keys"==n?o(0,e):"values"==n?o(0,t[e]):o(0,[e,t[e]])},"values"),i.Arguments=i.Array,r("keys"),r("values"),r("entries")},function(t,n){},function(t,n,e){"use strict";var r=e(59)(!0);e(31)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,e=this._i;return e>=n.length?{value:void 0,done:!0}:(t=r(n,e),this._i+=t.length,{value:t,done:!1})})},function(t,n,e){"use strict";var r=e(1),o=e(2),i=e(4),u=e(27),f=e(36),c=e(54).KEY,a=e(8),s=e(22),l=e(20),p=e(13),d=e(7),v=e(26),y=e(25),h=e(53),b=e(47),x=e(50),g=e(10),m=e(3),w=e(24),O=e(12),S=e(32),_=e(57),j=e(56),P=e(6),E=e(9),M=j.f,A=P.f,T=_.f,L=r.Symbol,N=r.JSON,C=N&&N.stringify,k="prototype",F=d("_hidden"),q=d("toPrimitive"),I={}.propertyIsEnumerable,B=s("symbol-registry"),D=s("symbols"),W=s("op-symbols"),H=Object[k],K="function"==typeof L,R=r.QObject,J=!R||!R[k]||!R[k].findChild,U=i&&a(function(){return 7!=S(A({},"a",{get:function(){return A(this,"a",{value:7}).a}})).a})?function(t,n,e){var r=M(H,n);r&&delete H[n],A(t,n,e),r&&t!==H&&A(H,n,r)}:A,G=function(t){var n=D[t]=S(L[k]);return n._k=t,n},$=K&&"symbol"==typeof L.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof L},z=function(t,n,e){return t===H&&z(W,n,e),g(t),n=w(n,!0),g(e),o(D,n)?(e.enumerable?(o(t,F)&&t[F][n]&&(t[F][n]=!1),e=S(e,{enumerable:O(0,!1)})):(o(t,F)||A(t,F,O(1,{})),t[F][n]=!0),U(t,n,e)):A(t,n,e)},Y=function(t,n){g(t);for(var e,r=b(n=m(n)),o=0,i=r.length;i>o;)z(t,e=r[o++],n[e]);return t},Q=function(t,n){return void 0===n?S(t):Y(S(t),n)},X=function(t){var n=I.call(this,t=w(t,!0));return!(this===H&&o(D,t)&&!o(W,t))&&(!(n||!o(this,t)||!o(D,t)||o(this,F)&&this[F][t])||n)},V=function(t,n){if(t=m(t),n=w(n,!0),t!==H||!o(D,n)||o(W,n)){var e=M(t,n);return!e||!o(D,n)||o(t,F)&&t[F][n]||(e.enumerable=!0),e}},Z=function(t){for(var n,e=T(m(t)),r=[],i=0;e.length>i;)o(D,n=e[i++])||n==F||n==c||r.push(n);return r},tt=function(t){for(var n,e=t===H,r=T(e?W:m(t)),i=[],u=0;r.length>u;)!o(D,n=r[u++])||e&&!o(H,n)||i.push(D[n]);return i};K||(L=function(){if(this instanceof L)throw TypeError("Symbol is not a constructor!");var t=p(arguments.length>0?arguments[0]:void 0),n=function(e){this===H&&n.call(W,e),o(this,F)&&o(this[F],t)&&(this[F][t]=!1),U(this,t,O(1,e))};return i&&J&&U(H,t,{configurable:!0,set:n}),G(t)},f(L[k],"toString",function(){return this._k}),j.f=V,P.f=z,e(33).f=_.f=Z,e(19).f=X,e(34).f=tt,i&&!e(18)&&f(H,"propertyIsEnumerable",X,!0),v.f=function(t){return G(d(t))}),u(u.G+u.W+u.F*!K,{Symbol:L});for(var nt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;nt.length>et;)d(nt[et++]);for(var nt=E(d.store),et=0;nt.length>et;)y(nt[et++]);u(u.S+u.F*!K,"Symbol",{for:function(t){return o(B,t+="")?B[t]:B[t]=L(t)},keyFor:function(t){if($(t))return h(B,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){J=!0},useSimple:function(){J=!1}}),u(u.S+u.F*!K,"Object",{create:Q,defineProperty:z,defineProperties:Y,getOwnPropertyDescriptor:V,getOwnPropertyNames:Z,getOwnPropertySymbols:tt}),N&&u(u.S+u.F*(!K||a(function(){var t=L();return"[null]"!=C([t])||"{}"!=C({a:t})||"{}"!=C(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!$(t)){for(var n,e,r=[t],o=1;arguments.length>o;)r.push(arguments[o++]);return n=r[1],"function"==typeof n&&(e=n),!e&&x(n)||(n=function(t,n){if(e&&(n=e.call(this,t,n)),!$(n))return n}),r[1]=n,C.apply(N,r)}}}),L[k][q]||e(5)(L[k],q,L[k].valueOf),l(L,"Symbol"),l(Math,"Math",!0),l(r.JSON,"JSON",!0)},function(t,n,e){e(25)("asyncIterator")},function(t,n,e){e(25)("observable")},function(t,n,e){e(62);for(var r=e(1),o=e(5),i=e(17),u=e(7)("toStringTag"),f=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],c=0;c<5;c++){var a=f[c],s=r[a],l=s&&s.prototype;l&&!l[u]&&o(l,u,a),i[a]=i.Array}},function(t,n){"use strict";var e={versions:function(){var t=window.navigator.userAgent;return{trident:t.indexOf("Trident")>-1,presto:t.indexOf("Presto")>-1,webKit:t.indexOf("AppleWebKit")>-1,gecko:t.indexOf("Gecko")>-1&&t.indexOf("KHTML")==-1,mobile:!!t.match(/AppleWebKit.*Mobile.*/),ios:!!t.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:t.indexOf("Android")>-1||t.indexOf("Linux")>-1,iPhone:t.indexOf("iPhone")>-1||t.indexOf("Mac")>-1,iPad:t.indexOf("iPad")>-1,webApp:t.indexOf("Safari")==-1,weixin:t.indexOf("MicroMessenger")==-1}}()};t.exports=e},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}var o=e(40),i=r(o),u=function(){function t(t,n,e){return n||e?String.fromCharCode(n||e):o[t]||t}function n(t){return l[t]}var e=/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,r=/['<> "&]/g,o={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},f=/\u00a0/g,c=/<br\s*\/?>/gi,a=/\r?\n/g,s=/\s/g,l={};for(var p in o)l[o[p]]=p;return o["&apos;"]="'",l["'"]="&#39;",{encode:function(t){return t?(""+t).replace(r,n).replace(a,"<br/>").replace(s,"&nbsp;"):""},decode:function(n){return n?(""+n).replace(c,"\n").replace(e,t).replace(f," "):""},encodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")});for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e+=2)n.push(String.fromCharCode("0x"+t.slice(e,e+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,e=t.length;e>n;n++)t[n]=u.encodeObject(t[n]);else if("object"==("undefined"==typeof t?"undefined":(0,i.default)(t)))for(var r in t)t[r]=u.encodeObject(t[r]);else if("string"==typeof t)return u.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=u},function(t,n){function e(t,n){t.classList?t.classList.add(n):t.className+=" "+n}t.exports=e},function(t,n){function e(t,n){if(t.classList)t.classList.remove(n);else{var e=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(e," ")}}t.exports=e},,,function(t,n){"use strict";function e(){var t=document.querySelector("#page-nav");if(t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev">&laquo; Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next &raquo;</a>'),yiliaConfig&&yiliaConfig.open_in_new){var n=document.querySelectorAll(".article-entry a:not(.article-more-a)");n.forEach(function(t){var n=t.setAttribute("target");n&&""!==n||t.setAttribute("target","_blank")})}var e=document.querySelector("#js-aboutme");e&&0!==e.length&&(e.innerHTML=e.innerText)}t.exports={init:e}},,,,,,,,,function(t,n){function e(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var e=t.nextSibling;return e?t.parentNode.insertBefore(n,e):t.parentNode.appendChild(n)}t.exports=e}])</script><script src="/./main.05aabf.js"></script><script>!function(){var e=function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)};e("/slider.885efe.js")}()</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安装</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">理财</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基金</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: true
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://dic.naver.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>naver词典</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.yinhu.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>银湖网</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://brickman.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>砖头人</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.uspace.net/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>犀客空间</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://manxue.vip/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>漫学</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.17shanyuan.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>公益中国</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">90后,水瓶男,爱自由,充满幻想&lt;br&gt;有点小暴冲动,时而含蓄时而不含蓄</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

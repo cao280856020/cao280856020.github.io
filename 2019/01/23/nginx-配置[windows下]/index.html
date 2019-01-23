@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>Archives: 2017/5 | CaoYongjun&#39;s Blog</title>
+  <title>手把手搭建项目-nginx配置[windows下] | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="caoyongjun的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CaoYongjun's Blog">
-<meta property="og:url" content="http://www.caoyongjun.com/archives/2017/05/index.html">
+  <meta name="description" content="启动1D:\work\cyj\nginx\nginx.exe 设置windows下的hosts添加cyj.com域名1127.0.0.1 cyj.com nginx.conf123456789101112131415161718192021222324252627282930313233343536373839404142434445464748worker_processes  1;events">
+<meta name="keywords" content="技术,搭建项目,nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手搭建项目-nginx配置[windows下]">
+<meta property="og:url" content="http://www.caoyongjun.com/2019/01/23/nginx-配置[windows下]/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="caoyongjun的博客">
+<meta property="og:description" content="启动1D:\work\cyj\nginx\nginx.exe 设置windows下的hosts添加cyj.com域名1127.0.0.1 cyj.com nginx.conf123456789101112131415161718192021222324252627282930313233343536373839404142434445464748worker_processes  1;events">
+<meta property="og:updated_time" content="2019-01-23T06:59:21.138Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CaoYongjun's Blog">
-<meta name="twitter:description" content="caoyongjun的博客">
+<meta name="twitter:title" content="手把手搭建项目-nginx配置[windows下]">
+<meta name="twitter:description" content="启动1D:\work\cyj\nginx\nginx.exe 设置windows下的hosts添加cyj.com域名1127.0.0.1 cyj.com nginx.conf123456789101112131415161718192021222324252627282930313233343536373839404142434445464748worker_processes  1;events">
   
   
     <link rel="icon" href="/favicon.png">
@@ -164,36 +166,64 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-nginx-配置[windows下]" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/03/mybatis获取自增主键值/" class="archive-article-date">
-  	<time datetime="2017-05-03T10:42:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/03/mybatis获取自增主键值/">mybatis获取自增主键值</a>
+    <h1 class="article-title" itemprop="name">
+      手把手搭建项目-nginx配置[windows下]
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/01/23/nginx-配置[windows下]/" class="archive-article-date">
+  	<time datetime="2019-01-23T06:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>启动<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">D:<span class="symbol">\w</span>ork<span class="symbol">\c</span>yj<span class="symbol">\n</span>ginx<span class="symbol">\n</span>ginx.exe</div></pre></td></tr></table></figure></p>
+<p>设置windows下的hosts添加cyj.com域名<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span> <span class="selector-tag">cyj</span><span class="selector-class">.com</span></div></pre></td></tr></table></figure></p>
+<p>nginx.conf<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">worker_processes</span>  <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="section">events</span> &#123;</div><div class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="section">http</span> &#123;</div><div class="line">    <span class="attribute">include</span>       mime.types;</div><div class="line">    <span class="attribute">default_type</span>  application/octet-stream;</div><div class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</div><div class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</div><div class="line">    <span class="attribute">gzip</span>  <span class="literal">on</span>;</div><div class="line">    <span class="attribute">fastcgi_intercept_errors</span> <span class="literal">on</span>;</div><div class="line"></div><div class="line">    <span class="comment">#反向代理  这里1080是我们的网关应用的端口号</span></div><div class="line">    <span class="attribute">upstream</span> cyj.com&#123;</div><div class="line">        <span class="attribute">server</span>  localhost:<span class="number">1080</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="section">server</span> &#123;</div><div class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</div><div class="line">        <span class="attribute">server_name</span>  cyj.com;</div><div class="line">        <span class="attribute">charset</span> UFT-<span class="number">8</span>;</div><div class="line">        <span class="attribute">access_log</span> logs/cyj.access.log;</div><div class="line"></div><div class="line">        <span class="attribute">location</span> / &#123;</div><div class="line">            <span class="attribute">root</span>   index.html;</div><div class="line">            <span class="attribute">proxy_set_header</span>   Host <span class="variable">$host</span>;</div><div class="line">            <span class="attribute">proxy_set_header</span>   X-Real-IP  <span class="variable">$remote_addr</span>;</div><div class="line">            <span class="attribute">proxy_set_header</span>   X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">            <span class="attribute">proxy_pass</span>         http://cyj.com;</div><div class="line">            <span class="attribute">proxy_connect_timeout</span> <span class="number">100000</span>;</div><div class="line">            <span class="attribute">proxy_send_timeout</span> <span class="number">100000</span>;</div><div class="line">            <span class="attribute">proxy_read_timeout</span> <span class="number">100000</span>;</div><div class="line">            <span class="attribute">proxy_intercept_errors</span> <span class="literal">on</span>;</div><div class="line">             </div><div class="line">            <span class="attribute">if</span> (<span class="variable">$request_filename</span> <span class="regexp">~* ^.*?/([^/]*?)$)</span> &#123;</div><div class="line">                <span class="attribute">set</span> <span class="variable">$filename</span> <span class="variable">$1</span>; </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="attribute">if</span> (<span class="variable">$filename</span> <span class="regexp">~* ^.*?\.(eot)|(ttf)|(woff)$)</span>&#123;</div><div class="line">                <span class="attribute">add_header</span> Access-Control-Allow-Origin *;</div><div class="line">            &#125;</div><div class="line">       &#125;</div><div class="line">	   <span class="comment">#引入防止脚本类似jmeter的访问和爬虫访问</span></div><div class="line">       <span class="attribute">include</span> agent_deny.conf;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>agent_deny.conf<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">if ($http_user_agent~ <span class="symbol">*</span> (Scrapy |<span class="string"> Curl </span>|<span class="string"> HttpClient)) &#123;</span></div><div class="line">        return 403;</div><div class="line">&#125;</div><div class="line">if ($http_user_agent~"FeedDemon|<span class="string">JikeSpider</span>|<span class="string">Indy Library</span>|<span class="string">Alexa Toolbar</span>|<span class="string">AskTbFXTV</span>|<span class="string">AhrefsBot</span>|<span class="string">CrawlDaddy</span>|<span class="string">CoolpadWebkit</span>|<span class="string">Java</span>|<span class="string">Feedly</span>|<span class="string">UniversalFeedParser</span>|<span class="string">ApacheBench</span>|<span class="string">Microsoft URL Control</span>|<span class="string">Swiftbot</span>|<span class="string">ZmEu</span>|<span class="string">oBot</span>|<span class="string">jaunty</span>|<span class="string">Python-urllib</span>|<span class="string">lightDeckReports Bot</span>|<span class="string">YYSpider</span>|<span class="string">DigExt</span>|<span class="string">YisouSpider</span>|<span class="string">HttpClient</span>|<span class="string">MJ12bot</span>|<span class="string">heritrix</span>|<span class="string">EasouSpider</span>|<span class="string">LinkpadBot</span>|<span class="string">Ezooms</span>|<span class="string">^$") &#123;</span></div><div class="line">        return 403;</div><div class="line">&#125;</div><div class="line">if ($request_method ! ~ ^ (GET |<span class="string"> HEAD </span>|<span class="string"> POST) $) &#123;</span></div><div class="line">        return 403;</div><div class="line">&#125;</div><div class="line">if ($http_user_agent~"Mozilla/4.0\ compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727") &#123;</div><div class="line">        return 404;</div><div class="line">&#125;</div><div class="line">if ($http_user_agent~"ApacheBench|<span class="string">webBench</span>|<span class="string">Java/</span>|<span class="string">http_load</span>|<span class="string">must-revalidate</span>|<span class="string">wget") &#123;</span></div><div class="line">        return 403;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,25 +233,108 @@ var bp = document.createElement('script');
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搭建项目</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/01/23/nginx-配置[windows下]/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/01/23/jenkins-配置项目[windows下]/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          手把手搭建项目-jenkins配置项目[windows下]
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+      <div class="duoshuo">
+<section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
+</section>
+</div>
+
   
 
-    
+
 
 
           </div>
@@ -244,8 +357,8 @@ var bp = document.createElement('script');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>http://www.caoyongjun.com/2019/01/29/set-TreeSet%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%8E%92%E5%BA%8F/</loc>
+    <lastmod>2019-01-29T08:14:52.796Z</lastmod>
+    <data>
+        <display>
+        <title>自定义类对象利用TreeSet排序</title>
+        <pubTime>2019-01-29T08:11:00.000Z</pubTime>
+        
+        <tag>set</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.caoyongjun.com/2019/01/23/jenkins-%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%5Bwindows%E4%B8%8B%5D/</loc>
     <lastmod>2019-01-23T10:03:26.957Z</lastmod>
     <data>
@@ -657,9 +674,9 @@
         
         <tag>linux</tag>
          
-        <tag>安装</tag>
-         
         <tag>mysql</tag>
+         
+        <tag>安装</tag>
          
          
            
@@ -678,9 +695,9 @@
         
         <tag>linux</tag>
          
-        <tag>nginx</tag>
-         
         <tag>安装</tag>
+         
+        <tag>nginx</tag>
          
          
            

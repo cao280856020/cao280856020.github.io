@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>Windows:cmd杀某个端口进程 | CaoYongjun&#39;s Blog</title>
+  <title>自定义类对象利用TreeSet排序 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开发的时候启动tomcat会报端口占用的情况最快的解决方法是打开cmd然后输入一下命令查找到所占用的端口号  12netstat -aon | findstr 6080#就像linux中的ps -ef|grep 6080精确查找到 最后一条为pid 12taskkill /f /pid 41920#就像linux中的kill -9 41920">
-<meta name="keywords" content="技术,Windows">
+  <meta name="description" content="利用TreeSet类和java.lang.Comparable接口实现给对象集合排序 TreeSet继承关系">
+<meta name="keywords" content="set">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows:cmd杀某个端口进程">
-<meta property="og:url" content="http://www.caoyongjun.com/2017/04/18/windows-cmd/index.html">
+<meta property="og:title" content="自定义类对象利用TreeSet排序">
+<meta property="og:url" content="http://www.caoyongjun.com/2019/01/29/set-TreeSet自定义类排序/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="开发的时候启动tomcat会报端口占用的情况最快的解决方法是打开cmd然后输入一下命令查找到所占用的端口号  12netstat -aon | findstr 6080#就像linux中的ps -ef|grep 6080精确查找到 最后一条为pid 12taskkill /f /pid 41920#就像linux中的kill -9 41920">
-<meta property="og:image" content="http://blog.manxue.vip/%5BWindows-cmd%5D.png">
-<meta property="og:updated_time" content="2018-11-19T03:40:42.649Z">
+<meta property="og:description" content="利用TreeSet类和java.lang.Comparable接口实现给对象集合排序 TreeSet继承关系">
+<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/set-TreeSet%E7%BB%A7%E6%89%BF%E5%9B%BE.png">
+<meta property="og:updated_time" content="2019-01-29T08:14:52.796Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows:cmd杀某个端口进程">
-<meta name="twitter:description" content="开发的时候启动tomcat会报端口占用的情况最快的解决方法是打开cmd然后输入一下命令查找到所占用的端口号  12netstat -aon | findstr 6080#就像linux中的ps -ef|grep 6080精确查找到 最后一条为pid 12taskkill /f /pid 41920#就像linux中的kill -9 41920">
-<meta name="twitter:image" content="http://blog.manxue.vip/%5BWindows-cmd%5D.png">
+<meta name="twitter:title" content="自定义类对象利用TreeSet排序">
+<meta name="twitter:description" content="利用TreeSet类和java.lang.Comparable接口实现给对象集合排序 TreeSet继承关系">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/set-TreeSet%E7%BB%A7%E6%89%BF%E5%9B%BE.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -168,31 +168,37 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-windows-cmd" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-set-TreeSet自定义类排序" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Windows:cmd杀某个端口进程
+      自定义类对象利用TreeSet排序
     </h1>
   
 
         
-        <a href="/2017/04/18/windows-cmd/" class="archive-article-date">
-  	<time datetime="2017-04-18T11:54:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-18</time>
+        <a href="/2019/01/29/set-TreeSet自定义类排序/" class="archive-article-date">
+  	<time datetime="2019-01-29T08:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>开发的时候启动tomcat会报端口占用的情况<br>最快的解决方法是打开cmd然后输入一下命令查找到所占用的端口号</p>
-<p><img src="http://blog.manxue.vip/%5BWindows-cmd%5D.png" alt="&quot;windows cmd&quot;"></p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -aon <span class="string">| findstr 6080</span></div><div class="line"><span class="meta">#就像linux中的ps -ef|grep 6080精确查找到</span></div></pre></td></tr></table></figure>
-<p>最后一条为pid</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">taskkill /f /pid <span class="number">41920</span></div><div class="line">#就像linux中的kill <span class="number">-9</span> <span class="number">41920</span></div></pre></td></tr></table></figure>
+        <p>利用TreeSet类和java.lang.Comparable接口实现给对象集合排序</p>
+<p>TreeSet继承关系<br><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/set-TreeSet%E7%BB%A7%E6%89%BF%E5%9B%BE.png" alt="treeset-map"></p>
+<a id="more"></a>
+<p>TreeSet排序规则</p>
+<ul>
+<li>使用二叉树的原理对新add()的对象按照指定的顺序排序（升序、降序），每增加一个对象都会进行排序，将对象插入的二叉树指定的位置。</li>
+<li>Integer和String对象都可以进行默认的TreeSet排序，而自定义类的对象是不可以的，自己定义的类必须实现Comparable接口，并且覆写相应的compareTo()函数，才可以正常使用。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实现接口</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Model</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Model</span>&gt;</span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Model</span><span class="params">(<span class="keyword">int</span> age,String name)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.age=age;</div><div class="line">		<span class="keyword">this</span>.name=name;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//重写方法</span></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Model o)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(<span class="keyword">this</span>.age&gt;o.age)&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.age&lt;o.age)&#123;</div><div class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//省略getter和setter方法...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>main方法<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">	Set&lt;Model&gt; tree=<span class="keyword">new</span> TreeSet&lt;&gt;();</div><div class="line">	Model m1=<span class="keyword">new</span> Model(<span class="number">1</span>,<span class="string">"1"</span>);</div><div class="line">	Model m3=<span class="keyword">new</span> Model(<span class="number">3</span>,<span class="string">"3"</span>);</div><div class="line">	Model m2=<span class="keyword">new</span> Model(<span class="number">2</span>,<span class="string">"2"</span>);</div><div class="line">	Model m5=<span class="keyword">new</span> Model(<span class="number">5</span>,<span class="string">"5"</span>);</div><div class="line">	Model m4=<span class="keyword">new</span> Model(<span class="number">4</span>,<span class="string">"4"</span>);</div><div class="line">	</div><div class="line">	tree.<span class="keyword">add</span>(m1);</div><div class="line">	tree.<span class="keyword">add</span>(m3);</div><div class="line">	tree.<span class="keyword">add</span>(m2);</div><div class="line">	tree.<span class="keyword">add</span>(m5);</div><div class="line">	tree.<span class="keyword">add</span>(m4);</div><div class="line"></div><div class="line">	Iterator&lt;Model&gt; it=tree.iterator();</div><div class="line">	<span class="keyword">while</span>(it.hasNext())&#123;</div><div class="line">		System.<span class="keyword">out</span>.print(it.next().getAge()+<span class="string">" "</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出结果为<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">1 </span><span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span></div></pre></td></tr></table></figure></p>
 
       
 
@@ -232,11 +238,7 @@ var bp = document.createElement('script');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
         		</li>
       		
 		</ul>
@@ -292,7 +294,7 @@ var bp = document.createElement('script');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2017/04/18/windows-cmd/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/01/29/set-TreeSet自定义类排序/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,20 +308,15 @@ var bp = document.createElement('script');
   
 <nav id="article-nav">
   
-    <a href="/2017/04/17/brickman-maven_git/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/23/springcloud-zuul-网关配置/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          砖头人项目:6.MAVEN&amp;GIT项目发布管理
+          手把手搭建项目-SpringCloud-zuul网关配置
         
       </div>
     </a>
   
-  
-    <a href="/2017/04/19/work-experience/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">工作经验:针对大批量不同数据生成相同的sql</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

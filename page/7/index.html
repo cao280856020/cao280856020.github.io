@@ -166,6 +166,79 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-算法-冒泡排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/17/算法-冒泡排序/">算法:简单排序1-冒泡排序</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/17/算法-冒泡排序/" class="archive-article-date">
+  	<time datetime="2018-03-17T10:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="简单排序1-冒泡排序"><a href="#简单排序1-冒泡排序" class="headerlink" title="简单排序1-冒泡排序"></a>简单排序1-冒泡排序</h3><p><img src="http://blog.manxue.vip/%5Bordered%5Dbubble.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;排序-bubble&quot;"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li>1.每次从左开始两个紧邻元素比较大小，如果大就交换位置到右边。</li>
+<li>2.得到大数并且交换到右边位置后，它继续和它的右边一个数比较大小重复1步骤，这样重复下来第一轮最后一个位置就是最大数。</li>
+<li>3.下次排序时重复1,2步骤一直到上一次排好顺序的前一个位置上。</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/03/17/算法-冒泡排序/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/17/算法-冒泡排序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-java-垃圾回收机制2-判断哪些类可回收" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -428,142 +501,6 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-spring-事务管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/23/spring-事务管理/">Spring:spring事务管理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/23/spring-事务管理/" class="archive-article-date">
-  	<time datetime="2018-02-23T08:21:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="总结项目中用到的-Transactional注解"><a href="#总结项目中用到的-Transactional注解" class="headerlink" title="总结项目中用到的@Transactional注解"></a>总结项目中用到的@Transactional注解</h3><p>由于是aop切面实现的同一级别下调用有注解的方法时不会触发事务的回滚所以一定要从a类调用b类的某个有注解的方法才能生效</p>
-<h3 id="1-属性说明"><a href="#1-属性说明" class="headerlink" title="1.属性说明"></a>1.属性说明</h3><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>是否必需</th>
-<th>默认</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>否</td>
-<td>空</td>
-<td>限定描述符，指定使用的事务管理器</td>
-</tr>
-<tr>
-<td>transactionManager</td>
-<td>否</td>
-<td>空</td>
-<td>限定描述符，指定使用的事务管理器</td>
-</tr>
-<tr>
-<td>Propagation</td>
-<td>否</td>
-<td>Propagation.REQUIRED</td>
-<td>事务传播行为</td>
-</tr>
-<tr>
-<td>Isolation</td>
-<td>否</td>
-<td>Isolation.DEFAULT</td>
-<td>事务隔离级别</td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>否</td>
-<td>TransactionDefinition.TIMEOUT_DEFAULT(-1)</td>
-<td>事务超时的值默认不超时</td>
-</tr>
-<tr>
-<td>readOnly</td>
-<td>否</td>
-<td>false</td>
-<td>设置事务是否为只读</td>
-</tr>
-<tr>
-<td>rollbackFor</td>
-<td>否</td>
-<td>空</td>
-<td>触发回滚的异常；多个异常用逗号rollbackFor=Throwable.class</td>
-</tr>
-<tr>
-<td>rollbackForClassName</td>
-<td>否</td>
-<td>空</td>
-<td>触发回滚的异常；多个异常用逗号分割，可简化类名称如rollbackForClassName={“Exception”,”Throwable”}</td>
-</tr>
-<tr>
-<td>noRollbackFor</td>
-<td>否</td>
-<td>空</td>
-<td>不触发回滚的异常，多个异常用逗号分割</td>
-</tr>
-<tr>
-<td>noRollbackForClassName</td>
-<td>否</td>
-<td>空</td>
-<td>不触发回滚的异常，多个异常用逗号分割，可简化类名称如noRollbackForClassName={“Exception”,”Throwable”}</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2018/02/23/spring-事务管理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/23/spring-事务管理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
@@ -673,6 +610,10 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
@@ -681,15 +622,31 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,27 +662,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,15 +670,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">log</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,11 +682,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -765,7 +698,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -789,7 +730,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -801,7 +742,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
             
             <div class="clearfix"></div>

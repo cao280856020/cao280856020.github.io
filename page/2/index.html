@@ -166,6 +166,79 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-nginx-配置[windows下]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/23/nginx-配置[windows下]/">手把手搭建项目-nginx配置[windows下]</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/23/nginx-配置[windows下]/" class="archive-article-date">
+  	<time datetime="2019-01-23T06:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>启动<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">D:<span class="symbol">\w</span>ork<span class="symbol">\c</span>yj<span class="symbol">\n</span>ginx<span class="symbol">\n</span>ginx.exe</div></pre></td></tr></table></figure></p>
+<p>设置windows下的hosts添加cyj.com域名<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.1</span> <span class="selector-tag">cyj</span><span class="selector-class">.com</span></div></pre></td></tr></table></figure></p>
+<p>nginx.conf<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">worker_processes</span>  <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="section">events</span> &#123;</div><div class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="section">http</span> &#123;</div><div class="line">    <span class="attribute">include</span>       mime.types;</div><div class="line">    <span class="attribute">default_type</span>  application/octet-stream;</div><div class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</div><div class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</div><div class="line">    <span class="attribute">gzip</span>  <span class="literal">on</span>;</div><div class="line">    <span class="attribute">fastcgi_intercept_errors</span> <span class="literal">on</span>;</div><div class="line"></div><div class="line">    <span class="comment">#反向代理  这里1080是我们的网关应用的端口号</span></div><div class="line">    <span class="attribute">upstream</span> cyj.com&#123;</div><div class="line">        <span class="attribute">server</span>  localhost:<span class="number">1080</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="section">server</span> &#123;</div><div class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</div><div class="line">        <span class="attribute">server_name</span>  cyj.com;</div><div class="line">        <span class="attribute">charset</span> UFT-<span class="number">8</span>;</div><div class="line">        <span class="attribute">access_log</span> logs/cyj.access.log;</div><div class="line"></div><div class="line">        <span class="attribute">location</span> / &#123;</div><div class="line">            <span class="attribute">root</span>   index.html;</div><div class="line">            <span class="attribute">proxy_set_header</span>   Host <span class="variable">$host</span>;</div><div class="line">            <span class="attribute">proxy_set_header</span>   X-Real-IP  <span class="variable">$remote_addr</span>;</div><div class="line">            <span class="attribute">proxy_set_header</span>   X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">            <span class="attribute">proxy_pass</span>         http://cyj.com;</div><div class="line">            <span class="attribute">proxy_connect_timeout</span> <span class="number">100000</span>;</div><div class="line">            <span class="attribute">proxy_send_timeout</span> <span class="number">100000</span>;</div><div class="line">            <span class="attribute">proxy_read_timeout</span> <span class="number">100000</span>;</div><div class="line">            <span class="attribute">proxy_intercept_errors</span> <span class="literal">on</span>;</div><div class="line">             </div><div class="line">            <span class="attribute">if</span> (<span class="variable">$request_filename</span> <span class="regexp">~* ^.*?/([^/]*?)$)</span> &#123;</div><div class="line">                <span class="attribute">set</span> <span class="variable">$filename</span> <span class="variable">$1</span>; </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="attribute">if</span> (<span class="variable">$filename</span> <span class="regexp">~* ^.*?\.(eot)|(ttf)|(woff)$)</span>&#123;</div><div class="line">                <span class="attribute">add_header</span> Access-Control-Allow-Origin *;</div><div class="line">            &#125;</div><div class="line">       &#125;</div><div class="line">	   <span class="comment">#引入防止脚本类似jmeter的访问和爬虫访问</span></div><div class="line">       <span class="attribute">include</span> agent_deny.conf;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>agent_deny.conf<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">if ($http_user_agent~ <span class="symbol">*</span> (Scrapy |<span class="string"> Curl </span>|<span class="string"> HttpClient)) &#123;</span></div><div class="line">        return 403;</div><div class="line">&#125;</div><div class="line">if ($http_user_agent~"FeedDemon|<span class="string">JikeSpider</span>|<span class="string">Indy Library</span>|<span class="string">Alexa Toolbar</span>|<span class="string">AskTbFXTV</span>|<span class="string">AhrefsBot</span>|<span class="string">CrawlDaddy</span>|<span class="string">CoolpadWebkit</span>|<span class="string">Java</span>|<span class="string">Feedly</span>|<span class="string">UniversalFeedParser</span>|<span class="string">ApacheBench</span>|<span class="string">Microsoft URL Control</span>|<span class="string">Swiftbot</span>|<span class="string">ZmEu</span>|<span class="string">oBot</span>|<span class="string">jaunty</span>|<span class="string">Python-urllib</span>|<span class="string">lightDeckReports Bot</span>|<span class="string">YYSpider</span>|<span class="string">DigExt</span>|<span class="string">YisouSpider</span>|<span class="string">HttpClient</span>|<span class="string">MJ12bot</span>|<span class="string">heritrix</span>|<span class="string">EasouSpider</span>|<span class="string">LinkpadBot</span>|<span class="string">Ezooms</span>|<span class="string">^$") &#123;</span></div><div class="line">        return 403;</div><div class="line">&#125;</div><div class="line">if ($request_method ! ~ ^ (GET |<span class="string"> HEAD </span>|<span class="string"> POST) $) &#123;</span></div><div class="line">        return 403;</div><div class="line">&#125;</div><div class="line">if ($http_user_agent~"Mozilla/4.0\ compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727") &#123;</div><div class="line">        return 404;</div><div class="line">&#125;</div><div class="line">if ($http_user_agent~"ApacheBench|<span class="string">webBench</span>|<span class="string">Java/</span>|<span class="string">http_load</span>|<span class="string">must-revalidate</span>|<span class="string">wget") &#123;</span></div><div class="line">        return 403;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搭建项目</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/23/nginx-配置[windows下]/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-jenkins-配置项目[windows下]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -473,76 +546,6 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-design-观察者模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/14/design-观察者模式/">设计模式:2观察者模式Observer</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/14/design-观察者模式/" class="archive-article-date">
-  	<time datetime="2018-09-14T07:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。</p>
-<p>缺点：有多个观察者时，被通知次序有可能会乱序</p>
-<p><img src="http://blog.manxue.vip/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png" alt="设计模式-观察者模式"></p>
-        
-          <a class="article-more-a" href="/2018/09/14/design-观察者模式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/14/design-观察者模式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -636,6 +639,14 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
@@ -652,15 +663,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,11 +683,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,6 +700,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">深入jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,14 +723,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -732,7 +731,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,6 +747,10 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -752,7 +759,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,15 +791,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">理财</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>Archives: 2019/1 | CaoYongjun&#39;s Blog</title>
+  <title>Spring:基于RedisCacheManager支持的cache | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="caoyongjun的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CaoYongjun's Blog">
-<meta property="og:url" content="http://www.caoyongjun.com/archives/2019/01/index.html">
+  <meta name="description" content="spring 定义了 org.springframework.cache.CacheManager和org.springframework.cache.Cache接口用来统一不同的缓存技术。  CacheManager是spring提供的抽象接口 Cache接口包含缓存的各种操作(crud)  CacheManager的实现    CacheManager 描述     SimpleCacheMa">
+<meta name="keywords" content="spring,redis,cache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring:基于RedisCacheManager支持的cache">
+<meta property="og:url" content="http://www.caoyongjun.com/2019/03/21/spring-RedisCache/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="caoyongjun的博客">
+<meta property="og:description" content="spring 定义了 org.springframework.cache.CacheManager和org.springframework.cache.Cache接口用来统一不同的缓存技术。  CacheManager是spring提供的抽象接口 Cache接口包含缓存的各种操作(crud)  CacheManager的实现    CacheManager 描述     SimpleCacheMa">
+<meta property="og:updated_time" content="2019-03-21T07:55:08.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CaoYongjun's Blog">
-<meta name="twitter:description" content="caoyongjun的博客">
+<meta name="twitter:title" content="Spring:基于RedisCacheManager支持的cache">
+<meta name="twitter:description" content="spring 定义了 org.springframework.cache.CacheManager和org.springframework.cache.Cache接口用来统一不同的缓存技术。  CacheManager是spring提供的抽象接口 Cache接口包含缓存的各种操作(crud)  CacheManager的实现    CacheManager 描述     SimpleCacheMa">
   
   
     <link rel="icon" href="/favicon.png">
@@ -164,248 +166,396 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-spring-RedisCache" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring:基于RedisCacheManager支持的cache
+    </h1>
+  
+
+        
+        <a href="/2019/03/21/spring-RedisCache/" class="archive-article-date">
+  	<time datetime="2019-03-21T07:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>spring 定义了 org.springframework.cache.CacheManager和org.springframework.cache.Cache接口用来统一不同的缓存技术。</p>
+<ul>
+<li>CacheManager是spring提供的抽象接口</li>
+<li>Cache接口包含缓存的各种操作(crud)</li>
+</ul>
+<p>CacheManager的实现</p>
+<table>
+<thead>
+<tr>
+<th>CacheManager</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SimpleCacheManager</td>
+<td>使用简单的Collection</td>
+</tr>
+<tr>
+<td>ConcurrentMapCacheManager</td>
+<td>使用简单的ConcurrentMap（sptingboot默认实现）</td>
+</tr>
+<tr>
+<td>NoOpCacheManager</td>
+<td>金测试用途，不会实际存储缓存</td>
+</tr>
+<tr>
+<td>EhCacheCacheManager</td>
+<td>使用EhCache</td>
+</tr>
+<tr>
+<td>GuavaCacheManager</td>
+<td>使用Google Guava的GuavaCache</td>
+</tr>
+<tr>
+<td>HazelcastCacheManager</td>
+<td>使用Hazelcast</td>
+</tr>
+<tr>
+<td>JCacheCacheManager</td>
+<td>支持JCache（JSR-107）标准的实现作为缓存技术，如Apache Commons JCS</td>
+</tr>
+<tr>
+<td>RedisCacheManager</td>
+<td>使用redis作为缓存技术</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h4 id="利用RedisCacheManager实现Cache"><a href="#利用RedisCacheManager实现Cache" class="headerlink" title="利用RedisCacheManager实现Cache"></a>利用RedisCacheManager实现Cache</h4><p>项目中使用spring-data-redis-1.8.9.RELEASE.jar版本，不同版本之间会有不同地实现。(此版本支持默认过期时间)</p>
+<p>需要注册一下CacheManager的Bean</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@EnableCaching</span></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CacheManagerConfig</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Bean</span> </div><div class="line">	public CacheManager cacheManager(RedisTemplate redisTemplate) &#123;</div><div class="line">		<span class="comment">//序列化</span></div><div class="line">		redisTemplate.setKeySerializer(<span class="keyword">new</span> StringRedisSerializer());</div><div class="line">		redisTemplate.setValueSerializer(<span class="keyword">new</span> FastJson2JsonRedisSerializer&lt;<span class="built_in">Object</span>&gt;(<span class="built_in">Object</span>.<span class="keyword">class</span>));</div><div class="line">		redisTemplate.setHashKeySerializer(<span class="keyword">new</span> StringRedisSerializer());</div><div class="line">		redisTemplate.setHashValueSerializer(<span class="keyword">new</span> FastJson2JsonRedisSerializer&lt;<span class="built_in">Object</span>&gt;(<span class="built_in">Object</span>.<span class="keyword">class</span>));</div><div class="line">		redisTemplate.setDefaultSerializer(<span class="keyword">new</span> StringRedisSerializer());</div><div class="line"></div><div class="line">		RedisCacheManager cacheManager = <span class="keyword">new</span> RedisCacheManager(redisTemplate);</div><div class="line">		cacheManager.setDefaultExpiration(<span class="number">5</span>L);<span class="comment">//默认过期时间5s</span></div><div class="line"></div><div class="line">		<span class="built_in">Map</span>&lt;<span class="built_in">String</span>,Long&gt; expires=<span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		expires.put(<span class="string">"cache_zset"</span>, <span class="number">5</span>*<span class="number">60</span>L);<span class="comment">//key=cache_zset 5分钟后过期</span></div><div class="line">		cacheManager.setExpires(expires);</div><div class="line">		<span class="comment">//给特定key过期时间</span></div><div class="line">		<span class="keyword">return</span> cacheManager;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>声明式缓存注解</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Cacheable</td>
+<td>在方法执行前Spring先查看缓存中是否有数据，如果有数据，则直接返回缓存数据;若没有数据，调用方法并将方法返回值放进缓存</td>
+</tr>
+<tr>
+<td>@CacheEvict</td>
+<td>将一条或多条数据从缓存中删除</td>
+</tr>
+<tr>
+<td>@CachePut</td>
+<td>无论怎样，都会将方法的返回值放到缓存。</td>
+</tr>
+<tr>
+<td>@Caching</td>
+<td>Cacheable、CachePut、CacheEvict的组合注解</td>
+</tr>
+<tr>
+<td>@CacheConfig</td>
+<td>配置当前类中使用到的公共参数部分</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-Cacheable例子"><a href="#1-Cacheable例子" class="headerlink" title="1. @Cacheable例子"></a>1. @Cacheable例子</h4><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">@Cacheable(value=<span class="string">"cache_zset"</span>,<span class="built_in">key</span>=<span class="string">"'cache_pre:' + #a + '_' + #b + '_' + #c"</span>)</div><div class="line"><span class="keyword">public</span> Map&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; list(<span class="built_in">int</span> a, <span class="keyword">String</span> b, Long c) &#123;</div><div class="line">	Map&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; <span class="built_in">map</span>=<span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</div><div class="line">	<span class="built_in">map</span>.put(<span class="string">"a"</span>, a);</div><div class="line">	<span class="built_in">map</span>.put(<span class="string">"b"</span>, b);</div><div class="line">	<span class="built_in">map</span>.put(<span class="string">"c"</span>, c);</div><div class="line">	<span class="keyword">return</span> <span class="built_in">map</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>会在redis中存储两份数据结构</p>
+<ul>
+<li><p>一份是zset </p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">key</span>=cache_zset~keys</div><div class="line"><span class="attr">value</span>=cache_pre:#a_#b_#c</div><div class="line"><span class="attr">score</span>=<span class="number">0</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>另一份是string</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">key</span>=cache_pre:#a_#b_#c</div><div class="line"><span class="attr">value</span>=存储的值</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>常用几个参数说明</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>存入的缓存的名称</td>
+<td></td>
+</tr>
+<tr>
+<td>cacheNames</td>
+<td>和value相同</td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>根据传入的参数生成的对应方法的缓存值</td>
+<td></td>
+</tr>
+<tr>
+<td>condition</td>
+<td>缓存的条件</td>
+<td><code>condition=&quot;#a==1&quot;</code>代表只有传入值a等于1时才缓存数据</td>
+</tr>
+<tr>
+<td>unless</td>
+<td>不缓存的条件，方法执行后触发</td>
+<td><code>unless=&quot;#result==null&quot;</code>代表返回值空时不缓存数据</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-CacheEvit例子"><a href="#2-CacheEvit例子" class="headerlink" title="2. @CacheEvit例子"></a>2. @CacheEvit例子</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Override</span></div><div class="line"><span class="variable">@CacheEvict</span>(value=<span class="string">"cache_zset"</span>,key=<span class="string">"'cache_pre:' + #a + '_' + #b + '_' + #c"</span>,condition=<span class="string">"#a==1"</span>)</div><div class="line">public void delete(int a, String b, Long c) &#123;</div><div class="line">	<span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.println</span>(<span class="string">"aaaaaaaaa"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>常用几个参数说明</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>存入的缓存的名称</td>
+<td></td>
+</tr>
+<tr>
+<td>cacheNames</td>
+<td>和value相同</td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>根据传入的参数生成的对应方法的缓存值</td>
+<td></td>
+</tr>
+<tr>
+<td>condition</td>
+<td>缓存的条件</td>
+<td><code>condition=&quot;#a==1&quot;</code>代表只有传入值a等于1时才缓存数据</td>
+</tr>
+<tr>
+<td>allEntries</td>
+<td>是否删除全部缓存，默认false</td>
+<td>true时不管condition直接删除@Cacheable的value值</td>
+</tr>
+<tr>
+<td>beforeInvocation</td>
+<td>是否方法调用之前删除 默认false</td>
+<td>建议方法调用后且没有异常退出时删除缓存</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-CachePut例子"><a href="#3-CachePut例子" class="headerlink" title="3.@CachePut例子"></a>3.@CachePut例子</h3><p>和@Cacheable类似，不过@CachePut每次都会执行方法，而@Cacheable先查询缓存如果缓存没值才执行方法</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">@CachePut(value=<span class="string">"cache_zset"</span>,<span class="built_in">key</span>=<span class="string">"'cache_pre:' + #a + '_' + #b + '_' + #c"</span>,condition=<span class="string">"#a==1"</span>,unless=<span class="string">"#result==null"</span>)</div><div class="line"><span class="keyword">public</span> Map&lt;<span class="keyword">String</span>,<span class="keyword">Object</span>&gt; update(<span class="built_in">int</span> a, <span class="keyword">String</span> b, Long c)&#123;</div><div class="line">	<span class="comment">//每次调用都会执行该方法，并且缓存到redis</span></div><div class="line">	Map&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; <span class="built_in">map</span>=<span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</div><div class="line">	<span class="built_in">map</span>.put(<span class="string">"a"</span>, a);</div><div class="line">	<span class="built_in">map</span>.put(<span class="string">"b"</span>, b);</div><div class="line">	<span class="built_in">map</span>.put(<span class="string">"c"</span>, c);</div><div class="line">	<span class="keyword">return</span> <span class="built_in">map</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>常用几个参数说明</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>存入的缓存的名称</td>
+<td></td>
+</tr>
+<tr>
+<td>cacheNames</td>
+<td>和value相同</td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>根据传入的参数生成的对应方法的缓存值</td>
+<td></td>
+</tr>
+<tr>
+<td>condition</td>
+<td>缓存的条件</td>
+<td><code>condition=&quot;#a==1&quot;</code>代表只有传入值a等于1时才缓存数据</td>
+</tr>
+<tr>
+<td>unless</td>
+<td>不缓存的条件，方法执行后触发</td>
+<td><code>unless=&quot;#result==null&quot;</code>代表返回值空时不缓存数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-Caching例子"><a href="#4-Caching例子" class="headerlink" title="4.@Caching例子"></a>4.@Caching例子</h3><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">@Caching(cacheable=&#123;@Cacheable(value=<span class="string">"cache_zset"</span>,key=<span class="string">"'cache_pre:' + <span class="subst">#a</span> + '_' + <span class="subst">#b</span> + '_' + <span class="subst">#c</span>"</span>,<span class="keyword">unless</span>=<span class="string">"<span class="subst">#result</span>==null"</span>)&#125;,</div><div class="line">	put=&#123;@CachePut(value=<span class="string">"cache_zset"</span>,key=<span class="string">"'cache_pre:' + <span class="subst">#a</span> + '_' + <span class="subst">#b</span> + '_' + <span class="subst">#c</span>"</span>,<span class="keyword">unless</span>=<span class="string">"<span class="subst">#result</span>==null"</span>)&#125;,</div><div class="line">	evict=&#123;@CacheEvict(value=<span class="string">"cache_zset"</span>,key=<span class="string">"'cache_pre:' + <span class="subst">#a</span> + '_' + <span class="subst">#b</span> + '_' + <span class="subst">#c</span>"</span>,condition=<span class="string">"<span class="subst">#a</span>==1"</span>)&#125;)</div><div class="line">public Map&lt;String, Object&gt; caching(int a, String b, Long c) throws Exception &#123;</div><div class="line">	Map&lt;String, Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">	map.put(<span class="string">"a"</span>, a);</div><div class="line">	map.put(<span class="string">"b"</span>, b);</div><div class="line">	map.put(<span class="string">"c"</span>, c);</div><div class="line">	<span class="keyword">return</span> map;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="5-CacheConfig例子"><a href="#5-CacheConfig例子" class="headerlink" title="5.@CacheConfig例子"></a>5.@CacheConfig例子</h4><p>如果在类中定义了@CacheConfig那么此类下的所有value=”xyz”就共用此config的cacheNames<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@CacheConfig(cacheNames=<span class="string">"cache_zset"</span>)</div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CacheFacadeImpl</span> <span class="title">implements</span> <span class="title">CacheFacade</span> &#123;</span></div><div class="line">	@Override</div><div class="line">	@Caching(cacheable=&#123;@Cacheable(key=<span class="string">"'cache_pre:' + <span class="subst">#a</span> + '_' + <span class="subst">#b</span> + '_' + <span class="subst">#c</span>"</span>,<span class="keyword">unless</span>=<span class="string">"<span class="subst">#result</span>==null"</span>)&#125;,</div><div class="line">		put=&#123;@CachePut(key=<span class="string">"'cache_pre:' + <span class="subst">#a</span> + '_' + <span class="subst">#b</span> + '_' + <span class="subst">#c</span>"</span>,<span class="keyword">unless</span>=<span class="string">"<span class="subst">#result</span>==null"</span>)&#125;,</div><div class="line">		evict=&#123;@CacheEvict(key=<span class="string">"'cache_pre:' + <span class="subst">#a</span> + '_' + <span class="subst">#b</span> + '_' + <span class="subst">#c</span>"</span>,condition=<span class="string">"<span class="subst">#a</span>==1"</span>)&#125;)</div><div class="line">	public Map&lt;String, Object&gt; caching(int a, String b, Long c) throws Exception &#123;</div><div class="line">		Map&lt;String, Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">		map.put(<span class="string">"a"</span>, a);</div><div class="line">		map.put(<span class="string">"b"</span>, b);</div><div class="line">		map.put(<span class="string">"c"</span>, c);</div><div class="line">		<span class="keyword">return</span> map;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><p>key如果不分配时会出现org.springframework.cache.interceptor.SimpleKey cannot be cast to java.lang.String<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Cacheable</div><div class="line"><span class="keyword">public</span> Map&lt;<span class="keyword">String</span>, Object&gt; list(<span class="keyword">int</span> a, <span class="keyword">String</span> b, Long c) &#123;</div><div class="line">	Map&lt;<span class="keyword">String</span>, Object&gt; <span class="built_in">map</span>=<span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">	<span class="built_in">map</span>.<span class="built_in">put</span>(<span class="string">"a"</span>, a);</div><div class="line">	<span class="built_in">map</span>.<span class="built_in">put</span>(<span class="string">"b"</span>, b);</div><div class="line">	<span class="built_in">map</span>.<span class="built_in">put</span>(<span class="string">"c"</span>, c);</div><div class="line">	<span class="built_in">return</span> <span class="built_in">map</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>找到Cache配置类继承并重写keyGenerator方法，让它有自动生成key策略<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@EnableCaching</span></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CacheManagerConfig</span> <span class="keyword">extends</span> <span class="title">CachingConfigurerSupport</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="meta">@Bean</span></div><div class="line">    public <span class="type">KeyGenerator</span> keyGenerator() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">KeyGenerator</span>() &#123;</div><div class="line">            public <span class="type">Object</span> generate(<span class="type">Object</span> target, <span class="type">Method</span> method, <span class="type">Object</span>... objects) &#123;</div><div class="line">                <span class="type">StringBuilder</span> sb = <span class="keyword">new</span> <span class="type">StringBuilder</span>();</div><div class="line">                sb.append(target.getClass().getName());</div><div class="line">                sb.append(method.getName());</div><div class="line">                <span class="keyword">for</span> (<span class="type">Object</span> obj : objects) &#123;</div><div class="line">                    sb.append(obj.toString());</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> sb.toString();</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>会在redis中存储两份数据结构</p>
+<ul>
+<li><p>一份是zset </p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">key=cache_zset~keys</div><div class="line">value=com<span class="selector-class">.example</span><span class="selector-class">.facade</span><span class="selector-class">.impl</span><span class="selector-class">.CacheFacadeImpllist</span>#a#b<span class="selector-id">#c</span>   <span class="comment">//生成key策略导致的</span></div><div class="line">score=<span class="number">0</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>另一份是string</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">key=com<span class="selector-class">.example</span><span class="selector-class">.facade</span><span class="selector-class">.impl</span><span class="selector-class">.CacheFacadeImpllist</span>#a#b<span class="selector-id">#c</span></div><div class="line">value=存储的值</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/29/set-TreeSet自定义类排序/" class="archive-article-date">
-  	<time datetime="2019-01-29T08:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/29/set-TreeSet自定义类排序/">自定义类对象利用TreeSet排序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cache</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/03/21/spring-RedisCache/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/23/springcloud-zuul-网关配置/" class="archive-article-date">
-  	<time datetime="2019-01-23T07:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/23/springcloud-zuul-网关配置/">手把手搭建项目-SpringCloud-zuul网关配置</a>
-    </h1>
+    <a href="/2019/03/19/jvm-1.1.JVM内存区域和内存溢出/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          1.1.JVM内存区域和内存溢出
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+
+
+  
+      <div class="duoshuo">
+<section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
+</section>
+</div>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搭建项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/23/springcloud-eureka-注册中心配置/" class="archive-article-date">
-  	<time datetime="2019-01-23T07:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/23/springcloud-eureka-注册中心配置/">手把手搭建项目-SpringCloud-eureka注册中心配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搭建项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/23/nginx-配置[windows下]/" class="archive-article-date">
-  	<time datetime="2019-01-23T06:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/23/nginx-配置[windows下]/">手把手搭建项目-nginx配置[windows下]</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搭建项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/23/jenkins-配置项目[windows下]/" class="archive-article-date">
-  	<time datetime="2019-01-23T06:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/23/jenkins-配置项目[windows下]/">手把手搭建项目-jenkins配置项目[windows下]</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搭建项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">bat命令</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -428,8 +578,8 @@ var bp = document.createElement('script');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

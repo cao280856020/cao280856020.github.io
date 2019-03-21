@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>http://www.caoyongjun.com/2019/03/21/spring-RedisCache/</loc>
+    <lastmod>2019-03-21T07:55:08.152Z</lastmod>
+    <data>
+        <display>
+        <title>Spring:基于RedisCacheManager支持的cache</title>
+        <pubTime>2019-03-21T07:38:00.000Z</pubTime>
+        
+        <tag>spring</tag>
+         
+        <tag>redis</tag>
+         
+        <tag>cache</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.caoyongjun.com/2019/03/19/jvm-1.1.JVM%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E5%92%8C%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/</loc>
     <lastmod>2019-03-19T10:00:07.737Z</lastmod>
     <data>
@@ -486,9 +507,9 @@
         <title>selenium:自动化迁移wiki数据</title>
         <pubTime>2018-08-28T09:17:00.000Z</pubTime>
         
-        <tag>技术</tag>
-         
         <tag>java</tag>
+         
+        <tag>技术</tag>
          
         <tag>selenium</tag>
          
@@ -524,9 +545,9 @@
         <title>java:使用BigDecimal除法时需要注意的点</title>
         <pubTime>2017-12-20T08:59:00.000Z</pubTime>
         
-        <tag>技术</tag>
-         
         <tag>java</tag>
+         
+        <tag>技术</tag>
          
          
            
@@ -562,9 +583,9 @@
         <title>设计模式:2观察者模式Observer</title>
         <pubTime>2018-09-14T07:12:00.000Z</pubTime>
         
-        <tag>设计模式</tag>
-         
         <tag>java</tag>
+         
+        <tag>设计模式</tag>
          
          
            
@@ -581,9 +602,9 @@
         <title>设计模式:1策略模式Strategy</title>
         <pubTime>2018-09-13T07:37:00.000Z</pubTime>
         
-        <tag>设计模式</tag>
-         
         <tag>java</tag>
+         
+        <tag>设计模式</tag>
          
          
            
@@ -906,9 +927,9 @@
         <title>软件测试神一样的超级好用的selenium 原创java util</title>
         <pubTime>2017-04-10T11:37:47.000Z</pubTime>
         
-        <tag>技术</tag>
-         
         <tag>java</tag>
+         
+        <tag>技术</tag>
          
          
            

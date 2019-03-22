@@ -6,28 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>1.2.对象存活判定算法和垃圾收集算法 | CaoYongjun&#39;s Blog</title>
+  <title>【梳理jvm】1.1.JVM内存区域和内存溢出 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="gc脑图">
-<meta name="keywords" content="jvm,回顾,深入jvm">
+  <meta name="description" content="JVM是运行java代码的假想的计算机，是运行在操作系统之上的，不与硬件直接交互。 包含了以下 字节码指令集 寄存器 栈 垃圾回收 堆 存储方法域">
+<meta name="keywords" content="jvm,回顾,梳理jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.2.对象存活判定算法和垃圾收集算法">
-<meta property="og:url" content="http://www.caoyongjun.com/2019/03/22/jvm-1.2.对象存活判定算法和垃圾收集算法/index.html">
+<meta property="og:title" content="【梳理jvm】1.1.JVM内存区域和内存溢出">
+<meta property="og:url" content="http://www.caoyongjun.com/2019/03/19/jvm-【梳理jvm】1.1.JVM内存区域和内存溢出/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="gc脑图">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%A4%8D%E5%88%B6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E5%88%86%E4%BB%A3%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png">
-<meta property="og:updated_time" content="2019-03-22T09:18:09.835Z">
+<meta property="og:description" content="JVM是运行java代码的假想的计算机，是运行在操作系统之上的，不与硬件直接交互。 包含了以下 字节码指令集 寄存器 栈 垃圾回收 堆 存储方法域">
+<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%84%91%E5%9B%BE.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E8%AF%A6%E7%BB%86%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E5%8F%A5%E6%9F%84.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.png">
+<meta property="og:updated_time" content="2019-03-22T09:29:54.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1.2.对象存活判定算法和垃圾收集算法">
-<meta name="twitter:description" content="gc脑图">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg">
+<meta name="twitter:title" content="【梳理jvm】1.1.JVM内存区域和内存溢出">
+<meta name="twitter:description" content="JVM是运行java代码的假想的计算机，是运行在操作系统之上的，不与硬件直接交互。 包含了以下 字节码指令集 寄存器 栈 垃圾回收 堆 存储方法域">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%84%91%E5%9B%BE.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -175,154 +171,202 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-jvm-1.2.对象存活判定算法和垃圾收集算法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-jvm-【梳理jvm】1.1.JVM内存区域和内存溢出" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      1.2.对象存活判定算法和垃圾收集算法
+      【梳理jvm】1.1.JVM内存区域和内存溢出
     </h1>
   
 
         
-        <a href="/2019/03/22/jvm-1.2.对象存活判定算法和垃圾收集算法/" class="archive-article-date">
-  	<time datetime="2019-03-22T09:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
+        <a href="/2019/03/19/jvm-【梳理jvm】1.1.JVM内存区域和内存溢出/" class="archive-article-date">
+  	<time datetime="2019-03-19T09:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="gc脑图"><a href="#gc脑图" class="headerlink" title="gc脑图"></a>gc脑图</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg" alt="gc-脑图"></p>
+        <p>JVM是运行java代码的假想的计算机，是运行在操作系统之上的，不与硬件直接交互。</p>
+<h4 id="包含了以下"><a href="#包含了以下" class="headerlink" title="包含了以下"></a>包含了以下</h4><ul>
+<li>字节码指令集</li>
+<li>寄存器</li>
+<li>栈</li>
+<li>垃圾回收</li>
+<li>堆</li>
+<li>存储方法域</li>
+</ul>
 <a id="more"></a>
-<h3 id="如何确定是垃圾"><a href="#如何确定是垃圾" class="headerlink" title="如何确定是垃圾"></a>如何确定是垃圾</h3><h4 id="1-引用计数法"><a href="#1-引用计数法" class="headerlink" title="1.引用计数法"></a>1.引用计数法</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0.jpg" alt="gc-引用计数法"></p>
-<p>缺点:无法解决循环引用的问题</p>
-<h4 id="2-可达性分析"><a href="#2-可达性分析" class="headerlink" title="2.可达性分析"></a>2.可达性分析</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90.jpg" alt="gc-可达性分析"></p>
-<ul>
-<li>原理：<br>选择活动的对象作为GC Roots，然后跟踪引用链条，如果一个对象和GC Roots之间不可达，也就是不存在引用链条。</li>
-</ul>
-<p>可作为GC Root的对象</p>
-<ul>
-<li>虚拟机栈（栈帧中的本地变量表）中引用的对象。</li>
-<li>方法区中类静态属性引用的对象。</li>
-<li>方法区中常量引用的对象。</li>
-<li><p>本地方法栈中JNI（即一般说的Native方法）引用的对象。</p>
-</li>
-<li><p>可达性分析缺点：<br>在多线程环境下，其他线程可能会更新已经访问过的对象中的引用，从而造成误报（将引用设置为 null）或者漏报（将引用设置为未被访问过的对象）。<br>误报并没有什么伤害，Java 虚拟机至多损失了部分垃圾回收的机会。漏报则比较麻烦，因为垃圾回收器可能回收事实上仍被引用的对象内存。一旦从原引用访问已经被回收了的对象，则很有可能会直接导致 Java 虚拟机崩溃。</p>
+<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%84%91%E5%9B%BE.jpg" alt="jvm-内存模型脑图"></p>
+<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E8%AF%A6%E7%BB%86%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.jpg" alt="jvm-内存区域"></p>
+<h3 id="线程私有"><a href="#线程私有" class="headerlink" title="线程私有"></a>线程私有</h3><h3 id="1-程序计数器"><a href="#1-程序计数器" class="headerlink" title="1.程序计数器"></a>1.程序计数器</h3><ul>
+<li><p>当前线程所执行的字节码的行号指示器。</p>
+<p>字节码解释器工作时通过改变这个计数器的值来选取下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。</p>
+<p>程序计数器的作用：由于jvm的多线程是通过线程轮流切换并分配处理器执行时间方式实现，所以一个处理器（对于多核处理器来说是一个内核）只会执行一条线程中的指令。为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器。</p>
 </li>
 </ul>
-<h3 id="引用类型是什么"><a href="#引用类型是什么" class="headerlink" title="引用类型是什么"></a>引用类型是什么</h3><ul>
-<li>出现的理由:</li>
-</ul>
-<ol>
-<li>当内存空间还足够时，能保留在内存之中。</li>
-<li>如果内存空间在进行垃圾收集后还是非常紧张，则可以抛弃这些对象。</li>
-</ol>
-<p>不同的引用类型，主要体现的是对象不同的可达性状态和对垃圾收集的影响。</p>
 <table>
 <thead>
 <tr>
-<th>类型</th>
-<th>垃圾回收</th>
-<th>应用场景</th>
+<th>执行什么方法</th>
+<th>存放的是什么</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>强引用</td>
-<td>不回收</td>
-<td></td>
+<td>Java方法</td>
+<td>当前执行的方法时的JVM指令地址</td>
 </tr>
 <tr>
-<td>软引用</td>
-<td>内存不足时会回收</td>
-<td>通常用来实现内存敏感的缓存，如果还有空闲内存，就可以暂时保留缓存，当内存不足时清理掉，这样就保证了使用缓存的同时，不会耗尽内存。</td>
-</tr>
-<tr>
-<td>弱引用</td>
-<td>每次都会回收</td>
-<td>这就可以用来构建一种没有特定约束的关系，比如，维护一种非强制性的映射关系，如果试图获取时对象还在，就使用它，否则重现实例化。它同样是很多缓存实现的选择。</td>
-</tr>
-<tr>
-<td>虚引用</td>
-<td>回收时会做些事情</td>
-<td>通常用来做所谓的 Post-Mortem 清理机制，也有人利用幻象引用监控对象的创建和销毁。</td>
+<td>Native方法</td>
+<td>（Undefined）</td>
 </tr>
 </tbody>
 </table>
-<p>引用状态流转图<br><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png" alt="gc-状态流转"></p>
-<h4 id="对象何时死亡"><a href="#对象何时死亡" class="headerlink" title="对象何时死亡"></a>对象何时死亡</h4><p>在可达性分析中不可达的对象，不一定会被回收。<br>真正要回收对象至少经历两次标记过程</p>
-<ol>
-<li>如果对象在可达性分析后没有与GC Roots引用链相连接，就被第一次标记并进行一次筛选，筛选条件是否有必要执行finalize()方法。（1）当对象没有覆盖finalize()方法（2）finalize()方法已经被jvm调用过。如果没有必要就直接回收对象。</li>
-<li>如果有必要执行finalize()，那么这个对象将会放入到F-Queue的队列中，并由低优先级的Finalizer线程去执行触发。稍后gc将对FQueue中的对象进行第二次标记，如果对象在finalize()中重新与引用链的对象建立关联，就会在第二次标记时它将会获得生存。</li>
-</ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">*此代码演示了两点：</div><div class="line">*1.对象可以在被GC时自我拯救。</div><div class="line">*2.这种自救的机会只有一次, 因为一个对象的finalize()方法最多只会被系统自动调用一次</div><div class="line">*@author zzm</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FinalizeEscapeGC</span> &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> FinalizeEscapeGC SAVE_HOOK = <span class="literal">null</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isAlive</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"yes,i am still alive:)"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@<span class="function">Override</span></div><div class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span>(<span class="params"></span>) throws Throwable &#123;</div><div class="line">		super.finalize();</div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"finalize mehtod executed!"</span>);</div><div class="line">		FinalizeEscapeGC.SAVE_HOOK = <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) throws Throwable </span>&#123;</div><div class="line">		SAVE_HOOK = <span class="keyword">new</span> FinalizeEscapeGC();</div><div class="line">		<span class="comment">//这种自调用不算入调用次数</span></div><div class="line">		SAVE_HOOK.finalize();</div><div class="line">		</div><div class="line">		<span class="comment">// 对象第一次成功拯救自己</span></div><div class="line">		SAVE_HOOK = <span class="literal">null</span>;</div><div class="line">		</div><div class="line">		System.gc();</div><div class="line">		<span class="comment">// 因为finalize方法优先级很低, 所以暂停0.5秒以等待它</span></div><div class="line">		Thread.sleep(<span class="number">500</span>);</div><div class="line">		<span class="keyword">if</span> (SAVE_HOOK != <span class="literal">null</span>) &#123;</div><div class="line">			SAVE_HOOK.isAlive();</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.<span class="keyword">out</span>.println(<span class="string">"no,i am dead:("</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// 下面这段代码与上面的完全相同, 但是这次自救却失败了</span></div><div class="line">		SAVE_HOOK = <span class="literal">null</span>;</div><div class="line">		System.gc();</div><div class="line">		<span class="comment">// 因为finalize方法优先级很低, 所以暂停0.5秒以等待它</span></div><div class="line">		Thread.sleep(<span class="number">500</span>);</div><div class="line">		<span class="keyword">if</span> (SAVE_HOOK != <span class="literal">null</span>) &#123;</div><div class="line">			SAVE_HOOK.isAlive();</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.<span class="keyword">out</span>.println(<span class="string">"no,i am dead:("</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="老版本jdk如何回收方法区"><a href="#老版本jdk如何回收方法区" class="headerlink" title="老版本jdk如何回收方法区"></a>老版本jdk如何回收方法区</h3><p>主要回收废弃常量和无用的类。</p>
+<h3 id="2-虚拟机栈"><a href="#2-虚拟机栈" class="headerlink" title="2.虚拟机栈"></a>2.虚拟机栈</h3><p>  描述的是Java方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧（Stack Frame），随着方法结束而销毁。<br>  何时确定局部变量空间大小？编译期<br>  局部变量空间除了（64位长度的long和double类型占用2个Slot）其余占用1个Slot</p>
+<p>  <strong>栈帧</strong></p>
+<table>
+<thead>
+<tr>
+<th>存放</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>局部变量表</td>
+<td>1）编译期可知的基本数据类型</td>
+</tr>
+<tr>
+<td></td>
+<td>2）对象引用</td>
+</tr>
+<tr>
+<td></td>
+<td>3）returnAddress类型（指向了一条字节码指令的地址）</td>
+</tr>
+<tr>
+<td>操作栈</td>
+<td>-</td>
+</tr>
+<tr>
+<td>动态链接</td>
+<td>-</td>
+</tr>
+<tr>
+<td>方法出口</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-本地方法栈"><a href="#3-本地方法栈" class="headerlink" title="3.本地方法栈"></a>3.本地方法栈</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>不同</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>虚拟机栈</td>
+<td>为JVM执行Java方法（字节码）服务</td>
+</tr>
+<tr>
+<td>本地方法栈</td>
+<td>为JVM使用Native方法服务</td>
+</tr>
+</tbody>
+</table>
+<h3 id="线程共享"><a href="#线程共享" class="headerlink" title="线程共享"></a>线程共享</h3><h3 id="4-堆"><a href="#4-堆" class="headerlink" title="4.堆"></a>4.堆</h3><p>  jvm启动时创建，唯一目的是存放对象实例。<br>  创建的对象和数组都保存在这里，也是垃圾收集器进行垃圾收集的最重要的区域。<br>  由于现在收集器基本都用分代收集算法，所以还分为新生代和老年代。</p>
+<h3 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5.方法区"></a>5.方法区</h3><p>存放</p>
 <ul>
-<li><p>回收废弃常量<br>假如一个字符串”abc”已经进入了常量池中，但是当前系统没有任何一个String对象是叫做”abc”的，换句话说，就是没有任何String对象引用常量池中的”abc”常量，也没有其他地方引用了这个字面量，如果这时发生内存回收，而且必要的话，这个”abc”常量就会被系统清理出常量池。常量池中的其他类（接口）、方法、字段的符号引用也与此类似。</p>
-</li>
-<li><p>回收无用的类 必须满足3个条件</p>
-</li>
+<li>类结构信息</li>
+<li>常量</li>
+<li>静态变量</li>
+<li>方法代码</li>
 </ul>
-<ol>
-<li>该类所有的实例都已经被回收，也就是Java堆中不存在该类的任何实例。</li>
-<li>加载该类的ClassLoader已经被回收。</li>
-<li>该类对应的java.lang.Class对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
+<h3 id="6-运行时常量池"><a href="#6-运行时常量池" class="headerlink" title="6.运行时常量池"></a>6.运行时常量池</h3><p>方法区的一部分。用于存放编译期生成的各种字面量和符号引用，这部分内容将在类加载后存放到方法区的运行时常量池中。</p>
+<h3 id="堆中给对象分配内存策略"><a href="#堆中给对象分配内存策略" class="headerlink" title="堆中给对象分配内存策略"></a>堆中给对象分配内存策略</h3><ol>
+<li>指针碰撞：假设堆中内存时绝对规整的，左边放着用过的内存，中间放着指针作为分界点的指示器，右边是空闲的内存，每次分配堆存就是把指针向空闲那边挪动一段与对象大小相等的距离。</li>
+<li>空闲列表：堆中内存不规整时，jvm必须维护一个列表，记录那些内存时可用的，分配对象时从列表中找到一块足够大的空间划分给对象实例，并更新列表记录。</li>
 </ol>
-<h3 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h3><h4 id="1-标记-清除（mark-sweep）"><a href="#1-标记-清除（mark-sweep）" class="headerlink" title="1. 标记-清除（mark-sweep）"></a>1. 标记-清除（mark-sweep）</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4.jpg" alt="标记清除"></p>
-<ul>
-<li>缺点：</li>
-</ul>
-<ol>
-<li>造成内存碎片（由于 Java 虚拟机的堆中对象必须是连续分布的，因此可能出现总空闲内存足够，但是无法分配的极端情况。）</li>
-<li>分配效率低</li>
-</ol>
-<h4 id="2-标记-整理（mark-compact）"><a href="#2-标记-整理（mark-compact）" class="headerlink" title="2. 标记-整理（mark-compact）"></a>2. 标记-整理（mark-compact）</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86.png" alt="gc-标记整理"><br>标记后不是清理对象，而是将存活对象移向内存的一端。然后清除端边界外的对象。</p>
-<h4 id="3-复制（copy）"><a href="#3-复制（copy）" class="headerlink" title="3. 复制（copy）"></a>3. 复制（copy）</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%A4%8D%E5%88%B6.png" alt="gc-复制"></p>
-<p>内存区域分为两等分，分别用两个指针 from 和 to 来维护，并且只是用 from 指针指向的内存区域来分配内存。当发生垃圾回收时，便把存活的对象复制到to 指针指向的内存区域中，并且交换 from 指针和 to 指针的内容。复制这种回收方式同样能够<br>解决内存碎片化的问题。<br>缺点:<br>堆空间的使用效率极其低下。</p>
-<h3 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E5%88%86%E4%BB%A3%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png" alt="分代收集"></p>
-<ol>
-<li>新生代（标记-复制算法）<br>通过-XX:SurvivorRatio调整Eden和Survivor的大小比例</li>
-</ol>
-<ul>
-<li>Eden</li>
-<li>Survivor(2个分别用from和to指代（to一直是空）)</li>
-</ul>
-<p>Minor GC:当Eden区的空间耗尽时触发来收集新生代的垃圾，存活下来的对象会被送到Survivor区。<br>触发时Eden区和from指向的Survivor区中存活对象会被复制到to指向的Survivor区中，然后交换from和to指针。</p>
-<p>何时升级到老年代？</p>
-<ul>
-<li>JVM会记录对象在Survivor区一共来回复制几次，如果是15就晋升（-XX:+MaxTenuringThreshold）</li>
-<li>如果单个Survivor区已经被占用了50%（-XX:TargetSurvivorRatio），较高复制次数的对象也会晋升</li>
-</ul>
-<ol>
-<li>老年代（标记-整理|标记-清除算法）</li>
-</ol>
-<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题:"></a>遇到的问题:</h3><p>有些老年代对象可能引用新生代的对象，那么标记该收集哪些类的时候就要连老年代也要去扫描。</p>
-<h3 id="HotSpot算法实现"><a href="#HotSpot算法实现" class="headerlink" title="HotSpot算法实现"></a>HotSpot算法实现</h3><h4 id="1-枚举根节点"><a href="#1-枚举根节点" class="headerlink" title="1.枚举根节点"></a>1.枚举根节点</h4><ul>
-<li><p>如何实现？<br>使用一组OopMap的数据结构，在类加载完成的时候，就把对象内什么偏移量是什么类型的数据计算出来，在JIT编译过程中，也会在特定的位置记录下栈和寄存器中哪些位置是引用。这样，GC在扫描时就可以直接得知这些信息了。</p>
+<p>选择分配方式是由垃圾收集器是否带有压缩整理功能决定</p>
+<h4 id="1-对象的内存布局"><a href="#1-对象的内存布局" class="headerlink" title="1.对象的内存布局"></a>1.对象的内存布局</h4><table>
+<thead>
+<tr>
+<th>布局</th>
+<th>存储内容</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对象头</td>
+<td>哈希码、GC分代年龄、锁状态标识、线程持有的锁、偏向线程ID、偏向时间等</td>
+<td>用于存储对象自身的运行时数据</td>
+</tr>
+<tr>
+<td></td>
+<td>类型指针</td>
+<td>jvm通过这个指针来确定这个对象时那个类的实例</td>
+</tr>
+<tr>
+<td>实例数据</td>
+<td>对象真正存储的有效信息，也是在程序代码中所定义的各种类型的字段内容</td>
+<td></td>
+</tr>
+<tr>
+<td>对齐填充</td>
+<td>非必然存在</td>
+<td>仅仅起着占位符的作用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-对象的访问定位"><a href="#2-对象的访问定位" class="headerlink" title="2.对象的访问定位"></a>2.对象的访问定位</h4><ul>
+<li><p>句柄：<br>实现：堆中划分出一块内存来作为句柄池，reference中存储的就是对象的句柄地址<br>优点：reference中存储的是稳定的句柄地址，gc发生时很多对象会被移动，但只会改变句柄中的实例数据指针，不会改变reference本身。</p>
 </li>
-<li><p>为了解决什么？<br>每次检查对象存活时必须确保分析过程中对象引用关系在某个冻结的时间点上（Stop the world），并且要逐个从GC Roots节点中检查里面的引用会消耗很多时间。</p>
-</li>
-</ul>
-<h4 id="2-安全点（Safe-point）"><a href="#2-安全点（Safe-point）" class="headerlink" title="2.安全点（Safe point）"></a>2.安全点（Safe point）</h4><ul>
-<li>为了解决什么？<br>在OopMap的协助下，HotSpot会快速且准确地完成GC Roots枚举，可能导致引用关系变化，或者说OopMap内容变化的指令非常多，如果为每一条指令都生成对应的OopMap，那将会需要大量的额外空间，这样GC的空间成本将会变得很高。</li>
-</ul>
-<p>安全点的选定：程序“是否具有让程序长时间执行的特征”为标准进行选定的<br>方法调用、循环跳转、异常跳转等指令才会产生Safepoint</p>
-<p>gc发生时让所有执行中的线程到达安全点上后停顿下来</p>
-<ol>
-<li>抢先式中断（几乎没有jvm会采用这种方法）<br>在gc发生时，首先把所有线程中断，发现有线程中断的地方不在安全点上，就恢复线程，让它到达安全点。</li>
-<li>主动式中断<br>当gc需要中断线程的时候，仅仅简单地设置一个标示，各个线程执行时主动去轮询这个标示，如果发现中断标示为真就自己中断挂起。</li>
-</ol>
-<h4 id="3-安全区域（Safe-Region）"><a href="#3-安全区域（Safe-Region）" class="headerlink" title="3.安全区域（Safe Region）"></a>3.安全区域（Safe Region）</h4><ul>
-<li><p>为了解决什么？<br>安全点机制保证了程序执行时进入gc的安全点，但程序不执行（没有分配CPU时间）典型的例子就是线程处于Sleep状态或者Blocked状态，这时候线程无法响应JVM的中断请求，“走”到安全的地方去中断挂起。</p>
-</li>
-<li><p>安全区域是什么？<br>指在一段代码片段之中，引用关系不会发生变化，在这个区域中的任意地方开始gc都是安全的</p>
-</li>
-<li><p>工作原理<br>在线程执行到安全区域中的代码时，首先标识自己已进入了安全区，这段时间里gc发生时，就不去管标识为安全区域状态的线程了。在线程要离开安全区域时，它要检查系统是否已经完成了根节点枚举（或者是整个GC过程），如果完成了，那线程就继续执行，否则它就必须等待直到收到可以安全离开Safe Region的信号为止。</p>
+<li><p>直接指针：（Sun HotSpot使用这方式）<br>实现：reference中存储的直接就是对象地址<br>优点：速度快，节省了一次指针定位的时间开销</p>
 </li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E5%8F%A5%E6%9F%84.png" alt="jvm-句柄"></p>
+<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88.png" alt="jvm-直接指针"></p>
+<h4 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h4><p>OutOfMemoryError<br>没有空闲内容，并且垃圾收集器也无法提供更多内存。</p>
+<p>内存区域出现OOM的地方（程序计数器不出现OOM）</p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>虚拟机栈</td>
+<td>如果扩展时无法申请到足够的内存</td>
+</tr>
+<tr>
+<td>本地方法栈</td>
+<td>和虚拟机栈一样</td>
+</tr>
+<tr>
+<td>堆</td>
+<td>可能存在内存泄漏问题；也很有可能就是堆的大小不合理，比如我们要处理比较可观的数据量，但是没有显式指定 JVM 堆大小或者出现 JVM 处理引用不及时，导致堆积起来，内存无法释放等。</td>
+</tr>
+<tr>
+<td>方法区老版本</td>
+<td>因为永久代大小有限，并且JVM对永久代（常量池回收、卸载不再需要的类型）GC不积极，所以不断新添加类型的时候就会出现OOM，类似Intern字符串缓存占用太多空间也会OOM</td>
+</tr>
+<tr>
+<td>直接内存</td>
+<td>NIO技术直接通过Native函数库分配堆外内存，然后通过一个存储在Java堆中的DirectByteBuffer对象作为这块内存的引用进行操作。</td>
+</tr>
+</tbody>
+</table>
+<p>虚拟机栈和方法栈还会出现StackOverFlowError：不断递归调用，而且没有退出条件时，就会导致不断压栈。</p>
 <p>读后感笔记来自周志明的<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="external">《深入理解Java虚拟机（第2版）》</a></p>
 
       
@@ -371,7 +415,7 @@ var bp = document.createElement('script');
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">深入jvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
         		</li>
       		
 		</ul>
@@ -427,7 +471,7 @@ var bp = document.createElement('script');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/03/22/jvm-1.2.对象存活判定算法和垃圾收集算法/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/03/19/jvm-【梳理jvm】1.1.JVM内存区域和内存溢出/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -441,15 +485,20 @@ var bp = document.createElement('script');
   
 <nav id="article-nav">
   
-    <a href="/2019/03/21/spring-RedisCache/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/01/29/set-TreeSet自定义类排序/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Spring:基于RedisCacheManager支持的cache
+          自定义类对象利用TreeSet排序
         
       </div>
     </a>
   
+  
+    <a href="/2019/03/21/spring-RedisCache/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring:基于RedisCacheManager支持的cache</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -561,11 +610,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +622,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,10 +635,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,15 +654,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">深入jvm</a>
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,15 +682,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,6 +695,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">

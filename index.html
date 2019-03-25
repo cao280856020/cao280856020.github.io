@@ -166,29 +166,56 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-jvm-【梳理jvm】3.1.Class类文件结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/22/jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法/">【梳理jvm】1.2.对象存活判定算法和垃圾收集算法</a>
+      <a class="article-title" href="/2019/03/25/jvm-【梳理jvm】3.1.Class类文件结构/">【梳理jvm】3.1.Class类文件结构</a>
     </h1>
   
 
         
-        <a href="/2019/03/22/jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法/" class="archive-article-date">
-  	<time datetime="2019-03-22T09:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
+        <a href="/2019/03/25/jvm-【梳理jvm】3.1.Class类文件结构/" class="archive-article-date">
+  	<time datetime="2019-03-25T07:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="gc脑图"><a href="#gc脑图" class="headerlink" title="gc脑图"></a>gc脑图</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg" alt="gc-脑图"></p>
+        <p>JVM只和Class文件这种特定的二进制文件格式所关联。<br>Class文件包含了JVM指令集和符号表、若干其他辅助信息。<br>Class长度为8位二进制。</p>
+<h4 id="0-class字节码文件结构"><a href="#0-class字节码文件结构" class="headerlink" title="0.class字节码文件结构"></a>0.class字节码文件结构</h4><table>
+<thead>
+<tr>
+<th>class文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件头部</td>
+</tr>
+<tr>
+<td>常量池区域</td>
+</tr>
+<tr>
+<td>当前类的一些描述信息</td>
+</tr>
+<tr>
+<td>字段表集合</td>
+</tr>
+<tr>
+<td>方法表集合</td>
+</tr>
+<tr>
+<td>属性表集合</td>
+</tr>
+</tbody>
+</table>
         
-          <a class="article-more-a" href="/2019/03/22/jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法/#more">more >></a>
+          <a class="article-more-a" href="/2019/03/25/jvm-【梳理jvm】3.1.Class类文件结构/#more">more >></a>
         
       
 
@@ -220,7 +247,153 @@ var bp = document.createElement('script');
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/22/jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/25/jvm-【梳理jvm】3.1.Class类文件结构/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-jvm-【梳理jvm】2.2.垃圾收集器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/">【梳理jvm】2.2.垃圾收集器</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/" class="archive-article-date">
+  	<time datetime="2019-03-25T07:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>垃圾收集算法是内存回收的方法论。<br>垃圾收集器是内存回收的具体实现。</p>
+<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%9B%BE.jpg" alt="gc-垃圾收集器"></p>
+<p>连线代表可以组合搭配使用</p>
+        
+          <a class="article-more-a" href="/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/22/jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法/">【梳理jvm】2.1.对象存活判定算法和垃圾收集算法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/22/jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法/" class="archive-article-date">
+  	<time datetime="2019-03-22T09:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="gc脑图"><a href="#gc脑图" class="headerlink" title="gc脑图"></a>gc脑图</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg" alt="gc-脑图"></p>
+        
+          <a class="article-more-a" href="/2019/03/22/jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/22/jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法/">展开全文 >></a>
         </p>
       
 
@@ -321,11 +494,11 @@ var bp = document.createElement('script');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -437,147 +610,9 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-set-TreeSet自定义类排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/29/set-TreeSet自定义类排序/">自定义类对象利用TreeSet排序</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/29/set-TreeSet自定义类排序/" class="archive-article-date">
-  	<time datetime="2019-01-29T08:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>利用TreeSet类和java.lang.Comparable接口实现给对象集合排序</p>
-<p>TreeSet继承关系<br><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/set-TreeSet%E7%BB%A7%E6%89%BF%E5%9B%BE.png" alt="treeset-map"></p>
-        
-          <a class="article-more-a" href="/2019/01/29/set-TreeSet自定义类排序/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/29/set-TreeSet自定义类排序/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-springcloud-zuul-网关配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/23/springcloud-zuul-网关配置/">手把手搭建项目-SpringCloud-zuul网关配置</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/23/springcloud-zuul-网关配置/" class="archive-article-date">
-  	<time datetime="2019-01-23T07:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>启动网关服务<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">进入D:<span class="symbol">\w</span>ork<span class="symbol">\c</span>yj<span class="symbol">\a</span>pplication<span class="symbol">\s</span>cript</div><div class="line">./gateway_start.sh</div></pre></td></tr></table></figure></p>
-<p>应用日志在<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">D:<span class="symbol">\w</span>ork<span class="symbol">\c</span>yj<span class="symbol">\a</span>pplication<span class="symbol">\l</span>ogs<span class="symbol">\g</span>ateway.2019-01-10.log</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/01/23/springcloud-zuul-网关配置/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搭建项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringCloud</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/23/springcloud-zuul-网关配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -668,15 +703,7 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -684,11 +711,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,7 +731,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,19 +759,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,6 +783,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -760,15 +799,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,11 +807,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,10 +835,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
@@ -812,11 +843,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基金</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -829,6 +856,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">理财</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基金</a>
               </li>
             
             <div class="clearfix"></div>

@@ -166,6 +166,150 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mongo-linux配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/30/mongo-linux配置/">mongo-linux安装配置</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/30/mongo-linux配置/" class="archive-article-date">
+  	<time datetime="2018-05-30T07:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.下载mongo<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -O https:<span class="regexp">//</span>fastdl.mongodb.org<span class="regexp">/linux/m</span>ongodb-linux-x86_64-<span class="number">3.0</span>.<span class="number">6</span>.tgz</div></pre></td></tr></table></figure></p>
+<p>2.解压mongo<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">mongodb-linux-x86_64-3</span><span class="selector-class">.0</span><span class="selector-class">.6</span><span class="selector-class">.tgz</span></div></pre></td></tr></table></figure></p>
+<p>3.移到指定目录后给一个软链接<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mv  mongodb-linux-x86_64<span class="number">-3.0</span><span class="number">.6</span> /root/apps/</div><div class="line">cd /root/apps</div><div class="line">ln -s /root/apps/mongodb-linux-x86_64<span class="number">-3.0</span><span class="number">.6</span> mongo</div></pre></td></tr></table></figure></p>
+<p>4.写入到系统变量中方便使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi /etc/profile</div><div class="line"><span class="built_in">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:<span class="variable">$PATH</span> ==&gt; <span class="built_in">export</span> PATH=/root/apps/mongo/bin:<span class="variable">$PATH</span></div></pre></td></tr></table></figure></p>
+<p>5.创建数据库存储目录data<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p <span class="regexp">/root/</span>apps<span class="regexp">/mongo/</span>data<span class="regexp">/db</span></div></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2018/05/30/mongo-linux配置/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mongo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/30/mongo-linux配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-算法-希尔排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/19/算法-希尔排序/">算法:高级排序1-希尔排序</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/19/算法-希尔排序/" class="archive-article-date">
+  	<time datetime="2018-03-19T02:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="高级排序1-希尔排序"><a href="#高级排序1-希尔排序" class="headerlink" title="高级排序1-希尔排序"></a>高级排序1-希尔排序</h3><p><img src="http://blog.manxue.vip/%5Bordered%5Dshell.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;排序-shellSort&quot;"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li>1.在插入排序的基础下只用增量减量的方式</li>
+<li>2.最后一步减量后序列为1,执行普通的插入排序</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/03/19/算法-希尔排序/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/19/算法-希尔排序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-linux-shell判断语句" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -387,146 +531,9 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-算法-冒泡排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/17/算法-冒泡排序/">算法:简单排序1-冒泡排序</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/17/算法-冒泡排序/" class="archive-article-date">
-  	<time datetime="2018-03-17T10:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="简单排序1-冒泡排序"><a href="#简单排序1-冒泡排序" class="headerlink" title="简单排序1-冒泡排序"></a>简单排序1-冒泡排序</h3><p><img src="http://blog.manxue.vip/%5Bordered%5Dbubble.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;排序-bubble&quot;"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
-<li>1.每次从左开始两个紧邻元素比较大小，如果大就交换位置到右边。</li>
-<li>2.得到大数并且交换到右边位置后，它继续和它的右边一个数比较大小重复1步骤，这样重复下来第一轮最后一个位置就是最大数。</li>
-<li>3.下次排序时重复1,2步骤一直到上一次排好顺序的前一个位置上。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/03/17/算法-冒泡排序/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/17/算法-冒泡排序/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-java-垃圾回收机制2-判断哪些类可回收" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/14/java-垃圾回收机制2-判断哪些类可回收/">java:垃圾回收机制2-判断哪些类可回收</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/14/java-垃圾回收机制2-判断哪些类可回收/" class="archive-article-date">
-  	<time datetime="2018-03-14T11:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="分代收集算法-当前商业虚拟机的垃圾收集都采用“分代收集”"><a href="#分代收集算法-当前商业虚拟机的垃圾收集都采用“分代收集”" class="headerlink" title="分代收集算法  当前商业虚拟机的垃圾收集都采用“分代收集”"></a>分代收集算法  当前商业虚拟机的垃圾收集都采用“分代收集”</h3><p>按对象存活周期将内存划分为新生代和老年代。根据各年代的特点采用最适当的收集算法。</p>
-        
-          <a class="article-more-a" href="/2018/03/14/java-垃圾回收机制2-判断哪些类可回收/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/14/java-垃圾回收机制2-判断哪些类可回收/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
   
 
@@ -617,15 +624,7 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,11 +632,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,7 +652,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,19 +680,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,6 +704,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -709,15 +720,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,11 +728,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -749,10 +756,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
@@ -761,11 +764,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基金</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -778,6 +777,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">理财</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基金</a>
               </li>
             
             <div class="clearfix"></div>

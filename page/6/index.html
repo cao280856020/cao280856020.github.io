@@ -166,6 +166,196 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-商品开发4-商品存储展示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/17/商品开发4-商品存储展示/">商品开发4-商品存储展示</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/17/商品开发4-商品存储展示/" class="archive-article-date">
+  	<time datetime="2018-07-17T09:45:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="拉平商品相关联的所有表字段到一张大而全的mongodb中"><a href="#拉平商品相关联的所有表字段到一张大而全的mongodb中" class="headerlink" title="拉平商品相关联的所有表字段到一张大而全的mongodb中"></a>拉平商品相关联的所有表字段到一张大而全的mongodb中</h4><h5 id="拉平商品数据"><a href="#拉平商品数据" class="headerlink" title="拉平商品数据"></a>拉平商品数据</h5><ul>
+<li>由于商品关联的表太多，mysql join多表查询时会很慢。相关缺点参考此人写的<a href="https://blog.csdn.net/jhgdike/article/details/55052064" target="_blank" rel="external">join缺点</a>。</li>
+<li>释放商品mysql的查询压力，mysql只负责商品的增删改的事务类操作，更多使用mongodb来做列表查询操作，redis(hash结构)缓存商品详情。</li>
+<li>mongo存储商品数据维度为商品级别</li>
+<li>redis存储商品数据维度为sku级别</li>
+</ul>
+<h5 id="定时同步商品数据"><a href="#定时同步商品数据" class="headerlink" title="定时同步商品数据"></a>定时同步商品数据</h5><ul>
+<li>定时任务记录上次更新时间到当前时间的商品信息同步到mongo和redis中，并用redis的key来记录</li>
+</ul>
+<ol>
+<li>查询上次同步时间，如果没有就查询整个的商品编辑时间到当前时间的数据同步到mongo和redis</li>
+<li>如果有上次同步时间，就执行sql语句lastAt&lt;=update_at AND update_at&lt;=now()得到同步商品</li>
+<li>记录当前时间，并放入redis中变为lastAt</li>
+</ol>
+<ul>
+<li>定时把redis中的商品sku库存，销量同步到mysql的eb_goods_sku中</li>
+<li>编辑商品时如果把sku删除了就要马上执行同步把redis的sku库存销量等信息同步到mysql，不然会丢失数据</li>
+</ul>
+<h5 id="展示商品数据"><a href="#展示商品数据" class="headerlink" title="展示商品数据"></a>展示商品数据</h5><ul>
+<li>查询列表直接到mongo查询，查出后库存要到对应的redis中查找</li>
+<li>查询某一个商品时去redis中查找该商品下面的所有已启用的skuId后对应单个查找redis详情</li>
+</ul>
+<h5 id="扣减库存"><a href="#扣减库存" class="headerlink" title="扣减库存"></a>扣减库存</h5><ul>
+<li>利用redis的increment保证了线程安全，每次扣减变为负数时要补偿回滚库存。</li>
+</ul>
+<h3 id="其他相关文章"><a href="#其他相关文章" class="headerlink" title="其他相关文章"></a>其他相关文章</h3><p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%913-%E5%95%86%E5%93%81%E4%B8%8A%E6%96%B0%E6%97%B6%E6%B5%81%E7%A8%8B/" target="_blank" rel="external">商品开发3-商品上新时流程</a></p>
+<p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%912-%E8%A1%A8%E4%B9%8B%E9%97%B4%E5%85%B3%E7%B3%BB/" target="_blank" rel="external">商品开发2-表之间关系</a></p>
+<p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%911-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/#more" target="_blank" rel="external">商品开发1-数据库设计</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">商品模块</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/17/商品开发4-商品存储展示/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-商品开发3-商品上新时流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/17/商品开发3-商品上新时流程/">商品开发3-商品上新时流程</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/17/商品开发3-商品上新时流程/" class="archive-article-date">
+  	<time datetime="2018-07-17T07:32:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="分类管理"><a href="#分类管理" class="headerlink" title="分类管理"></a>分类管理</h4><ul>
+<li>匹配往分类中下挂属性</li>
+<li>每个分类可继承某个分类的所有属性</li>
+<li>分别使用{“is_must”:”是否必填”,”is_sale”:”是否生成sku”,”is_can_new”:”是否支持自定义输入值”}来指定属性的功能</li>
+</ul>
+<h4 id="上新商品流程"><a href="#上新商品流程" class="headerlink" title="上新商品流程"></a>上新商品流程</h4><h5 id="1-选择某一个分类"><a href="#1-选择某一个分类" class="headerlink" title="1.选择某一个分类"></a>1.选择某一个分类</h5><ul>
+<li>拿到eb_species的species_id</li>
+<li>去查eb_species_property表，找到对应的property_id列表</li>
+</ul>
+<h5 id="2-获得具体分类的属性表"><a href="#2-获得具体分类的属性表" class="headerlink" title="2.获得具体分类的属性表"></a>2.获得具体分类的属性表</h5><ul>
+<li>遍历eb_property获得属性类型</li>
+<li>遍历eb_property_value获得属性对应的属性值列表</li>
+</ul>
+<h5 id="3-校验必填的属性是否为有遗漏"><a href="#3-校验必填的属性是否为有遗漏" class="headerlink" title="3.校验必填的属性是否为有遗漏"></a>3.校验必填的属性是否为有遗漏</h5><ul>
+<li>is_must的属性不能空值</li>
+</ul>
+<h5 id="4-匹配各自数据分别插入到对应的表中"><a href="#4-匹配各自数据分别插入到对应的表中" class="headerlink" title="4.匹配各自数据分别插入到对应的表中"></a>4.匹配各自数据分别插入到对应的表中</h5><ul>
+<li>属性判断是否为销售属性(is_sale=1时为销售属性)</li>
+<li>把is_sale=1的属性值放入到eb_goods_sku_value中</li>
+<li>把is_sale=0的基本属性信息放入到eb_goods_property中</li>
+</ul>
+<h5 id="5-后台删除某个属性时"><a href="#5-后台删除某个属性时" class="headerlink" title="5.后台删除某个属性时"></a>5.后台删除某个属性时</h5><ul>
+<li>对应eb_species_property表中的property_id删除</li>
+<li>对应eb_property表中的property_id删除</li>
+<li>对应eb_property_value表中的property_id删除</li>
+<li>不改动eb_goods_property表</li>
+<li>不改动eb_goods_sku_value表</li>
+<li>所以插入到eb_goods_property和eb_goods_sku_value时要把大而全的信息都放入，免得属性被删时显示不了数据</li>
+</ul>
+<h3 id="其他相关文章"><a href="#其他相关文章" class="headerlink" title="其他相关文章"></a>其他相关文章</h3><p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%914-%E5%95%86%E5%93%81%E5%AD%98%E5%82%A8%E5%B1%95%E7%A4%BA/" target="_blank" rel="external">商品开发4-商品存储展示</a></p>
+<p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%912-%E8%A1%A8%E4%B9%8B%E9%97%B4%E5%85%B3%E7%B3%BB/" target="_blank" rel="external">商品开发2-表之间关系</a></p>
+<p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%911-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/#more" target="_blank" rel="external">商品开发1-数据库设计</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">商品模块</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/17/商品开发3-商品上新时流程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-商品开发2-表之间关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -403,153 +593,9 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-mongo-linux配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/30/mongo-linux配置/">mongo-linux安装配置</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/30/mongo-linux配置/" class="archive-article-date">
-  	<time datetime="2018-05-30T07:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.下载mongo<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -O https:<span class="regexp">//</span>fastdl.mongodb.org<span class="regexp">/linux/m</span>ongodb-linux-x86_64-<span class="number">3.0</span>.<span class="number">6</span>.tgz</div></pre></td></tr></table></figure></p>
-<p>2.解压mongo<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">mongodb-linux-x86_64-3</span><span class="selector-class">.0</span><span class="selector-class">.6</span><span class="selector-class">.tgz</span></div></pre></td></tr></table></figure></p>
-<p>3.移到指定目录后给一个软链接<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mv  mongodb-linux-x86_64<span class="number">-3.0</span><span class="number">.6</span> /root/apps/</div><div class="line">cd /root/apps</div><div class="line">ln -s /root/apps/mongodb-linux-x86_64<span class="number">-3.0</span><span class="number">.6</span> mongo</div></pre></td></tr></table></figure></p>
-<p>4.写入到系统变量中方便使用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi /etc/profile</div><div class="line"><span class="built_in">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:<span class="variable">$PATH</span> ==&gt; <span class="built_in">export</span> PATH=/root/apps/mongo/bin:<span class="variable">$PATH</span></div></pre></td></tr></table></figure></p>
-<p>5.创建数据库存储目录data<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir -p <span class="regexp">/root/</span>apps<span class="regexp">/mongo/</span>data<span class="regexp">/db</span></div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2018/05/30/mongo-linux配置/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mongo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/30/mongo-linux配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-算法-希尔排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/19/算法-希尔排序/">算法:高级排序1-希尔排序</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/19/算法-希尔排序/" class="archive-article-date">
-  	<time datetime="2018-03-19T02:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="高级排序1-希尔排序"><a href="#高级排序1-希尔排序" class="headerlink" title="高级排序1-希尔排序"></a>高级排序1-希尔排序</h3><p><img src="http://blog.manxue.vip/%5Bordered%5Dshell.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;排序-shellSort&quot;"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
-<li>1.在插入排序的基础下只用增量减量的方式</li>
-<li>2.最后一步减量后序列为1,执行普通的插入排序</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/03/19/算法-希尔排序/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/19/算法-希尔排序/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
@@ -640,15 +686,7 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,11 +694,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,7 +714,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,19 +742,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,6 +766,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -732,15 +782,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -748,11 +790,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -772,10 +818,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
@@ -784,11 +826,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基金</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -801,6 +839,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">理财</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基金</a>
               </li>
             
             <div class="clearfix"></div>

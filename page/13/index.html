@@ -6,28 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>【梳理jvm】1.2.对象存活判定算法和垃圾收集算法 | CaoYongjun&#39;s Blog</title>
+  <title>CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="gc脑图">
-<meta name="keywords" content="jvm,回顾,梳理jvm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【梳理jvm】1.2.对象存活判定算法和垃圾收集算法">
-<meta property="og:url" content="http://www.caoyongjun.com/2019/03/22/jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法/index.html">
+  <meta name="description" content="caoyongjun的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CaoYongjun's Blog">
+<meta property="og:url" content="http://www.caoyongjun.com/page/13/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="gc脑图">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%A4%8D%E5%88%B6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E5%88%86%E4%BB%A3%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png">
-<meta property="og:updated_time" content="2019-03-22T09:29:21.947Z">
+<meta property="og:description" content="caoyongjun的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【梳理jvm】1.2.对象存活判定算法和垃圾收集算法">
-<meta name="twitter:description" content="gc脑图">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg">
+<meta name="twitter:title" content="CaoYongjun's Blog">
+<meta name="twitter:description" content="caoyongjun的博客">
   
   
     <link rel="icon" href="/favicon.png">
@@ -175,184 +164,34 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-brickman-architecture" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      【梳理jvm】1.2.对象存活判定算法和垃圾收集算法
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/11/brickman-architecture/">砖头人项目:1.架构设计实现篇</a>
     </h1>
   
 
         
-        <a href="/2019/03/22/jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法/" class="archive-article-date">
-  	<time datetime="2019-03-22T09:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
+        <a href="/2017/04/11/brickman-architecture/" class="archive-article-date">
+  	<time datetime="2017-04-11T10:53:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="gc脑图"><a href="#gc脑图" class="headerlink" title="gc脑图"></a>gc脑图</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg" alt="gc-脑图"></p>
-<a id="more"></a>
-<h3 id="如何确定是垃圾"><a href="#如何确定是垃圾" class="headerlink" title="如何确定是垃圾"></a>如何确定是垃圾</h3><h4 id="1-引用计数法"><a href="#1-引用计数法" class="headerlink" title="1.引用计数法"></a>1.引用计数法</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0.jpg" alt="gc-引用计数法"></p>
-<p>缺点:无法解决循环引用的问题</p>
-<h4 id="2-可达性分析"><a href="#2-可达性分析" class="headerlink" title="2.可达性分析"></a>2.可达性分析</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90.jpg" alt="gc-可达性分析"></p>
-<ul>
-<li>原理：<br>选择活动的对象作为GC Roots，然后跟踪引用链条，如果一个对象和GC Roots之间不可达，也就是不存在引用链条。</li>
-</ul>
-<p>可作为GC Root的对象</p>
-<ul>
-<li>虚拟机栈（栈帧中的本地变量表）中引用的对象。</li>
-<li>方法区中类静态属性引用的对象。</li>
-<li>方法区中常量引用的对象。</li>
-<li><p>本地方法栈中JNI（即一般说的Native方法）引用的对象。</p>
-</li>
-<li><p>可达性分析缺点：<br>在多线程环境下，其他线程可能会更新已经访问过的对象中的引用，从而造成误报（将引用设置为 null）或者漏报（将引用设置为未被访问过的对象）。<br>误报并没有什么伤害，Java 虚拟机至多损失了部分垃圾回收的机会。漏报则比较麻烦，因为垃圾回收器可能回收事实上仍被引用的对象内存。一旦从原引用访问已经被回收了的对象，则很有可能会直接导致 Java 虚拟机崩溃。</p>
-</li>
-</ul>
-<h3 id="引用类型是什么"><a href="#引用类型是什么" class="headerlink" title="引用类型是什么"></a>引用类型是什么</h3><ul>
-<li>出现的理由:</li>
-</ul>
-<ol>
-<li>当内存空间还足够时，能保留在内存之中。</li>
-<li>如果内存空间在进行垃圾收集后还是非常紧张，则可以抛弃这些对象。</li>
-</ol>
-<p>不同的引用类型，主要体现的是对象不同的可达性状态和对垃圾收集的影响。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>垃圾回收</th>
-<th>应用场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>强引用</td>
-<td>不回收</td>
-<td></td>
-</tr>
-<tr>
-<td>软引用</td>
-<td>内存不足时会回收</td>
-<td>通常用来实现内存敏感的缓存，如果还有空闲内存，就可以暂时保留缓存，当内存不足时清理掉，这样就保证了使用缓存的同时，不会耗尽内存。</td>
-</tr>
-<tr>
-<td>弱引用</td>
-<td>每次都会回收</td>
-<td>这就可以用来构建一种没有特定约束的关系，比如，维护一种非强制性的映射关系，如果试图获取时对象还在，就使用它，否则重现实例化。它同样是很多缓存实现的选择。</td>
-</tr>
-<tr>
-<td>虚引用</td>
-<td>回收时会做些事情</td>
-<td>通常用来做所谓的 Post-Mortem 清理机制，也有人利用幻象引用监控对象的创建和销毁。</td>
-</tr>
-</tbody>
-</table>
-<p>引用状态流转图<br><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png" alt="gc-状态流转"></p>
-<h4 id="对象何时死亡"><a href="#对象何时死亡" class="headerlink" title="对象何时死亡"></a>对象何时死亡</h4><p>在可达性分析中不可达的对象，不一定会被回收。<br>真正要回收对象至少经历两次标记过程</p>
-<ol>
-<li>如果对象在可达性分析后没有与GC Roots引用链相连接，就被第一次标记并进行一次筛选，筛选条件是否有必要执行finalize()方法。（1）当对象没有覆盖finalize()方法（2）finalize()方法已经被jvm调用过。如果没有必要就直接回收对象。</li>
-<li>如果有必要执行finalize()，那么这个对象将会放入到F-Queue的队列中，并由低优先级的Finalizer线程去执行触发。稍后gc将对FQueue中的对象进行第二次标记，如果对象在finalize()中重新与引用链的对象建立关联，就会在第二次标记时它将会获得生存。</li>
-</ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">*此代码演示了两点：</div><div class="line">*1.对象可以在被GC时自我拯救。</div><div class="line">*2.这种自救的机会只有一次, 因为一个对象的finalize()方法最多只会被系统自动调用一次</div><div class="line">*@author zzm</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FinalizeEscapeGC</span> &#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> FinalizeEscapeGC SAVE_HOOK = <span class="literal">null</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isAlive</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"yes,i am still alive:)"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@<span class="function">Override</span></div><div class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span>(<span class="params"></span>) throws Throwable &#123;</div><div class="line">		super.finalize();</div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"finalize mehtod executed!"</span>);</div><div class="line">		FinalizeEscapeGC.SAVE_HOOK = <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) throws Throwable </span>&#123;</div><div class="line">		SAVE_HOOK = <span class="keyword">new</span> FinalizeEscapeGC();</div><div class="line">		<span class="comment">//这种自调用不算入调用次数</span></div><div class="line">		SAVE_HOOK.finalize();</div><div class="line">		</div><div class="line">		<span class="comment">// 对象第一次成功拯救自己</span></div><div class="line">		SAVE_HOOK = <span class="literal">null</span>;</div><div class="line">		</div><div class="line">		System.gc();</div><div class="line">		<span class="comment">// 因为finalize方法优先级很低, 所以暂停0.5秒以等待它</span></div><div class="line">		Thread.sleep(<span class="number">500</span>);</div><div class="line">		<span class="keyword">if</span> (SAVE_HOOK != <span class="literal">null</span>) &#123;</div><div class="line">			SAVE_HOOK.isAlive();</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.<span class="keyword">out</span>.println(<span class="string">"no,i am dead:("</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// 下面这段代码与上面的完全相同, 但是这次自救却失败了</span></div><div class="line">		SAVE_HOOK = <span class="literal">null</span>;</div><div class="line">		System.gc();</div><div class="line">		<span class="comment">// 因为finalize方法优先级很低, 所以暂停0.5秒以等待它</span></div><div class="line">		Thread.sleep(<span class="number">500</span>);</div><div class="line">		<span class="keyword">if</span> (SAVE_HOOK != <span class="literal">null</span>) &#123;</div><div class="line">			SAVE_HOOK.isAlive();</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			System.<span class="keyword">out</span>.println(<span class="string">"no,i am dead:("</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="老版本jdk如何回收方法区"><a href="#老版本jdk如何回收方法区" class="headerlink" title="老版本jdk如何回收方法区"></a>老版本jdk如何回收方法区</h3><p>主要回收废弃常量和无用的类。</p>
-<ul>
-<li><p>回收废弃常量<br>假如一个字符串”abc”已经进入了常量池中，但是当前系统没有任何一个String对象是叫做”abc”的，换句话说，就是没有任何String对象引用常量池中的”abc”常量，也没有其他地方引用了这个字面量，如果这时发生内存回收，而且必要的话，这个”abc”常量就会被系统清理出常量池。常量池中的其他类（接口）、方法、字段的符号引用也与此类似。</p>
-</li>
-<li><p>回收无用的类 必须满足3个条件</p>
-</li>
-</ul>
-<ol>
-<li>该类所有的实例都已经被回收，也就是Java堆中不存在该类的任何实例。</li>
-<li>加载该类的ClassLoader已经被回收。</li>
-<li>该类对应的java.lang.Class对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
-</ol>
-<h3 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h3><h4 id="1-标记-清除（mark-sweep）"><a href="#1-标记-清除（mark-sweep）" class="headerlink" title="1. 标记-清除（mark-sweep）"></a>1. 标记-清除（mark-sweep）</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4.jpg" alt="标记清除"></p>
-<ul>
-<li>缺点：</li>
-</ul>
-<ol>
-<li>造成内存碎片（由于 Java 虚拟机的堆中对象必须是连续分布的，因此可能出现总空闲内存足够，但是无法分配的极端情况。）</li>
-<li>分配效率低</li>
-</ol>
-<h4 id="2-标记-整理（mark-compact）"><a href="#2-标记-整理（mark-compact）" class="headerlink" title="2. 标记-整理（mark-compact）"></a>2. 标记-整理（mark-compact）</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86.png" alt="gc-标记整理"><br>标记后不是清理对象，而是将存活对象移向内存的一端。然后清除端边界外的对象。</p>
-<h4 id="3-复制（copy）"><a href="#3-复制（copy）" class="headerlink" title="3. 复制（copy）"></a>3. 复制（copy）</h4><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%A4%8D%E5%88%B6.png" alt="gc-复制"></p>
-<p>内存区域分为两等分，分别用两个指针 from 和 to 来维护，并且只是用 from 指针指向的内存区域来分配内存。当发生垃圾回收时，便把存活的对象复制到to 指针指向的内存区域中，并且交换 from 指针和 to 指针的内容。复制这种回收方式同样能够<br>解决内存碎片化的问题。<br>缺点:<br>堆空间的使用效率极其低下。</p>
-<h3 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E5%88%86%E4%BB%A3%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95.png" alt="分代收集"></p>
-<ol>
-<li>新生代（标记-复制算法）<br>通过-XX:SurvivorRatio调整Eden和Survivor的大小比例</li>
-</ol>
-<ul>
-<li>Eden</li>
-<li>Survivor(2个分别用from和to指代（to一直是空）)</li>
-</ul>
-<p>Minor GC:当Eden区的空间耗尽时触发来收集新生代的垃圾，存活下来的对象会被送到Survivor区。<br>触发时Eden区和from指向的Survivor区中存活对象会被复制到to指向的Survivor区中，然后交换from和to指针。</p>
-<p>何时升级到老年代？</p>
-<ul>
-<li>JVM会记录对象在Survivor区一共来回复制几次，如果是15就晋升（-XX:+MaxTenuringThreshold）</li>
-<li>如果单个Survivor区已经被占用了50%（-XX:TargetSurvivorRatio），较高复制次数的对象也会晋升</li>
-</ul>
-<ol>
-<li>老年代（标记-整理|标记-清除算法）</li>
-</ol>
-<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题:"></a>遇到的问题:</h3><p>有些老年代对象可能引用新生代的对象，那么标记该收集哪些类的时候就要连老年代也要去扫描。</p>
-<h3 id="HotSpot算法实现"><a href="#HotSpot算法实现" class="headerlink" title="HotSpot算法实现"></a>HotSpot算法实现</h3><h4 id="1-枚举根节点"><a href="#1-枚举根节点" class="headerlink" title="1.枚举根节点"></a>1.枚举根节点</h4><ul>
-<li><p>如何实现？<br>使用一组OopMap的数据结构，在类加载完成的时候，就把对象内什么偏移量是什么类型的数据计算出来，在JIT编译过程中，也会在特定的位置记录下栈和寄存器中哪些位置是引用。这样，GC在扫描时就可以直接得知这些信息了。</p>
-</li>
-<li><p>为了解决什么？<br>每次检查对象存活时必须确保分析过程中对象引用关系在某个冻结的时间点上（Stop the world），并且要逐个从GC Roots节点中检查里面的引用会消耗很多时间。</p>
-</li>
-</ul>
-<h4 id="2-安全点（Safe-point）"><a href="#2-安全点（Safe-point）" class="headerlink" title="2.安全点（Safe point）"></a>2.安全点（Safe point）</h4><ul>
-<li>为了解决什么？<br>在OopMap的协助下，HotSpot会快速且准确地完成GC Roots枚举，可能导致引用关系变化，或者说OopMap内容变化的指令非常多，如果为每一条指令都生成对应的OopMap，那将会需要大量的额外空间，这样GC的空间成本将会变得很高。</li>
-</ul>
-<p>安全点的选定：程序“是否具有让程序长时间执行的特征”为标准进行选定的<br>方法调用、循环跳转、异常跳转等指令才会产生Safepoint</p>
-<p>gc发生时让所有执行中的线程到达安全点上后停顿下来</p>
-<ol>
-<li>抢先式中断（几乎没有jvm会采用这种方法）<br>在gc发生时，首先把所有线程中断，发现有线程中断的地方不在安全点上，就恢复线程，让它到达安全点。</li>
-<li>主动式中断<br>当gc需要中断线程的时候，仅仅简单地设置一个标示，各个线程执行时主动去轮询这个标示，如果发现中断标示为真就自己中断挂起。</li>
-</ol>
-<h4 id="3-安全区域（Safe-Region）"><a href="#3-安全区域（Safe-Region）" class="headerlink" title="3.安全区域（Safe Region）"></a>3.安全区域（Safe Region）</h4><ul>
-<li><p>为了解决什么？<br>安全点机制保证了程序执行时进入gc的安全点，但程序不执行（没有分配CPU时间）典型的例子就是线程处于Sleep状态或者Blocked状态，这时候线程无法响应JVM的中断请求，“走”到安全的地方去中断挂起。</p>
-</li>
-<li><p>安全区域是什么？<br>指在一段代码片段之中，引用关系不会发生变化，在这个区域中的任意地方开始gc都是安全的</p>
-</li>
-<li><p>工作原理<br>在线程执行到安全区域中的代码时，首先标识自己已进入了安全区，这段时间里gc发生时，就不去管标识为安全区域状态的线程了。在线程要离开安全区域时，它要检查系统是否已经完成了根节点枚举（或者是整个GC过程），如果完成了，那线程就继续执行，否则它就必须等待直到收到可以安全离开Safe Region的信号为止。</p>
-</li>
-</ul>
-<p>读后感笔记来自周志明的<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="external">《深入理解Java虚拟机（第2版）》</a></p>
-
+        <p><img src="http://blog.manxue.vip/%5B%E7%A0%96%E5%A4%B4%E4%BA%BA%E9%A1%B9%E7%9B%AE%5Darchitecture.jpg" alt="Alt text"></p>
+        
+          <a class="article-more-a" href="/2017/04/11/brickman-architecture/#more">more >></a>
+        
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -363,15 +202,11 @@ var bp = document.createElement('script');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
         		</li>
       		
 		</ul>
@@ -380,95 +215,98 @@ var bp = document.createElement('script');
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/11/brickman-architecture/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/03/22/jvm-【梳理jvm】1.2.对象存活判定算法和垃圾收集算法/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+
+
+
+
+
+
+
   
-<nav id="article-nav">
-  
-    <a href="/2019/03/21/spring-RedisCache/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
+    <article id="post-selenium" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
         
-          Spring:基于RedisCacheManager支持的cache
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/10/selenium/">软件测试神一样的超级好用的selenium 原创java util</a>
+    </h1>
+  
+
         
-      </div>
-    </a>
+        <a href="/2017/04/10/selenium/" class="archive-article-date">
+  	<time datetime="2017-04-10T11:37:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="以下是自己封装的seleniumJava工具类"><a href="#以下是自己封装的seleniumJava工具类" class="headerlink" title="以下是自己封装的seleniumJava工具类"></a>以下是自己封装的seleniumJava工具类</h2>
+        
+          <a class="article-more-a" href="/2017/04/10/selenium/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/10/selenium/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
   
   
-</nav>
-
-
-
-
-
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+    </nav>
   
-      <div class="duoshuo">
-<section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
-</section>
-</div>
-
-  
-
-
 
 
           </div>
@@ -490,8 +328,8 @@ var bp = document.createElement('script');
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
@@ -557,15 +395,7 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +403,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,7 +423,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,19 +451,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -641,6 +475,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -649,15 +491,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,11 +499,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -689,10 +527,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
@@ -701,11 +535,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基金</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,6 +548,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">理财</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基金</a>
               </li>
             
             <div class="clearfix"></div>

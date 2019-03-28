@@ -173,7 +173,7 @@ var bp = document.createElement('script');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/28/code-【源码】动态代理整理/">【源码】动态代理整理.md</a>
+      <a class="article-title" href="/2019/03/28/code-【源码】动态代理整理/">【源码】动态代理整理</a>
     </h1>
   
 
@@ -186,12 +186,14 @@ var bp = document.createElement('script');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>动态代理实现是通过字节码增强方式实现的，字节码增强又有两种方式实现</p>
+        <h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p>在程序运行时创建实现了给定的接口的新类。</p>
+<p>动态代理实现是通过字节码增强方式实现的，字节码增强又有两种方式实现</p>
 <ol>
 <li>生成新类并实现被代理类的所有接口（spring aop是这种方式）</li>
 <li>直接篡改class类文件后重新加载到java虚拟机</li>
 </ol>
-<p>程序中实现动态代理关键是使用Proxy类和实现InvocationHandler接口的invoke()方法（方法里是具体的方法执行）</p>
+<p>主要用来做方法的增强，可以在不修改源码的情况下，增强一些方法，在方法执行前后做任何想做的事情，因为在InvocationHandler的invoke方法中会通过反射机制执行委托类的方法。</p>
+<p>应用在很多场景里比如：方法调用时想要记录日志，权限查看，事务管理之中，这些都不需要改动原来方法，而只需要在代理类中添加，具体下面的例子说明。</p>
         
           <a class="article-more-a" href="/2019/03/28/code-【源码】动态代理整理/#more">more >></a>
         
@@ -692,11 +694,11 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -732,10 +734,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
               </li>
              
@@ -749,6 +747,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">bat命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -772,14 +774,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">log</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -788,11 +782,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,7 +794,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -809,10 +815,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -848,15 +850,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">理财</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
             
             <div class="clearfix"></div>

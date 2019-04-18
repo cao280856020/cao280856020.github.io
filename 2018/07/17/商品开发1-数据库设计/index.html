@@ -15,10 +15,12 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2018/07/17/商品开发1-数据库设计/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="商品最为核心的就是如何确定某一个商品的规格的价格和此规格的库存，所以合理设计sku是商品模块的重点首先百度中的sku的定义1SKU=Stock Keeping Unit（库存量单位）。即库存进出计量的基本单元，可以是以件，盒，托盘等为单位。SKU这是对于大型连锁超市DC（配送中心）物流管理的一个必要的方法。现在已经被引申为产品统一编号的简称，每种产品均对应有唯一的SKU号。单品：对一种商品而言，当">
-<meta property="og:updated_time" content="2018-07-17T09:53:46.411Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E5%95%86%E5%93%81%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:updated_time" content="2019-04-18T07:56:48.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="商品开发1-数据库设计">
 <meta name="twitter:description" content="商品最为核心的就是如何确定某一个商品的规格的价格和此规格的库存，所以合理设计sku是商品模块的重点首先百度中的sku的定义1SKU=Stock Keeping Unit（库存量单位）。即库存进出计量的基本单元，可以是以件，盒，托盘等为单位。SKU这是对于大型连锁超市DC（配送中心）物流管理的一个必要的方法。现在已经被引申为产品统一编号的简称，每种产品均对应有唯一的SKU号。单品：对一种商品而言，当">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E5%95%86%E5%93%81%E6%A8%A1%E5%9E%8B.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -591,6 +593,7 @@ var bp = document.createElement('script');
 </tr>
 </tbody>
 </table>
+<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E5%95%86%E5%93%81%E6%A8%A1%E5%9E%8B.png" alt="&quot;商品模型&quot;"></p>
 <h3 id="其他相关文章"><a href="#其他相关文章" class="headerlink" title="其他相关文章"></a>其他相关文章</h3><p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%914-%E5%95%86%E5%93%81%E5%AD%98%E5%82%A8%E5%B1%95%E7%A4%BA/" target="_blank" rel="external">商品开发4-商品存储展示</a></p>
 <p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%913-%E5%95%86%E5%93%81%E4%B8%8A%E6%96%B0%E6%97%B6%E6%B5%81%E7%A8%8B/" target="_blank" rel="external">商品开发3-商品上新时流程</a></p>
 <p><a href="http://caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%912-%E8%A1%A8%E4%B9%8B%E9%97%B4%E5%85%B3%E7%B3%BB/" target="_blank" rel="external">商品开发2-表之间关系</a></p>
@@ -832,6 +835,10 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -844,14 +851,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
@@ -860,11 +859,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -872,7 +871,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -885,10 +892,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">bat命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -912,7 +915,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -920,15 +923,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -937,6 +932,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -952,6 +955,10 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
@@ -960,15 +967,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -984,7 +987,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -996,7 +999,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>

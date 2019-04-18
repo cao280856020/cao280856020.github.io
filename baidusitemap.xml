@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>http://www.caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%911-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2019-04-18T07:56:48.949Z</lastmod>
+    <data>
+        <display>
+        <title>商品开发1-数据库设计</title>
+        <pubTime>2018-07-17T02:56:22.000Z</pubTime>
+        
+        <tag>项目总结</tag>
+         
+        <tag>数据库设计</tag>
+         
+        <tag>商品模块</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.caoyongjun.com/2019/03/28/code-%E3%80%90%E6%BA%90%E7%A0%81%E3%80%91%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%95%B4%E7%90%86/</loc>
     <lastmod>2019-03-28T05:37:29.197Z</lastmod>
     <data>
@@ -796,9 +817,9 @@
         
         <tag>linux</tag>
          
-        <tag>mysql</tag>
-         
         <tag>安装</tag>
+         
+        <tag>mysql</tag>
          
          
            
@@ -817,9 +838,9 @@
         
         <tag>linux</tag>
          
-        <tag>安装</tag>
-         
         <tag>nginx</tag>
+         
+        <tag>安装</tag>
          
          
            
@@ -909,27 +930,6 @@
         <display>
         <title>商品开发2-表之间关系</title>
         <pubTime>2018-07-17T03:12:22.000Z</pubTime>
-        
-        <tag>项目总结</tag>
-         
-        <tag>数据库设计</tag>
-         
-        <tag>商品模块</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.caoyongjun.com/2018/07/17/%E5%95%86%E5%93%81%E5%BC%80%E5%8F%911-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2018-07-17T09:53:46.411Z</lastmod>
-    <data>
-        <display>
-        <title>商品开发1-数据库设计</title>
-        <pubTime>2018-07-17T02:56:22.000Z</pubTime>
         
         <tag>项目总结</tag>
          

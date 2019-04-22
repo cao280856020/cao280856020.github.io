@@ -166,6 +166,144 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-work-experience" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/19/work-experience/">工作经验:针对大批量不同数据生成相同的sql</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/19/work-experience/" class="archive-article-date">
+  	<time datetime="2017-04-18T16:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2013年刚工作不到一年时遇到了一个需求是对大量的数据(几万条词典数据)生成insert语句后给到DBA手里操作。<br>由于工作经验不足的原因,当时自己想了个蠢办法是用方法一:java编写一个读取文件里的内容for循环读取数据然后生成insert的语句…(现在想想只能是一个打30分的低效办法)。<br>后来又遇到了此种需求,如果还要用方法一的话我得改之前的java程序(因为我的当时能力没有写出公用的东西没能供应大多的表和其他如update,delete语句),<br>后来问了下当年带我的师傅龙哥教我用他的方法二excel的方式大致像下面图</p>
+        
+          <a class="article-more-a" href="/2017/04/19/work-experience/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">经验</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/19/work-experience/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-windows-cmd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/windows-cmd/">Windows:cmd杀某个端口进程</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/18/windows-cmd/" class="archive-article-date">
+  	<time datetime="2017-04-18T11:54:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开发的时候启动tomcat会报端口占用的情况<br>最快的解决方法是打开cmd然后输入一下命令查找到所占用的端口号</p>
+<p><img src="http://blog.manxue.vip/%5BWindows-cmd%5D.png" alt="&quot;windows cmd&quot;"></p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -aon <span class="string">| findstr 6080</span></div><div class="line"><span class="meta">#就像linux中的ps -ef|grep 6080精确查找到</span></div></pre></td></tr></table></figure>
+<p>最后一条为pid</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">taskkill /f /pid <span class="number">41920</span></div><div class="line">#就像linux中的kill <span class="number">-9</span> <span class="number">41920</span></div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/18/windows-cmd/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-brickman-maven_git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -371,142 +509,6 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-brickman-tomcat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/brickman-tomcat/">砖头人项目:3.Tomcat配置篇</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/13/brickman-tomcat/" class="archive-article-date">
-  	<time datetime="2017-04-13T08:54:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.解压</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tar</span> <span class="selector-tag">-zxvf</span> <span class="selector-tag">apache-tomcat-7</span><span class="selector-class">.0</span><span class="selector-class">.22</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/13/brickman-tomcat/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">项目总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/13/brickman-tomcat/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-js-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/12/js-正则表达式/">技术:js正则表达式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/12/js-正则表达式/" class="archive-article-date">
-  	<time datetime="2017-04-12T10:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">date</span>=<span class="string">"2017-04-01"</span>;</div><div class="line"><span class="built_in">var</span> reg=<span class="regexp">/\-/g</span>;    <span class="comment">//正则表达式，-为需要被换的内容,g为全局的</span></div><div class="line"><span class="built_in">date</span>.replace(reg,<span class="string">""</span>);</div></pre></td></tr></table></figure>
-<p>结果输出内容为 “20170401”</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/12/js-正则表达式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/11/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/13/">Next &raquo;</a>
@@ -644,6 +646,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
@@ -660,14 +670,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
@@ -680,7 +682,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,7 +690,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,7 +706,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,11 +722,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -728,10 +734,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
@@ -740,15 +742,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -761,10 +767,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>

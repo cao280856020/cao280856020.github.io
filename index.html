@@ -166,6 +166,165 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jvm-【梳理jvm】3.3.类加载器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/">【梳理jvm】3.3.类加载器</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/" class="archive-article-date">
+  	<time datetime="2019-04-22T06:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>从jvm角度，只有两种类加载器</p>
+<ol>
+<li>启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分</li>
+<li>所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader</li>
+</ol>
+<p>从java开发人员的角度来看有三种</p>
+<ol>
+<li><p>启动类加载器（Bootstrap ClassLoader）<br>负责加载存放在<JAVA_HOME>\lib目录下的或者被-Xbootclasspath参数所指定的路径中的，并且是虚拟机是别的类</p>
+</li>
+<li><p>扩展类加载器（Extension ClassLoader）<br>负责加载<Java_HOME>\lib\ext目录下的或者被java.EXT.DIRS系统变量所指定的路径中的所有类库</p>
+</li>
+<li><p>应用程序类加载器（Application ClassLoader）<br>负责加载用户类路径上所指定的类库</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-loader.jpg" alt="class-loader"></p>
+        
+          <a class="article-more-a" href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-jvm-【梳理jvm】3.2.类加载机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/jvm-【梳理jvm】3.2.类加载机制/">【梳理jvm】3.2.类加载机制</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/22/jvm-【梳理jvm】3.2.类加载机制/" class="archive-article-date">
+  	<time datetime="2019-04-22T06:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-%E7%B1%BB%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="类生命周期"></p>
+<h3 id="什么是类加载机制？"><a href="#什么是类加载机制？" class="headerlink" title="什么是类加载机制？"></a>什么是类加载机制？</h3><p>虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。</p>
+        
+          <a class="article-more-a" href="/2019/04/22/jvm-【梳理jvm】3.2.类加载机制/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/22/jvm-【梳理jvm】3.2.类加载机制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-code-【源码】动态代理整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -410,197 +569,6 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/22/jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法/">【梳理jvm】2.1.对象存活判定算法和垃圾收集算法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/22/jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法/" class="archive-article-date">
-  	<time datetime="2019-03-22T09:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="gc脑图"><a href="#gc脑图" class="headerlink" title="gc脑图"></a>gc脑图</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E8%84%91%E5%9B%BE.jpg" alt="gc-脑图"></p>
-        
-          <a class="article-more-a" href="/2019/03/22/jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/22/jvm-【梳理jvm】2.1.对象存活判定算法和垃圾收集算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-spring-RedisCache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/21/spring-RedisCache/">Spring:基于RedisCacheManager支持的cache</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/21/spring-RedisCache/" class="archive-article-date">
-  	<time datetime="2019-03-21T07:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>spring 定义了 org.springframework.cache.CacheManager和org.springframework.cache.Cache接口用来统一不同的缓存技术。</p>
-<ul>
-<li>CacheManager是spring提供的抽象接口</li>
-<li>Cache接口包含缓存的各种操作(crud)</li>
-</ul>
-<p>CacheManager的实现</p>
-<table>
-<thead>
-<tr>
-<th>CacheManager</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SimpleCacheManager</td>
-<td>使用简单的Collection</td>
-</tr>
-<tr>
-<td>ConcurrentMapCacheManager</td>
-<td>使用简单的ConcurrentMap（sptingboot默认实现）</td>
-</tr>
-<tr>
-<td>NoOpCacheManager</td>
-<td>金测试用途，不会实际存储缓存</td>
-</tr>
-<tr>
-<td>EhCacheCacheManager</td>
-<td>使用EhCache</td>
-</tr>
-<tr>
-<td>GuavaCacheManager</td>
-<td>使用Google Guava的GuavaCache</td>
-</tr>
-<tr>
-<td>HazelcastCacheManager</td>
-<td>使用Hazelcast</td>
-</tr>
-<tr>
-<td>JCacheCacheManager</td>
-<td>支持JCache（JSR-107）标准的实现作为缓存技术，如Apache Commons JCS</td>
-</tr>
-<tr>
-<td>RedisCacheManager</td>
-<td>使用redis作为缓存技术</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2019/03/21/spring-RedisCache/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cache</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/21/spring-RedisCache/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -738,6 +706,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
@@ -754,14 +730,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
@@ -774,7 +742,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,7 +750,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,7 +766,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -806,11 +782,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -822,10 +794,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
@@ -834,15 +802,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -855,10 +827,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>

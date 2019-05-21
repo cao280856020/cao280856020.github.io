@@ -173,12 +173,83 @@ var bp = document.createElement('script');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/">【梳理jvm】3.3.类加载器</a>
+      <a class="article-title" href="/2019/05/21/jvm-【梳理jvm】3.3.类加载器/">【http】https-身披ssl的http协议</a>
     </h1>
   
 
         
-        <a href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/" class="archive-article-date">
+        <a href="/2019/05/21/jvm-【梳理jvm】3.3.类加载器/" class="archive-article-date">
+  	<time datetime="2019-05-21T02:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-ssl和http关系？"><a href="#1-ssl和http关系？" class="headerlink" title="1.ssl和http关系？"></a>1.ssl和http关系？</h3><p>SSL=Secure Socket Layer(安全套接层)</p>
+<p>与ssl组合使用的http被称为https（超文本传输安全协议）== http+加密+认证+完整性保护</p>
+<h3 id="2-为了解决http的什么问题？"><a href="#2-为了解决http的什么问题？" class="headerlink" title="2.为了解决http的什么问题？"></a>2.为了解决http的什么问题？</h3><p>http的主要缺点</p>
+<ul>
+<li>通信使用明文（不加密），内容可能会被窃听</li>
+<li>不验证通信方的身份，因此有可能遭遇伪装</li>
+<li>无法证明报文的完整性，所以有可能遭篡改</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/05/21/jvm-【梳理jvm】3.3.类加载器/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/21/jvm-【梳理jvm】3.3.类加载器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-http-https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/http-https/">【梳理jvm】3.3.类加载器</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/22/http-https/" class="archive-article-date">
   	<time datetime="2019-04-22T06:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
 </a>
         
@@ -202,7 +273,7 @@ var bp = document.createElement('script');
 </ol>
 <p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-loader.jpg" alt="class-loader"></p>
         
-          <a class="article-more-a" href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/#more">more >></a>
+          <a class="article-more-a" href="/2019/04/22/http-https/#more">more >></a>
         
       
 
@@ -234,7 +305,7 @@ var bp = document.createElement('script');
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/04/22/http-https/">展开全文 >></a>
         </p>
       
 
@@ -495,83 +566,9 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-jvm-【梳理jvm】2.2.垃圾收集器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/">【梳理jvm】2.2.垃圾收集器</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/" class="archive-article-date">
-  	<time datetime="2019-03-25T07:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>垃圾收集算法是内存回收的方法论。<br>垃圾收集器是内存回收的具体实现。</p>
-<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/gc-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%9B%BE.jpg" alt="gc-垃圾收集器"></p>
-<p>连线代表可以组合搭配使用</p>
-        
-          <a class="article-more-a" href="/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -662,6 +659,10 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
@@ -670,7 +671,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,11 +679,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,11 +691,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -714,15 +723,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,10 +748,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,15 +787,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,21 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>【梳理jvm】3.3.类加载器 | CaoYongjun&#39;s Blog</title>
+  <title>Archives: 2019/6 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="双亲委派模型从jvm角度，只有两种类加载器  启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分 所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader  从java开发人员的角度来看有三种  启动类加载器（Bootstrap ClassLoader）负责加载存放在\lib目录下的或者被-Xbootclasspath参数所指定的">
-<meta name="keywords" content="jvm,回顾,梳理jvm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【梳理jvm】3.3.类加载器">
-<meta property="og:url" content="http://www.caoyongjun.com/2019/04/22/http-https/index.html">
+  <meta name="description" content="caoyongjun的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CaoYongjun's Blog">
+<meta property="og:url" content="http://www.caoyongjun.com/archives/2019/06/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="双亲委派模型从jvm角度，只有两种类加载器  启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分 所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader  从java开发人员的角度来看有三种  启动类加载器（Bootstrap ClassLoader）负责加载存放在\lib目录下的或者被-Xbootclasspath参数所指定的">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-loader.jpg">
-<meta property="og:updated_time" content="2019-05-05T03:04:53.185Z">
+<meta property="og:description" content="caoyongjun的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【梳理jvm】3.3.类加载器">
-<meta name="twitter:description" content="双亲委派模型从jvm角度，只有两种类加载器  启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分 所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader  从java开发人员的角度来看有三种  启动类加载器（Bootstrap ClassLoader）负责加载存放在\lib目录下的或者被-Xbootclasspath参数所指定的">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-loader.jpg">
+<meta name="twitter:title" content="CaoYongjun's Blog">
+<meta name="twitter:description" content="caoyongjun的博客">
   
   
     <link rel="icon" href="/favicon.png">
@@ -168,196 +164,64 @@ var bp = document.createElement('script');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-http-https" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      【梳理jvm】3.3.类加载器
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/06/03/design-3模板模式/" class="archive-article-date">
+  	<time datetime="2019-06-03T15:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/06/03/design-3模板模式/">设计模式:3模板模式Template</a>
     </h1>
   
 
-        
-        <a href="/2019/04/22/http-https/" class="archive-article-date">
-  	<time datetime="2019-04-22T06:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>从jvm角度，只有两种类加载器</p>
-<ol>
-<li>启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分</li>
-<li>所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader</li>
-</ol>
-<p>从java开发人员的角度来看有三种</p>
-<ol>
-<li><p>启动类加载器（Bootstrap ClassLoader）<br>负责加载存放在<java_home>\lib目录下的或者被-Xbootclasspath参数所指定的路径中的，并且是虚拟机是别的类</java_home></p>
-</li>
-<li><p>扩展类加载器（Extension ClassLoader）<br>负责加载<java_home>\lib\ext目录下的或者被java.EXT.DIRS系统变量所指定的路径中的所有类库</java_home></p>
-</li>
-<li><p>应用程序类加载器（Application ClassLoader）<br>负责加载用户类路径上所指定的类库</p>
-</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-loader.jpg" alt="class-loader"></p>
-<a id="more"></a>
-<p>双亲委派模型工作原理:<br>如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成，每一个层次的类加载器都是如此，因此所有的加载请求最终都应该传送到顶层的启动类加载器中，只有当父加载器反馈自己无法完成这个加载请求（它的搜索范围中没有找到所需的类）时，子加载器才会尝试自己去加载。</p>
-<p>优点:<br>java类随着它的类加载器一起具备了一种带有优先级的层次关系。</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> <span class="keyword">synchronized</span> <span class="keyword">Class</span>&lt;?&gt;loadClass(String name,<span class="keyword">boolean</span> resolve)<span class="keyword">throws</span> ClassNotFoundException</div><div class="line">&#123;</div><div class="line">  <span class="comment">//首先, 检查请求的类是否已经被加载过了</span></div><div class="line">  <span class="keyword">Class</span> c=findLoadedClass(name)；</div><div class="line">    <span class="keyword">if</span>(c==<span class="keyword">null</span>)&#123;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">      <span class="keyword">if</span>(parent!=<span class="keyword">null</span>)&#123;</div><div class="line">        c=parent.loadClass(name,<span class="keyword">false</span>)；</div><div class="line">      &#125;<span class="keyword">else</span>&#123;</div><div class="line">        c=findBootstrapClassOrNull(name)；</div><div class="line">      &#125;</div><div class="line">    &#125;<span class="keyword">catch</span>(ClassNotFoundException e)&#123;</div><div class="line">      <span class="comment">//如果父类加载器抛出ClassNotFoundException</span></div><div class="line">      <span class="comment">//说明父类加载器无法完成加载请求</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(c==<span class="keyword">null</span>)&#123;</div><div class="line">      <span class="comment">//在父类加载器无法加载的时候</span></div><div class="line">      <span class="comment">//再调用本身的findClass方法来进行类加载</span></div><div class="line">      c=findClass(name)；</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(resolve)&#123;</div><div class="line">    resolveClass(c)；</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> c；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>读后感笔记来自周志明的<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="external">《深入理解Java虚拟机（第2版）》</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的激励<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/04/22/http-https/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/04/22/jvm-【梳理jvm】3.2.类加载机制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          【梳理jvm】3.2.类加载机制
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/05/21/jvm-【梳理jvm】3.3.类加载器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【http】https-身披ssl的http协议</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-      <div class="duoshuo">
-<section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2130905"></script>
-</section>
-</div>
-
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -380,8 +244,8 @@ var bp = document.createElement('script');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -474,27 +338,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,15 +366,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,6 +387,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,19 +406,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">log</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
               </li>
              
               <li class="article-tag-list-item">

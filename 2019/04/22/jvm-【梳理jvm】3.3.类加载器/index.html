@@ -6,22 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.caoyongjun.com">
-  <title>【http】https-身披ssl的http协议 | CaoYongjun&#39;s Blog</title>
+  <title>【梳理jvm】3.3.类加载器 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.ssl和http关系？SSL=Secure Socket Layer(安全套接层) 与ssl组合使用的http被称为https（超文本传输安全协议）== http+加密+认证+完整性保护 2.为了解决http的什么问题？http的主要缺点  通信使用明文（不加密），内容可能会被窃听 不验证通信方的身份，因此有可能遭遇伪装 无法证明报文的完整性，所以有可能遭篡改">
-<meta name="keywords" content="http">
+  <meta name="description" content="双亲委派模型从jvm角度，只有两种类加载器  启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分 所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader  从java开发人员的角度来看有三种  启动类加载器（Bootstrap ClassLoader）负责加载存放在\lib目录下的或者被-Xbootclasspath参数所指定的">
+<meta name="keywords" content="jvm,回顾,梳理jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【http】https-身披ssl的http协议">
-<meta property="og:url" content="http://www.caoyongjun.com/2019/05/21/jvm-【梳理jvm】3.3.类加载器/index.html">
+<meta property="og:title" content="【梳理jvm】3.3.类加载器">
+<meta property="og:url" content="http://www.caoyongjun.com/2019/04/22/jvm-【梳理jvm】3.3.类加载器/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
-<meta property="og:description" content="1.ssl和http关系？SSL=Secure Socket Layer(安全套接层) 与ssl组合使用的http被称为https（超文本传输安全协议）== http+加密+认证+完整性保护 2.为了解决http的什么问题？http的主要缺点  通信使用明文（不加密），内容可能会被窃听 不验证通信方的身份，因此有可能遭遇伪装 无法证明报文的完整性，所以有可能遭篡改">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/http-https%E9%80%9A%E4%BF%A1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/http-%E9%80%9A%E4%BF%A1%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png">
-<meta property="og:updated_time" content="2019-05-21T02:45:40.485Z">
+<meta property="og:description" content="双亲委派模型从jvm角度，只有两种类加载器  启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分 所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader  从java开发人员的角度来看有三种  启动类加载器（Bootstrap ClassLoader）负责加载存放在\lib目录下的或者被-Xbootclasspath参数所指定的">
+<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-loader.jpg">
+<meta property="og:updated_time" content="2019-06-04T09:25:41.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【http】https-身披ssl的http协议">
-<meta name="twitter:description" content="1.ssl和http关系？SSL=Secure Socket Layer(安全套接层) 与ssl组合使用的http被称为https（超文本传输安全协议）== http+加密+认证+完整性保护 2.为了解决http的什么问题？http的主要缺点  通信使用明文（不加密），内容可能会被窃听 不验证通信方的身份，因此有可能遭遇伪装 无法证明报文的完整性，所以有可能遭篡改">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/http-https%E9%80%9A%E4%BF%A1.png">
+<meta name="twitter:title" content="【梳理jvm】3.3.类加载器">
+<meta name="twitter:description" content="双亲委派模型从jvm角度，只有两种类加载器  启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分 所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader  从java开发人员的角度来看有三种  启动类加载器（Bootstrap ClassLoader）负责加载存放在\lib目录下的或者被-Xbootclasspath参数所指定的">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-loader.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -176,68 +175,39 @@ var bp = document.createElement('script');
         
   
     <h1 class="article-title" itemprop="name">
-      【http】https-身披ssl的http协议
+      【梳理jvm】3.3.类加载器
     </h1>
   
 
         
-        <a href="/2019/05/21/jvm-【梳理jvm】3.3.类加载器/" class="archive-article-date">
-  	<time datetime="2019-05-21T02:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
+        <a href="/2019/04/22/jvm-【梳理jvm】3.3.类加载器/" class="archive-article-date">
+  	<time datetime="2019-04-22T09:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-ssl和http关系？"><a href="#1-ssl和http关系？" class="headerlink" title="1.ssl和http关系？"></a>1.ssl和http关系？</h3><p>SSL=Secure Socket Layer(安全套接层)</p>
-<p>与ssl组合使用的http被称为https（超文本传输安全协议）== http+加密+认证+完整性保护</p>
-<h3 id="2-为了解决http的什么问题？"><a href="#2-为了解决http的什么问题？" class="headerlink" title="2.为了解决http的什么问题？"></a>2.为了解决http的什么问题？</h3><p>http的主要缺点</p>
+        <h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><p>从jvm角度，只有两种类加载器</p>
 <ul>
-<li>通信使用明文（不加密），内容可能会被窃听</li>
-<li>不验证通信方的身份，因此有可能遭遇伪装</li>
-<li>无法证明报文的完整性，所以有可能遭篡改</li>
+<li>启动类加载器（Bootstrap ClassLoader）是jvm自身的一部分</li>
+<li>所有其他类加载器，独立于jvm外部，并全部继承自抽象类java.lang.ClassLoader</li>
 </ul>
+<p>从java开发人员的角度来看有三种</p>
+<ul>
+<li><p>启动类加载器（Bootstrap ClassLoader）<br>负责加载存放在<java_home>\lib目录下的或者被-Xbootclasspath参数所指定的路径中的，并且是虚拟机是别的类</java_home></p>
+</li>
+<li><p>扩展类加载器（Extension ClassLoader）<br>负责加载<java_home>\lib\ext目录下的或者被java.EXT.DIRS系统变量所指定的路径中的所有类库</java_home></p>
+</li>
+<li><p>应用程序类加载器（Application ClassLoader）<br>负责加载用户类路径上所指定的类库</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-loader.jpg" alt="class-loader"></p>
 <a id="more"></a>
-<h3 id="3-加密的方式"><a href="#3-加密的方式" class="headerlink" title="3.加密的方式"></a>3.加密的方式</h3><ul>
-<li><p>通信的加密<br>http没有加密的机制，所以使用ssl或者tls（transport layer security，安全传输层协议）的组合使用加密http的通信内容。<br>用ssl建立安全的通信线路后，就可以在这条线路上进行http通信了。</p>
-</li>
-<li><p>内容的加密<br>将通信的内容本身加密</p>
-</li>
-</ul>
-<h3 id="4-https工作原理"><a href="#4-https工作原理" class="headerlink" title="4.https工作原理"></a>4.https工作原理</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/http-https%E9%80%9A%E4%BF%A1.png" alt="http-https"></p>
-<p>http先和ssl建立通信，然后ssl与tcp通信</p>
-<h4 id="加密方式"><a href="#加密方式" class="headerlink" title="加密方式"></a>加密方式</h4><table>
-<thead>
-<tr>
-<th>加密方式</th>
-<th>方法</th>
-<th>缺点</th>
-<th>场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>共享密钥-对称加密</td>
-<td>使用一个密钥加解密</td>
-<td>容易被人获取要密钥后破解</td>
-<td>内容加密</td>
-</tr>
-<tr>
-<td>公开密钥-非对称加密</td>
-<td>下发公开密钥，通信时使用公开密钥加密，对方接收后用私有密钥解密</td>
-<td>比共享密钥慢</td>
-<td>通信层加密</td>
-</tr>
-<tr>
-<td>https采用混合加密机制</td>
-<td>使用共享和公开密钥并用的混合加密机制，交换密钥环节使用公开密钥方式，之后的建立通信交换报文阶段使用共享密钥方式</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/http-%E9%80%9A%E4%BF%A1%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png" alt="https工作原理"></p>
-<p>读后感笔记来自【日】上野宣的<a href="https://book.douban.com/subject/25863515/" target="_blank" rel="external">《图解HTTP》第7章 确保Web安全的HTTPS</a></p>
+<p>双亲委派模型工作原理:<br>如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成，每一个层次的类加载器都是如此，因此所有的加载请求最终都应该传送到顶层的启动类加载器中，只有当父加载器反馈自己无法完成这个加载请求（它的搜索范围中没有找到所需的类）时，子加载器才会尝试自己去加载。</p>
+<p>优点:<br>java类随着它的类加载器一起具备了一种带有优先级的层次关系。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> <span class="keyword">synchronized</span> <span class="keyword">Class</span>&lt;?&gt;loadClass(String name,<span class="keyword">boolean</span> resolve)<span class="keyword">throws</span> ClassNotFoundException</div><div class="line">&#123;</div><div class="line">  <span class="comment">//首先, 检查请求的类是否已经被加载过了</span></div><div class="line">  <span class="keyword">Class</span> c=findLoadedClass(name)；</div><div class="line">    <span class="keyword">if</span>(c==<span class="keyword">null</span>)&#123;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">      <span class="keyword">if</span>(parent!=<span class="keyword">null</span>)&#123;</div><div class="line">        c=parent.loadClass(name,<span class="keyword">false</span>)；</div><div class="line">      &#125;<span class="keyword">else</span>&#123;</div><div class="line">        c=findBootstrapClassOrNull(name)；</div><div class="line">      &#125;</div><div class="line">    &#125;<span class="keyword">catch</span>(ClassNotFoundException e)&#123;</div><div class="line">      <span class="comment">//如果父类加载器抛出ClassNotFoundException</span></div><div class="line">      <span class="comment">//说明父类加载器无法完成加载请求</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(c==<span class="keyword">null</span>)&#123;</div><div class="line">      <span class="comment">//在父类加载器无法加载的时候</span></div><div class="line">      <span class="comment">//再调用本身的findClass方法来进行类加载</span></div><div class="line">      c=findClass(name)；</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(resolve)&#123;</div><div class="line">    resolveClass(c)；</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> c；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>读后感笔记来自周志明的<a href="https://book.douban.com/subject/24722612/" target="_blank" rel="external">《深入理解Java虚拟机（第2版）》</a></p>
 
       
 
@@ -277,7 +247,15 @@ var bp = document.createElement('script');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
         		</li>
       		
 		</ul>
@@ -333,7 +311,7 @@ var bp = document.createElement('script');
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/05/21/jvm-【梳理jvm】3.3.类加载器/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.caoyongjun.com/2019/04/22/jvm-【梳理jvm】3.3.类加载器/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -347,15 +325,20 @@ var bp = document.createElement('script');
   
 <nav id="article-nav">
   
-    <a href="/2019/04/22/http-https/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/04/22/jvm-【梳理jvm】3.2.类加载机制/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          【梳理jvm】3.3.类加载器
+          【梳理jvm】3.2.类加载机制
         
       </div>
     </a>
   
+  
+    <a href="/2019/05/21/http-https是什么/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【http】https-身披ssl的http协议</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -491,27 +474,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,15 +502,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,6 +523,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,19 +542,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">log</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
               </li>
              
               <li class="article-tag-list-item">

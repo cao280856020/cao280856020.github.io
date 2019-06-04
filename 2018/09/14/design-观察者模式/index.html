@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。 缺点：有多个观察者时，被通知次序有可能会乱序">
 <meta property="og:image" content="http://blog.manxue.vip/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png">
-<meta property="og:updated_time" content="2018-11-19T03:40:42.351Z">
+<meta property="og:updated_time" content="2019-06-04T08:50:01.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式:2观察者模式Observer">
 <meta name="twitter:description" content="定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。 缺点：有多个观察者时，被通知次序有可能会乱序">
@@ -197,7 +197,7 @@ var bp = document.createElement('script');
 <p>观察者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Observable;</div><div class="line"><span class="keyword">import</span> java.util.Observer;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Conditions</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</div><div class="line">	</div><div class="line">	Observable observable;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> x;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Conditions</span><span class="params">(Observable observable)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.observable=observable;</div><div class="line">		observable.addObserver(<span class="keyword">this</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Observable obserable, Object arg1)</span> </span>&#123;</div><div class="line">		WeatherData data=(WeatherData)obserable;</div><div class="line">		<span class="keyword">this</span>.x=data.getX();</div><div class="line">		System.out.println(<span class="string">"x="</span>+x);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>测试类<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="title">public</span> static void main(<span class="type">String</span>[] args) &#123;</div><div class="line">		<span class="type">WeatherData</span> <span class="class"><span class="keyword">data</span>=new <span class="type">WeatherData</span>();</span></div><div class="line">		new <span class="type">Conditions</span>(<span class="class"><span class="keyword">data</span>);</span></div><div class="line">		new <span class="type">Conditions</span>(<span class="class"><span class="keyword">data</span>);</span></div><div class="line">		new <span class="type">Conditions</span>(<span class="class"><span class="keyword">data</span>);</span></div><div class="line">		<span class="class"><span class="keyword">data</span>.setMeasurements(1);</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>输出结果<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure></p>
-<p>注:该内容为《Head First设计模式》读后学习感悟</p>
+<p>读后感笔记来自[美] 弗里曼 的<a href="https://book.douban.com/subject/2243615/" target="_blank" rel="external">《Head First 设计模式（中文版）》</a></p>
 
       
 
@@ -460,27 +460,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,15 +488,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,6 +509,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -528,19 +528,19 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">log</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springBoot</a>
               </li>
              
               <li class="article-tag-list-item">

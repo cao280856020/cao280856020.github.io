@@ -166,6 +166,77 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-code-【源码】动态代理整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/code-【源码】动态代理整理/">【源码】动态代理整理</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/28/code-【源码】动态代理整理/" class="archive-article-date">
+  	<time datetime="2019-03-28T03:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p>在程序运行时创建实现了给定的接口的新类。</p>
+<p>动态代理实现是通过字节码增强方式实现的，字节码增强又有两种方式实现</p>
+<ol>
+<li>生成新类并实现被代理类的所有接口（spring aop是这种方式）</li>
+<li>直接篡改class类文件后重新加载到java虚拟机</li>
+</ol>
+<p>主要用来做方法的增强，可以在不修改源码的情况下，增强一些方法，在方法执行前后做任何想做的事情，因为在InvocationHandler的invoke方法中会通过反射机制执行委托类的方法。</p>
+<p>应用在很多场景里比如：方法调用时想要记录日志，权限查看，事务管理之中，这些都不需要改动原来方法，而只需要在代理类中添加，具体下面的例子说明。</p>
+        
+          <a class="article-more-a" href="/2019/03/28/code-【源码】动态代理整理/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/28/code-【源码】动态代理整理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-jvm-【梳理jvm】3.1.Class类文件结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -530,86 +601,6 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-jvm-【梳理jvm】1.1.JVM内存区域和内存溢出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/19/jvm-【梳理jvm】1.1.JVM内存区域和内存溢出/">【梳理jvm】1.1.JVM内存区域和内存溢出</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/19/jvm-【梳理jvm】1.1.JVM内存区域和内存溢出/" class="archive-article-date">
-  	<time datetime="2019-03-19T09:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JVM是运行java代码的假想的计算机，是运行在操作系统之上的，不与硬件直接交互。</p>
-<h4 id="包含了以下"><a href="#包含了以下" class="headerlink" title="包含了以下"></a>包含了以下</h4><ul>
-<li>字节码指令集</li>
-<li>寄存器</li>
-<li>栈</li>
-<li>垃圾回收</li>
-<li>堆</li>
-<li>存储方法域</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/03/19/jvm-【梳理jvm】1.1.JVM内存区域和内存溢出/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回顾</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">梳理jvm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/19/jvm-【梳理jvm】1.1.JVM内存区域和内存溢出/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -703,11 +694,11 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,15 +710,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -743,11 +734,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,18 +763,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">bat命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -795,10 +786,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
@@ -807,11 +794,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -823,6 +806,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -831,7 +822,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -840,10 +839,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -859,6 +854,10 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
@@ -868,10 +867,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>

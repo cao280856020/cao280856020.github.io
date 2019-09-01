@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="抽象父类定义了一个final算法（内部调用了各个抽象方法），子类通过通过继承实现了这些细节方法。  应用场景 生活中的例子面试流程公司有电话面试、笔试、面试，最后下发offer，每个公司的流程是一样的，但是各个步骤的细节由不同的公司决定。  优点提供了一个框架，可以让新加入的子类只关注细节实现，框架的算法只由公共类管理。 缺点每一个不同的实现都需要一个子类来实现，导致类的个数增加，使得系统更加庞大">
 <meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/uml-template2.PNG">
-<meta property="og:updated_time" content="2019-07-21T10:05:00.281Z">
+<meta property="og:updated_time" content="2019-09-01T12:37:14.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式:模板模式Template">
 <meta name="twitter:description" content="抽象父类定义了一个final算法（内部调用了各个抽象方法），子类通过通过继承实现了这些细节方法。  应用场景 生活中的例子面试流程公司有电话面试、笔试、面试，最后下发offer，每个公司的流程是一样的，但是各个步骤的细节由不同的公司决定。  优点提供了一个框架，可以让新加入的子类只关注细节实现，框架的算法只由公共类管理。 缺点每一个不同的实现都需要一个子类来实现，导致类的个数增加，使得系统更加庞大">
@@ -195,6 +195,7 @@ var bp = document.createElement('script');
 </ul>
 <h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>提供了一个框架，可以让新加入的子类只关注细节实现，框架的算法只由公共类管理。</p>
 <h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>每一个不同的实现都需要一个子类来实现，导致类的个数增加，使得系统更加庞大。</p>
+<a id="more"></a>
 <h4 id="具体实现代码"><a href="#具体实现代码" class="headerlink" title="具体实现代码"></a>具体实现代码</h4><p> 面试模板.java<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 面试模板 </span>&#123;</div><div class="line">	<span class="comment">// 定义不会被子类重写的算法</span></div><div class="line">	<span class="keyword">final</span> <span class="keyword">void</span> 面试流程() &#123;</div><div class="line">		<span class="keyword">if</span>(是否电面())&#123;</div><div class="line">			电面();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(是否笔试())&#123;</div><div class="line">			笔试();</div><div class="line">		&#125;</div><div class="line">		面试();</div><div class="line">		面试流程结束();</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 公共方法</span></div><div class="line">	<span class="keyword">void</span> 面试流程结束() &#123;</div><div class="line">		System.out.println(<span class="string">"面试结束"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">boolean</span> 是否电面() &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">boolean</span> 是否笔试() &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//抽象方法需要子类具体实现</span></div><div class="line">	<span class="keyword">abstract</span> <span class="keyword">void</span> 电面();</div><div class="line">	<span class="keyword">abstract</span> <span class="keyword">void</span> 笔试();</div><div class="line">	<span class="keyword">abstract</span> <span class="keyword">void</span> 面试();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>阿里巴巴.java<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">阿里巴巴</span> <span class="keyword">extends</span> <span class="title">面试模板</span> </span>&#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	void 电面() &#123;</div><div class="line">		<span class="type">System</span>.out.println(<span class="string">"阿里巴巴电面开始"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	void 笔试() &#123;</div><div class="line">		<span class="type">System</span>.out.println(<span class="string">"阿里巴巴笔试开始"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	void 面试() &#123;</div><div class="line">		<span class="type">System</span>.out.println(<span class="string">"阿里巴巴面试开始"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>XYZ公司.java<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">public</span> <span class="selector-tag">class</span> <span class="selector-tag">XYZ</span>公司 <span class="selector-tag">extends</span> 面试模板 &#123;</div><div class="line">	<span class="variable">@Override</span></div><div class="line">	void 电面() &#123;</div><div class="line">	&#125;</div><div class="line">	<span class="variable">@Override</span></div><div class="line">	void 笔试() &#123;</div><div class="line">	&#125;</div><div class="line">	<span class="variable">@Override</span></div><div class="line">	void 面试() &#123;</div><div class="line">		<span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.println</span>(<span class="string">"XYZ公司面试开始"</span>);</div><div class="line">	&#125;</div><div class="line">	@<span class="selector-tag">Override</span></div><div class="line">	<span class="selector-tag">boolean</span> 是否电面() &#123;</div><div class="line">		<span class="selector-tag">return</span> <span class="selector-tag">false</span>;</div><div class="line">	&#125;</div><div class="line">	@<span class="selector-tag">Override</span></div><div class="line">	<span class="selector-tag">boolean</span> 是否笔试() &#123;</div><div class="line">		<span class="selector-tag">return</span> <span class="selector-tag">false</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -324,6 +325,11 @@ var bp = document.createElement('script');
     </a>
   
   
+    <a href="/2019/09/01/sql-sql校验和格式化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">sql:使用druid做sql校验</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
 </nav>
 
 
@@ -430,11 +436,11 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -446,15 +452,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,11 +476,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,18 +505,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">bat命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,10 +528,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
@@ -534,11 +536,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,6 +548,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -558,7 +564,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,10 +581,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,6 +596,10 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
@@ -595,10 +609,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>

@@ -166,6 +166,75 @@ var bp = document.createElement('script');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-sql-sql校验和格式化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/01/sql-sql校验和格式化/">sql:使用druid做sql校验</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/01/sql-sql校验和格式化/" class="archive-article-date">
+  	<time datetime="2019-09-01T12:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>项目有个需求需要使mysql的语句可以格式化，并且还要校验成功，查了很多资料阿里巴巴的druid下面有几个工具包正好能满足这些需求所以以下做一个总结。</p>
+<p>引入maven依赖包<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2019/09/01/sql-sql校验和格式化/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">druid</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/01/sql-sql校验和格式化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-design-3模板模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -193,13 +262,9 @@ var bp = document.createElement('script');
 </ul>
 <h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>提供了一个框架，可以让新加入的子类只关注细节实现，框架的算法只由公共类管理。</p>
 <h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>每一个不同的实现都需要一个子类来实现，导致类的个数增加，使得系统更加庞大。</p>
-<h4 id="具体实现代码"><a href="#具体实现代码" class="headerlink" title="具体实现代码"></a>具体实现代码</h4><p> 面试模板.java<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 面试模板 </span>&#123;</div><div class="line">	<span class="comment">// 定义不会被子类重写的算法</span></div><div class="line">	<span class="keyword">final</span> <span class="keyword">void</span> 面试流程() &#123;</div><div class="line">		<span class="keyword">if</span>(是否电面())&#123;</div><div class="line">			电面();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(是否笔试())&#123;</div><div class="line">			笔试();</div><div class="line">		&#125;</div><div class="line">		面试();</div><div class="line">		面试流程结束();</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 公共方法</span></div><div class="line">	<span class="keyword">void</span> 面试流程结束() &#123;</div><div class="line">		System.out.println(<span class="string">"面试结束"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">boolean</span> 是否电面() &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">boolean</span> 是否笔试() &#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//抽象方法需要子类具体实现</span></div><div class="line">	<span class="keyword">abstract</span> <span class="keyword">void</span> 电面();</div><div class="line">	<span class="keyword">abstract</span> <span class="keyword">void</span> 笔试();</div><div class="line">	<span class="keyword">abstract</span> <span class="keyword">void</span> 面试();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>阿里巴巴.java<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">阿里巴巴</span> <span class="keyword">extends</span> <span class="title">面试模板</span> </span>&#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	void 电面() &#123;</div><div class="line">		<span class="type">System</span>.out.println(<span class="string">"阿里巴巴电面开始"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	void 笔试() &#123;</div><div class="line">		<span class="type">System</span>.out.println(<span class="string">"阿里巴巴笔试开始"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	void 面试() &#123;</div><div class="line">		<span class="type">System</span>.out.println(<span class="string">"阿里巴巴面试开始"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>XYZ公司.java<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">public</span> <span class="selector-tag">class</span> <span class="selector-tag">XYZ</span>公司 <span class="selector-tag">extends</span> 面试模板 &#123;</div><div class="line">	<span class="variable">@Override</span></div><div class="line">	void 电面() &#123;</div><div class="line">	&#125;</div><div class="line">	<span class="variable">@Override</span></div><div class="line">	void 笔试() &#123;</div><div class="line">	&#125;</div><div class="line">	<span class="variable">@Override</span></div><div class="line">	void 面试() &#123;</div><div class="line">		<span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.println</span>(<span class="string">"XYZ公司面试开始"</span>);</div><div class="line">	&#125;</div><div class="line">	@<span class="selector-tag">Override</span></div><div class="line">	<span class="selector-tag">boolean</span> 是否电面() &#123;</div><div class="line">		<span class="selector-tag">return</span> <span class="selector-tag">false</span>;</div><div class="line">	&#125;</div><div class="line">	@<span class="selector-tag">Override</span></div><div class="line">	<span class="selector-tag">boolean</span> 是否笔试() &#123;</div><div class="line">		<span class="selector-tag">return</span> <span class="selector-tag">false</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>测试类   Test.java<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span> &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">		面试模板 a=<span class="keyword">new</span> 阿里巴巴();</div><div class="line">		a.面试流程();</div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"--------------------"</span>);</div><div class="line">		面试模板 b=<span class="keyword">new</span> XYZ公司();</div><div class="line">		b.面试流程();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>输出结果:<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">阿里巴巴电面开始</div><div class="line">阿里巴巴笔试开始</div><div class="line">阿里巴巴面试开始</div><div class="line"><span class="section">面试结束</span></div><div class="line">--------------------</div><div class="line">XYZ公司面试开始</div><div class="line">面试结束</div></pre></td></tr></table></figure></p>
-<p>读后感笔记来自[美] 弗里曼 的<a href="https://book.douban.com/subject/2243615/" target="_blank" rel="external">《Head First 设计模式（中文版）》</a></p>
-
+        
+          <a class="article-more-a" href="/2019/07/21/design-3模板模式/#more">more >></a>
+        
       
 
       
@@ -474,77 +539,6 @@ var bp = document.createElement('script');
 
 
   
-    <article id="post-code-【源码】动态代理整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/28/code-【源码】动态代理整理/">【源码】动态代理整理</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/28/code-【源码】动态代理整理/" class="archive-article-date">
-  	<time datetime="2019-03-28T03:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p>在程序运行时创建实现了给定的接口的新类。</p>
-<p>动态代理实现是通过字节码增强方式实现的，字节码增强又有两种方式实现</p>
-<ol>
-<li>生成新类并实现被代理类的所有接口（spring aop是这种方式）</li>
-<li>直接篡改class类文件后重新加载到java虚拟机</li>
-</ol>
-<p>主要用来做方法的增强，可以在不修改源码的情况下，增强一些方法，在方法执行前后做任何想做的事情，因为在InvocationHandler的invoke方法中会通过反射机制执行委托类的方法。</p>
-<p>应用在很多场景里比如：方法调用时想要记录日志，权限查看，事务管理之中，这些都不需要改动原来方法，而只需要在代理类中添加，具体下面的例子说明。</p>
-        
-          <a class="article-more-a" href="/2019/03/28/code-【源码】动态代理整理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/28/code-【源码】动态代理整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -638,11 +632,11 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,15 +648,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,11 +672,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,18 +701,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">bat命令</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回顾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -730,10 +724,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
@@ -742,11 +732,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,6 +744,14 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -766,7 +760,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -775,10 +777,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,6 +792,10 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
@@ -803,10 +805,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
             
             <div class="clearfix"></div>

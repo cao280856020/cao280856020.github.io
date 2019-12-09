@@ -4,6 +4,25 @@
 
     
   <url>
+    <loc>http://www.caoyongjun.com/2019/12/09/%E4%B8%9A%E5%8A%A1%E5%AE%9E%E7%8E%B0-%E8%A7%84%E5%AE%9A%E6%97%B6%E9%97%B4%E5%86%85%E9%99%90%E5%88%B6%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E6%AC%A1%E6%95%B0/</loc>
+    <lastmod>2019-12-09T14:36:44.621Z</lastmod>
+    <data>
+        <display>
+        <title>规定时间内限制发送短信次数</title>
+        <pubTime>2019-12-09T14:36:00.000Z</pubTime>
+        
+        <tag>redis</tag>
+         
+        <tag>业务实现</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.caoyongjun.com/2019/09/01/sql-sql%E6%A0%A1%E9%AA%8C%E5%92%8C%E6%A0%BC%E5%BC%8F%E5%8C%96/</loc>
     <lastmod>2019-09-01T12:40:11.483Z</lastmod>
     <data>
@@ -612,9 +631,9 @@
         
         <tag>linux</tag>
          
-        <tag>安装</tag>
-         
         <tag>nginx</tag>
+         
+        <tag>安装</tag>
          
          
            
@@ -1235,9 +1254,9 @@
         
         <tag>linux</tag>
          
-        <tag>mysql</tag>
-         
         <tag>安装</tag>
+         
+        <tag>mysql</tag>
          
          
            

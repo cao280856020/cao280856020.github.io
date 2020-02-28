@@ -15,13 +15,13 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2019/04/22/jvm-【梳理jvm】3.2.类加载机制/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="生命周期 什么是类加载机制？虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-%E7%B1%BB%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/classloader-%E5%8A%A0%E8%BD%BD%E9%98%B6%E6%AE%B5.png">
-<meta property="og:updated_time" content="2019-06-04T09:27:11.551Z">
+<meta property="og:image" content="http://blog.manxue.vip/class-%E7%B1%BB%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="og:image" content="http://blog.manxue.vip/classloader-%E5%8A%A0%E8%BD%BD%E9%98%B6%E6%AE%B5.png">
+<meta property="og:updated_time" content="2020-02-28T04:10:33.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【梳理jvm】3.2.类加载机制">
 <meta name="twitter:description" content="生命周期 什么是类加载机制？虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-%E7%B1%BB%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta name="twitter:image" content="http://blog.manxue.vip/class-%E7%B1%BB%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -189,7 +189,7 @@ var bp = document.createElement('script');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/class-%E7%B1%BB%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="类生命周期"></p>
+        <h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="http://blog.manxue.vip/class-%E7%B1%BB%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="类生命周期"></p>
 <h3 id="什么是类加载机制？"><a href="#什么是类加载机制？" class="headerlink" title="什么是类加载机制？"></a>什么是类加载机制？</h3><p>虚拟机把描述类的数据从Class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型。</p>
 <a id="more"></a>
 <h3 id="1-类加载时机"><a href="#1-类加载时机" class="headerlink" title="1.类加载时机"></a>1.类加载时机</h3><h4 id="主动引用"><a href="#主动引用" class="headerlink" title="主动引用"></a>主动引用</h4><p>1）遇到以下字节码指令时</p>
@@ -229,7 +229,7 @@ var bp = document.createElement('script');
 <li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构</li>
 <li>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/classloader-%E5%8A%A0%E8%BD%BD%E9%98%B6%E6%AE%B5.png" alt="classloader-加载阶段"></p>
+<p><img src="http://blog.manxue.vip/classloader-%E5%8A%A0%E8%BD%BD%E9%98%B6%E6%AE%B5.png" alt="classloader-加载阶段"></p>
 <h4 id="1-1-加载数组类（下面简称为C）创建过程就遵循以下规则："><a href="#1-1-加载数组类（下面简称为C）创建过程就遵循以下规则：" class="headerlink" title="1.1.加载数组类（下面简称为C）创建过程就遵循以下规则："></a>1.1.加载数组类（下面简称为C）创建过程就遵循以下规则：</h4><ul>
 <li>数组类本身不通过类加载器创建，它是由Java虚拟机直接创建的。</li>
 <li>数组类的元素类型（Element Type，指的是数组去掉所有维度的类型）最终是要靠类加载器去创建。</li>
@@ -507,11 +507,11 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,15 +523,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,7 +539,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,14 +548,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,11 +563,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,14 +599,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -611,11 +607,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,11 +623,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,19 +631,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,11 +659,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,15 +675,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">理财</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
             
             <div class="clearfix"></div>

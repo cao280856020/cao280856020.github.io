@@ -15,12 +15,12 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2019/03/28/code-【源码】动态代理整理/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="动态代理在程序运行时创建实现了给定的接口的新类。 动态代理实现是通过字节码增强方式实现的，字节码增强又有两种方式实现  生成新类并实现被代理类的所有接口（spring aop是这种方式） 直接篡改class类文件后重新加载到java虚拟机  主要用来做方法的增强，可以在不修改源码的情况下，增强一些方法，在方法执行前后做任何想做的事情，因为在InvocationHandler的invoke方法中会通">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/uml-proxyuml.png">
-<meta property="og:updated_time" content="2019-05-15T09:09:08.634Z">
+<meta property="og:image" content="http://blog.manxue.vip/uml-proxyuml.png">
+<meta property="og:updated_time" content="2020-02-28T04:00:29.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【源码】动态代理整理">
 <meta name="twitter:description" content="动态代理在程序运行时创建实现了给定的接口的新类。 动态代理实现是通过字节码增强方式实现的，字节码增强又有两种方式实现  生成新类并实现被代理类的所有接口（spring aop是这种方式） 直接篡改class类文件后重新加载到java虚拟机  主要用来做方法的增强，可以在不修改源码的情况下，增强一些方法，在方法执行前后做任何想做的事情，因为在InvocationHandler的invoke方法中会通">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/uml-proxyuml.png">
+<meta name="twitter:image" content="http://blog.manxue.vip/uml-proxyuml.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -208,7 +208,7 @@ var bp = document.createElement('script');
 <p>Proxy$ProxyClassFactory.java<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">* 因为同一个类加载器中只加载一次同一个类</div><div class="line">* 为了给代理类区分，所以使用原子性操作AtomicLong++1获取唯一数字加到代理类名称中以便区分类</div><div class="line">*/</div><div class="line"><span class="keyword">long</span> num = nextUniqueNumber.getAndIncrement();</div><div class="line"><span class="keyword">String</span> proxyName = proxyPkg + proxyClassNamePrefix + num;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">* 利用字节码增强技术，生成了一个新的类并实现了所有被代理类实现的接口方法</div><div class="line">*/</div><div class="line"><span class="keyword">byte</span>[] proxyClassFile = ProxyGenerator.generateProxyClass(proxyName, interfaces, accessFlags);</div><div class="line"><span class="built_in">try</span> &#123;</div><div class="line">	<span class="comment">//通过类加载机制把proxy的字节码文件加载到jvm</span></div><div class="line">	<span class="built_in">return</span> defineClass0(loader, proxyName, proxyClassFile, <span class="number">0</span>, proxyClassFile.length);</div><div class="line">&#125; <span class="built_in">catch</span> (ClassFormatError e) &#123;</div><div class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(e.toString());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>最终会生成$ProxyClass文件 这里省略equals和toString和hashCode方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.sun.proxy.$Proxy;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.example.facade.ProxyFacade1;</div><div class="line"><span class="keyword">import</span> com.example.facade.ProxyFacade2;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.Method;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.UndeclaredThrowableException;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Proxy1</span> <span class="keyword">extends</span> <span class="title">Proxy</span> <span class="keyword">implements</span> <span class="title">ProxyFacade1</span>, <span class="title">ProxyFacade2</span> </span>&#123;</div><div class="line"></div><div class="line">   <span class="keyword">private</span> <span class="keyword">static</span> Method m1;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">static</span> Method m2;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">static</span> Method m3;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">static</span> Method m4;</div><div class="line">   <span class="keyword">private</span> <span class="keyword">static</span> Method m0;</div><div class="line"></div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">	  	<span class="comment">//省略显示equals和toString</span></div><div class="line">		m0 = Class.forName(<span class="string">"java.lang.Object"</span>).getMethod(<span class="string">"hashCode"</span>, <span class="keyword">new</span> Class[<span class="number">0</span>]);</div><div class="line">		</div><div class="line">		m3 = Class.forName(<span class="string">"com.example.facade.ProxyFacade1"</span>).getMethod(<span class="string">"a"</span>, <span class="keyword">new</span> Class[]&#123;Integer.TYPE&#125;);</div><div class="line">		m4 = Class.forName(<span class="string">"com.example.facade.ProxyFacade2"</span>).getMethod(<span class="string">"b"</span>, <span class="keyword">new</span> Class[]&#123;Integer.TYPE&#125;);</div><div class="line">      &#125; <span class="keyword">catch</span> (NoSuchMethodException var2) &#123;</div><div class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchMethodError(var2.getMessage());</div><div class="line">      &#125; <span class="keyword">catch</span> (ClassNotFoundException var3) &#123;</div><div class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> NoClassDefFoundError(var3.getMessage());</div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Proxy1</span><span class="params">(InvocationHandler var1)</span> <span class="keyword">throws</span>  </span>&#123;</div><div class="line">      <span class="keyword">super</span>(var1);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">a</span><span class="params">(<span class="keyword">int</span> var1)</span> <span class="keyword">throws</span>  </span>&#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">         <span class="keyword">return</span> (String)<span class="keyword">super</span>.h.invoke(<span class="keyword">this</span>, m3, <span class="keyword">new</span> Object[]&#123;Integer.valueOf(var1)&#125;);</div><div class="line">      &#125; <span class="keyword">catch</span> (RuntimeException | Error var3) &#123;</div><div class="line">         <span class="keyword">throw</span> var3;</div><div class="line">      &#125; <span class="keyword">catch</span> (Throwable var4) &#123;</div><div class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> UndeclaredThrowableException(var4);</div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">b</span><span class="params">(<span class="keyword">int</span> var1)</span> <span class="keyword">throws</span>  </span>&#123;</div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">         <span class="keyword">return</span> (String)<span class="keyword">super</span>.h.invoke(<span class="keyword">this</span>, m4, <span class="keyword">new</span> Object[]&#123;Integer.valueOf(var1)&#125;);</div><div class="line">      &#125; <span class="keyword">catch</span> (RuntimeException | Error var3) &#123;</div><div class="line">         <span class="keyword">throw</span> var3;</div><div class="line">      &#125; <span class="keyword">catch</span> (Throwable var4) &#123;</div><div class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> UndeclaredThrowableException(var4);</div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> <span class="keyword">throws</span>  </span>&#123;</div><div class="line">      ...</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object var1)</span> <span class="keyword">throws</span>  </span>&#123;</div><div class="line">      ...</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> String <span class="title">toString</span><span class="params">()</span> <span class="keyword">throws</span>  </span>&#123;</div><div class="line">      ...</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>最后看下uml关系图</p>
-<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/uml-proxyuml.png" alt="uml-proxy"></p>
+<p><img src="http://blog.manxue.vip/uml-proxyuml.png" alt="uml-proxy"></p>
 
       
 
@@ -439,11 +439,11 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,15 +455,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,7 +471,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,14 +480,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,11 +495,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,14 +531,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -543,11 +539,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,11 +555,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,19 +563,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,11 +591,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,15 +607,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">理财</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
             
             <div class="clearfix"></div>

@@ -15,15 +15,15 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2019/01/23/jenkins-配置项目[windows下]/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="启动项目12cd D:\work\cyj\jenkinsjava -jar jenkins.war --httpPort=8888 配置信息在1C:\Users\win10\.jenkins 系统配置###【系统管理】-&amp;gt;【全局工具配置】配置系统中需要的工具具体位置 ###【系统管理】-&amp;gt;【插件管理】-&amp;gt;【Advanced】配置proxy  Update Site路径为1http">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEgit%E4%BF%A1%E6%81%AF.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AEgit%E7%A7%98%E9%92%A5%E9%85%8D%E7%BD%AE.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEmaven%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AEshell%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.png">
-<meta property="og:updated_time" content="2019-05-15T09:09:08.637Z">
+<meta property="og:image" content="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEgit%E4%BF%A1%E6%81%AF.jpg">
+<meta property="og:image" content="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AEgit%E7%A7%98%E9%92%A5%E9%85%8D%E7%BD%AE.jpg">
+<meta property="og:image" content="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEmaven%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.jpg">
+<meta property="og:image" content="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AEshell%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.png">
+<meta property="og:updated_time" content="2020-02-28T04:10:33.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手把手搭建项目-jenkins配置项目[windows下]">
 <meta name="twitter:description" content="启动项目12cd D:\work\cyj\jenkinsjava -jar jenkins.war --httpPort=8888 配置信息在1C:\Users\win10\.jenkins 系统配置###【系统管理】-&amp;gt;【全局工具配置】配置系统中需要的工具具体位置 ###【系统管理】-&amp;gt;【插件管理】-&amp;gt;【Advanced】配置proxy  Update Site路径为1http">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEgit%E4%BF%A1%E6%81%AF.jpg">
+<meta name="twitter:image" content="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEgit%E4%BF%A1%E6%81%AF.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -197,10 +197,10 @@ var bp = document.createElement('script');
 <p>###【系统管理】-&gt;【插件管理】-&gt;【Advanced】<br>配置proxy  Update Site路径为<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">http:</span>//updates.jenkins-ci<span class="meta">.org</span>/download/plugins/</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><p>###【首页】-&gt; 【new任务】</p>
-<h4 id="配置git信息"><a href="#配置git信息" class="headerlink" title="配置git信息"></a>配置git信息</h4><p>填写git的路径<br><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEgit%E4%BF%A1%E6%81%AF.jpg" alt="jenkins git信息"></p>
-<p>点击add添加访问git权限<br><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AEgit%E7%A7%98%E9%92%A5%E9%85%8D%E7%BD%AE.jpg" alt="jenkins git信息秘钥"></p>
-<p>配置maven<br><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEmaven%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.jpg" alt="jenkins maven信息"></p>
-<p>配置shell<br><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jenkins-%E9%A1%B9%E7%9B%AEshell%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.png" alt="jenkins shell信息"></p>
+<h4 id="配置git信息"><a href="#配置git信息" class="headerlink" title="配置git信息"></a>配置git信息</h4><p>填写git的路径<br><img src="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEgit%E4%BF%A1%E6%81%AF.jpg" alt="jenkins git信息"></p>
+<p>点击add添加访问git权限<br><img src="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AEgit%E7%A7%98%E9%92%A5%E9%85%8D%E7%BD%AE.jpg" alt="jenkins git信息秘钥"></p>
+<p>配置maven<br><img src="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AEmaven%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.jpg" alt="jenkins maven信息"></p>
+<p>配置shell<br><img src="http://blog.manxue.vip/jenkins-%E9%A1%B9%E7%9B%AEshell%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF.png" alt="jenkins shell信息"></p>
 <p>[注]这里由于是在windows环境所以git shell方式(ps -ef)取不到进程,在这里花了挺长时间找解决方案，最终这里用到了windows的powershell写了个bat批处理结束进程</p>
 <h5 id="文件-kill-application-bat-获取要杀的端口号后查找该占用的pid，循环杀"><a href="#文件-kill-application-bat-获取要杀的端口号后查找该占用的pid，循环杀" class="headerlink" title="文件 kill_application.bat 获取要杀的端口号后查找该占用的pid，循环杀"></a>文件 kill_application.bat 获取要杀的端口号后查找该占用的pid，循环杀</h5><figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@<span class="built_in">echo</span> on</div><div class="line"></div><div class="line"><span class="built_in">set</span> input_port=<span class="variable">%1%</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> /f "tokens=<span class="number">5</span>" <span class="variable">%%i</span> <span class="keyword">in</span> ('netstat -aon ^| <span class="built_in">findstr</span> ":<span class="variable">%input_port%</span>"') <span class="keyword">do</span> (</div><div class="line">	<span class="built_in">set</span> n=<span class="variable">%%i</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="built_in">echo</span> "<span class="variable">%n%</span>"</div><div class="line"></div><div class="line"><span class="keyword">if</span> "<span class="variable">%n%</span>" <span class="keyword">NEQ</span> "" (</div><div class="line">	<span class="keyword">if</span> "<span class="variable">%n%</span>" <span class="keyword">NEQ</span> "<span class="number">0</span>" (</div><div class="line">		<span class="built_in">taskkill</span> /f /pid <span class="variable">%n%</span></div><div class="line">	)</div><div class="line">)</div></pre></td></tr></table></figure>
 <p>杀完进程后，是把下载好的jar包进行maven打包编译，然后启动项目</p>
@@ -446,11 +446,11 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,15 +462,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,7 +478,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,14 +487,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,11 +502,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,14 +538,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -550,11 +546,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,11 +562,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,19 +570,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,11 +598,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,15 +614,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">理财</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
             
             <div class="clearfix"></div>

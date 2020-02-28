@@ -15,12 +15,12 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2019/12/09/业务实现-规定时间内限制发送短信次数/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="需求是3分钟之内限制同一个手机号码发送短信验证码的次数小于3次以内。 使用redis的zset数据结构来实现，参考以下鲁棒图  第一步：通过redis分布式锁锁定该手机号，为了防止60s内重复发送第二步：判断3分钟之前到现在发送了多少次短信验证码1zcount key min max 如果count&amp;gt;=3那就失败 第三步：插入该次发送短信事件1zadd key value score 第四步">
-<meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E4%B8%9A%E5%8A%A1-%E9%99%90%E6%B5%81%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%95%8A.png">
-<meta property="og:updated_time" content="2019-12-09T14:36:44.621Z">
+<meta property="og:image" content="http://blog.manxue.vip/%E4%B8%9A%E5%8A%A1-%E9%99%90%E6%B5%81%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%95%8A.png">
+<meta property="og:updated_time" content="2020-02-28T03:59:40.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="规定时间内限制发送短信次数">
 <meta name="twitter:description" content="需求是3分钟之内限制同一个手机号码发送短信验证码的次数小于3次以内。 使用redis的zset数据结构来实现，参考以下鲁棒图  第一步：通过redis分布式锁锁定该手机号，为了防止60s内重复发送第二步：判断3分钟之前到现在发送了多少次短信验证码1zcount key min max 如果count&amp;gt;=3那就失败 第三步：插入该次发送短信事件1zadd key value score 第四步">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E4%B8%9A%E5%8A%A1-%E9%99%90%E6%B5%81%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%95%8A.png">
+<meta name="twitter:image" content="http://blog.manxue.vip/%E4%B8%9A%E5%8A%A1-%E9%99%90%E6%B5%81%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%95%8A.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -190,7 +190,7 @@ var bp = document.createElement('script');
       
         <p>需求是3分钟之内限制同一个手机号码发送短信验证码的次数小于3次以内。</p>
 <p>使用redis的zset数据结构来实现，参考以下鲁棒图</p>
-<p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/%E4%B8%9A%E5%8A%A1-%E9%99%90%E6%B5%81%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%95%8A.png" alt="短信发送次数限制"></p>
+<p><img src="http://blog.manxue.vip/%E4%B8%9A%E5%8A%A1-%E9%99%90%E6%B5%81%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%95%8A.png" alt="短信发送次数限制"></p>
 <p>第一步：通过redis分布式锁锁定该手机号，为了防止60s内重复发送<br>第二步：判断3分钟之前到现在发送了多少次短信验证码<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zcount <span class="built_in">key</span> <span class="built_in">min</span> <span class="built_in">max</span></div></pre></td></tr></table></figure></p>
 <p>如果count&gt;=3那就失败</p>
 <p>第三步：插入该次发送短信事件<br><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zadd <span class="built_in">key</span> <span class="built_in">value</span> score</div></pre></td></tr></table></figure></p>
@@ -426,11 +426,11 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -442,15 +442,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,7 +458,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,14 +467,6 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,11 +482,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回顾</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">梳理jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,14 +518,6 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
              
@@ -530,11 +526,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">经验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,11 +542,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">经验</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,19 +550,23 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,11 +578,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color5">商品模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,15 +594,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">理财</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基金</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
             
             <div class="clearfix"></div>

@@ -15,12 +15,12 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2018/10/08/csv-导出功能/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="csv的定义逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。">
-<meta property="og:image" content="http://blog.manxue.vip/csv%E5%AF%BC%E5%87%BA%E7%BB%93%E6%9E%9C.png">
-<meta property="og:updated_time" content="2019-01-05T03:28:30.820Z">
+<meta property="og:image" content="http://caoyongjun.com/img/csv%E5%AF%BC%E5%87%BA%E7%BB%93%E6%9E%9C.png">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="csv:导出数据功能">
 <meta name="twitter:description" content="csv的定义逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。">
-<meta name="twitter:image" content="http://blog.manxue.vip/csv%E5%AF%BC%E5%87%BA%E7%BB%93%E6%9E%9C.png">
+<meta name="twitter:image" content="http://caoyongjun.com/img/csv%E5%AF%BC%E5%87%BA%E7%BB%93%E6%9E%9C.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -65,7 +65,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -121,7 +121,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -191,7 +191,7 @@ var bp = document.createElement('script');
         <h2 id="csv的定义"><a href="#csv的定义" class="headerlink" title="csv的定义"></a>csv的定义</h2><p>逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。</p>
 <a id="more"></a>
 <p>文件内容测试<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">标题<span class="number">1</span>,标题<span class="number">2</span>,标题<span class="number">3</span></div><div class="line"><span class="string">"23123"</span>,<span class="string">"222.,3"</span>,<span class="string">"222,1"</span></div><div class="line"><span class="string">"2312321"</span>,<span class="string">"233"</span>,<span class="string">"222"</span></div></pre></td></tr></table></figure></p>
-<p>结果<br><img src="http://blog.manxue.vip/csv%E5%AF%BC%E5%87%BA%E7%BB%93%E6%9E%9C.png" alt="csv-导出结果"></p>
+<p>结果<br><img src="http://caoyongjun.com/img/csv%E5%AF%BC%E5%87%BA%E7%BB%93%E6%9E%9C.png" alt="csv-导出结果"></p>
 <p>导出实现代码<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> outPutFile()&#123;</div><div class="line">	<span class="comment">//设定第一页和每页显示1000条数</span></div><div class="line">	<span class="keyword">int</span> pageNo = <span class="number">1</span>,pageSize = <span class="number">1000</span>;</div><div class="line">	<span class="comment">//获取数据库总条数</span></div><div class="line">	<span class="keyword">int</span> total = mapper.countByExample(example);</div><div class="line">	<span class="keyword">while</span> ( total &gt; <span class="number">0</span> ) &#123;</div><div class="line">		<span class="comment">//每次扣减1000,剩余数量一直循环到大于0</span></div><div class="line">		total = total - pageSize;</div><div class="line"></div><div class="line">		<span class="comment">//分页获取数据</span></div><div class="line">		<span class="keyword">int</span> startNo = (pageNo - <span class="number">1</span>) * pageSize;</div><div class="line">		example.setOrderByClause(<span class="string">"id DESC LIMIT "</span> + startNo + <span class="string">","</span> + pageSize);</div><div class="line">		List&lt;Object&gt; list = mapper.selectByExample(example);</div><div class="line">		<span class="keyword">if</span> ( list != <span class="keyword">null</span> &amp;&amp; list.<span class="keyword">size</span>() &gt; <span class="number">0</span> ) &#123;</div><div class="line">			<span class="comment">//为了写入到外部文件中</span></div><div class="line">			List&lt;String&gt; dataList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">			<span class="comment">//设置标题</span></div><div class="line">			StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"标题1,标题2,标题3"</span>);</div><div class="line">			<span class="keyword">for</span> ( Object obj:list )&#123;</div><div class="line">				<span class="comment">//怕内容里包含了逗号(,)所以每个内容用\"包裹一下免得乱了内容</span></div><div class="line">				sb.<span class="keyword">append</span>(<span class="string">"\""</span>).<span class="keyword">append</span>(obj.getXXX()).<span class="keyword">append</span>(<span class="string">"\""</span>)</div><div class="line">				.<span class="keyword">append</span>(<span class="string">","</span>)</div><div class="line">				sb.<span class="keyword">append</span>(<span class="string">"\""</span>).<span class="keyword">append</span>(obj.getYYY()).<span class="keyword">append</span>(<span class="string">"\""</span>)</div><div class="line">				.<span class="keyword">append</span>(<span class="string">","</span>)</div><div class="line">				sb.<span class="keyword">append</span>(<span class="string">"\""</span>).<span class="keyword">append</span>(obj.getYYY()).<span class="keyword">append</span>(<span class="string">"\""</span>);</div><div class="line">				dataList.add(sb.toString());</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				<span class="comment">//文件输出全路径</span></div><div class="line">				<span class="keyword">File</span> <span class="keyword">file</span> = <span class="keyword">new</span> <span class="keyword">File</span>(<span class="string">"C:\\Users\\win10\\Downloads\\data.csv"</span>);</div><div class="line">				<span class="comment">/*</span></div><div class="line">					第一个文件名</div><div class="line">					第二个文件字符集编码</div><div class="line">					第三个数据</div><div class="line">					第四个windows中的换行特殊符号(Linux中时\n)</div><div class="line">					第五个是否在文件后面追加true是</div><div class="line">				*/</div><div class="line">				org.apache.commons.io.FileUtils.writeLines(<span class="keyword">file</span>, <span class="string">"UTF-8"</span>, dataList, <span class="string">"\r\n"</span>, <span class="keyword">true</span>);</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				logger.error(e.getMessage(),e);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
@@ -211,7 +211,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -427,14 +427,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -443,7 +435,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,15 +451,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,15 +463,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,6 +488,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,7 +519,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,11 +527,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,7 +543,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,15 +551,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,11 +563,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,7 +579,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,6 +588,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

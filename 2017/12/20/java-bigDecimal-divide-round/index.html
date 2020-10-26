@@ -9,18 +9,18 @@
   <title>java:使用BigDecimal除法时需要注意的点 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="百度中BigDecimal的定义Java在java.math包中提供的API类BigDecimal，用来对超过16位有效位的数进行精确的运算。双精度浮点型变量double可以处理16位有效数。在实际应用中，需要对更大或者更小的数进行运算和处理。float和double只能用来做科学计算或者是工程计算，在商业计算中要用java.math.BigDecimal。BigDecimal所创建的是对象，我们">
-<meta name="keywords" content="技术,java">
+<meta name="keywords" content="java,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java:使用BigDecimal除法时需要注意的点">
 <meta property="og:url" content="http://www.caoyongjun.com/2017/12/20/java-bigDecimal-divide-round/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="百度中BigDecimal的定义Java在java.math包中提供的API类BigDecimal，用来对超过16位有效位的数进行精确的运算。双精度浮点型变量double可以处理16位有效数。在实际应用中，需要对更大或者更小的数进行运算和处理。float和double只能用来做科学计算或者是工程计算，在商业计算中要用java.math.BigDecimal。BigDecimal所创建的是对象，我们">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bjava%5DBigDecimal-divide.jpg">
-<meta property="og:updated_time" content="2019-01-05T03:26:07.233Z">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bjava%5DBigDecimal-divide.jpg">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java:使用BigDecimal除法时需要注意的点">
 <meta name="twitter:description" content="百度中BigDecimal的定义Java在java.math包中提供的API类BigDecimal，用来对超过16位有效位的数进行精确的运算。双精度浮点型变量double可以处理16位有效数。在实际应用中，需要对更大或者更小的数进行运算和处理。float和double只能用来做科学计算或者是工程计算，在商业计算中要用java.math.BigDecimal。BigDecimal所创建的是对象，我们">
-<meta name="twitter:image" content="http://blog.manxue.vip/%5Bjava%5DBigDecimal-divide.jpg">
+<meta name="twitter:image" content="http://caoyongjun.com/img/%5Bjava%5DBigDecimal-divide.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -65,7 +65,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -121,7 +121,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -194,7 +194,7 @@ var bp = document.createElement('script');
 <a id="more"></a>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> java.math.BigDecimal;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> Test &#123;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">		BigDecimal a=<span class="keyword">new</span> BigDecimal(<span class="number">123.45778</span>);<span class="comment">//第三位&gt;5</span></div><div class="line">		BigDecimal a2=<span class="keyword">new</span> BigDecimal(<span class="number">123.45378</span>);<span class="comment">//第三位&lt;5</span></div><div class="line">		BigDecimal b=<span class="keyword">new</span> BigDecimal(<span class="number">1</span>);</div><div class="line">		</div><div class="line">		System.out.<span class="built_in">println</span>(a.divide(b,<span class="number">2</span>,BigDecimal.ROUND_CEILING)+<span class="string">"	"</span>+a2.divide(b,<span class="number">2</span>,BigDecimal.ROUND_CEILING)+<span class="string">"	ceiling:小数点后第二位数+1"</span>);</div><div class="line">		System.out.<span class="built_in">println</span>(a.divide(b,<span class="number">2</span>,BigDecimal.ROUND_FLOOR)+<span class="string">"	"</span>+a2.divide(b,<span class="number">2</span>,BigDecimal.ROUND_FLOOR)+<span class="string">"	floor:小数点后第二位数不变"</span>);</div><div class="line">		System.out.<span class="built_in">println</span>(a.divide(b,<span class="number">2</span>,BigDecimal.ROUND_DOWN)+<span class="string">"	"</span>+a2.divide(b,<span class="number">2</span>,BigDecimal.ROUND_DOWN)+<span class="string">"	down:小数点后第二位数不变"</span>);</div><div class="line">		System.out.<span class="built_in">println</span>(a.divide(b,<span class="number">2</span>,BigDecimal.ROUND_UP)+<span class="string">"	"</span>+a2.divide(b,<span class="number">2</span>,BigDecimal.ROUND_UP)+<span class="string">"	up:小数点后第二位数+1"</span>);</div><div class="line">		System.out.<span class="built_in">println</span>(a.divide(b,<span class="number">2</span>,BigDecimal.ROUND_HALF_DOWN)+<span class="string">"	"</span>+a2.divide(b,<span class="number">2</span>,BigDecimal.ROUND_HALF_DOWN)+<span class="string">"	halfDown:小数点后第三大于5就把第二位数+1"</span>);</div><div class="line">		System.out.<span class="built_in">println</span>(a.divide(b,<span class="number">2</span>,BigDecimal.ROUND_HALF_UP)+<span class="string">"	"</span>+a2.divide(b,<span class="number">2</span>,BigDecimal.ROUND_HALF_UP)+<span class="string">"	halfUp:小数点后第三大于5就把第二位数+1"</span>);</div><div class="line">		System.out.<span class="built_in">println</span>(a.divide(b,<span class="number">2</span>,BigDecimal.ROUND_HALF_EVEN)+<span class="string">"	"</span>+a2.divide(b,<span class="number">2</span>,BigDecimal.ROUND_HALF_EVEN)+<span class="string">"	halfEven:小数点后第三大于5就把第二位数+1"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>输出结果</p>
-<p><img src="http://blog.manxue.vip/%5Bjava%5DBigDecimal-divide.jpg" alt="&quot;BigDecimal-divide&quot;"></p>
+<p><img src="http://caoyongjun.com/img/%5Bjava%5DBigDecimal-divide.jpg" alt="&quot;BigDecimal-divide&quot;"></p>
 
       
 
@@ -213,7 +213,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -234,11 +234,11 @@ var bp = document.createElement('script');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -429,14 +429,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -445,7 +437,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,15 +453,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,15 +465,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,6 +490,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,7 +521,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,11 +529,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,7 +545,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,15 +553,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +565,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,7 +581,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,6 +590,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

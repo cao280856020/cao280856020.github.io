@@ -15,12 +15,12 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2018/09/14/design-观察者模式/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。 缺点：有多个观察者时，被通知次序有可能会乱序">
-<meta property="og:image" content="http://blog.manxue.vip/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png">
-<meta property="og:updated_time" content="2019-06-04T08:50:01.967Z">
+<meta property="og:image" content="http://caoyongjun.com/img/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式:2观察者模式Observer">
 <meta name="twitter:description" content="定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。 缺点：有多个观察者时，被通知次序有可能会乱序">
-<meta name="twitter:image" content="http://blog.manxue.vip/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png">
+<meta name="twitter:image" content="http://caoyongjun.com/img/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -65,7 +65,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -121,7 +121,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -190,7 +190,7 @@ var bp = document.createElement('script');
       
         <p>定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。</p>
 <p>缺点：有多个观察者时，被通知次序有可能会乱序</p>
-<p><img src="http://blog.manxue.vip/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png" alt="设计模式-观察者模式"></p>
+<p><img src="http://caoyongjun.com/img/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F.png" alt="设计模式-观察者模式"></p>
 <a id="more"></a>
 <p>主题类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Observable;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> <span class="keyword">extends</span> <span class="title">Observable</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> x;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">measurementsChanged</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="comment">//改变Observable的changed变量为true</span></div><div class="line">		setChanged();</div><div class="line">		notifyObservers();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMeasurements</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.x=x;</div><div class="line">		<span class="keyword">this</span>.measurementsChanged();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> x;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>Observable类中只有在changed=true时才去通知观察者，<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">protected</span> <span class="keyword">synchronized</span> <span class="function"><span class="keyword">void</span> <span class="title">setChanged</span><span class="params">()</span></span></div><div class="line">  &#123;</div><div class="line">    <span class="keyword">this</span>.changed = <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">notifyObservers</span><span class="params">(Object paramObject)</span></span></div><div class="line">  &#123;</div><div class="line">    Object[] arrayOfObject;</div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">if</span> (!<span class="keyword">this</span>.changed) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">      &#125;</div><div class="line">      arrayOfObject = <span class="keyword">this</span>.obs.toArray();</div><div class="line">      clearChanged();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = arrayOfObject.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">      ((Observer)arrayOfObject[i]).update(<span class="keyword">this</span>, paramObject);</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
@@ -216,7 +216,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -432,14 +432,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -448,7 +440,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -456,15 +456,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,15 +468,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,6 +493,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,7 +524,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,11 +532,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,7 +548,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,15 +556,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,11 +568,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,7 +584,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,6 +593,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -15,17 +15,17 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2019/03/25/jvm-【梳理jvm】2.2.垃圾收集器/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="垃圾收集算法是内存回收的方法论。垃圾收集器是内存回收的具体实现。  连线代表可以组合搭配使用">
-<meta property="og:image" content="http://blog.manxue.vip/gc-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%9B%BE.jpg">
-<meta property="og:image" content="http://blog.manxue.vip/gc-serialold%E5%92%8C.jpg">
-<meta property="og:image" content="http://blog.manxue.vip/gc-parallel%20new.jpg">
-<meta property="og:image" content="http://blog.manxue.vip/gc-parallelold.jpg">
-<meta property="og:image" content="http://blog.manxue.vip/gc-g1.jpg">
-<meta property="og:image" content="http://blog.manxue.vip/gc-cms.jpg">
-<meta property="og:updated_time" content="2020-02-28T04:10:33.373Z">
+<meta property="og:image" content="http://caoyongjun.com/img/gc-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%9B%BE.jpg">
+<meta property="og:image" content="http://caoyongjun.com/img/gc-serialold%E5%92%8C.jpg">
+<meta property="og:image" content="http://caoyongjun.com/img/gc-parallel%20new.jpg">
+<meta property="og:image" content="http://caoyongjun.com/img/gc-parallelold.jpg">
+<meta property="og:image" content="http://caoyongjun.com/img/gc-g1.jpg">
+<meta property="og:image" content="http://caoyongjun.com/img/gc-cms.jpg">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【梳理jvm】2.2.垃圾收集器">
 <meta name="twitter:description" content="垃圾收集算法是内存回收的方法论。垃圾收集器是内存回收的具体实现。  连线代表可以组合搭配使用">
-<meta name="twitter:image" content="http://blog.manxue.vip/gc-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%9B%BE.jpg">
+<meta name="twitter:image" content="http://caoyongjun.com/img/gc-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%9B%BE.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -70,7 +70,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -126,7 +126,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -194,7 +194,7 @@ var bp = document.createElement('script');
     <div class="article-entry" itemprop="articleBody">
       
         <p>垃圾收集算法是内存回收的方法论。<br>垃圾收集器是内存回收的具体实现。</p>
-<p><img src="http://blog.manxue.vip/gc-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%9B%BE.jpg" alt="gc-垃圾收集器"></p>
+<p><img src="http://caoyongjun.com/img/gc-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%9B%BE.jpg" alt="gc-垃圾收集器"></p>
 <p>连线代表可以组合搭配使用</p>
 <a id="more"></a>
 <h3 id="概念整理"><a href="#概念整理" class="headerlink" title="概念整理"></a>概念整理</h3><ol>
@@ -204,8 +204,8 @@ var bp = document.createElement('script');
 </ol>
 <h4 id="新生代垃圾收集器使用标记-复制算法"><a href="#新生代垃圾收集器使用标记-复制算法" class="headerlink" title="新生代垃圾收集器使用标记-复制算法"></a>新生代垃圾收集器使用标记-复制算法</h4><h3 id="Serial（Client模式下的默认的）"><a href="#Serial（Client模式下的默认的）" class="headerlink" title="Serial（Client模式下的默认的）"></a>Serial（Client模式下的默认的）</h3><p>单线程垃圾回收，回收时会暂停所有线程。（Stop The World）</p>
 <p>图为serial+serial old</p>
-<p><img src="http://blog.manxue.vip/gc-serialold%E5%92%8C.jpg" alt="gc-old "></p>
-<h3 id="ParNew（Server模式下的默认的）"><a href="#ParNew（Server模式下的默认的）" class="headerlink" title="ParNew（Server模式下的默认的）"></a>ParNew（Server模式下的默认的）</h3><p><img src="http://blog.manxue.vip/gc-parallel%20new.jpg" alt="gc-parnew"></p>
+<p><img src="http://caoyongjun.com/img/gc-serialold%E5%92%8C.jpg" alt="gc-old "></p>
+<h3 id="ParNew（Server模式下的默认的）"><a href="#ParNew（Server模式下的默认的）" class="headerlink" title="ParNew（Server模式下的默认的）"></a>ParNew（Server模式下的默认的）</h3><p><img src="http://caoyongjun.com/img/gc-parallel%20new.jpg" alt="gc-parnew"></p>
 <ul>
 <li>Serial+多线程并行实现的</li>
 <li>默认开启和CPU相同的线程数</li>
@@ -224,8 +224,8 @@ var bp = document.createElement('script');
 <li>-XX:PretenureSizeThreshold(晋升老年代年龄)</li>
 </ul>
 <h4 id="老年代垃圾收集器使用标记-整理算法"><a href="#老年代垃圾收集器使用标记-整理算法" class="headerlink" title="老年代垃圾收集器使用标记-整理算法"></a>老年代垃圾收集器使用标记-整理算法</h4><h3 id="Serial-Old（client模式下的默认的）"><a href="#Serial-Old（client模式下的默认的）" class="headerlink" title="Serial Old（client模式下的默认的）"></a>Serial Old（client模式下的默认的）</h3><p>是Serial收集器的老年代版本</p>
-<h3 id="Parallel-Old"><a href="#Parallel-Old" class="headerlink" title="Parallel Old"></a>Parallel Old</h3><p>图为parallel scavenge/parallel old（注重吞吐量以及CPU资源敏感的场合）<br><img src="http://blog.manxue.vip/gc-parallelold.jpg" alt="gc-parallel old"><br>是Parallel Scavenge收集器的老年代版本</p>
-<h3 id="G1（Garbage-First）"><a href="#G1（Garbage-First）" class="headerlink" title="G1（Garbage First）"></a>G1（Garbage First）</h3><p><img src="http://blog.manxue.vip/gc-g1.jpg" alt="gc-g1"><br>直接将堆结构分成极其多个区域，每个区域都可以充当Eden区、Survivor区或者老年代中的一个。<br>优先回收死亡对象较多的区域。</p>
+<h3 id="Parallel-Old"><a href="#Parallel-Old" class="headerlink" title="Parallel Old"></a>Parallel Old</h3><p>图为parallel scavenge/parallel old（注重吞吐量以及CPU资源敏感的场合）<br><img src="http://caoyongjun.com/img/gc-parallelold.jpg" alt="gc-parallel old"><br>是Parallel Scavenge收集器的老年代版本</p>
+<h3 id="G1（Garbage-First）"><a href="#G1（Garbage-First）" class="headerlink" title="G1（Garbage First）"></a>G1（Garbage First）</h3><p><img src="http://caoyongjun.com/img/gc-g1.jpg" alt="gc-g1"><br>直接将堆结构分成极其多个区域，每个区域都可以充当Eden区、Survivor区或者老年代中的一个。<br>优先回收死亡对象较多的区域。</p>
 <p>步骤:</p>
 <ul>
 <li>初始标记</li>
@@ -233,7 +233,7 @@ var bp = document.createElement('script');
 <li>最终标记</li>
 <li>筛选回收</li>
 </ul>
-<h4 id="使用多线程标记-清除算法"><a href="#使用多线程标记-清除算法" class="headerlink" title="使用多线程标记-清除算法"></a>使用多线程标记-清除算法</h4><h3 id="CMS（Concurrent-Mark-Sweep）"><a href="#CMS（Concurrent-Mark-Sweep）" class="headerlink" title="CMS（Concurrent Mark Sweep）"></a>CMS（Concurrent Mark Sweep）</h3><p><img src="http://blog.manxue.vip/gc-cms.jpg" alt="gc-cms"><br>CMS 关注点是尽可能地缩短垃圾收集时用户线程的停顿时间</p>
+<h4 id="使用多线程标记-清除算法"><a href="#使用多线程标记-清除算法" class="headerlink" title="使用多线程标记-清除算法"></a>使用多线程标记-清除算法</h4><h3 id="CMS（Concurrent-Mark-Sweep）"><a href="#CMS（Concurrent-Mark-Sweep）" class="headerlink" title="CMS（Concurrent Mark Sweep）"></a>CMS（Concurrent Mark Sweep）</h3><p><img src="http://caoyongjun.com/img/gc-cms.jpg" alt="gc-cms"><br>CMS 关注点是尽可能地缩短垃圾收集时用户线程的停顿时间</p>
 <p>需要以下4个步骤:</p>
 <ol>
 <li>初始标记(stop the world)<br>只是标记一下GC Roots能直接关联的对象，速度很快</li>
@@ -266,7 +266,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -486,14 +486,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -502,7 +494,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,15 +510,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,15 +522,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,6 +547,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,7 +578,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,11 +586,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,7 +602,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,15 +610,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,11 +622,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,7 +638,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,6 +647,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

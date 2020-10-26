@@ -15,14 +15,14 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2018/09/12/算法-归并排序/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="归并排序归并算法的中心是归并两个已经有序的数组">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bordered%5Dmergesort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bmerge-excel1%5D.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bmerge-excel2%5D.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:updated_time" content="2019-01-05T03:26:18.951Z">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bordered%5Dmergesort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bmerge-excel1%5D.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bmerge-excel2%5D.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法:递归-归并排序">
 <meta name="twitter:description" content="归并排序归并算法的中心是归并两个已经有序的数组">
-<meta name="twitter:image" content="http://blog.manxue.vip/%5Bordered%5Dmergesort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta name="twitter:image" content="http://caoyongjun.com/img/%5Bordered%5Dmergesort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
   
   
     <link rel="icon" href="/favicon.png">
@@ -67,7 +67,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -123,7 +123,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -191,11 +191,11 @@ var bp = document.createElement('script');
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>归并算法的中心是归并两个已经有序的数组</p>
-<p><img src="http://blog.manxue.vip/%5Bordered%5Dmergesort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;归并-排序&quot;"></p>
+<p><img src="http://caoyongjun.com/img/%5Bordered%5Dmergesort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;归并-排序&quot;"></p>
 <a id="more"></a>
-<p><img src="http://blog.manxue.vip/%5Bmerge-excel1%5D.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;归并-合并数组&quot;"></p>
+<p><img src="http://caoyongjun.com/img/%5Bmerge-excel1%5D.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;归并-合并数组&quot;"></p>
 <p>归并排序的思想是把一个数组分成两半，排序每一半，然后把两半归并成有序的数组</p>
-<p><img src="http://blog.manxue.vip/%5Bmerge-excel2%5D.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;归并-归并为大数组&quot;"></p>
+<p><img src="http://caoyongjun.com/img/%5Bmerge-excel2%5D.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;归并-归并为大数组&quot;"></p>
 <p>MergeSort.py结构<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>,max)</span></span>:</div><div class="line">        <span class="keyword">self</span>.theArray=[<span class="number">0</span>]*max		<span class="comment">#初始化数组</span></div><div class="line">        <span class="keyword">self</span>.elements=<span class="number">0</span>				<span class="comment">#初始化数值个数</span></div><div class="line">	<span class="comment">#插入操作</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_insert</span><span class="params">(<span class="keyword">self</span>,var)</span></span>:</div><div class="line">        <span class="keyword">self</span>.theArray[<span class="keyword">self</span>.elements]=var</div><div class="line">        <span class="keyword">self</span>.elements+=<span class="number">1</span></div><div class="line">	<span class="comment">#打印数组</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_display</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="keyword">self</span>.elements):</div><div class="line">            print(str(<span class="keyword">self</span>.theArray[i]))</div></pre></td></tr></table></figure></p>
 <p>归并方法入口<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#递归执行合并</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_reMergeSort</span><span class="params">(<span class="keyword">self</span>,workSpace,lowerBound,upperBound)</span></span>:</div><div class="line">	<span class="comment">#只有一个数组的值时停止递归</span></div><div class="line">	<span class="keyword">if</span> lowerBound==<span class="symbol">upperBound:</span></div><div class="line">		<span class="keyword">return</span></div><div class="line">	<span class="symbol">else:</span></div><div class="line">		<span class="comment">#获取中间索引位置</span></div><div class="line">		mid=int((lowerBound+upperBound)/<span class="number">2</span>)</div><div class="line">		<span class="comment">#递归两边的数组</span></div><div class="line">		_reMergeSort(workSpace,lowerBound,mid)</div><div class="line">		_reMergeSort(workSpace,mid+<span class="number">1</span>,upperBound)</div><div class="line">		<span class="comment">#合并两个数组操作</span></div><div class="line">		_merge(workSpace,lowerBound,mid+<span class="number">1</span>,upperBound)</div><div class="line"><span class="comment">#归并入口方法</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_mergeSort</span><span class="params">(<span class="keyword">self</span>)</span></span>:</div><div class="line">	workSpace=[<span class="number">0</span>]*<span class="keyword">self</span>.elements</div><div class="line">	_reMergeSort(workSpace,<span class="number">0</span>,<span class="keyword">self</span>.elements-<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
 <h4 id="合并A数组和B数组到C数组的方法"><a href="#合并A数组和B数组到C数组的方法" class="headerlink" title="合并A数组和B数组到C数组的方法"></a>合并A数组和B数组到C数组的方法</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_merge</span><span class="params">(<span class="keyword">self</span>,workSpace,lowPtr,highPtr,upperBound)</span></span>:</div><div class="line">	<span class="comment">#0</span></div><div class="line">	j=<span class="number">0</span></div><div class="line">	lowerBound=lowPtr</div><div class="line">	mid=highPtr-<span class="number">1</span></div><div class="line">	n=upperBound-lowerBound+<span class="number">1</span></div><div class="line">	<span class="comment">#1</span></div><div class="line">	<span class="keyword">while</span> lowPtr &lt;= mid <span class="keyword">and</span> highPtr &lt;= <span class="symbol">upperBound:</span></div><div class="line">		<span class="keyword">if</span> <span class="keyword">self</span>.theArray[lowPtr] &lt; <span class="keyword">self</span>.theArray[highPtr]:</div><div class="line">			workSpace[j]=<span class="keyword">self</span>.theArray[lowPtr]</div><div class="line">			j+=<span class="number">1</span></div><div class="line">			lowPtr+=<span class="number">1</span></div><div class="line">		<span class="symbol">else:</span></div><div class="line">			workSpace[j]=<span class="keyword">self</span>.theArray[highPtr]</div><div class="line">			j+=<span class="number">1</span></div><div class="line">			highPtr+=<span class="number">1</span></div><div class="line">	<span class="comment">#2</span></div><div class="line">	<span class="keyword">while</span> lowPtr &lt;= <span class="symbol">mid:</span></div><div class="line">		workSpace[j]=<span class="keyword">self</span>.theArray[lowPtr]</div><div class="line">		j+=<span class="number">1</span></div><div class="line">		lowPtr+=<span class="number">1</span></div><div class="line">	<span class="keyword">while</span> highPtr &lt;= <span class="symbol">upperBound:</span></div><div class="line">		workSpace[j]=<span class="keyword">self</span>.theArray[highPtr]</div><div class="line">		j+=<span class="number">1</span></div><div class="line">		highPtr+=<span class="number">1</span></div><div class="line">	<span class="comment">#3</span></div><div class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,n):</div><div class="line">		<span class="keyword">self</span>.theArray[lowerBound+i]=workSpace[i]</div></pre></td></tr></table></figure>
@@ -287,7 +287,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -503,14 +503,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -519,7 +511,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,15 +527,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,15 +539,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,6 +564,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,7 +595,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,11 +603,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,7 +619,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,15 +627,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,11 +639,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,7 +655,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,6 +664,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

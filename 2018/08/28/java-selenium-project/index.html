@@ -9,24 +9,24 @@
   <title>selenium:自动化迁移wiki数据 | CaoYongjun&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原由原本一直在使用第三方的在线接口文档维护着接口。最近新建立了公司内部的wiki百科为了安全性要在一周内迁移所有的showdoc文档到gitlab上。目前showdoc有将近100个文档说明，如果组内10个人一人拷贝10个也花不了太长时间，但是作为程序员还得用程序员的方式去解决重复性的活。还好刚毕业时有过类似的经历，那时也是因为wiki迁移不光有文字还有各种图片各种zip文档，大约3G不能丢失。此">
-<meta name="keywords" content="技术,java,selenium">
+<meta name="keywords" content="java,技术,selenium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="selenium:自动化迁移wiki数据">
 <meta property="og:url" content="http://www.caoyongjun.com/2018/08/28/java-selenium-project/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="原由原本一直在使用第三方的在线接口文档维护着接口。最近新建立了公司内部的wiki百科为了安全性要在一周内迁移所有的showdoc文档到gitlab上。目前showdoc有将近100个文档说明，如果组内10个人一人拷贝10个也花不了太长时间，但是作为程序员还得用程序员的方式去解决重复性的活。还好刚毕业时有过类似的经历，那时也是因为wiki迁移不光有文字还有各种图片各种zip文档，大约3G不能丢失。此">
-<meta property="og:image" content="http://blog.manxue.vip/java-selenium-project1.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/java-selenium-project2.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/java-selenium-project3.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bselenium%5D%E8%BF%81%E7%A7%BBwiki%E5%9B%BE.gif">
-<meta property="og:image" content="http://blog.manxue.vip/java-selenium-project4.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bselenium%5Di%E8%8E%B7%E5%8F%96xpath.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bselenium%5Dchrome%E9%A9%B1%E5%8A%A8.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:updated_time" content="2019-01-05T03:27:56.912Z">
+<meta property="og:image" content="http://caoyongjun.com/img/java-selenium-project1.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/java-selenium-project2.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/java-selenium-project3.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bselenium%5D%E8%BF%81%E7%A7%BBwiki%E5%9B%BE.gif">
+<meta property="og:image" content="http://caoyongjun.com/img/java-selenium-project4.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bselenium%5Di%E8%8E%B7%E5%8F%96xpath.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bselenium%5Dchrome%E9%A9%B1%E5%8A%A8.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="selenium:自动化迁移wiki数据">
 <meta name="twitter:description" content="原由原本一直在使用第三方的在线接口文档维护着接口。最近新建立了公司内部的wiki百科为了安全性要在一周内迁移所有的showdoc文档到gitlab上。目前showdoc有将近100个文档说明，如果组内10个人一人拷贝10个也花不了太长时间，但是作为程序员还得用程序员的方式去解决重复性的活。还好刚毕业时有过类似的经历，那时也是因为wiki迁移不光有文字还有各种图片各种zip文档，大约3G不能丢失。此">
-<meta name="twitter:image" content="http://blog.manxue.vip/java-selenium-project1.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta name="twitter:image" content="http://caoyongjun.com/img/java-selenium-project1.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
   
   
     <link rel="icon" href="/favicon.png">
@@ -71,7 +71,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -127,7 +127,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -197,16 +197,16 @@ var bp = document.createElement('script');
         <h2 id="原由"><a href="#原由" class="headerlink" title="原由"></a>原由</h2><p>原本一直在使用第三方的在线接口文档维护着接口。<br>最近新建立了公司内部的wiki百科为了安全性要在一周内迁移所有的showdoc文档到gitlab上。<br>目前showdoc有将近100个文档说明，如果组内10个人一人拷贝10个也花不了太长时间，但是作为程序员还得用程序员的方式去解决重复性的活。<br>还好刚毕业时有过类似的经历，那时也是因为wiki迁移不光有文字还有各种图片各种zip文档，大约3G不能丢失。<br>此次迁移幸好本身的showdoc是markdown编辑的gitlab也无缝支持markdown保存，所以花了一下午的时间专门写了整个流程的selenium+java的操作。</p>
 <p>来看一下如何去做这一套迁移工作</p>
 <a id="more"></a>
-<h3 id="正常手动操作流程"><a href="#正常手动操作流程" class="headerlink" title="正常手动操作流程"></a>正常手动操作流程</h3><p>1.编辑要拷贝的东西<br><img src="http://blog.manxue.vip/java-selenium-project1.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="image1"></p>
-<p>2.复制所需的文本数据<br><img src="http://blog.manxue.vip/java-selenium-project2.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="image2"></p>
-<p>3.打开gitlab粘贴我们的数据 然后保存<br><img src="http://blog.manxue.vip/java-selenium-project3.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="image3"></p>
+<h3 id="正常手动操作流程"><a href="#正常手动操作流程" class="headerlink" title="正常手动操作流程"></a>正常手动操作流程</h3><p>1.编辑要拷贝的东西<br><img src="http://caoyongjun.com/img/java-selenium-project1.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="image1"></p>
+<p>2.复制所需的文本数据<br><img src="http://caoyongjun.com/img/java-selenium-project2.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="image2"></p>
+<p>3.打开gitlab粘贴我们的数据 然后保存<br><img src="http://caoyongjun.com/img/java-selenium-project3.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="image3"></p>
 <p>整个流程手动大概5秒左右，因为来回切换复制粘贴title、目录、文本数据<br>(如果有1万的文章那我们一个人手动大概要花5万秒)</p>
 <p>为了把繁杂的工作变为自动化操作我们使用selenium+java来解决这个问题</p>
-<h3 id="使用selenium自动化操作效果（git加载慢）"><a href="#使用selenium自动化操作效果（git加载慢）" class="headerlink" title="使用selenium自动化操作效果（git加载慢）"></a>使用selenium自动化操作效果（git加载慢）</h3><p><img src="http://blog.manxue.vip/%5Bselenium%5D%E8%BF%81%E7%A7%BBwiki%E5%9B%BE.gif" alt="selenium"></p>
+<h3 id="使用selenium自动化操作效果（git加载慢）"><a href="#使用selenium自动化操作效果（git加载慢）" class="headerlink" title="使用selenium自动化操作效果（git加载慢）"></a>使用selenium自动化操作效果（git加载慢）</h3><p><img src="http://caoyongjun.com/img/%5Bselenium%5D%E8%BF%81%E7%A7%BBwiki%E5%9B%BE.gif" alt="selenium"></p>
 <h3 id="selenium是什么"><a href="#selenium是什么" class="headerlink" title="selenium是什么"></a>selenium是什么</h3><p>Selenium是一个用于Web应用程序测试的工具。Selenium 测试直接运行在浏览器中，就像真正的用户在操作一样。支持的浏览器包括IE,Mozilla和Firefox等。这个工具的主要功能包括：测试与浏览器的兼容性–测试你的应用程序看是否能够很好得工作在不同浏览器和操作系统之上。测试系统功能–创建衰退测试检验软件功能和用户需求。</p>
 <p>利用模拟人工编辑粘贴来把需要迁移的数据迁移到新系统中。以下是具体步骤</p>
 <h2 id="0-把要迁移的编辑页面路径写入到文件中"><a href="#0-把要迁移的编辑页面路径写入到文件中" class="headerlink" title="0.把要迁移的编辑页面路径写入到文件中"></a>0.把要迁移的编辑页面路径写入到文件中</h2><p>selenium.txt里面是精确到编辑页的路径<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">https:<span class="regexp">//</span>www.showdoc.cc<span class="regexp">/web/</span><span class="comment">#/page/edit/110710136260844/632980917626441</span></div><div class="line">https:<span class="regexp">//</span>www.showdoc.cc<span class="regexp">/web/</span><span class="comment">#/page/edit/110710136260844/634782624315515</span></div><div class="line">.....省略</div></pre></td></tr></table></figure></p>
-<h2 id="1-新建一个java项目，并且加入各种依赖jar包"><a href="#1-新建一个java项目，并且加入各种依赖jar包" class="headerlink" title="1.新建一个java项目，并且加入各种依赖jar包"></a>1.新建一个java项目，并且加入各种依赖jar包</h2><p><img src="http://blog.manxue.vip/java-selenium-project4.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="image4"></p>
+<h2 id="1-新建一个java项目，并且加入各种依赖jar包"><a href="#1-新建一个java项目，并且加入各种依赖jar包" class="headerlink" title="1.新建一个java项目，并且加入各种依赖jar包"></a>1.新建一个java项目，并且加入各种依赖jar包</h2><p><img src="http://caoyongjun.com/img/java-selenium-project4.png?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="image4"></p>
 <h3 id="几个重要jar作用说明"><a href="#几个重要jar作用说明" class="headerlink" title="几个重要jar作用说明"></a>几个重要jar作用说明</h3><table>
 <thead>
 <tr>
@@ -279,9 +279,9 @@ var bp = document.createElement('script');
 </table>
 <h2 id="2-SeleniumUtil-java工具类"><a href="#2-SeleniumUtil-java工具类" class="headerlink" title="2.SeleniumUtil.java工具类"></a>2.SeleniumUtil.java工具类</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SeleniumUtil</span> &#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> WebDriver webDriver;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> WebElement webElement;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Robot robot;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> By byelement;</div><div class="line">	<span class="comment">// 执行javascript脚本后 返回数据</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">ScriptString</span>(<span class="params">String script</span>) </span>&#123;</div><div class="line">		JavascriptExecutor js = (JavascriptExecutor) webDriver;</div><div class="line">		String s = (String) js.executeScript(script);</div><div class="line">		<span class="keyword">return</span> s;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 初始化</div><div class="line">	 * </div><div class="line">	 * @param select</div><div class="line">	 *            1:Firefox 2:IE 3:Chrome 4:后台执行</div><div class="line">	 * @param browserpath</div><div class="line">	 *            选择本地浏览路径</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Init</span>(<span class="params"><span class="keyword">int</span> switchbrowser, String browserpath</span>) </span>&#123;</div><div class="line">		<span class="keyword">switch</span> (switchbrowser) &#123;</div><div class="line">		<span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">			System.setProperty(<span class="string">"webdriver.firefox.bin"</span>, browserpath);</div><div class="line">			webDriver = <span class="keyword">new</span> FirefoxDriver();</div><div class="line">			webDriver.manage().window().maximize();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">			System.setProperty(<span class="string">"webdriver.ie.driver"</span>, browserpath);</div><div class="line">			webDriver = <span class="keyword">new</span> InternetExplorerDriver();</div><div class="line">			webDriver.manage().window().maximize();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">			System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, browserpath);</div><div class="line">			webDriver = <span class="keyword">new</span> ChromeDriver();</div><div class="line">			<span class="comment">//变大窗口</span></div><div class="line">			webDriver.manage().window().maximize();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">			webDriver = <span class="keyword">new</span> HtmlUnitDriver();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 复制</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CopyKeys</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			robot = <span class="keyword">new</span> Robot();</div><div class="line">			robot.keyPress(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyPress(KeyEvent.VK_C);</div><div class="line">			robot.keyRelease(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyRelease(KeyEvent.VK_C);</div><div class="line">		&#125; <span class="keyword">catch</span> (AWTException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 全选</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">AllTextKeys</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			robot = <span class="keyword">new</span> Robot();</div><div class="line">			robot.keyPress(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyPress(KeyEvent.VK_A);</div><div class="line">			robot.keyRelease(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyRelease(KeyEvent.VK_A);</div><div class="line">		&#125; <span class="keyword">catch</span> (AWTException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 粘贴</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PasteKeys</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			robot = <span class="keyword">new</span> Robot();</div><div class="line">			robot.keyPress(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyPress(KeyEvent.VK_V);</div><div class="line">			robot.keyRelease(KeyEvent.VK_CONTROL);</div><div class="line">			robot.keyRelease(KeyEvent.VK_V);</div><div class="line">		&#125; <span class="keyword">catch</span> (AWTException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 设定页面中的文本值</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SendKeys</span>(<span class="params">By <span class="keyword">by</span>, String <span class="keyword">value</span></span>) </span>&#123;</div><div class="line">		webDriver.findElement(<span class="keyword">by</span>).sendKeys(<span class="keyword">value</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 打开页面</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params">String url</span>) </span>&#123;</div><div class="line">		webDriver.<span class="keyword">get</span>(url);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 结束</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Stop</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		webDriver.quit();</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 睡眠</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Sleep</span>(<span class="params"><span class="keyword">int</span> millis</span>) </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			Thread.sleep(millis);</div><div class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> WebDriver <span class="title">getWebDriver</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> webDriver;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setWebDriver</span>(<span class="params">WebDriver webDriver</span>) </span>&#123;</div><div class="line">		SeleniumUtil.webDriver = webDriver;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> WebElement <span class="title">getWebElement</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> webElement;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setWebElement</span>(<span class="params">WebElement webElement</span>) </span>&#123;</div><div class="line">		SeleniumUtil.webElement = webElement;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> By <span class="title">getByelement</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> byelement;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setByelement</span>(<span class="params">By byelement</span>) </span>&#123;</div><div class="line">		SeleniumUtil.byelement = byelement;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="3-业务代码"><a href="#3-业务代码" class="headerlink" title="3.业务代码"></a>3.业务代码</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> selenium.service;</div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.<span class="keyword">HashMap</span>;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.By;</div><div class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</div><div class="line"><span class="keyword">import</span> selenium.util.SeleniumUtil;</div><div class="line"></div><div class="line"><span class="keyword">public</span> class CopyWiki &#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SeleniumUtil util=<span class="keyword">new</span> SeleniumUtil();</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> WebDriver driver;</div><div class="line">	</div><div class="line">	<span class="comment">//showdoc用户名密码</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">String</span> SHOW_USERNAME=<span class="string">"xxx"</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">String</span> SHOW_PASSWORD=<span class="string">"yyy"</span>;</div><div class="line">	<span class="comment">//gitlab用户名密码</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">String</span> GIT_USERNAME=<span class="string">"xxx"</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">String</span> GIT_PASSWORD=<span class="string">"yyy"</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">String</span> TITLE_PRE=<span class="string">"接口文档/1.0/"</span>;</div><div class="line">	</div><div class="line">	<span class="comment">//读取需要操作的目标文章</span></div><div class="line">	<span class="keyword">private</span> List&lt;<span class="keyword">String</span>&gt; readTargetUrl() <span class="keyword">throws</span> IOException&#123;</div><div class="line">		<span class="keyword">return</span> FileUtils.readLines(<span class="keyword">new</span> File(<span class="string">"C:/Users/win10/Desktop/linux/selenium.txt"</span>));</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//打开showdoc页面 并并填写用户名密码登录</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">void</span> loginShowDoc()&#123;</div><div class="line">		<span class="comment">//登录目标网站</span></div><div class="line">		util.Start(<span class="string">"https://www.showdoc.cc/home/user/login"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//填写登录名</span></div><div class="line">		util.SendKeys(By.xpath(<span class="string">"//*[@id=\"app\"]/div/section/div/div/form/div[1]/div/div/input"</span>), SHOW_USERNAME);</div><div class="line">		<span class="comment">//填写密码</span></div><div class="line">		util.SendKeys(By.xpath(<span class="string">"//*[@id=\"app\"]/div/section/div/div/form/div[2]/div/div/input"</span>), SHOW_PASSWORD);</div><div class="line">		<span class="comment">//点击登录按钮</span></div><div class="line">		driver.findElement(By.xpath(<span class="string">"//*[@id=\"app\"]/div/section/div/div/form/div[3]/div/button"</span>)).click();</div><div class="line">		</div><div class="line">		<span class="comment">//等待加载页面，因为有时会没等到登录成功返回的报文</span></div><div class="line">		util.Sleep(<span class="number">1000</span>);</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 获取showdoc的数据</div><div class="line">	 * @param url:获取数据目标url</div><div class="line">	 * </div><div class="line">	 * @return dataMap:@param</div><div class="line">	 * 						title:标题</div><div class="line">	 * 						group:分组名</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> Map&lt;<span class="keyword">String</span>,<span class="keyword">String</span>&gt; getShowDocData(<span class="keyword">String</span> targetUrl)&#123;</div><div class="line">		</div><div class="line">		<span class="comment">//打开要编辑的页面</span></div><div class="line">		util.Start(targetUrl);</div><div class="line">		</div><div class="line">		<span class="comment">//等待加载出来数据后操作，如果文章数据多就设定长点时间</span></div><div class="line">		util.Sleep(<span class="number">3500</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//获取标题   分组名</span></div><div class="line">		<span class="keyword">String</span> title=driver.findElement(By.xpath(<span class="string">"//*[@id=\"app\"]/div/section/div[1]/form/div[1]/div/div/input"</span>)).getAttribute(<span class="string">"value"</span>);</div><div class="line">		<span class="keyword">String</span> group=driver.findElement(By.xpath(<span class="string">"//*[@id=\"app\"]/div/section/div[1]/form/div[3]/div/div/div[1]/input"</span>)).getAttribute(<span class="string">"value"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//获取到文本框后  由于showdoc有jquery支持所以我用jquery脚本,但是如果没有jquery支持的网页需要用原生js来执行脚本</span></div><div class="line">		util.ScriptString(<span class="string">"$(\".CodeMirror-code\").focus()"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//全选编辑框</span></div><div class="line">		util.AllTextKeys();</div><div class="line">		<span class="comment">//复制markdown文章</span></div><div class="line">		util.CopyKeys();</div><div class="line">		</div><div class="line">		<span class="comment">//设定返回值</span></div><div class="line">		Map&lt;<span class="keyword">String</span>,<span class="keyword">String</span>&gt; dataMap=<span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</div><div class="line">		dataMap.put(<span class="string">"title"</span>, title);</div><div class="line">		dataMap.put(<span class="string">"group"</span>, group);</div><div class="line">		<span class="keyword">return</span> dataMap;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="comment">//登录gitlab 并授权登录</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">void</span> loginGitLab()&#123;</div><div class="line">		<span class="comment">//打开gitlab登录页面</span></div><div class="line">		util.Start(<span class="string">"https://gitlab.yiqishanyuan.cn/users/sign_in"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//登录操作 填充用户名，密码</span></div><div class="line">		util.SendKeys(By.xpath(<span class="string">"//*[@id=\"user_login\"]"</span>),GIT_USERNAME);</div><div class="line">		util.SendKeys(By.xpath(<span class="string">"//*[@id=\"user_password\"]"</span>),GIT_PASSWORD);</div><div class="line">		driver.findElement(By.xpath(<span class="string">"//*[@id=\"new_user\"]/div[4]/input"</span>)).click();</div><div class="line">		</div><div class="line">		<span class="comment">//等待加载页面</span></div><div class="line">		util.Sleep(<span class="number">500</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 写新的文章</div><div class="line">	 * @param title:标题</div><div class="line">	 * @param group:分组</div><div class="line">	 */</div><div class="line">	<span class="keyword">private</span> <span class="keyword">void</span> writGitLab(<span class="keyword">String</span> title,<span class="keyword">String</span> group)&#123;</div><div class="line">		<span class="comment">//打开gitlab新建页面</span></div><div class="line">		util.Start(<span class="string">"https://gitlab.yiqishanyuan.cn/v3/welfare-center/wikis/home"</span>);</div><div class="line"></div><div class="line">		<span class="comment">//新建页面</span></div><div class="line">		driver.findElement(By.xpath(<span class="string">"//*[@id=\"content-body\"]/div[1]/div[2]/a[1]"</span>)).click();</div><div class="line">		</div><div class="line">		<span class="comment">//设定新文章标题</span></div><div class="line">		<span class="keyword">String</span> newTitle=TITLE_PRE+group+<span class="string">"/"</span>+title;</div><div class="line">		util.SendKeys(By.xpath(<span class="string">"//*[@id=\"new_wiki_path\"]"</span>),newTitle);</div><div class="line">		</div><div class="line">		<span class="comment">//创建页面</span></div><div class="line">		driver.findElement(By.xpath(<span class="string">"//*[@id=\"modal-new-wiki\"]/div/div/div[2]/form/div[2]/button"</span>)).click();</div><div class="line">		</div><div class="line">		<span class="comment">//获取到文本框后</span></div><div class="line">		util.ScriptString(<span class="string">"$(\"#wiki_content\").focus()"</span>);</div><div class="line">		<span class="comment">//全选编辑框</span></div><div class="line">		util.AllTextKeys();</div><div class="line">		<span class="comment">//粘贴文字</span></div><div class="line">		util.PasteKeys();</div><div class="line">		</div><div class="line">		<span class="comment">//点击保存</span></div><div class="line">		util.ScriptString(<span class="string">"$(\"input[name='commit']\").click()"</span>);</div><div class="line">		</div><div class="line">		<span class="comment">//等待保存页面</span></div><div class="line">		util.Sleep(<span class="number">1000</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) <span class="keyword">throws</span> IOException &#123;</div><div class="line">		</div><div class="line">		CopyWiki copyWiki=<span class="keyword">new</span> CopyWiki();</div><div class="line">		</div><div class="line">		<span class="comment">//1.读取之前需要拷贝的url地址</span></div><div class="line">		List&lt;<span class="keyword">String</span>&gt; targetUrls=copyWiki.readTargetUrl();</div><div class="line">		<span class="keyword">if</span>(targetUrls!=<span class="keyword">null</span> &amp;&amp; targetUrls.<span class="built_in">size</span>()&gt;<span class="number">0</span>)&#123;</div><div class="line">			<span class="comment">//初始化chrome驱动插件执行具体的自动化操作</span></div><div class="line">			util.Init(<span class="number">3</span>, <span class="string">"C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe"</span>);</div><div class="line">			<span class="comment">//获取驱动</span></div><div class="line">			driver=util.getWebDriver();</div><div class="line">			</div><div class="line">			<span class="comment">//登录showdoc</span></div><div class="line">			copyWiki.loginShowDoc();</div><div class="line">			</div><div class="line">			<span class="comment">//设定gitlab登录状态</span></div><div class="line">			copyWiki.loginGitLab();</div><div class="line">			</div><div class="line">			<span class="comment">//循环遍历</span></div><div class="line">			<span class="keyword">for</span>(<span class="keyword">String</span> targetUrl:targetUrls)&#123;</div><div class="line">				<span class="comment">//获取目标数据</span></div><div class="line">				Map&lt;<span class="keyword">String</span>,<span class="keyword">String</span>&gt; dataMap=copyWiki.getShowDocData(targetUrl);</div><div class="line">				</div><div class="line">				<span class="keyword">if</span>(dataMap!=<span class="keyword">null</span> &amp;&amp; dataMap.<span class="built_in">size</span>()&gt;<span class="number">0</span>)&#123;</div><div class="line">					<span class="comment">//新建文章，写入拷贝的数据</span></div><div class="line">					copyWiki.writGitLab(dataMap.<span class="built_in">get</span>(<span class="string">"title"</span>), dataMap.<span class="built_in">get</span>(<span class="string">"group"</span>));</div><div class="line">					</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//读取后结束</span></div><div class="line">			util.Stop();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="4-获取页面中的节点"><a href="#4-获取页面中的节点" class="headerlink" title="4.获取页面中的节点"></a>4.获取页面中的节点</h2><p>有多种方式我这里就演示通过xpath路径获取，更多操作可以查下教程<br><img src="http://blog.manxue.vip/%5Bselenium%5Di%E8%8E%B7%E5%8F%96xpath.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="chrome-xpath"></p>
+<h2 id="4-获取页面中的节点"><a href="#4-获取页面中的节点" class="headerlink" title="4.获取页面中的节点"></a>4.获取页面中的节点</h2><p>有多种方式我这里就演示通过xpath路径获取，更多操作可以查下教程<br><img src="http://caoyongjun.com/img/%5Bselenium%5Di%E8%8E%B7%E5%8F%96xpath.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="chrome-xpath"></p>
 <h2 id="5-最重要的干活的机器插件chromedriver-exe"><a href="#5-最重要的干活的机器插件chromedriver-exe" class="headerlink" title="5.最重要的干活的机器插件chromedriver.exe"></a>5.最重要的干活的机器插件chromedriver.exe</h2><p>要对应自己的chrome浏览器下载相应的版本并且放入到自己chrome浏览器下面<br>下载地址为<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="external">chromedriver地址</a>本次的chrome版本为v61,driver版本为v2.28</p>
-<p><img src="http://blog.manxue.vip/%5Bselenium%5Dchrome%E9%A9%B1%E5%8A%A8.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="chrome-driver"></p>
+<p><img src="http://caoyongjun.com/img/%5Bselenium%5Dchrome%E9%A9%B1%E5%8A%A8.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="chrome-driver"></p>
 <p>具体项目可拉取github中获取<br><a href="https://github.com/cao280856020/selenium-java.git" target="_blank" rel="external">selenium-java项目</a></p>
 
       
@@ -301,7 +301,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -322,11 +322,11 @@ var bp = document.createElement('script');
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -521,14 +521,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -537,7 +529,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,15 +545,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,15 +557,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,6 +582,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,7 +613,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,11 +621,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,7 +637,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,15 +645,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,11 +657,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,7 +673,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,6 +682,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

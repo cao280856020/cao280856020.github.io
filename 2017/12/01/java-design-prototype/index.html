@@ -15,13 +15,13 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2017/12/01/java-design-prototype/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="作为一个创建型模式,它的做用是复制一个已经实例化好的类，object类的clone方法是一个native本地方法，可直接操作内存中的二进制流，特别是复制大对象时，性能差别非常明显。clone时不会触发构造函数。 优点创建复杂或耗时的实例时比构造创建速度快 缺点实现Cloneable接口或Serializable接口 使用场景1、资源优化场景。2、类初始化需要消化非常多的资源，这个资源包括数据、硬件">
-<meta property="og:image" content="http://blog.manxue.vip/clonecopy.jpg">
-<meta property="og:image" content="http://blog.manxue.vip/cloneexample.jpg">
-<meta property="og:updated_time" content="2019-01-05T03:24:57.077Z">
+<meta property="og:image" content="http://caoyongjun.com/img/clonecopy.jpg">
+<meta property="og:image" content="http://caoyongjun.com/img/cloneexample.jpg">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式:原型模式">
 <meta name="twitter:description" content="作为一个创建型模式,它的做用是复制一个已经实例化好的类，object类的clone方法是一个native本地方法，可直接操作内存中的二进制流，特别是复制大对象时，性能差别非常明显。clone时不会触发构造函数。 优点创建复杂或耗时的实例时比构造创建速度快 缺点实现Cloneable接口或Serializable接口 使用场景1、资源优化场景。2、类初始化需要消化非常多的资源，这个资源包括数据、硬件">
-<meta name="twitter:image" content="http://blog.manxue.vip/clonecopy.jpg">
+<meta name="twitter:image" content="http://caoyongjun.com/img/clonecopy.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -66,7 +66,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -122,7 +122,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -194,9 +194,9 @@ var bp = document.createElement('script');
 <h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>实现Cloneable接口或Serializable接口</p>
 <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h6 id="1、资源优化场景。"><a href="#1、资源优化场景。" class="headerlink" title="1、资源优化场景。"></a>1、资源优化场景。</h6><h6 id="2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。"><a href="#2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。" class="headerlink" title="2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。"></a>2、类初始化需要消化非常多的资源，这个资源包括数据、硬件资源等。</h6><h6 id="3、性能和安全要求的场景。"><a href="#3、性能和安全要求的场景。" class="headerlink" title="3、性能和安全要求的场景。"></a>3、性能和安全要求的场景。</h6><h6 id="4、通过-new-产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。"><a href="#4、通过-new-产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。" class="headerlink" title="4、通过 new 产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。"></a>4、通过 new 产生一个对象需要非常繁琐的数据准备或访问权限，则可以使用原型模式。</h6><h6 id="5、一个对象多个修改者的场景。"><a href="#5、一个对象多个修改者的场景。" class="headerlink" title="5、一个对象多个修改者的场景。"></a>5、一个对象多个修改者的场景。</h6><h6 id="6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。"><a href="#6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。" class="headerlink" title="6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。"></a>6、一个对象需要提供给其他对象访问，而且各个调用者可能都需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用。</h6><h6 id="7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过-clone的方法创建一个对象，然后由工厂方法提供给调用者。"><a href="#7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过-clone的方法创建一个对象，然后由工厂方法提供给调用者。" class="headerlink" title="7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过 clone的方法创建一个对象，然后由工厂方法提供给调用者。"></a>7、在实际项目中，原型模式很少单独出现，一般是和工厂方法模式一起出现，通过 clone的方法创建一个对象，然后由工厂方法提供给调用者。</h6><a id="more"></a>
 <p>实现Cloneable接口会有两种拷贝方式它们的区别为下面图</p>
-<p><img src="http://blog.manxue.vip/clonecopy.jpg" alt="&quot;浅复制深复制&quot;"></p>
+<p><img src="http://caoyongjun.com/img/clonecopy.jpg" alt="&quot;浅复制深复制&quot;"></p>
 <p>现实生活中的例子</p>
-<p><img src="http://blog.manxue.vip/cloneexample.jpg" alt="&quot;现实生活浅复制深复制&quot;"></p>
+<p><img src="http://caoyongjun.com/img/cloneexample.jpg" alt="&quot;现实生活浅复制深复制&quot;"></p>
 <h2 id="如何实现浅拷贝"><a href="#如何实现浅拷贝" class="headerlink" title="如何实现浅拷贝"></a>如何实现浅拷贝</h2><p>实现Clone接口，覆盖Clone方法</p>
 <p>Prototype.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Prototype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">        <span class="keyword">private</span> String name;</div><div class="line">        <span class="keyword">private</span> Book book;</div><div class="line">        <span class="function"><span class="keyword">public</span> Prototype <span class="title">clone</span><span class="params">()</span></span>&#123;</div><div class="line">                Prototype p=<span class="keyword">null</span>;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                        p = (Prototype) <span class="keyword">super</span>.clone();</div><div class="line">                        <span class="keyword">return</span> p;</div><div class="line">                &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//...省略setter和getter方法</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>Test.java<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">                Book b=<span class="keyword">new</span> Book();</div><div class="line">                b.setBookName(<span class="string">"数学"</span>);</div><div class="line"></div><div class="line">                Prototype pro = <span class="keyword">new</span> Prototype();</div><div class="line">                pro.setBook(b);</div><div class="line">                Prototype pro1 =  pro.clone();<span class="comment">//复制一个</span></div><div class="line">                b.setBookName(<span class="string">"语文"</span>);<span class="comment">//更改bookname</span></div><div class="line"></div><div class="line">                System.out.<span class="built_in">println</span>(pro.getBook()==pro1.getBook());</div><div class="line">                System.out.<span class="built_in">println</span>(<span class="string">"original object:"</span> + pro.getBook().getBookName());</div><div class="line">                System.out.<span class="built_in">println</span>(<span class="string">"cloned object:"</span> + pro1.getBook().getBookName());</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
@@ -229,7 +229,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -445,14 +445,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -461,7 +453,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,15 +469,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,15 +481,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,6 +506,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,7 +537,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,11 +545,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,7 +561,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,15 +569,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,11 +581,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,7 +597,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,6 +606,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

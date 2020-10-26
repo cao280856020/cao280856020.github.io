@@ -15,15 +15,15 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2018/03/14/java-垃圾回收机制/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="分代收集算法  当前商业虚拟机的垃圾收集都采用“分代收集”按对象存活周期将内存划分为新生代和老年代。根据各年代的特点采用最适当的收集算法。">
-<meta property="og:image" content="http://blog.manxue.vip/jvm-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/jvm-EdenSurvivor.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/jvm-mark-clean.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:image" content="http://blog.manxue.vip/jvm-mark-compact.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:updated_time" content="2019-01-05T03:28:28.678Z">
+<meta property="og:image" content="http://caoyongjun.com/img/jvm-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/jvm-EdenSurvivor.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/jvm-mark-clean.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:image" content="http://caoyongjun.com/img/jvm-mark-compact.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java:垃圾回收机制">
 <meta name="twitter:description" content="分代收集算法  当前商业虚拟机的垃圾收集都采用“分代收集”按对象存活周期将内存划分为新生代和老年代。根据各年代的特点采用最适当的收集算法。">
-<meta name="twitter:image" content="http://blog.manxue.vip/jvm-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta name="twitter:image" content="http://caoyongjun.com/img/jvm-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
   
   
     <link rel="icon" href="/favicon.png">
@@ -68,7 +68,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -124,7 +124,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -200,10 +200,10 @@ var bp = document.createElement('script');
 <li>优点-每次都是对整个半区进行内存回收，内存分配时不用考虑内存碎片等复杂情况，只要移动堆顶指针，按顺序分配内存即可，实现简单，运行高效。</li>
 <li>缺点-内存缩小为了原来的一半。</li>
 </ul>
-<p><img src="http://blog.manxue.vip/jvm-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="jvm-复制算法"></p>
+<p><img src="http://caoyongjun.com/img/jvm-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="jvm-复制算法"></p>
 <p>1.2.新生代复制算法</p>
 <p>由于在新生代的对象98%都是朝生夕死不需要按照1:1的比例划分内存空间,而是将内存分为一块大的Eden空间和两较小的Survivor空间(默认8:1大小)</p>
-<p><img src="http://blog.manxue.vip/jvm-EdenSurvivor.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="jvm-EdenSurvivor"></p>
+<p><img src="http://caoyongjun.com/img/jvm-EdenSurvivor.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="jvm-EdenSurvivor"></p>
 <ul>
 <li>每次使用都会占据Eden和其中一个Survivor</li>
 <li>垃圾回收时会把Eden和Survivor生存的对象复制到另外一个Survivor，然后清空Eden和来源Survivor</li>
@@ -216,10 +216,10 @@ var bp = document.createElement('script');
 <li>缺点1-效率低，标记和清除两个过程的效率都不高。</li>
 <li>缺点2-空间碎片多，清除后会产生大量不连续的内存碎片，碎片太多可能会导致以后在程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作。</li>
 </ul>
-<p><img src="http://blog.manxue.vip/jvm-mark-clean.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="jvm-mark-clean"></p>
+<p><img src="http://caoyongjun.com/img/jvm-mark-clean.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="jvm-mark-clean"></p>
 <p>2.2.标记-整理</p>
 <p>标记阶段和“标记-清理”算法一样，整理时把存活对象都向一端移动，然后直接清理端边界以外的内存</p>
-<p><img src="http://blog.manxue.vip/jvm-mark-compact.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="jvm-mark-compact"></p>
+<p><img src="http://caoyongjun.com/img/jvm-mark-compact.jpg?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="jvm-mark-compact"></p>
 <p>以上内容为《深入理解Java虚拟机》读后笔记，图是自己理解后用Excel画出的</p>
 
       
@@ -239,7 +239,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -451,14 +451,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -467,7 +459,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,15 +475,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,15 +487,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,6 +512,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,7 +543,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,11 +551,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,7 +567,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,15 +575,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,11 +587,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,7 +603,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,6 +612,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

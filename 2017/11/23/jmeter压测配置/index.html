@@ -15,24 +15,24 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2017/11/23/jmeter压测配置/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="为了测试接口的tps能力，使用了ApacheJMeter工具帮助我们模拟并发场景去压力测试 以下是JMeter的配置方法">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DnewThreads.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DeditThreads.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DcsvData.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DnewCSV.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5Deditcsv.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DnewHttp.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DeditHttp.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DnewTreeResult.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DresultTreeInfo.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DnewAssert.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DeditAssert.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DnewJuheResult.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5BJMeter%5DjuheResultInfo.png">
-<meta property="og:updated_time" content="2019-01-05T03:24:46.937Z">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DnewThreads.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DeditThreads.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DcsvData.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DnewCSV.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5Deditcsv.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DnewHttp.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DeditHttp.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DnewTreeResult.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DresultTreeInfo.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DnewAssert.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DeditAssert.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DnewJuheResult.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5BJMeter%5DjuheResultInfo.png">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能测试:JMeter手把手配置">
 <meta name="twitter:description" content="为了测试接口的tps能力，使用了ApacheJMeter工具帮助我们模拟并发场景去压力测试 以下是JMeter的配置方法">
-<meta name="twitter:image" content="http://blog.manxue.vip/%5BJMeter%5DnewThreads.png">
+<meta name="twitter:image" content="http://caoyongjun.com/img/%5BJMeter%5DnewThreads.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -77,7 +77,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -133,7 +133,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -202,21 +202,21 @@ var bp = document.createElement('script');
       
         <p>为了测试接口的tps能力，使用了ApacheJMeter工具帮助我们模拟并发场景去压力测试</p>
 <p>以下是JMeter的配置方法<br><a id="more"></a></p>
-<h2 id="1-新建线程组"><a href="#1-新建线程组" class="headerlink" title="1.新建线程组"></a>1.新建线程组</h2><p><img src="http://blog.manxue.vip/%5BJMeter%5DnewThreads.png" alt="newThreads"></p>
-<h4 id="1-1-设定线程数量等信息"><a href="#1-1-设定线程数量等信息" class="headerlink" title="1.1.设定线程数量等信息"></a>1.1.设定线程数量等信息</h4><p><img src="http://blog.manxue.vip/%5BJMeter%5DeditThreads.png" alt="editThreads"></p>
-<h2 id="2-添加用于并发的数据请求csv"><a href="#2-添加用于并发的数据请求csv" class="headerlink" title="2.添加用于并发的数据请求csv"></a>2.添加用于并发的数据请求csv</h2><h4 id="2-1-csv的数据文件"><a href="#2-1-csv的数据文件" class="headerlink" title="2.1.csv的数据文件"></a>2.1.csv的数据文件</h4><p><img src="http://blog.manxue.vip/%5BJMeter%5DcsvData.png" alt="csvData"></p>
-<h4 id="2-2-新建csv配置"><a href="#2-2-新建csv配置" class="headerlink" title="2.2.新建csv配置"></a>2.2.新建csv配置</h4><p><img src="http://blog.manxue.vip/%5BJMeter%5DnewCSV.png" alt="newCsvData"></p>
-<h4 id="2-3-配置cvs"><a href="#2-3-配置cvs" class="headerlink" title="2.3.配置cvs"></a>2.3.配置cvs</h4><p><img src="http://blog.manxue.vip/%5BJMeter%5Deditcsv.png" alt="editCsvData"></p>
-<h2 id="3-添加http请求"><a href="#3-添加http请求" class="headerlink" title="3.添加http请求"></a>3.添加http请求</h2><p><img src="http://blog.manxue.vip/%5BJMeter%5DnewHttp.png" alt="newHttp"></p>
-<h4 id="3-1-设定http请求参数"><a href="#3-1-设定http请求参数" class="headerlink" title="3.1.设定http请求参数"></a>3.1.设定http请求参数</h4><p><img src="http://blog.manxue.vip/%5BJMeter%5DeditHttp.png" alt="editHttp"></p>
+<h2 id="1-新建线程组"><a href="#1-新建线程组" class="headerlink" title="1.新建线程组"></a>1.新建线程组</h2><p><img src="http://caoyongjun.com/img/%5BJMeter%5DnewThreads.png" alt="newThreads"></p>
+<h4 id="1-1-设定线程数量等信息"><a href="#1-1-设定线程数量等信息" class="headerlink" title="1.1.设定线程数量等信息"></a>1.1.设定线程数量等信息</h4><p><img src="http://caoyongjun.com/img/%5BJMeter%5DeditThreads.png" alt="editThreads"></p>
+<h2 id="2-添加用于并发的数据请求csv"><a href="#2-添加用于并发的数据请求csv" class="headerlink" title="2.添加用于并发的数据请求csv"></a>2.添加用于并发的数据请求csv</h2><h4 id="2-1-csv的数据文件"><a href="#2-1-csv的数据文件" class="headerlink" title="2.1.csv的数据文件"></a>2.1.csv的数据文件</h4><p><img src="http://caoyongjun.com/img/%5BJMeter%5DcsvData.png" alt="csvData"></p>
+<h4 id="2-2-新建csv配置"><a href="#2-2-新建csv配置" class="headerlink" title="2.2.新建csv配置"></a>2.2.新建csv配置</h4><p><img src="http://caoyongjun.com/img/%5BJMeter%5DnewCSV.png" alt="newCsvData"></p>
+<h4 id="2-3-配置cvs"><a href="#2-3-配置cvs" class="headerlink" title="2.3.配置cvs"></a>2.3.配置cvs</h4><p><img src="http://caoyongjun.com/img/%5BJMeter%5Deditcsv.png" alt="editCsvData"></p>
+<h2 id="3-添加http请求"><a href="#3-添加http请求" class="headerlink" title="3.添加http请求"></a>3.添加http请求</h2><p><img src="http://caoyongjun.com/img/%5BJMeter%5DnewHttp.png" alt="newHttp"></p>
+<h4 id="3-1-设定http请求参数"><a href="#3-1-设定http请求参数" class="headerlink" title="3.1.设定http请求参数"></a>3.1.设定http请求参数</h4><p><img src="http://caoyongjun.com/img/%5BJMeter%5DeditHttp.png" alt="editHttp"></p>
 <h2 id="4-察看树结果"><a href="#4-察看树结果" class="headerlink" title="4.察看树结果"></a>4.察看树结果</h2><p>主要用于查看http请求信息对应的http返回结果</p>
-<p><img src="http://blog.manxue.vip/%5BJMeter%5DnewTreeResult.png" alt="newTreeInfo"></p>
-<h4 id="4-1-请求结果集-绿色代表成功，红色代表失败-响应数据"><a href="#4-1-请求结果集-绿色代表成功，红色代表失败-响应数据" class="headerlink" title="4.1.请求结果集 绿色代表成功，红色代表失败 响应数据"></a>4.1.请求结果集 绿色代表成功，红色代表失败 响应数据</h4><p><img src="http://blog.manxue.vip/%5BJMeter%5DresultTreeInfo.png" alt="resultTreeInfo"></p>
+<p><img src="http://caoyongjun.com/img/%5BJMeter%5DnewTreeResult.png" alt="newTreeInfo"></p>
+<h4 id="4-1-请求结果集-绿色代表成功，红色代表失败-响应数据"><a href="#4-1-请求结果集-绿色代表成功，红色代表失败-响应数据" class="headerlink" title="4.1.请求结果集 绿色代表成功，红色代表失败 响应数据"></a>4.1.请求结果集 绿色代表成功，红色代表失败 响应数据</h4><p><img src="http://caoyongjun.com/img/%5BJMeter%5DresultTreeInfo.png" alt="resultTreeInfo"></p>
 <h2 id="5-添加断言"><a href="#5-添加断言" class="headerlink" title="5.添加断言"></a>5.添加断言</h2><p>主要为了区分http请求失败与否用</p>
-<p><img src="http://blog.manxue.vip/%5BJMeter%5DnewAssert.png" alt="newAssert"></p>
-<h4 id="5-1-写入判断依据-只要包含code等于200都算成功"><a href="#5-1-写入判断依据-只要包含code等于200都算成功" class="headerlink" title="5.1.写入判断依据  只要包含code等于200都算成功"></a>5.1.写入判断依据  只要包含code等于200都算成功</h4><p><img src="http://blog.manxue.vip/%5BJMeter%5DeditAssert.png" alt="editAssert"></p>
-<h2 id="6-添加聚合报告"><a href="#6-添加聚合报告" class="headerlink" title="6.添加聚合报告"></a>6.添加聚合报告</h2><p><img src="http://blog.manxue.vip/%5BJMeter%5DnewJuheResult.png" alt="newJuhe"></p>
-<h4 id="6-1-聚合报告分析"><a href="#6-1-聚合报告分析" class="headerlink" title="6.1.聚合报告分析"></a>6.1.聚合报告分析</h4><p><img src="http://blog.manxue.vip/%5BJMeter%5DjuheResultInfo.png" alt="JuheInfo"></p>
+<p><img src="http://caoyongjun.com/img/%5BJMeter%5DnewAssert.png" alt="newAssert"></p>
+<h4 id="5-1-写入判断依据-只要包含code等于200都算成功"><a href="#5-1-写入判断依据-只要包含code等于200都算成功" class="headerlink" title="5.1.写入判断依据  只要包含code等于200都算成功"></a>5.1.写入判断依据  只要包含code等于200都算成功</h4><p><img src="http://caoyongjun.com/img/%5BJMeter%5DeditAssert.png" alt="editAssert"></p>
+<h2 id="6-添加聚合报告"><a href="#6-添加聚合报告" class="headerlink" title="6.添加聚合报告"></a>6.添加聚合报告</h2><p><img src="http://caoyongjun.com/img/%5BJMeter%5DnewJuheResult.png" alt="newJuhe"></p>
+<h4 id="6-1-聚合报告分析"><a href="#6-1-聚合报告分析" class="headerlink" title="6.1.聚合报告分析"></a>6.1.聚合报告分析</h4><p><img src="http://caoyongjun.com/img/%5BJMeter%5DjuheResultInfo.png" alt="JuheInfo"></p>
 
       
 
@@ -235,7 +235,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -451,14 +451,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -467,7 +459,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,15 +475,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,15 +487,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,6 +512,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,7 +543,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,11 +551,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,7 +567,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,15 +575,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,11 +587,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,7 +603,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,6 +612,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

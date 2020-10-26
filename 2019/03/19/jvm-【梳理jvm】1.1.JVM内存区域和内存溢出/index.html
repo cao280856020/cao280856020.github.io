@@ -15,15 +15,15 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2019/03/19/jvm-【梳理jvm】1.1.JVM内存区域和内存溢出/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="JVM是运行java代码的假想的计算机，是运行在操作系统之上的，不与硬件直接交互。 包含了以下 字节码指令集 寄存器 栈 垃圾回收 堆 存储方法域">
-<meta property="og:image" content="http://blog.manxue.vip/jvm-%E8%AF%A6%E7%BB%86%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.jpg">
-<meta property="og:image" content="http://blog.manxue.vip/jvm-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%84%91%E5%9B%BE.jpg">
+<meta property="og:image" content="http://caoyongjun.com/img/jvm-%E8%AF%A6%E7%BB%86%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.jpg">
+<meta property="og:image" content="http://caoyongjun.com/img/jvm-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%84%91%E5%9B%BE.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E5%8F%A5%E6%9F%84.png">
-<meta property="og:image" content="http://blog.manxue.vip/jvm-%E5%8F%A5%E6%9F%84.png">
-<meta property="og:updated_time" content="2020-02-28T04:10:33.485Z">
+<meta property="og:image" content="http://caoyongjun.com/img/jvm-%E5%8F%A5%E6%9F%84.png">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【梳理jvm】1.1.JVM内存区域和内存溢出">
 <meta name="twitter:description" content="JVM是运行java代码的假想的计算机，是运行在操作系统之上的，不与硬件直接交互。 包含了以下 字节码指令集 寄存器 栈 垃圾回收 堆 存储方法域">
-<meta name="twitter:image" content="http://blog.manxue.vip/jvm-%E8%AF%A6%E7%BB%86%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.jpg">
+<meta name="twitter:image" content="http://caoyongjun.com/img/jvm-%E8%AF%A6%E7%BB%86%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -68,7 +68,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -124,7 +124,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -201,8 +201,8 @@ var bp = document.createElement('script');
 <li>存储方法域</li>
 </ul>
 <a id="more"></a>
-<p><img src="http://blog.manxue.vip/jvm-%E8%AF%A6%E7%BB%86%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.jpg" alt="jvm-内存模型脑图"></p>
-<p><img src="http://blog.manxue.vip/jvm-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%84%91%E5%9B%BE.jpg" alt="jvm-内存区域"></p>
+<p><img src="http://caoyongjun.com/img/jvm-%E8%AF%A6%E7%BB%86%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.jpg" alt="jvm-内存模型脑图"></p>
+<p><img src="http://caoyongjun.com/img/jvm-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E8%84%91%E5%9B%BE.jpg" alt="jvm-内存区域"></p>
 <h3 id="线程私有"><a href="#线程私有" class="headerlink" title="线程私有"></a>线程私有</h3><h3 id="1-程序计数器"><a href="#1-程序计数器" class="headerlink" title="1.程序计数器"></a>1.程序计数器</h3><ul>
 <li><p>当前线程所执行的字节码的行号指示器。</p>
 <p>字节码解释器工作时通过改变这个计数器的值来选取下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。</p>
@@ -333,7 +333,7 @@ var bp = document.createElement('script');
 </li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/cao280856020/blog_img/master/blog/img/jvm-%E5%8F%A5%E6%9F%84.png" alt="jvm-句柄"></p>
-<p><img src="http://blog.manxue.vip/jvm-%E5%8F%A5%E6%9F%84.png" alt="jvm-直接指针"></p>
+<p><img src="http://caoyongjun.com/img/jvm-%E5%8F%A5%E6%9F%84.png" alt="jvm-直接指针"></p>
 <h4 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h4><p>OutOfMemoryError<br>没有空闲内容，并且垃圾收集器也无法提供更多内存。</p>
 <p>内存区域出现OOM的地方（程序计数器不出现OOM）</p>
 <table>
@@ -386,7 +386,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -606,14 +606,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -622,7 +614,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,15 +630,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,15 +642,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,6 +667,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,7 +698,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,11 +706,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,7 +722,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -730,15 +730,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,11 +742,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -762,7 +758,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,6 +767,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

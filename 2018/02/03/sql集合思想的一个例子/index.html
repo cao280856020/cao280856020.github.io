@@ -15,15 +15,15 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2018/02/03/sql集合思想的一个例子/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="一次sql解决以下结果集">
-<meta property="og:image" content="http://blog.manxue.vip/sql%E9%9B%86%E5%90%88-%E7%BB%93%E6%9E%9C.png">
-<meta property="og:image" content="http://blog.manxue.vip/sql%E9%9B%86%E5%90%88-emp.png">
-<meta property="og:image" content="http://blog.manxue.vip/sql%E9%9B%86%E5%90%88-dept.png">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bsql%5D%E9%9B%86%E5%90%88explain.jpg">
-<meta property="og:updated_time" content="2019-01-05T03:24:56.291Z">
+<meta property="og:image" content="http://caoyongjun.com/img/sql%E9%9B%86%E5%90%88-%E7%BB%93%E6%9E%9C.png">
+<meta property="og:image" content="http://caoyongjun.com/img/sql%E9%9B%86%E5%90%88-emp.png">
+<meta property="og:image" content="http://caoyongjun.com/img/sql%E9%9B%86%E5%90%88-dept.png">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bsql%5D%E9%9B%86%E5%90%88explain.jpg">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql集合思想的一个例子">
 <meta name="twitter:description" content="一次sql解决以下结果集">
-<meta name="twitter:image" content="http://blog.manxue.vip/sql%E9%9B%86%E5%90%88-%E7%BB%93%E6%9E%9C.png">
+<meta name="twitter:image" content="http://caoyongjun.com/img/sql%E9%9B%86%E5%90%88-%E7%BB%93%E6%9E%9C.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -68,7 +68,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -124,7 +124,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -192,10 +192,10 @@ var bp = document.createElement('script');
     <div class="article-entry" itemprop="articleBody">
       
         <p>一次sql解决以下结果集</p>
-<p><img src="http://blog.manxue.vip/sql%E9%9B%86%E5%90%88-%E7%BB%93%E6%9E%9C.png" alt="&quot;sql集合结果&quot;"></p>
+<p><img src="http://caoyongjun.com/img/sql%E9%9B%86%E5%90%88-%E7%BB%93%E6%9E%9C.png" alt="&quot;sql集合结果&quot;"></p>
 <a id="more"></a>
-<p>问：有一个员工表emp 10000+数据emp_no=员工编号,dept_no=部门编号,job=null:其他,CLERK:员工,MANAGE:经理,sal=工资<br><img src="http://blog.manxue.vip/sql%E9%9B%86%E5%90%88-emp.png" alt="&quot;sql集合emp&quot;"></p>
-<p>有一个部门表dept  50个条部门数据dept_no=部门编号,dept_name=部门名<br><img src="http://blog.manxue.vip/sql%E9%9B%86%E5%90%88-dept.png" alt="&quot;sql集合dept&quot;"></p>
+<p>问：有一个员工表emp 10000+数据emp_no=员工编号,dept_no=部门编号,job=null:其他,CLERK:员工,MANAGE:经理,sal=工资<br><img src="http://caoyongjun.com/img/sql%E9%9B%86%E5%90%88-emp.png" alt="&quot;sql集合emp&quot;"></p>
+<p>有一个部门表dept  50个条部门数据dept_no=部门编号,dept_name=部门名<br><img src="http://caoyongjun.com/img/sql%E9%9B%86%E5%90%88-dept.png" alt="&quot;sql集合dept&quot;"></p>
 <p>解决sql<br>1.emp表通过group by dept缩小范围并且按照各自的职位计算出各职位对应的工资和部门总工资 </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">       dept_no,</div><div class="line">       <span class="keyword">SUM</span>(<span class="keyword">IF</span>(job=<span class="string">'MANAGE'</span>,sal,<span class="number">0</span>))<span class="keyword">AS</span> manage,</div><div class="line">       <span class="keyword">SUM</span>(<span class="keyword">IF</span>(job=<span class="string">'CLERK'</span>,sal,<span class="number">0</span>))<span class="keyword">AS</span> cleark,</div><div class="line">       <span class="keyword">SUM</span>(<span class="keyword">IF</span>(job <span class="keyword">IS</span> <span class="literal">NULL</span>,sal,<span class="number">0</span>))<span class="keyword">AS</span> etc,</div><div class="line">       <span class="keyword">SUM</span>(sal)<span class="keyword">AS</span> dept_sal</div><div class="line"><span class="keyword">FROM</span> emp</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> dept_no</div></pre></td></tr></table></figure>
 <p>2.缩小范围的emp和dept一一对应50找50</p>
@@ -205,7 +205,7 @@ var bp = document.createElement('script');
 <p>3.2.按部门分组1为有部门,2为没部门</p>
 <p>3.3.然后select的部分区分一下</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">    <span class="keyword">IFNULL</span>(<span class="keyword">IF</span>(d.NO=<span class="string">'1'</span>,c.dept_name,<span class="literal">NULL</span>),<span class="string">'汇总'</span>) <span class="keyword">AS</span> dname,</div><div class="line">    <span class="keyword">SUM</span>(c.manage)<span class="keyword">AS</span> manage,</div><div class="line">    <span class="keyword">SUM</span>(c.cleark)<span class="keyword">AS</span> cleark,</div><div class="line">    <span class="keyword">SUM</span>(c.etc)<span class="keyword">AS</span> etc,</div><div class="line">    <span class="keyword">SUM</span>(c.dept_sal)<span class="keyword">AS</span> dept_sal</div><div class="line"><span class="keyword">FROM</span> (</div><div class="line">    <span class="keyword">SELECT</span> b.dept_name,a.dept_no,a.manage,a.cleark,a.etc,a.dept_sal</div><div class="line">    <span class="keyword">FROM</span> (</div><div class="line">        <span class="keyword">SELECT</span></div><div class="line">               dept_no,</div><div class="line">               <span class="keyword">SUM</span>(<span class="keyword">IF</span>(job=<span class="string">'MANAGE'</span>,sal,<span class="number">0</span>))<span class="keyword">AS</span> manage,</div><div class="line">               <span class="keyword">SUM</span>(<span class="keyword">IF</span>(job=<span class="string">'CLERK'</span>,sal,<span class="number">0</span>))<span class="keyword">AS</span> cleark,</div><div class="line">               <span class="keyword">SUM</span>(<span class="keyword">IF</span>(job <span class="keyword">IS</span> <span class="literal">NULL</span>,sal,<span class="number">0</span>))<span class="keyword">AS</span> etc,</div><div class="line">               <span class="keyword">SUM</span>(sal)<span class="keyword">AS</span> dept_sal</div><div class="line">        <span class="keyword">FROM</span> emp</div><div class="line">        <span class="keyword">GROUP</span> <span class="keyword">BY</span> dept_no</div><div class="line">    ) <span class="keyword">AS</span> a,dept b</div><div class="line">    <span class="keyword">WHERE</span> a.dept_no=b.dept_no</div><div class="line">    <span class="keyword">AND</span> b.dept_no&gt;<span class="number">0</span></div><div class="line">) c,</div><div class="line">(<span class="keyword">SELECT</span> <span class="string">'1'</span> <span class="keyword">AS</span> <span class="keyword">NO</span> <span class="keyword">FROM</span> DUAL</div><div class="line"><span class="keyword">UNION</span> ALL</div><div class="line"><span class="keyword">SELECT</span> <span class="string">'2'</span> <span class="keyword">FROM</span> DUAL</div><div class="line">) <span class="keyword">AS</span> d</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">IF</span>(d.NO=<span class="string">'1'</span>,c.dept_name,<span class="literal">NULL</span>)</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> d.NO,c.dept_no</div></pre></td></tr></table></figure>
-<p>3.4.执行计划<br><img src="http://blog.manxue.vip/%5Bsql%5D%E9%9B%86%E5%90%88explain.jpg" alt="&quot;sql集合explain&quot;"></p>
+<p>3.4.执行计划<br><img src="http://caoyongjun.com/img/%5Bsql%5D%E9%9B%86%E5%90%88explain.jpg" alt="&quot;sql集合explain&quot;"></p>
 <p>3.5.执行计划结果说明参考下面这个人的博客<br><a href="http://www.cnblogs.com/hailexuexi/archive/2011/11/20/2256020.html" target="_blank" rel="external">explain说明</a></p>
 
       
@@ -225,7 +225,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -437,14 +437,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -453,7 +445,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,15 +461,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,15 +473,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,6 +498,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,7 +529,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,11 +537,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,7 +553,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,15 +561,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,11 +573,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,7 +589,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,6 +598,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">

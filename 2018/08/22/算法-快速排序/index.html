@@ -15,12 +15,12 @@
 <meta property="og:url" content="http://www.caoyongjun.com/2018/08/22/算法-快速排序/index.html">
 <meta property="og:site_name" content="CaoYongjun's Blog">
 <meta property="og:description" content="高级排序2-快速排序 思路 0.每次执行前判断要排序的目标数组长度是否小于等于三，如果小那就不去执行快速排序，而是三个值交换位置即可。 1.每次选择三个值排序这三值是(第一个位置，中间位置，最后一个位置)。 2.选择中间位置作为枢纽，并把它的值交换到倒数第二个位置。 3.进行划分算法获得被划分的索引位置 3.1.左扫描从第二个位置开始把所有小于枢纽值的交换到扫描索引那里。 3.2.同时进行右扫描从">
-<meta property="og:image" content="http://blog.manxue.vip/%5Bordered%5DquickSort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
-<meta property="og:updated_time" content="2019-01-05T03:26:25.945Z">
+<meta property="og:image" content="http://caoyongjun.com/img/%5Bordered%5DquickSort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta property="og:updated_time" content="2020-10-26T14:16:15.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法:高级排序2-快速排序">
 <meta name="twitter:description" content="高级排序2-快速排序 思路 0.每次执行前判断要排序的目标数组长度是否小于等于三，如果小那就不去执行快速排序，而是三个值交换位置即可。 1.每次选择三个值排序这三值是(第一个位置，中间位置，最后一个位置)。 2.选择中间位置作为枢纽，并把它的值交换到倒数第二个位置。 3.进行划分算法获得被划分的索引位置 3.1.左扫描从第二个位置开始把所有小于枢纽值的交换到扫描索引那里。 3.2.同时进行右扫描从">
-<meta name="twitter:image" content="http://blog.manxue.vip/%5Bordered%5DquickSort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
+<meta name="twitter:image" content="http://caoyongjun.com/img/%5Bordered%5DquickSort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim">
   
   
     <link rel="icon" href="/favicon.png">
@@ -65,7 +65,7 @@ var bp = document.createElement('script');
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+			<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Cao Yong jun</a></h1>
@@ -121,7 +121,7 @@ var bp = document.createElement('script');
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dhead.jpg" class="js-avatar">
+				<img src="http://caoyongjun.com/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Cao Yong jun</h1>
@@ -188,7 +188,7 @@ var bp = document.createElement('script');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="高级排序2-快速排序"><a href="#高级排序2-快速排序" class="headerlink" title="高级排序2-快速排序"></a>高级排序2-快速排序</h3><p><img src="http://blog.manxue.vip/%5Bordered%5DquickSort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;排序-quickSort&quot;"></p>
+        <h3 id="高级排序2-快速排序"><a href="#高级排序2-快速排序" class="headerlink" title="高级排序2-快速排序"></a>高级排序2-快速排序</h3><p><img src="http://caoyongjun.com/img/%5Bordered%5DquickSort.gif?imageView2/0/q/75|watermark/2/text/d3d3LmNhb3lvbmdqdW4uY29t/font/5a6L5L2T/fontsize/240/fill/IzAwMDAwMA==/dissolve/100/gravity/Center/dx/10/dy/10|imageslim" alt="&quot;排序-quickSort&quot;"></p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
 <li>0.每次执行前判断要排序的目标数组长度是否小于等于三，如果小那就不去执行快速排序，而是三个值交换位置即可。</li>
 <li>1.每次选择三个值排序这三值是(第一个位置，中间位置，最后一个位置)。</li>
@@ -234,7 +234,7 @@ var bp = document.createElement('script');
                     
                     
                     <div class="reward-box-item">
-                      <img class="reward-img" src="http://blog.manxue.vip/%5B%E5%8D%9A%E5%AE%A2%E7%94%A8%5Dwechat%E6%89%93%E8%B5%8F.jpg">
+                      <img class="reward-img" src="http://caoyongjun.com/img/wechat.jpg">
                       <span class="reward-type">微信</span>
                     </div>
                     
@@ -450,14 +450,6 @@ var bp = document.createElement('script');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -466,7 +458,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,15 +474,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">idea</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">提效</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,15 +486,15 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提效</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,6 +511,14 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">JMeter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,7 +542,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,11 +550,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,7 +566,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,15 +574,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">set</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,11 +586,11 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">set</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,7 +602,7 @@ var bp = document.createElement('script');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,6 +611,10 @@ var bp = document.createElement('script');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">业务实现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据库设计</a>
               </li>
              
               <li class="article-tag-list-item">
